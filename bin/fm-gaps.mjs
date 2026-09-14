@@ -37,12 +37,17 @@ if (!cli) { console.error('fm CLI not found'); process.exit(2); }
 const build = execFileSync(cli.path, ['--version']).toString().match(/\((\d+)\)/)?.[1] ?? '';
 const entries = loadRegister(registerPath);
 const target = { file: args.file, username: args.username ?? '' };
-const run = (ops) => runOps(cli, target, ops, { dryRun: false, opsFile: true, outFile: true, abortOnError: false, noPrompt: true });
+let lastRun;
+const run = async (ops) => (lastRun = await runOps(cli, target, ops, { dryRun: false, opsFile: true, outFile: true, abortOnError: false, noPrompt: true }));
 const out = await runChecks(entries, run, {
   version: cli.version, build, date: new Date().toISOString().slice(0, 10),
   commandFor: (argv) => ['fm', ...argv].join(' '),
 });
 saveRegister(registerPath, out.entries);
+if (lastRun?.fatal) {
+  console.error(`fatal: ${lastRun.fatal.code}: ${lastRun.fatal.message}`);
+  for (const s of lastRun.fatal.suggestions ?? []) console.error(s);
+}
 const show = (label, list) => {
   console.log(`\n${label} (${list.length})`);
   for (const e of list) {
@@ -54,3 +59,4 @@ show('Still open', out.stillOpen);
 show('Newly passing', out.newlyPassing);
 show('Errored', out.errored);
 console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}`);
+process.exit(out.errored.length > 0 ? 1 : 0);
