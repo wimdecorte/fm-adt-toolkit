@@ -69,6 +69,33 @@ describe('loadRegister', () => {
     expect(() => loadRegister(path)).toThrow(/duplicate attribute/);
   });
 
+  it('loads an attribute-level verifiedOn probe (exactly one read-only op)', () => {
+    const path = join(tempDir(), 'register.json');
+    const entry = baseEntry('a');
+    entry.attributes[0].verifiedOn = { ops: [{ op: 'read:layout', name: 'List', detail: true }], select: 'contents.parts[type=Body]' };
+    writeFileSync(path, JSON.stringify([entry]));
+    const loaded = loadRegister(path);
+    expect(loaded[0].attributes[0].verifiedOn).toEqual(entry.attributes[0].verifiedOn);
+  });
+
+  it('refuses a verifiedOn with two ops', () => {
+    const path = join(tempDir(), 'register.json');
+    const entry = baseEntry('a');
+    entry.attributes[0].verifiedOn = {
+      ops: [{ op: 'read:layout', name: 'List', detail: true }, { op: 'read:layout', name: 'List', detail: true }],
+    };
+    writeFileSync(path, JSON.stringify([entry]));
+    expect(() => loadRegister(path)).toThrow(/exactly one op/);
+  });
+
+  it('refuses a verifiedOn with a non-read op', () => {
+    const path = join(tempDir(), 'register.json');
+    const entry = baseEntry('a');
+    entry.attributes[0].verifiedOn = { ops: [{ op: 'create:table' }] };
+    writeFileSync(path, JSON.stringify([entry]));
+    expect(() => loadRegister(path)).toThrow(/read-only/);
+  });
+
   it('refuses a blocks row naming an attribute the entry does not have', () => {
     const path = join(tempDir(), 'register.json');
     const entry = baseEntry('a');

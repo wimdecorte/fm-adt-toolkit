@@ -2,7 +2,7 @@ import type { AdtFatal, AdtOp, AdtRunResult } from '../types.ts';
 import { selectInstance } from './select.ts';
 import { flattenKeys } from './match.ts';
 import { probeId, writeEvidence } from './evidence.ts';
-import type { Attribute, SubjectEntry, SubjectEvidence } from './register.ts';
+import type { Attribute, Probe, SubjectEntry, SubjectEvidence } from './register.ts';
 
 export interface CheckOutcome {
   entries: SubjectEntry[];
@@ -62,7 +62,12 @@ export async function runChecks(
   meta: { version: string; build: string; date: string; root: string; commandFor: (argv: string[]) => string },
 ): Promise<CheckOutcome> {
   const distinct = new Map<string, AdtOp>();
-  for (const e of entries) { const op = e.probe.ops[0]; distinct.set(probeId(op), op); }
+  for (const e of entries) {
+    distinct.set(probeId(e.probe.ops[0]), e.probe.ops[0]);
+    // An attribute's own `verifiedOn` op joins the same distinct-probe batch (deduped by
+    // probeId, same as every entry probe), so it runs in the one fm invocation too.
+    for (const a of e.attributes) if (a.verifiedOn) distinct.set(probeId(a.verifiedOn.ops[0]), a.verifiedOn.ops[0]);
+  }
   const ids = [...distinct.keys()];
   const ops = ids.map((id) => distinct.get(id)!);
   const result = await run(ops);
@@ -81,21 +86,24 @@ export async function runChecks(
     }));
   });
 
-  // Resolve each entry's instance (or the reason it has none) up front, so entries
-  // sharing an instance can share what explains it.
-  const instances = new Map<SubjectEntry, { pos: number; reason?: string; instance: unknown }>();
-  for (const entry of entries) {
-    const id = probeId(entry.probe.ops[0]);
-    const pos = ids.indexOf(id);
+  // One probe -> its resolved instance, or the reason it has none. Shared by an entry's
+  // own probe and by any attribute's `verifiedOn` probe, so both resolve the same way.
+  const resolveProbe = (probe: Probe): { pos: number; reason?: string; instance: unknown } => {
+    const pos = ids.indexOf(probeId(probe.ops[0]));
     const line = result.results[pos];
     let reason: string | undefined;
     let instance: unknown;
     if (!line) reason = `no result line for probe at position ${pos}`;
-    else if (line.op !== entry.probe.ops[0].op) reason = `result op ${line.op} does not match probe op ${entry.probe.ops[0].op} at position ${pos}`;
+    else if (line.op !== probe.ops[0].op) reason = `result op ${line.op} does not match probe op ${probe.ops[0].op} at position ${pos}`;
     else if (line.status !== 'ok') reason = `probe refused: ${line.error?.code ?? line.status}`;
-    else { instance = selectInstance(line.result, entry.probe.select); if (instance === undefined) reason = `selector ${entry.probe.select ?? '(root)'} matched nothing`; }
-    instances.set(entry, { pos, reason, instance });
-  }
+    else { instance = selectInstance(line.result, probe.select); if (instance === undefined) reason = `selector ${probe.select ?? '(root)'} matched nothing`; }
+    return { pos, reason, instance };
+  };
+
+  // Resolve each entry's instance (or the reason it has none) up front, so entries
+  // sharing an instance can share what explains it.
+  const instances = new Map<SubjectEntry, { pos: number; reason?: string; instance: unknown }>();
+  for (const entry of entries) instances.set(entry, resolveProbe(entry.probe));
 
   const unexplainedByGroup = new Map<string, string[]>();
   for (const entry of entries) {
@@ -118,13 +126,35 @@ export async function runChecks(
     const evidence = evidenceFor.get(probeId(entry.probe.ops[0]))!;
     const base = { version: meta.version, build: meta.build, date: meta.date, command, batch: { size: ops.length, position: pos }, evidence };
     const attributes: SubjectEvidence['attributes'] = {};
+    const attributeEvidence: Record<string, string> = {};
+    const attributeReasons: Record<string, string> = {};
     if (reason) {
       for (const a of entry.attributes) attributes[a.name] = 'error';
     } else {
-      for (const a of entry.attributes) attributes[a.name] = a.fmKey && hasKey(instance, a.fmKey) ? 'reported' : 'absent';
+      for (const a of entry.attributes) {
+        if (a.verifiedOn) {
+          // Evaluated on the OTHER probe's instance, not this entry's own — a failure here
+          // is this attribute's own outcome, not a reason to error the whole entry.
+          const v = resolveProbe(a.verifiedOn);
+          if (v.reason) { attributes[a.name] = 'error'; attributeReasons[a.name] = v.reason; }
+          else attributes[a.name] = a.fmKey && hasKey(v.instance, a.fmKey) ? 'reported' : 'absent';
+          const ev = evidenceFor.get(probeId(a.verifiedOn.ops[0]))!;
+          if (ev !== evidence) attributeEvidence[a.name] = ev;
+        } else {
+          attributes[a.name] = a.fmKey && hasKey(instance, a.fmKey) ? 'reported' : 'absent';
+        }
+      }
     }
     const unexplainedKeys = reason ? [] : (unexplainedByGroup.get(groupKeyOf(entry)) ?? []);
-    return { ...entry, lastChecked: { ...base, attributes, unexplainedKeys, ...(reason ? { reason } : {}) } };
+    return {
+      ...entry,
+      lastChecked: {
+        ...base, attributes, unexplainedKeys,
+        ...(reason ? { reason } : {}),
+        ...(Object.keys(attributeEvidence).length ? { attributeEvidence } : {}),
+        ...(Object.keys(attributeReasons).length ? { attributeReasons } : {}),
+      },
+    };
   });
 
   const errored = updatedEntries.filter((e) => e.lastChecked?.reason);
@@ -135,7 +165,9 @@ export async function runChecks(
   for (const entry of updatedEntries) {
     if (entry.lastChecked?.reason) continue;
     for (const a of entry.attributes) {
-      const seen = entry.lastChecked!.attributes[a.name] === 'reported';
+      const status = entry.lastChecked!.attributes[a.name];
+      if (status === 'error') continue;   // a verifiedOn probe/selector failure for THIS attribute only: not scored either way
+      const seen = status === 'reported';
       if (seen && !a.reported && !a.wontfix) newlyReported.push({ entry, attribute: a });
       if (!seen && a.reported) regressed.push({ entry, attribute: a });
       if (!seen && !a.reported && !a.wontfix) stillMissing.push({ entry, attribute: a });

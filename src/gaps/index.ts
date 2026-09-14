@@ -1,7 +1,7 @@
 export { evaluateCheck } from './checks.ts';
 export type { GapCheck } from './checks.ts';
 export { loadRegister, saveRegister } from './register.ts';
-export type { Attribute, SubjectEntry, SubjectEvidence } from './register.ts';
+export type { Attribute, Probe, SubjectEntry, SubjectEvidence } from './register.ts';
 export { runChecks } from './check.ts';
 export type { CheckOutcome } from './check.ts';
 export { renderReport } from './report.ts';

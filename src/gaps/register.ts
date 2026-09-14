@@ -2,6 +2,13 @@ import fs from 'node:fs';
 import type { AdtOp } from '../types.ts';
 import { isReadOnlyOp } from '../read-only.ts';
 
+/** A read-only probe: exactly one op, and an optional selector into its result. Shared
+ *  shape for an entry's own probe and an attribute's `verifiedOn` override. */
+export interface Probe {
+  ops: AdtOp[];
+  select?: string;
+}
+
 export interface Attribute {
   name: string;               // human name, defaults to the SaXML path until a human renames it
   path: string;               // SaXML path from the reference
@@ -9,6 +16,12 @@ export interface Attribute {
   fmKey: string | null;       // dotted key on the selected instance
   reported: boolean;
   wontfix?: string;           // reason this attribute is not expected from fm (export artifact, deprecated, ...)
+  /** Evaluate this attribute on the instance selected from a DIFFERENT probe than the
+   *  entry's own, instead of the entry's probe instance — for a fact fm reports, but not
+   *  on the instance the entry happens to probe (e.g. a menu item whose action carries no
+   *  value on this row, but does on another item of the same menu). The op joins the
+   *  checker's distinct-probe batch like any other; validated the same as `probe` below. */
+  verifiedOn?: Probe;
 }
 
 export interface SubjectEvidence {
@@ -17,13 +30,20 @@ export interface SubjectEvidence {
   batch: { size: number; position: number };
   evidence: string;                                  // relative path of the evidence file
   attributes: Record<string, 'reported' | 'absent' | 'error'>;
+  /** Evidence path per attribute name, present only for an attribute with `verifiedOn`
+   *  whose evidence differs from this entry's own `evidence` above. */
+  attributeEvidence?: Record<string, string>;
+  /** Reason per attribute name, present only for an attribute with `verifiedOn` whose
+   *  probe or selector failed — the attribute's own outcome is `error`, but (unlike the
+   *  entry-level `reason` below) it does not mark the whole entry errored. */
+  attributeReasons?: Record<string, string>;
   unexplainedKeys: string[];                         // keys on the instance no attribute claims and not in ignoreKeys
   reason?: string;                                   // set when the probe or the selector failed
 }
 
 export interface SubjectEntry {
   id: string; op: string; kind: string;
-  probe: { ops: AdtOp[]; select?: string };
+  probe: Probe;
   attributes: Attribute[];
   ignoreKeys?: string[];                             // instance keys reviewed and declared not attributes (e.g. 'kind', 'id')
   firstSeen: string;
@@ -44,6 +64,10 @@ export function loadRegister(path: string): SubjectEntry[] {
     for (const a of e.attributes) {
       if (names.has(a.name)) throw new Error(`subject ${e.id}: duplicate attribute name ${a.name}`);
       names.add(a.name);
+      if (a.verifiedOn) {
+        if (a.verifiedOn.ops.length !== 1) throw new Error(`subject ${e.id}: attribute ${a.name} verifiedOn is exactly one op`);
+        if (!isReadOnlyOp(a.verifiedOn.ops[0])) throw new Error(`subject ${e.id}: attribute ${a.name} verifiedOn op must be read-only (read:*, evaluate:calculation, validate:calculation)`);
+      }
     }
     for (const b of e.blocks ?? []) {
       if (!names.has(b.attribute)) throw new Error(`subject ${e.id}: blocks row names unknown attribute ${b.attribute}`);

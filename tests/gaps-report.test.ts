@@ -54,6 +54,37 @@ const erroredEntry: SubjectEntry = {
   blocks: [],
 };
 
+function entryWithVerifiedOnAttribute(root: string): SubjectEntry {
+  const op = { op: 'read:layout', name: 'Home', detail: true };
+  const otherOp = { op: 'read:layout', name: 'List', detail: true };
+  const evidence = writeEvidence(root, '0.6.0', op, {
+    command: 'fm --file=x --username=a', batch: { size: 2, position: 0 },
+    stdout: [{ op: 'read:layout', status: 'ok', result: { name: 'Home' } }],
+    stderr: [{ type: 'summary', total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }],
+    exitCode: 0, build: '29816214', date: '2026-09-14',
+  });
+  const otherEvidence = writeEvidence(root, '0.6.0', otherOp, {
+    command: 'fm --file=x --username=a', batch: { size: 2, position: 1 },
+    stdout: [{ op: 'read:layout', status: 'ok', result: { name: 'List' } }],
+    stderr: [{ type: 'summary', total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }],
+    exitCode: 0, build: '29816214', date: '2026-09-14',
+  });
+  return {
+    id: 'layout-object:verified', op: 'read:layout', kind: 'object:Verified',
+    probe: { ops: [op], select: '**objects[id=21]' },
+    attributes: [
+      { name: 'foo', path: 'Foo', knownFrom: 'SaXML LayoutCatalog Foo', fmKey: 'foo', reported: true, verifiedOn: { ops: [otherOp], select: '**objects[id=99]' } },
+    ],
+    firstSeen: '0.6.0', reportedToClaris: null,
+    lastChecked: {
+      version: '0.6.0', build: '29816214', date: '2026-09-14',
+      command: 'fm --file=x --username=a', batch: { size: 2, position: 0 }, evidence,
+      attributes: { foo: 'reported' }, attributeEvidence: { foo: otherEvidence }, unexplainedKeys: [],
+    },
+    blocks: [],
+  };
+}
+
 describe('renderReport', () => {
   it('renders a per-kind matrix with Not-reported and Reported sections and the evidence verbatim', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-rpt-'));
@@ -89,6 +120,15 @@ describe('renderReport', () => {
   it('heads an errored kind\'s section with "Not yet verified against fm" too', () => {
     const md = renderReport([erroredEntry], '/unused');
     expect(md).toMatch(/### object:Portal\n\nRegister id:.*\n\nNot yet verified against fm\.\n\n\*\*Not reported\*\*/);
+  });
+
+  it('prints "(verified on <select> of <op>)" after a verifiedOn attribute', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-rpt-'));
+    const entry = entryWithVerifiedOnAttribute(root);
+    const md = renderReport([entry], root);
+    const op = JSON.stringify(entry.attributes[0].verifiedOn!.ops[0]);
+    expect(md).toContain(`(verified on ${entry.attributes[0].verifiedOn!.select} of ${op})`);
+    fs.rmSync(root, { recursive: true, force: true });
   });
 
   it('does not head a verified kind\'s section with "Not yet verified against fm"', () => {

@@ -1,5 +1,12 @@
 import { readEvidence } from './evidence.ts';
-import type { SubjectEntry } from './register.ts';
+import type { Attribute, SubjectEntry } from './register.ts';
+
+/** The annotation an attribute with `verifiedOn` carries: it was NOT evaluated on this
+ *  entry's own probe instance, but on the instance selected from a different probe. */
+function verifiedOnNote(a: Attribute): string {
+  if (!a.verifiedOn) return '';
+  return ` (verified on ${a.verifiedOn.select ?? '(root)'} of ${JSON.stringify(a.verifiedOn.ops[0])})`;
+}
 
 /** Markdown for Claris, per read op and kind: what the object has that the op does not
  *  report, each with where it is known from, then the op's actual response for that
@@ -32,10 +39,22 @@ export function renderReport(entries: SubjectEntry[], root: string): string {
       if (!isVerified(e)) out.push('Not yet verified against fm.', '');
       if (missing.length) {
         out.push('**Not reported**', '', '| Attribute | Known from | SaXML path |', '|---|---|---|');
-        for (const a of missing) out.push(`| ${a.name} | ${a.knownFrom} | \`${a.path}\` |`);
+        for (const a of missing) out.push(`| ${a.name}${verifiedOnNote(a)} | ${a.knownFrom} | \`${a.path}\` |`);
         out.push('');
       } else out.push('Every known attribute is reported.', '');
-      if (reported.length) out.push(`Reported (${reported.length}): ${reported.map((a) => `\`${a.fmKey}\``).join(', ')}.`, '');
+      if (reported.length) out.push(`Reported (${reported.length}): ${reported.map((a) => `\`${a.fmKey}\`${verifiedOnNote(a)}`).join(', ')}.`, '');
+      const verifiedOnAttrs = e.attributes.filter((a) => a.verifiedOn);
+      for (const a of verifiedOnAttrs) {
+        const evPath = e.lastChecked?.attributeEvidence?.[a.name] ?? e.lastChecked?.evidence;
+        if (!evPath) continue;
+        try {
+          const ev = readEvidence(root, evPath);
+          out.push(
+            `Verification instance for \`${a.name}\`, from \`${JSON.stringify(a.verifiedOn!.ops[0])}\`${a.verifiedOn!.select ? ` selecting \`${a.verifiedOn!.select}\`` : ''}:`,
+            '', '```json', ...ev.stdout.map((l) => JSON.stringify(l, null, 1)), '```', '',
+          );
+        } catch { /* evidence file missing: nothing to show */ }
+      }
       if (e.lastChecked) {
         const c = e.lastChecked;
         out.push(`Last checked fm ${c.version} (${c.build}) on ${c.date}; probe ${c.batch.position + 1} of ${c.batch.size} in one invocation.`, '');

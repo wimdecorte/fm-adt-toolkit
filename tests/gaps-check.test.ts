@@ -50,6 +50,49 @@ describe('runChecks', () => {
     expect(out.entries[0].lastChecked!.attributes).toEqual({ 'trigger parameter': 'reported' });
     fs.rmSync(root, { recursive: true, force: true });
   });
+  it('evaluates a verifiedOn attribute on the OTHER probe\'s instance, joining the distinct batch and writing its own evidence', async () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
+    const seen: AdtOp[][] = [];
+    const otherOp: AdtOp = { op: 'read:layout', name: 'List', detail: true };
+    const ownResult = { op: 'read:layout', status: 'ok', result: { name: 'Home', contents: { objects: [ { id: 21, bounds: { top: 1 } } ] } } };
+    const otherResult = { op: 'read:layout', status: 'ok', result: { name: 'List', contents: { objects: [ { id: 99, foo: 'yes' } ] } } };
+    const r = async (ops: AdtOp[]) => { seen.push(ops); return run([ownResult, otherResult])(ops); };
+    const a = entry('a', [
+      { name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true },
+      // 'foo' is absent on this entry's own probe instance (objects[id=21]), but verifiedOn
+      // redirects its evaluation to a different probe's instance (objects[id=99]) where fm
+      // does report it.
+      { name: 'foo', path: 'Foo', knownFrom: 'SaXML', fmKey: 'foo', reported: false, verifiedOn: { ops: [otherOp], select: '**objects[id=99]' } },
+    ]);
+    const out = await runChecks([a], r, meta(root));
+    expect(seen[0]).toHaveLength(2);                                    // both probes joined the one batch
+    const ea = out.entries[0].lastChecked!;
+    expect(ea.attributes).toEqual({ top: 'reported', foo: 'reported' });
+    expect(ea.attributeEvidence?.foo).toBeDefined();
+    expect(ea.attributeEvidence!.foo).not.toBe(ea.evidence);             // differs from the entry's own evidence
+    expect(fs.existsSync(path.join(root, ea.evidence))).toBe(true);
+    expect(fs.existsSync(path.join(root, ea.attributeEvidence!.foo))).toBe(true);
+    expect(out.newlyReported.map((x) => x.attribute.name)).toEqual(['foo']);
+    fs.rmSync(root, { recursive: true, force: true });
+  });
+  it('marks only the attribute errored, not the whole entry, when a verifiedOn selector matches nothing', async () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
+    const otherOp: AdtOp = { op: 'read:layout', name: 'List', detail: true };
+    const ownResult = { op: 'read:layout', status: 'ok', result: { name: 'Home', contents: { objects: [ { id: 21, bounds: { top: 1 } } ] } } };
+    const otherResult = { op: 'read:layout', status: 'ok', result: { name: 'List', contents: { objects: [] } } };
+    const a = entry('a', [
+      { name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true },
+      { name: 'foo', path: 'Foo', knownFrom: 'SaXML', fmKey: 'foo', reported: false, verifiedOn: { ops: [otherOp], select: '**objects[id=99]' } },
+    ]);
+    const out = await runChecks([a], run([ownResult, otherResult]), meta(root));
+    expect(out.errored).toEqual([]);                                    // the entry itself is fine
+    expect(out.entries[0].lastChecked!.reason).toBeUndefined();
+    expect(out.entries[0].lastChecked!.attributes).toEqual({ top: 'reported', foo: 'error' });
+    expect(out.entries[0].lastChecked!.attributeReasons?.foo).toMatch(/selector .* matched nothing/);
+    expect(out.newlyReported).toEqual([]);
+    expect(out.stillMissing).toEqual([]);
+    fs.rmSync(root, { recursive: true, force: true });
+  });
   it('marks an entry errored when its probe has no result or the selector finds nothing, and surfaces a fatal', async () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
     const a = entry('a', [{ name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true }], { probe: { ops: probe.ops, select: '**objects[id=99]' } });
