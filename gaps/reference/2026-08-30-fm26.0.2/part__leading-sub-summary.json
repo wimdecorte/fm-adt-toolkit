@@ -10,14 +10,16 @@
       "id": "0",
       "name": "Sub-summary by TextField1 (Leading)",
       "context": {
-        "layout": "My Layout for TestTable"
+        "layout": "My Layout for TestTable",
+        "part": "Leading Sub-summary"
       }
     },
     {
       "id": "1",
       "name": "Sub-summary by TextField1 (Leading)",
       "context": {
-        "layout": "My Layout for TestTable - Wim"
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Leading Sub-summary"
       }
     }
   ],

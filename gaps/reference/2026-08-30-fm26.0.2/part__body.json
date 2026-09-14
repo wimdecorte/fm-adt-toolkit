@@ -9,109 +9,127 @@
     {
       "id": "0",
       "context": {
-        "layout": "File Open"
+        "layout": "File Open",
+        "part": "Body"
       }
     },
     {
       "id": "1",
       "context": {
-        "layout": "table_with_custom_row_height"
+        "layout": "table_with_custom_row_height",
+        "part": "Body"
       }
     },
     {
       "id": "2",
       "context": {
-        "layout": "printing"
+        "layout": "printing",
+        "part": "Body"
       }
     },
     {
       "id": "3",
       "context": {
-        "layout": "My Layout for TestTable"
+        "layout": "My Layout for TestTable",
+        "part": "Body"
       }
     },
     {
       "id": "4",
       "context": {
-        "layout": "accessibility"
+        "layout": "accessibility",
+        "part": "Body"
       }
     },
     {
       "id": "5",
       "context": {
-        "layout": "-"
+        "layout": "-",
+        "part": "Body"
       }
     },
     {
       "id": "6",
       "context": {
-        "layout": "Contacts"
+        "layout": "Contacts",
+        "part": "Body"
       }
     },
     {
       "id": "7",
       "context": {
-        "layout": "SaXMLDeliveryExecutionContext"
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
       }
     },
     {
       "id": "8",
       "context": {
-        "layout": "My Layout for TestTable - Wim"
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
       }
     },
     {
       "id": "9",
       "context": {
-        "layout": "FM26Test"
+        "layout": "FM26Test",
+        "part": "Body"
       }
     },
     {
       "id": "10",
       "context": {
-        "layout": "FM26Test_Source"
+        "layout": "FM26Test_Source",
+        "part": "Body"
       }
     },
     {
       "id": "11",
       "context": {
-        "layout": "summary_fields"
+        "layout": "summary_fields",
+        "part": "Body"
       }
     },
     {
       "id": "12",
       "context": {
-        "layout": "autoEnter_fields"
+        "layout": "autoEnter_fields",
+        "part": "Body"
       }
     },
     {
       "id": "13",
       "context": {
-        "layout": "dateTime_calcs"
+        "layout": "dateTime_calcs",
+        "part": "Body"
       }
     },
     {
       "id": "14",
       "context": {
-        "layout": "LLM_tagged_fields"
+        "layout": "LLM_tagged_fields",
+        "part": "Body"
       }
     },
     {
       "id": "15",
       "context": {
-        "layout": "index_languages"
+        "layout": "index_languages",
+        "part": "Body"
       }
     },
     {
       "id": "16",
       "context": {
-        "layout": "furigama"
+        "layout": "furigama",
+        "part": "Body"
       }
     },
     {
       "id": "17",
       "context": {
-        "layout": "validation"
+        "layout": "validation",
+        "part": "Body"
       }
     }
   ],

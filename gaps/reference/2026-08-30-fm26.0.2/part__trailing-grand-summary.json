@@ -9,13 +9,15 @@
     {
       "id": "0",
       "context": {
-        "layout": "My Layout for TestTable"
+        "layout": "My Layout for TestTable",
+        "part": "Trailing Grand Summary"
       }
     },
     {
       "id": "1",
       "context": {
-        "layout": "My Layout for TestTable - Wim"
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Trailing Grand Summary"
       }
     }
   ],

@@ -9,91 +9,106 @@
     {
       "id": "0",
       "context": {
-        "layout": "table_with_custom_row_height"
+        "layout": "table_with_custom_row_height",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "1",
       "context": {
-        "layout": "printing"
+        "layout": "printing",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "2",
       "context": {
-        "layout": "My Layout for TestTable"
+        "layout": "My Layout for TestTable",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "3",
       "context": {
-        "layout": "-"
+        "layout": "-",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "4",
       "context": {
-        "layout": "Contacts"
+        "layout": "Contacts",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "5",
       "context": {
-        "layout": "My Layout for TestTable - Wim"
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "6",
       "context": {
-        "layout": "FM26Test"
+        "layout": "FM26Test",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "7",
       "context": {
-        "layout": "FM26Test_Source"
+        "layout": "FM26Test_Source",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "8",
       "context": {
-        "layout": "summary_fields"
+        "layout": "summary_fields",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "9",
       "context": {
-        "layout": "autoEnter_fields"
+        "layout": "autoEnter_fields",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "10",
       "context": {
-        "layout": "dateTime_calcs"
+        "layout": "dateTime_calcs",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "11",
       "context": {
-        "layout": "LLM_tagged_fields"
+        "layout": "LLM_tagged_fields",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "12",
       "context": {
-        "layout": "index_languages"
+        "layout": "index_languages",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "13",
       "context": {
-        "layout": "furigama"
+        "layout": "furigama",
+        "part": "Top Navigation"
       }
     },
     {
       "id": "14",
       "context": {
-        "layout": "validation"
+        "layout": "validation",
+        "part": "Top Navigation"
       }
     }
   ],

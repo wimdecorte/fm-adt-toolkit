@@ -9,19 +9,22 @@
     {
       "id": "0",
       "context": {
-        "layout": "table_with_custom_row_height"
+        "layout": "table_with_custom_row_height",
+        "part": "Footer"
       }
     },
     {
       "id": "1",
       "context": {
-        "layout": "My Layout for TestTable"
+        "layout": "My Layout for TestTable",
+        "part": "Footer"
       }
     },
     {
       "id": "2",
       "context": {
-        "layout": "My Layout for TestTable - Wim"
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Footer"
       }
     }
   ],
