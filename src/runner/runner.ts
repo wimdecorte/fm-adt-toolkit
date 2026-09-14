@@ -120,15 +120,17 @@ export async function runOps(
   ops: AdtOp[],
   opts: RunOptions,
 ): Promise<AdtRunResult> {
-  const dir = opts.opsFile || opts.outFile ? await mkdtemp(join(tmpdir(), 'fm-adt-')) : null;
-  const paths = {
-    ops: opts.opsFile && dir ? join(dir, 'batch.ops.ndjson') : undefined,
-    out: opts.outFile && dir ? join(dir, 'batch.out.ndjson') : undefined,
-  };
-  if (paths.ops) await writeFile(paths.ops, opsToNdjson(ops));
-  const argv = buildArgv(target, opts, paths);
+  let dir: string | null = null;
 
   try {
+    dir = opts.opsFile || opts.outFile ? await mkdtemp(join(tmpdir(), 'fm-adt-')) : null;
+    const paths = {
+      ops: opts.opsFile && dir ? join(dir, 'batch.ops.ndjson') : undefined,
+      out: opts.outFile && dir ? join(dir, 'batch.out.ndjson') : undefined,
+    };
+    if (paths.ops) await writeFile(paths.ops, opsToNdjson(ops));
+    const argv = buildArgv(target, opts, paths);
+
     const { code, stdout, stderr } = await spawnAndCollect(cli.path, argv, opts, paths.ops ? null : opsToNdjson(ops));
     const outText = paths.out ? await readFile(paths.out, 'utf8').catch(() => '') : '';
     const combinedStdout = outText ? outText + (stdout ? '\n' + stdout : '') : stdout;

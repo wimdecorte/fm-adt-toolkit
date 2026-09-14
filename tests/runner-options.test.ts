@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { readdir } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildArgv, runOps } from '../src/runner/runner.ts';
 import type { FmTarget } from '../src/types.ts';
@@ -49,5 +51,18 @@ describe('runOps with opsFile and outFile', () => {
     });
     expect(run.ok).toBe(false);
     expect(run.fatal?.code).toBe('open_failed');
+  });
+  // A BigInt op value makes JSON.stringify — inside opsToNdjson, called while
+  // building the write to paths.ops — throw synchronously, deterministically,
+  // with no mocking needed. mkdtemp has already created the temp dir by then,
+  // so this proves the dir is still cleaned up when the ops write itself fails,
+  // not just when the child process fails.
+  it('cleans up the temp dir when writing the ops file throws', async () => {
+    const before = new Set((await readdir(tmpdir())).filter((name) => name.startsWith('fm-adt-')));
+    await expect(
+      runOps(cli, target, [{ op: 'read:table', n: 1n }], { dryRun: false, opsFile: true }),
+    ).rejects.toThrow();
+    const after = (await readdir(tmpdir())).filter((name) => name.startsWith('fm-adt-'));
+    expect(after.filter((name) => !before.has(name))).toEqual([]);
   });
 });
