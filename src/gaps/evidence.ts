@@ -44,6 +44,21 @@ export function writeEvidence(
   return rel;
 }
 
+/** The newest evidence directory that is not this run's own, or null when this is the
+ *  first build recorded. Directories are named `<version>-<build>` and sort in build
+ *  order within a version, so the greatest name below the current one is "the previous
+ *  build" -- which is what the key diff compares against. */
+export function previousEvidenceDir(root: string, version: string, build: string): string | null {
+  const dir = path.join(root, 'gaps', 'evidence');
+  if (!fs.existsSync(dir)) return null;
+  const current = evidenceDir(version, build);
+  const others = fs.readdirSync(dir, { withFileTypes: true })
+    .filter((d) => d.isDirectory() && d.name !== current)
+    .map((d) => d.name)
+    .sort();
+  return others.length ? others[others.length - 1] : null;
+}
+
 export function readEvidence(root: string, rel: string): { meta: Record<string, unknown>; stdout: unknown[]; stderr: unknown[] } {
   const lines = fs.readFileSync(path.join(root, rel), 'utf8').trim().split('\n').map((l) => JSON.parse(l) as { type: string; line?: unknown } & Record<string, unknown>);
   const meta = lines.find((l) => l.type === 'meta') ?? {};

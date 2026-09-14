@@ -166,7 +166,11 @@ export function enumerateKind(root: XmlNode, rule: KindRule, exportLabel: string
   return refs;
 }
 
-export function enumerateExport(dir: string, filePrefix: string, exportLabel: string): Reference[] {
+/** `warn` is called once per catalog file the export does not contain. An export written by
+ *  a FileMaker version that names a catalog differently, or one written from a file with no
+ *  themes at all, silently enumerated fewer kinds than the register expects; the line says
+ *  which file was looked for, so a short reference set is never a mystery. */
+export function enumerateExport(dir: string, filePrefix: string, exportLabel: string, warn: (line: string) => void = (l) => console.error(l)): Reference[] {
   const roots = new Map<string, XmlNode>();
   const rootFor = (file: string): XmlNode => {
     let r = roots.get(file);
@@ -174,9 +178,15 @@ export function enumerateExport(dir: string, filePrefix: string, exportLabel: st
     return r;
   };
   const refs: Reference[] = [];
+  const warned = new Set<string>();
   for (const rule of KINDS) {
-    const file = path.join(dir, `${filePrefix}_${rule.file}.xml`);
-    if (!fs.existsSync(file)) continue;
+    const name = `${filePrefix}_${rule.file}.xml`;
+    if (!fs.existsSync(path.join(dir, name))) {
+      // Several kind rules read one catalog file (three read LayoutCatalog), so the file is
+      // named once, not once per rule.
+      if (!warned.has(name)) { warned.add(name); warn(`catalog file not in the export, kinds from it skipped: ${name}`); }
+      continue;
+    }
     refs.push(...enumerateKind(rootFor(rule.file), rule, exportLabel));
   }
   return refs;

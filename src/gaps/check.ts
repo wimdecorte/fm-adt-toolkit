@@ -1,7 +1,8 @@
 import type { AdtFatal, AdtOp, AdtRunResult } from '../types.ts';
-import { selectInstance } from './select.ts';
+import { selectInstance, selectorContainer, selectorFailure } from './select.ts';
 import { flattenKeys } from './match.ts';
-import { probeId, writeEvidence } from './evidence.ts';
+import { probeId, writeEvidence, readEvidence, previousEvidenceDir } from './evidence.ts';
+import { fmTypeMismatch } from './draft.ts';
 import type { Attribute, Probe, SubjectEntry, SubjectEvidence } from './register.ts';
 
 export interface CheckOutcome {
@@ -10,7 +11,21 @@ export interface CheckOutcome {
   newlyReported: Array<{ entry: SubjectEntry; attribute: Attribute }>;
   regressed: Array<{ entry: SubjectEntry; attribute: Attribute }>;
   unexplained: Array<{ entry: SubjectEntry; keys: string[] }>;
+  /** Errored entries whose reason no `expectedError` accepts: the ones that raise the exit code. */
   errored: SubjectEntry[];
+  /** Errored entries whose `expectedError` accepts the reason: recorded, not raised. */
+  erroredExpected: SubjectEntry[];
+  /** Entries carrying an `expectedError` whose probe now succeeds: the gap closed, which
+   *  is news and raises the exit code so nobody misses it. */
+  expectedResolved: SubjectEntry[];
+  /** The same list at every depth: what a nested key closing a gap would show up in. */
+  nestedUnexplained: Array<{ entry: SubjectEntry; keys: string[] }>;
+  /** Per probe, the keys fm's answer gained and lost since the previous build's evidence. */
+  keyDiff: Array<{ entry: SubjectEntry; previous: string; added: string[]; removed: string[] }>;
+  /** An attribute whose own `verifiedOn` probe or selector failed: the attribute was not
+   *  verified at all this run, which is a broken register row rather than a fact about fm,
+   *  so it is surfaced and raises the exit code. */
+  attributeErrors: Array<{ entry: SubjectEntry; attribute: Attribute; reason: string }>;
   fatal?: AdtFatal;
 }
 
@@ -38,12 +53,59 @@ function hasKey(instance: unknown, key: string): boolean {
   return step(instance, 0);
 }
 
+/** Every value `key` reaches on the instance: one value for a plain dotted path, and one
+ *  per matching element for a path with a `[]` segment. */
+function valuesAt(instance: unknown, key: string): unknown[] {
+  const parts = key.split('.');
+  const out: unknown[] = [];
+  const step = (cur: unknown, i: number): void => {
+    if (i === parts.length) { out.push(cur); return; }
+    const part = parts[i];
+    if (part.endsWith('[]')) {
+      const v = cur && typeof cur === 'object' ? (cur as Record<string, unknown>)[part.slice(0, -2)] : undefined;
+      if (Array.isArray(v)) for (const x of v) if (x && typeof x === 'object') step(x, i + 1);
+      return;
+    }
+    if (cur === null || typeof cur !== 'object' || !(part in (cur as Record<string, unknown>))) return;
+    step((cur as Record<string, unknown>)[part], i + 1);
+  };
+  step(instance, 0);
+  return out;
+}
+
+/** Whether fm reports this attribute on this instance: the fmKey is present, and -- when
+ *  the row carries an `expect` -- the value says what the row claims. Several rows share
+ *  one key (28 layout option rows all read `flags.set`), so presence alone would report
+ *  every one of them the moment any single flag is set. */
+function isReported(instance: unknown, a: Attribute): boolean {
+  if (!a.fmKey || !hasKey(instance, a.fmKey)) return false;
+  if (!a.expect) return true;
+  return valuesAt(instance, a.fmKey).some((v) => Array.isArray(v) && v.some((x) => x === a.expect!.contains));
+}
+
 /** The dotted prefixes of a key, array markers stripped: 'bounds.top' -> ['bounds', 'bounds.top']. A
  *  claimed fmKey claims its own parents too, so a nested attribute under it never shows up as an
  *  unexplained top-level key. */
 function prefixesOf(key: string): string[] {
   const parts = key.split('.');
   return parts.map((_, i) => parts.slice(0, i + 1).join('.').replace(/\[\]$/, ''));
+}
+
+/** A flattened key with its array markers dropped: `scriptTriggers[].parameter` and
+ *  `scriptTriggers.parameter` are the same key, and the two sides of every set below
+ *  (instance keys, claimed fmKeys, ignoreKeys) are written both ways in practice. */
+function normaliseArrayMarkers(key: string): string {
+  return key.replace(/\[\]/g, '');
+}
+
+/** Every key under `container` -- and the container itself -- belongs to whichever entry's
+ *  selector addresses it, not to the entry that happens to probe the whole response. A
+ *  plain container is a dotted prefix; a `**` container is a segment name at any depth,
+ *  since that is exactly what the selector searches for. */
+function ownedBySelector(key: string, prefixes: Set<string>, deepSegments: Set<string>): boolean {
+  for (const p of prefixes) if (key === p || key.startsWith(p + '.')) return true;
+  if (deepSegments.size) for (const seg of key.split('.')) if (deepSegments.has(seg)) return true;
+  return false;
 }
 
 /** Entries that probe the exact same instance (same op AND the same select) share what
@@ -71,8 +133,17 @@ export async function runChecks(
   const ids = [...distinct.keys()];
   const ops = ids.map((id) => distinct.get(id)!);
   const result = await run(ops);
-  if (result.fatal) {
-    return { entries, stillMissing: [], newlyReported: [], regressed: [], unexplained: [], errored: [], fatal: result.fatal };
+  const noOutcome = (fatal: AdtFatal): CheckOutcome =>
+    ({ entries, stillMissing: [], newlyReported: [], regressed: [], unexplained: [], errored: [], erroredExpected: [], expectedResolved: [], attributeErrors: [], nestedUnexplained: [], keyDiff: [], fatal });
+  if (result.fatal) return noOutcome(result.fatal);
+  // Every probe is read back by POSITION, so a batch whose lines do not line up with the
+  // ops sent would score each entry against some other entry's instance. Nothing is
+  // written -- no evidence, no outcomes, no register -- and the caller is told the counts.
+  if (result.results.length !== ops.length || (result.summary && result.summary.total !== ops.length)) {
+    return noOutcome({
+      code: 'batch_misaligned',
+      message: `${ops.length} ops sent, ${result.results.length} result lines, summary total ${result.summary ? result.summary.total : '(none)'}`,
+    });
   }
   const stderrLines = parseLines(result.stderr);
   const command = meta.commandFor(result.argv);
@@ -96,16 +167,37 @@ export async function runChecks(
     if (!line) reason = `no result line for probe at position ${pos}`;
     else if (line.op !== probe.ops[0].op) reason = `result op ${line.op} does not match probe op ${probe.ops[0].op} at position ${pos}`;
     else if (line.status !== 'ok') reason = `probe refused: ${line.error?.code ?? line.status}`;
-    else { instance = selectInstance(line.result, probe.select); if (instance === undefined) reason = `selector ${probe.select ?? '(root)'} matched nothing`; }
+    else {
+      instance = selectInstance(line.result, probe.select);
+      if (instance === undefined) {
+        if (!probe.select) reason = 'probe returned no result body';
+        else {
+          const f = selectorFailure(line.result, probe.select);
+          reason = f.kind === 'container-absent'
+            ? `container key absent: ${f.container}`
+            : `container present, selector matched nothing: ${probe.select}`;
+        }
+      }
+    }
     return { pos, reason, instance };
   };
 
   // Resolve each entry's instance (or the reason it has none) up front, so entries
   // sharing an instance can share what explains it.
   const instances = new Map<SubjectEntry, { pos: number; reason?: string; instance: unknown }>();
-  for (const entry of entries) instances.set(entry, resolveProbe(entry.probe));
+  for (const entry of entries) {
+    const r = resolveProbe(entry.probe);
+    // A selector that found SOMETHING of the wrong kind is worse than one that found
+    // nothing: every attribute would read as absent and look like a fm omission.
+    if (!r.reason && entry.fmType) {
+      const mismatch = fmTypeMismatch(r.instance, entry.fmType);
+      if (mismatch) { r.reason = mismatch; r.instance = undefined; }
+    }
+    instances.set(entry, r);
+  }
 
   const unexplainedByGroup = new Map<string, string[]>();
+  const nestedByGroup = new Map<string, string[]>();
   for (const entry of entries) {
     const { reason, instance } = instances.get(entry)!;
     if (reason) continue;
@@ -115,11 +207,45 @@ export async function runChecks(
     const claimed = new Set<string>();
     const ignore = new Set<string>();
     for (const g of group) {
-      for (const a of g.attributes) if (a.fmKey) for (const p of prefixesOf(a.fmKey)) claimed.add(p);
-      for (const k of g.ignoreKeys ?? []) ignore.add(k);
+      for (const a of g.attributes) if (a.fmKey) for (const p of prefixesOf(a.fmKey)) claimed.add(normaliseArrayMarkers(p));
+      for (const k of g.ignoreKeys ?? []) ignore.add(normaliseArrayMarkers(k));
     }
-    unexplainedByGroup.set(key, flattenKeys(instance).filter((k) => !k.includes('.') && !claimed.has(k) && !ignore.has(k)));
+    // What another entry's selector claims on this same probe: derived from the register's
+    // own selectors, so adding an entry for a nested shape stops that shape being reported
+    // as unexplained on the entry that probes the whole response.
+    const prefixes = new Set<string>();
+    const deepSegments = new Set<string>();
+    const ownProbeId = probeId(entry.probe.ops[0]);
+    for (const other of entries) {
+      if (groupKeyOf(other) === key || probeId(other.probe.ops[0]) !== ownProbeId || !other.probe.select) continue;
+      const container = selectorContainer(other.probe.select);
+      if (container.startsWith('**')) deepSegments.add(container.slice(2).split('.')[0]);
+      else prefixes.add(container);
+    }
+    const all = [...new Set(flattenKeys(instance).map(normaliseArrayMarkers))];
+    unexplainedByGroup.set(key, all.filter((k) => !k.includes('.') && !claimed.has(k) && !ignore.has(k)));
+    nestedByGroup.set(key, all.filter((k) => {
+      if (claimed.has(k)) return false;
+      if (ownedBySelector(k, prefixes, deepSegments)) return false;
+      for (const i of ignore) if (k === i || k.startsWith(i + '.')) return false;
+      return true;
+    }));
   }
+
+  // The previous build's answer to the same probe, so the check can say what fm started
+  // and stopped reporting between two builds rather than only what it reports today.
+  const prevDir = previousEvidenceDir(meta.root, meta.version, meta.build);
+  const previousKeys = (entry: SubjectEntry): string[] | null => {
+    if (!prevDir) return null;
+    try {
+      const ev = readEvidence(meta.root, `gaps/evidence/${prevDir}/${probeId(entry.probe.ops[0])}.ndjson`);
+      const line = ev.stdout[0] as { status?: string; result?: unknown } | undefined;
+      if (!line || line.status !== 'ok') return null;
+      const inst = selectInstance(line.result, entry.probe.select);
+      if (inst === undefined) return null;
+      return [...new Set(flattenKeys(inst).map(normaliseArrayMarkers))];
+    } catch { return null; }
+  };
 
   const updatedEntries = entries.map((entry) => {
     const { pos, reason, instance } = instances.get(entry)!;
@@ -137,19 +263,20 @@ export async function runChecks(
           // is this attribute's own outcome, not a reason to error the whole entry.
           const v = resolveProbe(a.verifiedOn);
           if (v.reason) { attributes[a.name] = 'error'; attributeReasons[a.name] = v.reason; }
-          else attributes[a.name] = a.fmKey && hasKey(v.instance, a.fmKey) ? 'reported' : 'absent';
+          else attributes[a.name] = isReported(v.instance, a) ? 'reported' : 'absent';
           const ev = evidenceFor.get(probeId(a.verifiedOn.ops[0]))!;
           if (ev !== evidence) attributeEvidence[a.name] = ev;
         } else {
-          attributes[a.name] = a.fmKey && hasKey(instance, a.fmKey) ? 'reported' : 'absent';
+          attributes[a.name] = isReported(instance, a) ? 'reported' : 'absent';
         }
       }
     }
     const unexplainedKeys = reason ? [] : (unexplainedByGroup.get(groupKeyOf(entry)) ?? []);
+    const unexplainedNestedKeys = reason ? [] : (nestedByGroup.get(groupKeyOf(entry)) ?? []);
     return {
       ...entry,
       lastChecked: {
-        ...base, attributes, unexplainedKeys,
+        ...base, attributes, unexplainedKeys, unexplainedNestedKeys,
         ...(reason ? { reason } : {}),
         ...(Object.keys(attributeEvidence).length ? { attributeEvidence } : {}),
         ...(Object.keys(attributeReasons).length ? { attributeReasons } : {}),
@@ -157,7 +284,17 @@ export async function runChecks(
     };
   });
 
-  const errored = updatedEntries.filter((e) => e.lastChecked?.reason);
+  // `expectedError` is the owner's standing acceptance of one failure: an errored entry
+  // whose reason it matches is listed apart and raises nothing, while the same entry
+  // SUCCEEDING is the signal the gap closed and does raise the exit code.
+  const accepts = (entry: SubjectEntry, reason: string): boolean => {
+    const want = entry.expectedError;
+    if (!want) return false;
+    return reason.startsWith(want) || reason === `probe refused: ${want}`;
+  };
+  const errored = updatedEntries.filter((e) => e.lastChecked?.reason && !accepts(e, e.lastChecked.reason));
+  const erroredExpected = updatedEntries.filter((e) => e.lastChecked?.reason && accepts(e, e.lastChecked.reason));
+  const expectedResolved = updatedEntries.filter((e) => e.expectedError && !e.lastChecked?.reason);
 
   const stillMissing: CheckOutcome['stillMissing'] = [];
   const newlyReported: CheckOutcome['newlyReported'] = [];
@@ -174,16 +311,36 @@ export async function runChecks(
     }
   }
 
-  const unexplained: CheckOutcome['unexplained'] = [];
-  const seenGroup = new Set<string>();
+  const attributeErrors: CheckOutcome['attributeErrors'] = [];
   for (const entry of updatedEntries) {
+    const reasons = entry.lastChecked?.attributeReasons;
+    if (!reasons) continue;
+    for (const a of entry.attributes) if (reasons[a.name]) attributeErrors.push({ entry, attribute: a, reason: reasons[a.name] });
+  }
+
+  const unexplained: CheckOutcome['unexplained'] = [];
+  const nestedUnexplained: CheckOutcome['nestedUnexplained'] = [];
+  const keyDiff: CheckOutcome['keyDiff'] = [];
+  const seenGroup = new Set<string>();
+  // `updatedEntries` is `entries` mapped one for one, so index carries the resolved instance over.
+  const instanceOf = (i: number): unknown => instances.get(entries[i])!.instance;
+  for (const [i, entry] of updatedEntries.entries()) {
     if (entry.lastChecked?.reason) continue;
     const key = groupKeyOf(entry);
     if (seenGroup.has(key)) continue;
     seenGroup.add(key);
     const keys = entry.lastChecked!.unexplainedKeys;
     if (keys.length) unexplained.push({ entry, keys });
+    const nested = entry.lastChecked!.unexplainedNestedKeys ?? [];
+    if (nested.length) nestedUnexplained.push({ entry, keys: nested });
+    const before = previousKeys(entry);
+    if (before) {
+      const now = [...new Set(flattenKeys(instanceOf(i)).map(normaliseArrayMarkers))];
+      const added = now.filter((k) => !before.includes(k));
+      const removed = before.filter((k) => !now.includes(k));
+      if (added.length || removed.length) keyDiff.push({ entry, previous: prevDir!, added, removed });
+    }
   }
 
-  return { entries: updatedEntries, stillMissing, newlyReported, regressed, unexplained, errored };
+  return { entries: updatedEntries, stillMissing, newlyReported, regressed, unexplained, nestedUnexplained, keyDiff, errored, erroredExpected, expectedResolved, attributeErrors };
 }

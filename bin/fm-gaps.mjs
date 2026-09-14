@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /** fm-gaps enumerate --saxml=<dir> --prefix=<FileName> --label=<export label> [--out=<dir>]
  *  fm-gaps draft --kind=<kind-id>[,<kind-id>...] --file=<target> --username=<account> [--reference=<dir>] [--register=<path>]
- *  fm-gaps check --file=<target> --username=<account> [--register=<path>]
+ *  fm-gaps check --file=<target> --username=<account> [--register=<path>] [--verbose]
  *  fm-gaps report [--register=<path>] [--out=<path>]
  *
  *  enumerate reads a Save as XML export (never writes to it) and writes one reference
@@ -23,7 +23,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { locateFmCli, runOps } from '../dist/runner/index.js';
 import { assertReadOnly } from '../dist/read-only.js';
-import { loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName, KINDS, draftEntry, selectInstance, evidenceDir } from '../dist/gaps/index.js';
+import { loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName, KINDS, draftEntry, selectInstance, evidenceDir, fmTypeMismatch } from '../dist/gaps/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cmd = process.argv[2];
@@ -40,7 +40,7 @@ const evidenceRoot = path.basename(path.dirname(registerPath)) === 'gaps'
 const USAGE = [
   'usage: fm-gaps enumerate --saxml=<dir> --prefix=<FileName> --label=<export label> [--out=<dir>]',
   '       fm-gaps draft --kind=<kind-id>[,<kind-id>...] --file=<target> --username=<account> [--reference=<dir>] [--register=<path>]',
-  '       fm-gaps check --file=<target> --username=<account> [--register=<path>]',
+  '       fm-gaps check --file=<target> --username=<account> [--register=<path>] [--verbose]',
   '       fm-gaps report [--register=<path>] [--out=<path>]',
 ].join('\n');
 const usage = () => { console.error(USAGE); process.exit(2); };
@@ -82,6 +82,10 @@ if (cmd === 'draft') {
     const line = result.results[i];
     const instance = line && line.status === 'ok' ? selectInstance(line.result, probe.select) : undefined;
     if (instance === undefined) { console.error(`${ref.kindId}: probe ${JSON.stringify(probe.ops[0])} ${line ? line.status + (line.error ? ' ' + line.error.code : '') : 'no result'}; selector ${probe.select ?? '(root)'} matched nothing — drafted with every attribute unmatched`); }
+    else if (ref.fmType) {
+      const mismatch = fmTypeMismatch(instance, ref.fmType);
+      if (mismatch) console.error(`${ref.kindId}: ${mismatch} — the drafted attributes were matched against the wrong object`);
+    }
     entries.push(draftEntry(ref, ref.instances[0], probe, instance ?? {}, cli.version));
     console.log(`${ref.kindId}: ${ref.attributes.length} attributes, ${instance === undefined ? 0 : Object.values(entries[entries.length - 1].attributes).filter((a) => a.reported).length} auto-matched`);
   });
@@ -99,13 +103,29 @@ if (cmd === 'draft') {
 
 const entries = loadRegister(registerPath);
 const out = await runChecks(entries, run, { version: cli.version, build, date, root: evidenceRoot, commandFor: (argv) => ['fm', ...argv].join(' ') });
-if (out.fatal) { console.error(`fatal: ${out.fatal.code}: ${out.fatal.message}`); for (const s of out.fatal.suggestions ?? []) console.error(s); console.error('register not written: the run never opened the file'); process.exit(1); }
+if (out.fatal) { console.error(`fatal: ${out.fatal.code}: ${out.fatal.message}`); for (const s of out.fatal.suggestions ?? []) console.error(s); console.error(out.fatal.code === 'batch_misaligned' ? 'register not written: the batch did not line up with the ops sent' : 'register not written: the run never opened the file'); process.exit(1); }
 saveRegister(registerPath, out.entries);
+const verbose = args.verbose === true || args.verbose === 'true';
 const show = (label, rows, fmt) => { console.log(`\n${label} (${rows.length})`); for (const r of rows) console.log('  ' + fmt(r)); };
 show('Still missing', out.stillMissing, (r) => `${r.entry.id}  ${r.attribute.name}`);
 show('Newly reported (set fmKey/reported by hand after reading the evidence)', out.newlyReported, (r) => `${r.entry.id}  ${r.attribute.name} -> ${r.attribute.fmKey}${r.entry.blocks.filter((b) => b.attribute === r.attribute.name).map((b) => `  unblocks ${b.app}: ${b.feature}`).join('')}`);
 show('Regressed (was reported, now absent)', out.regressed, (r) => `${r.entry.id}  ${r.attribute.name} (${r.attribute.fmKey})`);
 show('Unexplained keys on the instance (candidates for closing a gap)', out.unexplained, (r) => `${r.entry.id}  ${r.keys.join(', ')}`);
+// Nested keys are counted rather than listed by default: they run to thousands across the
+// register, and a gap closed by one of them is found by reading the counts that moved.
+show('Unexplained nested keys (a gap closed by a nested key shows up only here; --verbose lists them)', out.nestedUnexplained,
+  (r) => `${r.entry.id}  ${r.keys.length}${verbose ? '  ' + r.keys.join(', ') : ''}`);
+show('Attribute verification errors (the row\'s own verifiedOn probe or selector failed)', out.attributeErrors,
+  (r) => `${r.entry.id}  ${r.attribute.name}  ${r.reason}`);
 show('Errored', out.errored, (e) => `${e.id}  ${e.lastChecked?.reason ?? ''}`);
+show('Errored (expected)', out.erroredExpected, (e) => `${e.id}  ${e.lastChecked?.reason ?? ''}  [expectedError: ${e.expectedError}]`);
+show('Expected failure resolved (the gap closed — review and drop expectedError)', out.expectedResolved, (e) => `${e.id}  [expectedError: ${e.expectedError}]`);
+if (out.keyDiff.length) {
+  console.log(`\nKeys since ${out.keyDiff[0].previous} (${out.keyDiff.length} probes changed)`);
+  for (const d of out.keyDiff) {
+    if (d.added.length) console.log(`  ${d.entry.id}  keys new since ${d.previous}: ${d.added.join(', ')}`);
+    if (d.removed.length) console.log(`  ${d.entry.id}  keys gone since ${d.previous}: ${d.removed.join(', ')}`);
+  }
+} else console.log('\nKeys since the previous build (0 probes changed)');
 console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}; evidence under ${path.relative(process.cwd(), path.join(evidenceRoot, 'gaps', 'evidence', evidenceDir(cli.version, build)))}/`);
-process.exit(out.errored.length > 0 || out.regressed.length > 0 ? 1 : 0);
+process.exit(out.errored.length > 0 || out.regressed.length > 0 || out.expectedResolved.length > 0 || out.attributeErrors.length > 0 ? 1 : 0);

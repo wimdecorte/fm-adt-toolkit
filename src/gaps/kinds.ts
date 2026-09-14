@@ -50,7 +50,9 @@ const _LO_TYPE: Record<string, { type: string; control: string | null }> = {
   'Drop-down Calendar': { type: 'field', control: 'dropDownCalendar' },
   'Concealed Edit Box': { type: 'field', control: 'secureText' },
   'Container': { type: 'field', control: null },
-  'PopoverPanel': { type: 'popoverPanel', control: null },
+  // fm 0.6.0 reports the panel itself as `popover`, not `popoverPanel` (verified on Ooe
+  // object 58 of 'My Layout for TestTable'); `popoverButton` is the button that opens it.
+  'PopoverPanel': { type: 'popover', control: null },
   // Not in `_LO_TYPE`: fm's own fallback naming (first word lowercased, rest capitalized) for a type
   // with no dedicated entry there. Verified present in Ooe (`type="Chart"`, `kind="13"`).
   'Chart': { type: 'chart', control: null },

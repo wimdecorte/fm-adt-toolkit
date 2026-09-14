@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { draftEntry } from '../src/gaps/draft.ts';
+import { draftEntry, fmTypeMismatch } from '../src/gaps/draft.ts';
 import { loadRegister, saveRegister } from '../src/gaps/register.ts';
 import type { Reference, ReferenceInstance } from '../src/gaps/enumerate.ts';
 import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path';
@@ -37,6 +37,19 @@ describe('draftEntry', () => {
       { name: 'Options Locked', path: 'Options/Locked', knownFrom: 'SaXML LayoutCatalog Options/Locked', fmKey: 'locked', reported: true },
       { name: 'ConditionalFormatting Style', path: 'ConditionalFormatting/Style', knownFrom: 'SaXML LayoutCatalog ConditionalFormatting/Style', fmKey: null, reported: false },
     ]);
+  });
+
+  it('carries the reference fmType onto the entry and names a mismatch', () => {
+    const typed: Reference = { ...reference, fmType: { type: 'field', control: 'editBox' } };
+    const entry = draftEntry(typed, instance, probe, { id: 21, type: 'field', control: 'editBox' }, '0.6.0');
+    expect(entry.fmType).toEqual({ type: 'field', control: 'editBox' });
+    expect(fmTypeMismatch({ id: 21, type: 'field', control: 'editBox' }, typed.fmType!)).toBeUndefined();
+    expect(fmTypeMismatch({ id: 21, type: 'popover' }, { type: 'popoverPanel', control: null }))
+      .toBe('selector matched a different kind: type "popover", expected "popoverPanel"');
+    expect(fmTypeMismatch({ id: 21, type: 'field', control: 'dropDownList' }, typed.fmType!))
+      .toBe('selector matched a different kind: control "dropDownList", expected "editBox"');
+    // A reference control of null is "not determined by the SaXML type", not "fm reports none".
+    expect(fmTypeMismatch({ id: 21, type: 'field', control: 'editBox' }, { type: 'field', control: null })).toBeUndefined();
   });
 
   it('never produces two attributes with the same name, even when readable(path) collapses distinct paths', () => {

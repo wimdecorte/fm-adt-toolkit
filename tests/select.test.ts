@@ -12,8 +12,14 @@ describe('selectInstance', () => {
   it('walks dotted paths', () => { expect(selectInstance(layout, 'theme')).toEqual({ name: 'Apex' }); });
   it('filters arrays by key=value', () => { expect(selectInstance(script, 'body[stepID=141]')).toEqual(script.body[1]); });
   it('searches nested arrays of the same name with ** ', () => { expect(selectInstance(layout, '**objects[id=24]')).toEqual({ id: 24, type: 'label' }); });
+  it('compares a [key=value] filter ignoring case and punctuation', () => {
+    const withParts = { contents: { parts: [ { type: 'body' }, { type: 'leadingSubSummary' } ] } };
+    expect(selectInstance(withParts, 'contents.parts[type=Body]')).toEqual({ type: 'body' });
+    expect(selectInstance(withParts, 'contents.parts[type=Leading Sub-summary]')).toEqual({ type: 'leadingSubSummary' });
+    expect(selectInstance(withParts, 'contents.parts[type=Footer]')).toBeUndefined();
+  });
   it('returns undefined when nothing matches', () => {
-    expect(selectInstance(layout, 'contents.parts[type=Body]')).toBeUndefined();
+    expect(selectInstance(layout, 'contents.parts[type=Body]')).toBeUndefined();   // no contents.parts at all
     expect(selectInstance(layout, '**objects[id=99]')).toBeUndefined();
   });
 });

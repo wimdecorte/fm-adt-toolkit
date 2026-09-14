@@ -16,6 +16,11 @@ export interface Attribute {
   fmKey: string | null;       // dotted key on the selected instance
   reported: boolean;
   wontfix?: string;           // reason this attribute is not expected from fm (export artifact, deprecated, ...)
+  /** What the fmKey's value must say for this attribute to count as reported, for a key
+   *  whose presence is not the answer. `contains` names one member of an array value: fm
+   *  reports a layout's flags as one `flags.set` list, so every bit row shares that key and
+   *  only membership tells them apart. Without it the key's presence alone is the test. */
+  expect?: { contains: string };
   /** Evaluate this attribute on the instance selected from a DIFFERENT probe than the
    *  entry's own, instead of the entry's probe instance — for a fact fm reports, but not
    *  on the instance the entry happens to probe (e.g. a menu item whose action carries no
@@ -37,15 +42,29 @@ export interface SubjectEvidence {
    *  probe or selector failed — the attribute's own outcome is `error`, but (unlike the
    *  entry-level `reason` below) it does not mark the whole entry errored. */
   attributeReasons?: Record<string, string>;
-  unexplainedKeys: string[];                         // keys on the instance no attribute claims and not in ignoreKeys
+  unexplainedKeys: string[];                         // top-level keys on the instance no attribute claims and not in ignoreKeys
+  /** The same question asked at every depth (3 levels, array markers normalised away):
+   *  keys no attribute claims, minus `ignoreKeys`, minus everything under a container
+   *  another entry's selector owns on the same probe. A gap closed by a NESTED key --
+   *  `contents.parts`, `options.validation.*`, a theme's styles -- can only show up here. */
+  unexplainedNestedKeys?: string[];
   reason?: string;                                   // set when the probe or the selector failed
 }
 
 export interface SubjectEntry {
   id: string; op: string; kind: string;
   probe: Probe;
+  /** The `(type, control)` pair the reference export says this kind's instances carry, for
+   *  a layout-object kind whose selector addresses one object among hundreds. `check`
+   *  refuses to score an instance that does not match it. */
+  fmType?: { type: string; control: string | null };
   attributes: Attribute[];
   ignoreKeys?: string[];                             // instance keys reviewed and declared not attributes (e.g. 'kind', 'id')
+  /** The one probe failure the owner accepts for this entry: a `lastChecked.reason`
+   *  prefix, or the bare fm error code of a refused probe. An errored entry it matches is
+   *  listed apart and does not raise the exit code; the same entry succeeding does, since
+   *  that is the gap closing. */
+  expectedError?: string;
   firstSeen: string;
   reportedToClaris: string | null;
   lastChecked: SubjectEvidence | null;

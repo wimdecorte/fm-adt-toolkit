@@ -24,7 +24,22 @@ response. Four commands maintain it:
 kind under `gaps/reference/<label>/`: attribute paths and counts, no values. `draft` reads one
 instance of each named kind through fm and writes a first-draft entry into the register for a
 human to review; an existing entry with that id is left alone. `check` sends read ops only, runs
-every distinct probe once, and records evidence (`gaps/evidence/<version>/<probe-id>.ndjson`) and
-a per-attribute outcome on every entry; it never edits `reported` or `fmKey` itself. `check` exits
-1 on errored probes or regressions; newly reported attributes are printed for a human to confirm
-by setting `fmKey` and `reported`. `report` renders the matrix as Markdown for Claris.
+every distinct probe once, and records evidence (`gaps/evidence/<version>-<build>/<probe-id>.ndjson`)
+and a per-attribute outcome on every entry; it never edits `reported` or `fmKey` itself. `check`
+exits 1 on unexpected errored probes, regressions, attribute verification errors, or an expected
+failure that has resolved; newly reported attributes are printed for a human to confirm by setting
+`fmKey` and `reported`. `report` renders the matrix as Markdown for Claris.
+
+Three entry-level fields shape what `check` does with an entry:
+
+- `expectedError` is the one probe failure the owner accepts, written as a `lastChecked.reason`
+  prefix (`"container key absent: contents.parts"`) or the bare fm error code of a refused probe
+  (`"unknown_catalog"`). An errored entry it matches is listed under **Errored (expected)** and
+  raises nothing. The same entry SUCCEEDING is listed under **Expected failure resolved** and does
+  raise the exit code — that is the signal the gap closed and the entry needs rereading.
+- `fmType` is the `(type, control)` pair the reference export recorded for a layout-object kind.
+  A selector addresses one object among hundreds, so an instance of the wrong kind would read as
+  "fm reports none of these attributes"; `check` refuses to score it and errors the entry instead.
+- An attribute's `expect: { contains: "<member>" }` makes membership of an array value the test
+  rather than the key's presence — 28 layout option rows all read `flags.set`, and only the member
+  tells them apart.

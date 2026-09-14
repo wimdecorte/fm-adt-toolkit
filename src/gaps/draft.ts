@@ -3,6 +3,21 @@ import type { Reference, ReferenceInstance } from './enumerate.ts';
 import { autoMatch, flattenKeys } from './match.ts';
 import type { SubjectEntry } from './register.ts';
 
+/** Why the instance a selector picked is not the kind the reference recorded, or undefined
+ *  when it is. A selector addresses an object by id inside a whole layout, so picking the
+ *  wrong object is a silent, plausible-looking failure -- every attribute of a Popover
+ *  Panel evaluated against a Button reads as "fm reports none of them". A reference
+ *  `control` of null means the SaXML type does not decide the control (fm still reports
+ *  one), so only a non-null control is asserted. */
+export function fmTypeMismatch(instance: unknown, fmType: { type: string; control: string | null }): string | undefined {
+  const o = instance && typeof instance === 'object' ? instance as Record<string, unknown> : {};
+  if (o.type !== fmType.type) return `selector matched a different kind: type ${JSON.stringify(o.type ?? null)}, expected ${JSON.stringify(fmType.type)}`;
+  if (fmType.control !== null && o.control !== fmType.control) {
+    return `selector matched a different kind: control ${JSON.stringify(o.control ?? null)}, expected ${JSON.stringify(fmType.control)}`;
+  }
+  return undefined;
+}
+
 function readable(path: string): string {
   return path.replace(/^@/, '').replace(/[/@]/g, ' ').replace(/\s+/g, ' ').trim();
 }
@@ -42,6 +57,7 @@ export function draftEntry(reference: Reference, instance: ReferenceInstance, pr
     op: reference.op,
     kind: reference.kind,
     probe,
+    ...(reference.fmType ? { fmType: reference.fmType } : {}),
     attributes: paths.map((p) => ({
       name: names[p], path: p, knownFrom: `SaXML ${reference.file} ${p}`, fmKey: matches[p], reported: matches[p] !== null,
     })),

@@ -67,6 +67,15 @@ describe('enumerateExport', () => {
     const paths = attributePaths(node, []);
     expect(paths.some((p) => p.includes('DDRREF'))).toBe(false);
   });
+  it('warns once per catalog file the export does not contain', () => {
+    const warnings: string[] = [];
+    enumerateExport(DIR, 'Mini', 'mini', (line) => warnings.push(line));
+    // The mini fixture ships four catalogs; every other kind's file is absent, and each
+    // absent file is named once even when several kind rules read it.
+    expect(warnings).toContain('catalog file not in the export, kinds from it skipped: Mini_ThemeCatalog.xml');
+    expect(warnings.filter((w) => w.includes('Mini_ScriptCatalog.xml'))).toHaveLength(0);
+    expect(new Set(warnings).size).toBe(warnings.length);
+  });
   it('resolves a portable, colon-free file name for a grouped kindId', () => {
     expect(referenceFileName('layout-object:edit-box')).toBe('layout-object__edit-box.json');
     expect(referenceFileName('layout')).toBe('layout.json');
