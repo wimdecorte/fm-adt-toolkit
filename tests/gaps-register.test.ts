@@ -67,3 +67,15 @@ describe('loadRegister', () => {
     expect(reloaded[0].id).toBe('a');
   });
 });
+
+describe('loadRegister accepts the calculation verbs as read-only probes', () => {
+  it('loads an evaluate:calculation probe', () => {
+    const file = join(tempDir(), 'register.json');
+    writeFileSync(file, JSON.stringify([{
+      id: 'x', title: 'x', area: 'cli', description: '', status: 'open', firstSeen: '0.6.0',
+      lastChecked: null, reportedToClaris: null, blocks: [],
+      probe: { target: 'reference', ops: [{ op: 'evaluate:calculation', calculation: 'Get ( EncryptionState )' }], check: { kind: 'valueEquals', path: 'value', value: '1' } },
+    }]));
+    expect(loadRegister(file)).toHaveLength(1);
+  });
+});

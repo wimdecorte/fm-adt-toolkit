@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import type { AdtOp } from '../types.ts';
+import { isReadOnlyOp } from '../read-only.ts';
 import type { GapCheck } from './checks.ts';
 
 export type GapStatus = 'open' | 'fixed' | 'wontfix';
@@ -47,7 +48,7 @@ export function loadRegister(path: string): GapEntry[] {
     if (ids.has(e.id)) throw new Error(`duplicate gap id ${e.id}`);
     ids.add(e.id);
     if (e.probe.ops.length !== 1) throw new Error(`gap ${e.id}: a probe is exactly one op`);
-    if (!e.probe.ops[0].op.startsWith('read:')) throw new Error(`gap ${e.id}: probe op must be a read`);
+    if (!isReadOnlyOp(e.probe.ops[0])) throw new Error(`gap ${e.id}: probe op must be a read-only op (read:*, evaluate:calculation, validate:calculation)`);
   }
   return entries;
 }

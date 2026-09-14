@@ -4,24 +4,65 @@
   "description": "Shared plumbing for tools built on the Claris ADT fm CLI: runner, script step display, gap register",
   "type": "module",
   "license": "MIT",
-  "engines": { "node": ">=22.18" },
-  "files": ["dist", "gaps", "bin", "src/catalogs/fm-step-display.json"],
-  "bin": { "fm-gaps": "bin/fm-gaps.mjs" },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "files": [
+    "dist",
+    "gaps",
+    "bin",
+    "src/catalogs/fm-step-display.json"
+  ],
+  "bin": {
+    "fm-gaps": "bin/fm-gaps.mjs"
+  },
   "exports": {
-    "./types": { "types": "./dist/types.d.ts", "default": "./dist/types.js" },
-    "./runner": { "types": "./dist/runner/index.d.ts", "default": "./dist/runner/index.js" },
-    "./step-display": { "types": "./dist/step-display/index.d.ts", "default": "./dist/step-display/index.js" },
-    "./gaps": { "types": "./dist/gaps/index.d.ts", "default": "./dist/gaps/index.js" },
-    "./gaps/checks": { "types": "./dist/gaps/checks.d.ts", "default": "./dist/gaps/checks.js" },
-    "./package.json": "./package.json"
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/types.js"
+    },
+    "./runner": {
+      "types": "./dist/runner/index.d.ts",
+      "default": "./dist/runner/index.js"
+    },
+    "./step-display": {
+      "types": "./dist/step-display/index.d.ts",
+      "default": "./dist/step-display/index.js"
+    },
+    "./gaps": {
+      "types": "./dist/gaps/index.d.ts",
+      "default": "./dist/gaps/index.js"
+    },
+    "./gaps/checks": {
+      "types": "./dist/gaps/checks.d.ts",
+      "default": "./dist/gaps/checks.js"
+    },
+    "./package.json": "./package.json",
+    "./read-only": {
+      "types": "./dist/read-only.d.ts",
+      "default": "./dist/read-only.js"
+    }
   },
   "typesVersions": {
     "*": {
-      "types": ["dist/types.d.ts"],
-      "runner": ["dist/runner/index.d.ts"],
-      "step-display": ["dist/step-display/index.d.ts"],
-      "gaps": ["dist/gaps/index.d.ts"],
-      "gaps/checks": ["dist/gaps/checks.d.ts"]
+      "types": [
+        "dist/types.d.ts"
+      ],
+      "runner": [
+        "dist/runner/index.d.ts"
+      ],
+      "step-display": [
+        "dist/step-display/index.d.ts"
+      ],
+      "gaps": [
+        "dist/gaps/index.d.ts"
+      ],
+      "gaps/checks": [
+        "dist/gaps/checks.d.ts"
+      ],
+      "read-only": [
+        "dist/read-only.d.ts"
+      ]
     }
   },
   "scripts": {
