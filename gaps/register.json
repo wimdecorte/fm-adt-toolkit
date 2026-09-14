@@ -20933,7 +20933,7 @@
       {
         "name": "reset the scroll bar when the portal is exited",
         "path": "Portal/Options bit 4",
-        "knownFrom": "SaXML LayoutCatalog Portal/Options bit 4; Portal Setup dialog > Reset scroll bar when exiting record. Evidence overrides fmai: Ooe’s portal word 397 leaves this bit clear and fm reports resetScrollBarOnExit true, so the bit set means OFF",
+        "knownFrom": "SaXML LayoutCatalog Portal/Options bit 4; Portal Setup dialog > Reset scroll bar when exiting record. Bit set means OFF. fmai agrees: its probe wrote resetScrollBarOnExit=false and recorded setMeansTrue=true, i.e. the bit is SET after writing false (0 -> 16), so a set bit means the option is off. The evidence confirms it: Ooe’s portal word 397 leaves the bit clear and fm reports resetScrollBarOnExit true",
         "fmKey": "resetScrollBarOnExit",
         "reported": true
       },
@@ -22641,14 +22641,14 @@
       {
         "name": "show navigation dots",
         "path": "SlideControl/Options bit 0",
-        "knownFrom": "SaXML LayoutCatalog SlideControl/Options bit 0; Inspector > Position > Slide Control > Show navigation dots. Evidence overrides fmai: Ooe’s slide control writes SlideControl/Options=\"0\" and fm reports showNavigationDots true, so the bit set means OFF",
+        "knownFrom": "SaXML LayoutCatalog SlideControl/Options bit 0; Inspector > Position > Slide Control > Show navigation dots. Bit set means OFF. fmai agrees: its probe wrote showNavigationDots=false and recorded setMeansTrue=true, i.e. the bit is SET after writing false (0 -> 1), so a set bit means the option is off. The evidence confirms it: Ooe’s slide control writes SlideControl/Options=\"0\" and fm reports showNavigationDots true",
         "fmKey": "showNavigationDots",
         "reported": true
       },
       {
         "name": "enable swipe gestures",
         "path": "SlideControl/Options bit 1",
-        "knownFrom": "SaXML LayoutCatalog SlideControl/Options bit 1; Inspector > Position > Slide Control > Enable swipe gestures. Evidence overrides fmai: the word is 0 and fm reports enableSwipeGestures true, so the bit set means OFF",
+        "knownFrom": "SaXML LayoutCatalog SlideControl/Options bit 1; Inspector > Position > Slide Control > Enable swipe gestures. Bit set means OFF. fmai agrees: its probe wrote enableSwipeGestures=false and recorded setMeansTrue=true, i.e. the bit is SET after writing false (0 -> 2), so a set bit means the option is off. The evidence confirms it: the word is 0 and fm reports enableSwipeGestures true",
         "fmKey": "enableSwipeGestures",
         "reported": true
       },
