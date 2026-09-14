@@ -7,9 +7,16 @@
  *  enumerate reads a Save as XML export (never writes to it) and writes one reference
  *  file per kind: attribute paths and counts, no values. draft reads one instance of each
  *  named kind through fm and writes a first-draft entry into the register for a human to
- *  review (an existing entry with that id is left alone). check runs every distinct probe
- *  once and records evidence and per-attribute outcomes; it never edits reported/fmKey.
- *  report renders the matrix for Claris. Every fm batch passes assertReadOnly. */
+ *  review (an existing entry with that id is left alone); it then reloads the file it just
+ *  wrote and, if the register does not parse (e.g. two attributes drafted with the same
+ *  name), prints the error and exits 1 -- the file is still on disk for a human to fix.
+ *  check runs every distinct probe once and records evidence and per-attribute outcomes;
+ *  it never edits reported/fmKey. report renders the matrix for Claris. Every fm batch
+ *  passes assertReadOnly. Evidence (and the report's evidence lookups) is written under
+ *  '<evidenceRoot>/gaps/evidence/...', where evidenceRoot is this package's ROOT for the
+ *  default register at '<ROOT>/gaps/register.json', and otherwise the register's own
+ *  parent directory -- so a --register=/tmp/reg.json run writes to /tmp/gaps/evidence/...,
+ *  never into this package's own gaps/ tree. */
 import path from 'node:path';
 import fs from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -23,6 +30,13 @@ const cmd = process.argv[2];
 const args = Object.fromEntries(process.argv.slice(3).map((a) => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const str = (k) => (typeof args[k] === 'string' && args[k] !== '' ? args[k] : null);
 const registerPath = str('register') ? path.resolve(str('register')) : path.join(ROOT, 'gaps', 'register.json');
+// Evidence and report lookups live at `<evidenceRoot>/gaps/evidence/...`. The default
+// register sits at `<ROOT>/gaps/register.json`, so its evidence root is `ROOT`; a
+// `--register=/tmp/reg.json` run has no 'gaps' directory to peel off, so its evidence
+// root is /tmp itself -- never this package's own ROOT.
+const evidenceRoot = path.basename(path.dirname(registerPath)) === 'gaps'
+  ? path.dirname(path.dirname(registerPath))
+  : path.dirname(registerPath);
 const USAGE = [
   'usage: fm-gaps enumerate --saxml=<dir> --prefix=<FileName> --label=<export label> [--out=<dir>]',
   '       fm-gaps draft --kind=<kind-id>[,<kind-id>...] --file=<target> --username=<account> [--reference=<dir>] [--register=<path>]',
@@ -41,7 +55,7 @@ if (cmd === 'enumerate') {
   process.exit(0);
 }
 if (cmd === 'report') {
-  const md = renderReport(loadRegister(registerPath), ROOT);
+  const md = renderReport(loadRegister(registerPath), evidenceRoot);
   if (str('out')) fs.writeFileSync(path.resolve(str('out')), md); else process.stdout.write(md);
   process.exit(0);
 }
@@ -72,12 +86,19 @@ if (cmd === 'draft') {
     console.log(`${ref.kindId}: ${ref.attributes.length} attributes, ${instance === undefined ? 0 : Object.values(entries[entries.length - 1].attributes).filter((a) => a.reported).length} auto-matched`);
   });
   saveRegister(registerPath, entries);
+  try {
+    loadRegister(registerPath);
+  } catch (err) {
+    console.error(`register written but does not load: ${err.message}`);
+    console.error(`fix ${path.relative(process.cwd(), registerPath)} by hand (e.g. two attributes drafted with the same name) and re-run`);
+    process.exit(1);
+  }
   console.log(`register written: ${path.relative(process.cwd(), registerPath)} (${entries.length} entries)`);
   process.exit(0);
 }
 
 const entries = loadRegister(registerPath);
-const out = await runChecks(entries, run, { version: cli.version, build, date, root: ROOT, commandFor: (argv) => ['fm', ...argv].join(' ') });
+const out = await runChecks(entries, run, { version: cli.version, build, date, root: evidenceRoot, commandFor: (argv) => ['fm', ...argv].join(' ') });
 if (out.fatal) { console.error(`fatal: ${out.fatal.code}: ${out.fatal.message}`); for (const s of out.fatal.suggestions ?? []) console.error(s); console.error('register not written: the run never opened the file'); process.exit(1); }
 saveRegister(registerPath, out.entries);
 const show = (label, rows, fmt) => { console.log(`\n${label} (${rows.length})`); for (const r of rows) console.log('  ' + fmt(r)); };
@@ -86,5 +107,5 @@ show('Newly reported (set fmKey/reported by hand after reading the evidence)', o
 show('Regressed (was reported, now absent)', out.regressed, (r) => `${r.entry.id}  ${r.attribute.name} (${r.attribute.fmKey})`);
 show('Unexplained keys on the instance (candidates for closing a gap)', out.unexplained, (r) => `${r.entry.id}  ${r.keys.join(', ')}`);
 show('Errored', out.errored, (e) => `${e.id}  ${e.lastChecked?.reason ?? ''}`);
-console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}; evidence under gaps/evidence/${cli.version}/`);
+console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}; evidence under ${path.relative(process.cwd(), path.join(evidenceRoot, 'gaps', 'evidence', cli.version))}/`);
 process.exit(out.errored.length > 0 || out.regressed.length > 0 ? 1 : 0);

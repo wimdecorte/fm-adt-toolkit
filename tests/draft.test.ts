@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { draftEntry } from '../src/gaps/draft.ts';
+import { loadRegister, saveRegister } from '../src/gaps/register.ts';
 import type { Reference, ReferenceInstance } from '../src/gaps/enumerate.ts';
+import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path';
 
 const paths = ['@id', '@name', 'Bounds@top', 'Options/Locked', 'ConditionalFormatting/Style'];
 
@@ -35,5 +37,26 @@ describe('draftEntry', () => {
       { name: 'Options Locked', path: 'Options/Locked', knownFrom: 'SaXML LayoutCatalog Options/Locked', fmKey: 'locked', reported: true },
       { name: 'ConditionalFormatting Style', path: 'ConditionalFormatting/Style', knownFrom: 'SaXML LayoutCatalog ConditionalFormatting/Style', fmKey: null, reported: false },
     ]);
+  });
+
+  it('never produces two attributes with the same name, even when readable(path) collapses distinct paths', () => {
+    // `readable` maps both '/' and '@' to a space: 'Options' and '@Options' both read
+    // 'Options'; 'A/B' and 'A@B' both read 'A B'. Real collisions: layout-object:popoverpanel
+    // (@Options vs Options) and steps 117, 139, 161, 222 in the shipped reference set.
+    const collidingPaths = ['Options', '@Options', 'A/B', 'A@B'];
+    const collidingReference: Reference = {
+      ...reference,
+      attributes: collidingPaths.map((p) => ({ path: p, present: 1 })),
+    };
+    const entry = draftEntry(collidingReference, instance, probe, {}, '0.6.0');
+    const names = entry.attributes.map((a) => a.name);
+    expect(new Set(names).size).toBe(names.length);
+    expect(names).toHaveLength(4);
+
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-draft-'));
+    const file = path.join(dir, 'register.json');
+    saveRegister(file, [entry]);
+    expect(() => loadRegister(file)).not.toThrow();
+    fs.rmSync(dir, { recursive: true, force: true });
   });
 });
