@@ -2631,7 +2631,7 @@
       {
         "name": "action owner add-on id",
         "path": "action/Step/OwnerID",
-        "knownFrom": "SaXML CustomMenuCatalog MenuItemList/CustomMenuItem action/Step/OwnerID; the add-on that created the step; FileMaker Pro shows it as the add-on grouping. fm reports ownerId on tables and fields but on no action step (the element is empty on all three in Ooe and fm reports no key)",
+        "knownFrom": "SaXML CustomMenuCatalog MenuItemList/CustomMenuItem action/Step/OwnerID; File > Manage > Custom Menus > Custom Menus tab > Edit Custom Menu > Menu Items > Action > Specify Script Step — the add-on that created the step; FileMaker Pro shows it as the add-on grouping. fm reports ownerId on tables and fields but on no action step (the element is empty on all three in Ooe and fm reports no key)",
         "fmKey": null,
         "reported": false
       },
