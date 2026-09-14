@@ -42,6 +42,14 @@ describe('runChecks', () => {
     expect(out.entries[0].attributes[1].reported).toBe(false);                          // never edited by the checker
     fs.rmSync(root, { recursive: true, force: true });
   });
+  it('reports an array-keyed fmKey present on any element, not just the first', async () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
+    const triggerResult = { op: 'read:layout', status: 'ok', result: { name: 'Home', contents: { objects: [ { id: 21, scriptTriggers: [ { event: 'a' }, { event: 'b', parameter: 'x' } ] } ] } } };
+    const a = entry('a', [{ name: 'trigger parameter', path: 'ScriptTrigger@parameter', knownFrom: 'SaXML', fmKey: 'scriptTriggers[].parameter', reported: false }]);
+    const out = await runChecks([a], run([triggerResult]), meta(root));
+    expect(out.entries[0].lastChecked!.attributes).toEqual({ 'trigger parameter': 'reported' });
+    fs.rmSync(root, { recursive: true, force: true });
+  });
   it('marks an entry errored when its probe has no result or the selector finds nothing, and surfaces a fatal', async () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
     const a = entry('a', [{ name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true }], { probe: { ops: probe.ops, select: '**objects[id=99]' } });

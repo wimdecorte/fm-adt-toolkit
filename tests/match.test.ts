@@ -7,6 +7,10 @@ describe('flattenKeys', () => {
     expect(keys).toEqual(expect.arrayContaining(['id', 'bounds', 'bounds.left', 'bounds.top', 'scriptTriggers', 'scriptTriggers[].event', 'deep.a.b']));
     expect(keys).not.toContain('deep.a.b.c');
   });
+  it('collects an array-element key seen on any element, not just the first', () => {
+    const keys = flattenKeys({ scriptTriggers: [ { event: 'a' }, { event: 'b', parameter: 'x' } ] });
+    expect(keys).toEqual(expect.arrayContaining(['scriptTriggers[].event', 'scriptTriggers[].parameter']));
+  });
 });
 describe('autoMatch', () => {
   it('matches a SaXML path to exactly one fm key by normalised name', () => {

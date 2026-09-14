@@ -93,6 +93,10 @@ function contextOf(rule: KindRule, ancestors: XmlNode[], node: XmlNode): Record<
     }
     if (a.tag === 'CustomMenu') ctx.menuId = a.attrs.id ?? '';
   }
+  // The part rule's own probe needs the part's own type, not an ancestor Part's (a part
+  // node is never nested inside another Part, but `ctx.part` above only fires for
+  // ancestors, so without this the part kind's own instances always got '').
+  if (node.tag === 'Part') ctx.part = node.attrs.type ?? '';
   // `step` has no `idAttr` (its `id` field is a sequence number among occurrences of this step
   // shape, not the step's own id — the shape itself is already the group), so `stepId` here is the
   // only way a probe recovers the step's real numeric id.

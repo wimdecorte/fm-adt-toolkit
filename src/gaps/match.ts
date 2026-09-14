@@ -1,15 +1,19 @@
 export function flattenKeys(value: unknown, depth = 3): string[] {
   const out: string[] = [];
+  const seen = new Set<string>();
+  const push = (p: string) => { if (!seen.has(p)) { seen.add(p); out.push(p); } };
   const walk = (v: unknown, prefix: string, d: number) => {
     if (d === 0 || v === null || typeof v !== 'object') return;
     if (Array.isArray(v)) {
-      const sample = v.find((x) => x && typeof x === 'object');
-      if (sample) walk(sample, prefix + '[]', d);
+      // Any element of the array can carry a key the others do not (e.g. a script
+      // trigger's `parameter`, present only on a later trigger) — walk all of them,
+      // not just the first, so the union of their keys is reported.
+      for (const x of v) if (x && typeof x === 'object') walk(x, prefix + '[]', d);
       return;
     }
     for (const [k, x] of Object.entries(v as Record<string, unknown>)) {
       const p = prefix ? `${prefix}.${k}` : k;
-      out.push(p);
+      push(p);
       walk(x, p, d - 1);
     }
   };

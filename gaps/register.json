@@ -26096,7 +26096,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Body]"
     },
     "attributes": [
       {
@@ -26215,7 +26215,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Bottom Navigation]"
     },
     "attributes": [
       {
@@ -26334,7 +26334,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Footer]"
     },
     "attributes": [
       {
@@ -26453,7 +26453,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Header]"
     },
     "attributes": [
       {
@@ -26572,7 +26572,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Leading Grand Summary]"
     },
     "attributes": [
       {
@@ -26691,7 +26691,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Leading Sub-summary]"
     },
     "attributes": [
       {
@@ -26868,7 +26868,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Title Footer]"
     },
     "attributes": [
       {
@@ -26987,7 +26987,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Title Header]"
     },
     "attributes": [
       {
@@ -27106,7 +27106,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Top Navigation]"
     },
     "attributes": [
       {
@@ -27225,7 +27225,7 @@
           "detail": true
         }
       ],
-      "select": "contents.parts[type=]"
+      "select": "contents.parts[type=Trailing Grand Summary]"
     },
     "attributes": [
       {

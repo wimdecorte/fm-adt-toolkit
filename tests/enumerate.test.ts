@@ -39,6 +39,14 @@ describe('enumerateExport', () => {
     const rule = KINDS.find((r) => r.id === 'step')!;
     expect(rule.probe(step.instances[0])).toEqual({ ops: [{ op: 'read:script', id: 16 }], select: 'body[stepID=89]' });
   });
+  it('probes a part using the part\'s own type, not an ancestor part', () => {
+    const part = byKind['part:body'];
+    const rule = KINDS.find((r) => r.id === 'part')!;
+    expect(rule.probe(part.instances[0])).toEqual({
+      ops: [{ op: 'read:layout', name: 'Home', detail: true }],
+      select: 'contents.parts[type=Body]',
+    });
+  });
   it('groups fields by datatype and fieldtype', () => {
     expect(byKind['field:binary-normal'].instances[0].context).toEqual({ table: 'T' });
     expect(byKind['field:binary-normal'].attributes.map((a) => a.path)).toContain('Storage/Container@external');

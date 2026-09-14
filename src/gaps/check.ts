@@ -18,20 +18,24 @@ function parseLines(text: string): unknown[] {
   return text.split('\n').map((l) => l.trim()).filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return { unparseable: l }; } });
 }
 
+/** `key` is a dotted path, a `[]` segment marking an array to search. On a `[]` segment,
+ *  the remainder of the key (evaluated on each array element in turn) counts as present
+ *  if ANY element carries it — a key seen only on a later element (e.g. `parameter` on
+ *  the second of two `scriptTriggers`) is still reported, not just the first element's. */
 function hasKey(instance: unknown, key: string): boolean {
-  let cur: unknown = instance;
-  for (const part of key.split('.')) {
+  const parts = key.split('.');
+  const step = (cur: unknown, i: number): boolean => {
+    if (i === parts.length) return true;
+    const part = parts[i];
     if (part.endsWith('[]')) {
       const v = cur && typeof cur === 'object' ? (cur as Record<string, unknown>)[part.slice(0, -2)] : undefined;
       if (!Array.isArray(v)) return false;
-      cur = v.find((x) => x && typeof x === 'object');
-      if (cur === undefined) return false;
-      continue;
+      return v.some((x) => x && typeof x === 'object' && step(x, i + 1));
     }
     if (cur === null || typeof cur !== 'object' || !(part in (cur as Record<string, unknown>))) return false;
-    cur = (cur as Record<string, unknown>)[part];
-  }
-  return true;
+    return step((cur as Record<string, unknown>)[part], i + 1);
+  };
+  return step(instance, 0);
 }
 
 /** The dotted prefixes of a key, array markers stripped: 'bounds.top' -> ['bounds', 'bounds.top']. A
