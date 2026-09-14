@@ -1,0 +1,197 @@
+{
+  "kindId": "field:timestamp-normal",
+  "op": "read:field",
+  "kind": "field:Timestamp/Normal",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "10",
+      "name": "TimestampField1",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "20",
+      "name": "CreationTimestamp",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "2",
+      "name": "CreationTimestamp",
+      "context": {
+        "table": "Contacts"
+      }
+    },
+    {
+      "id": "4",
+      "name": "ModificationTimestamp",
+      "context": {
+        "table": "Contacts"
+      }
+    },
+    {
+      "id": "3",
+      "name": "modTimestamp",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "9",
+      "name": "createTimestamp",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "2",
+      "name": "new_tag",
+      "context": {
+        "table": "LLM_tagged_fields"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 7
+    },
+    {
+      "path": "@datatype",
+      "present": 7
+    },
+    {
+      "path": "@fieldtype",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Annotation",
+      "present": 6
+    },
+    {
+      "path": "Annotation/Text",
+      "present": 1
+    },
+    {
+      "path": "AutoEnter",
+      "present": 7
+    },
+    {
+      "path": "AutoEnter@prohibitModification",
+      "present": 7
+    },
+    {
+      "path": "AutoEnter@type",
+      "present": 7
+    },
+    {
+      "path": "DisplayNames",
+      "present": 7
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 7
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "Storage@autoIndex",
+      "present": 7
+    },
+    {
+      "path": "Storage@global",
+      "present": 7
+    },
+    {
+      "path": "Storage@index",
+      "present": 7
+    },
+    {
+      "path": "Storage@maxRepetitions",
+      "present": 7
+    },
+    {
+      "path": "Storage/LanguageReference",
+      "present": 7
+    },
+    {
+      "path": "Storage/LanguageReference@id",
+      "present": 7
+    },
+    {
+      "path": "Storage/LanguageReference@name",
+      "present": 7
+    },
+    {
+      "path": "TagList",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 7
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 7
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 7
+    },
+    {
+      "path": "UUID@userName",
+      "present": 7
+    },
+    {
+      "path": "Validation",
+      "present": 4
+    },
+    {
+      "path": "Validation@allowOverride",
+      "present": 7
+    },
+    {
+      "path": "Validation@alwaysValidate",
+      "present": 7
+    },
+    {
+      "path": "Validation@existing",
+      "present": 7
+    },
+    {
+      "path": "Validation@notEmpty",
+      "present": 7
+    },
+    {
+      "path": "Validation@type",
+      "present": 7
+    },
+    {
+      "path": "Validation@unique",
+      "present": 7
+    },
+    {
+      "path": "Validation/Strict",
+      "present": 3
+    }
+  ]
+}

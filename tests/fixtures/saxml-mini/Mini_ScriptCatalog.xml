@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FMSaveAsXML version="2.3.0.0" Source="26.0.2" File="Mini.fmp12" UUID="0">
+<Structure><AddAction>
+<ScriptCatalog>
+  <UUID>y</UUID>
+  <Script id="16" name="S" isFolder="False"><UUID>y2</UUID><Options/><TagList/></Script>
+</ScriptCatalog>
+<StepsForScripts>
+  <Script>
+    <ScriptReference id="16" name="S" UUID="11111111-1111-1111-1111-111111111111"/>
+    <ObjectList>
+      <Step hash="E" index="0" id="89" name="# (comment)" enable="True"><UUID>z</UUID><Options>4</Options><DDRREF><_ABC>ignored</_ABC></DDRREF><ParameterValues><Text>hi</Text></ParameterValues></Step>
+      <Step hash="F" index="1" id="141" name="Set Variable" enable="True"><ParameterValues><Name>$x</Name><Calculation>1</Calculation></ParameterValues></Step>
+    </ObjectList>
+  </Script>
+</StepsForScripts>
+</AddAction></Structure>
+</FMSaveAsXML>

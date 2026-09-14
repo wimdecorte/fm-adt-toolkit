@@ -1,0 +1,116 @@
+{
+  "kindId": "step:138",
+  "op": "read:script",
+  "kind": "step:138",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Re-Login",
+      "context": {
+        "script": "Accounts",
+        "stepName": "Re-Login"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Re-Login",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Re-Login"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Re-Login",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Re-Login"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@name",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "kindId": "script",
+  "op": "read:script",
+  "kind": "script",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "14",
+      "name": "About",
+      "context": {}
+    },
+    {
+      "id": "16",
+      "name": "LICENSE",
+      "context": {}
+    },
+    {
+      "id": "17",
+      "name": "Release Notes",
+      "context": {}
+    },
+    {
+      "id": "18",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "1",
+      "name": "Hello world",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "-",
+      "context": {}
+    },
+    {
+      "id": "63",
+      "name": "FM26",
+      "context": {}
+    },
+    {
+      "id": "62",
+      "name": "CaptureSetupPDS",
+      "context": {}
+    },
+    {
+      "id": "65",
+      "name": "CaptureSetupFK",
+      "context": {}
+    },
+    {
+      "id": "66",
+      "name": "Capture_AICaptions",
+      "context": {}
+    },
+    {
+      "id": "67",
+      "name": "Capture_PDFCluster",
+      "context": {}
+    },
+    {
+      "id": "68",
+      "name": "Capture_WindowUUID",
+      "context": {}
+    },
+    {
+      "id": "69",
+      "name": "Capture_OtherEnhanced",
+      "context": {}
+    },
+    {
+      "id": "64",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "MyScriptFolder",
+      "context": {}
+    },
+    {
+      "id": "10",
+      "name": "EmptyScriptFolder",
+      "context": {}
+    },
+    {
+      "id": "11",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "MyScriptSubfolder",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "Decode base64 image",
+      "context": {}
+    },
+    {
+      "id": "12",
+      "name": "Constrain without indexes",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "noop",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "Circular Reference",
+      "context": {}
+    },
+    {
+      "id": "21",
+      "name": "Scripts With Everything",
+      "context": {}
+    },
+    {
+      "id": "20",
+      "name": "Control",
+      "context": {}
+    },
+    {
+      "id": "23",
+      "name": "Navigation",
+      "context": {}
+    },
+    {
+      "id": "24",
+      "name": "Editing",
+      "context": {}
+    },
+    {
+      "id": "25",
+      "name": "Fields",
+      "context": {}
+    },
+    {
+      "id": "26",
+      "name": "Records",
+      "context": {}
+    },
+    {
+      "id": "27",
+      "name": "Found Sets",
+      "context": {}
+    },
+    {
+      "id": "28",
+      "name": "Windows",
+      "context": {}
+    },
+    {
+      "id": "29",
+      "name": "Files",
+      "context": {}
+    },
+    {
+      "id": "30",
+      "name": "Accounts",
+      "context": {}
+    },
+    {
+      "id": "31",
+      "name": "Artificial Intelligence",
+      "context": {}
+    },
+    {
+      "id": "32",
+      "name": "Spelling",
+      "context": {}
+    },
+    {
+      "id": "33",
+      "name": "Open Menu Item",
+      "context": {}
+    },
+    {
+      "id": "34",
+      "name": "Miscellaneous",
+      "context": {}
+    },
+    {
+      "id": "35",
+      "name": "IP",
+      "context": {}
+    },
+    {
+      "id": "36",
+      "name": "MBS Plug-In",
+      "context": {}
+    },
+    {
+      "id": "22",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "56",
+      "name": "Script with high-level options",
+      "context": {}
+    },
+    {
+      "id": "58",
+      "name": "complex_calc",
+      "context": {}
+    },
+    {
+      "id": "59",
+      "name": "calc_examples",
+      "context": {}
+    },
+    {
+      "id": "37",
+      "name": "Script from fmSyntaxColorizer",
+      "context": {}
+    },
+    {
+      "id": "39",
+      "name": "All script steps and all options",
+      "context": {}
+    },
+    {
+      "id": "55",
+      "name": "All script steps and all options 20260318",
+      "context": {}
+    },
+    {
+      "id": "70",
+      "name": "20260625_missing",
+      "context": {}
+    },
+    {
+      "id": "60",
+      "name": "New Script",
+      "context": {}
+    },
+    {
+      "id": "57",
+      "name": "all_functions",
+      "context": {}
+    },
+    {
+      "id": "71",
+      "name": "20260722_window",
+      "context": {}
+    },
+    {
+      "id": "38",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "50",
+      "name": "SaXMLDelivery",
+      "context": {}
+    },
+    {
+      "id": "51",
+      "name": "saxmlDelivery_createXml",
+      "context": {}
+    },
+    {
+      "id": "52",
+      "name": "saxmlDelivery_readme",
+      "context": {}
+    },
+    {
+      "id": "53",
+      "name": "saxmlDelivery_runPipeline",
+      "context": {}
+    },
+    {
+      "id": "61",
+      "name": "complex_calc 2",
+      "context": {}
+    },
+    {
+      "id": "54",
+      "name": "--",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 58
+    },
+    {
+      "path": "@isFolder",
+      "present": 16
+    },
+    {
+      "path": "@isSeparatorItem",
+      "present": 1
+    },
+    {
+      "path": "@name",
+      "present": 58
+    },
+    {
+      "path": "Options",
+      "present": 58
+    },
+    {
+      "path": "Options@access",
+      "present": 58
+    },
+    {
+      "path": "Options@compatibility",
+      "present": 58
+    },
+    {
+      "path": "Options@hidden",
+      "present": 58
+    },
+    {
+      "path": "Options@runwithfullaccess",
+      "present": 58
+    },
+    {
+      "path": "Options@SiriShortcutVisible",
+      "present": 58
+    },
+    {
+      "path": "SourceUUID",
+      "present": 5
+    },
+    {
+      "path": "TagList",
+      "present": 58
+    },
+    {
+      "path": "UUID",
+      "present": 58
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 58
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 58
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 58
+    },
+    {
+      "path": "UUID@userName",
+      "present": 58
+    }
+  ]
+}

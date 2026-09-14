@@ -1,0 +1,192 @@
+{
+  "kindId": "value-list:fromfield",
+  "op": "read:valueList",
+  "kind": "valueList:FromField",
+  "file": "ValueListCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "TestTable | TextField1",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "MyRelatedValueList",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "TestTable | TextField1 with options",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "TestTable | TextField1 with other options",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField@show",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField@sort",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference@id",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference@name",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference/TableOccurrenceReference",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference/TableOccurrenceReference@id",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference/TableOccurrenceReference@name",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/FieldReference/TableOccurrenceReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "Field/PrimaryField/LanguageReference",
+      "present": 1
+    },
+    {
+      "path": "Field/PrimaryField/LanguageReference@id",
+      "present": 1
+    },
+    {
+      "path": "Field/PrimaryField/LanguageReference@name",
+      "present": 1
+    },
+    {
+      "path": "Field/SecondaryField@show",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField@sort",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Field/SecondaryField/LanguageReference",
+      "present": 1
+    },
+    {
+      "path": "Field/SecondaryField/LanguageReference@id",
+      "present": 1
+    },
+    {
+      "path": "Field/SecondaryField/LanguageReference@name",
+      "present": 1
+    },
+    {
+      "path": "Field/ShowRelated",
+      "present": 2
+    },
+    {
+      "path": "Field/ShowRelated@value",
+      "present": 4
+    },
+    {
+      "path": "Field/ShowRelated/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "Field/ShowRelated/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/ShowRelated/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/ShowRelated/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Source",
+      "present": 4
+    },
+    {
+      "path": "Source@value",
+      "present": 4
+    },
+    {
+      "path": "TagList",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 4
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 4
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 4
+    },
+    {
+      "path": "UUID@userName",
+      "present": 4
+    }
+  ]
+}

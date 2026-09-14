@@ -1,0 +1,124 @@
+{
+  "kindId": "extended-privilege",
+  "op": "read:extendedPrivilege",
+  "kind": "extendedPrivilege",
+  "file": "ExtendedPrivilegesCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "fmwebdirect",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "fmxdbc",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "fmapp",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "fmreauthenticate10",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "fmxml",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "fmphp",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "fmextscriptaccess",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "fmurlscript",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "fmrest",
+      "context": {}
+    },
+    {
+      "id": "10",
+      "name": "fmodata",
+      "context": {}
+    },
+    {
+      "id": "11",
+      "name": "fmplugin",
+      "context": {}
+    },
+    {
+      "id": "12",
+      "name": "MyExtendedPrivilege",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 12
+    },
+    {
+      "path": "@name",
+      "present": 12
+    },
+    {
+      "path": "Description",
+      "present": 12
+    },
+    {
+      "path": "ObjectList@membercount",
+      "present": 12
+    },
+    {
+      "path": "ObjectList/PrivilegeSetReference",
+      "present": 12
+    },
+    {
+      "path": "ObjectList/PrivilegeSetReference@id",
+      "present": 12
+    },
+    {
+      "path": "ObjectList/PrivilegeSetReference@name",
+      "present": 12
+    },
+    {
+      "path": "TagList",
+      "present": 12
+    },
+    {
+      "path": "UUID",
+      "present": 12
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 12
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 12
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 12
+    },
+    {
+      "path": "UUID@userName",
+      "present": 12
+    }
+  ]
+}

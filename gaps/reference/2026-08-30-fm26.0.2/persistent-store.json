@@ -1,0 +1,77 @@
+{
+  "kindId": "persistent-store",
+  "op": "read:persistentData",
+  "kind": "persistentData",
+  "file": "PersistentStoreCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "app.version",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "app.counter",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "app.lastlogin",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "addon.config",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "addon.config",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 5
+    },
+    {
+      "path": "@instanceID",
+      "present": 5
+    },
+    {
+      "path": "@name",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 5
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 5
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 5
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 5
+    },
+    {
+      "path": "UUID@userName",
+      "present": 5
+    },
+    {
+      "path": "Value@type",
+      "present": 5
+    },
+    {
+      "path": "Value/StyledText/Data",
+      "present": 5
+    }
+  ]
+}

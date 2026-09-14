@@ -1,0 +1,204 @@
+{
+  "kindId": "step:48",
+  "op": "read:script",
+  "kind": "step:48",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Paste",
+      "context": {
+        "script": "Editing",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Paste",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Paste"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 12
+    },
+    {
+      "path": "@hash",
+      "present": 12
+    },
+    {
+      "path": "@id",
+      "present": 12
+    },
+    {
+      "path": "@index",
+      "present": 12
+    },
+    {
+      "path": "@name",
+      "present": 12
+    },
+    {
+      "path": "Options",
+      "present": 12
+    },
+    {
+      "path": "OwnerID",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 12
+    }
+  ]
+}

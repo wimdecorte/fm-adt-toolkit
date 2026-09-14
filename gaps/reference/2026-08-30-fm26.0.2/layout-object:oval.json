@@ -1,0 +1,76 @@
+{
+  "kindId": "layout-object:oval",
+  "op": "read:layout",
+  "kind": "object:Oval",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "143",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 1
+    },
+    {
+      "path": "@id",
+      "present": 1
+    },
+    {
+      "path": "@kind",
+      "present": 1
+    },
+    {
+      "path": "@name",
+      "present": 1
+    },
+    {
+      "path": "@type",
+      "present": 1
+    },
+    {
+      "path": "Bounds",
+      "present": 1
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 1
+    },
+    {
+      "path": "Bounds@left",
+      "present": 1
+    },
+    {
+      "path": "Bounds@right",
+      "present": 1
+    },
+    {
+      "path": "Bounds@top",
+      "present": 1
+    },
+    {
+      "path": "Options",
+      "present": 1
+    },
+    {
+      "path": "Oval",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 1
+    }
+  ],
+  "fmType": {
+    "type": "oval",
+    "control": null
+  }
+}

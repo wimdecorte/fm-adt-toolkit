@@ -1,0 +1,208 @@
+{
+  "kindId": "layout-object:pop-up-menu",
+  "op": "read:layout",
+  "kind": "object:Pop-up Menu",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "137",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "137",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 2
+    },
+    {
+      "path": "@id",
+      "present": 2
+    },
+    {
+      "path": "@kind",
+      "present": 2
+    },
+    {
+      "path": "@name",
+      "present": 2
+    },
+    {
+      "path": "@type",
+      "present": 2
+    },
+    {
+      "path": "Bounds",
+      "present": 2
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 2
+    },
+    {
+      "path": "Bounds@left",
+      "present": 2
+    },
+    {
+      "path": "Bounds@right",
+      "present": 2
+    },
+    {
+      "path": "Bounds@top",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Graphic/Options",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/DecimalDigits",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Options",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@alpha",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@blue",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@green",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@red",
+      "present": 2
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Time/Options",
+      "present": 2
+    },
+    {
+      "path": "Field/Display@show",
+      "present": 2
+    },
+    {
+      "path": "Field/Display@Style",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/Placeholder@findMode",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/Placeholder/Calculation/DDRREF",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/Placeholder/Calculation/DDRREF@hash",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/Placeholder/Calculation/DDRREF@kind",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/Placeholder/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/ValueListReference",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/ValueListReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/ValueListReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/Display/ValueListReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference@repetition",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "Field/Options",
+      "present": 2
+    },
+    {
+      "path": "Field/Usage",
+      "present": 2
+    },
+    {
+      "path": "Field/Usage@inputMode",
+      "present": 2
+    },
+    {
+      "path": "Field/Usage@type",
+      "present": 2
+    },
+    {
+      "path": "Options",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 2
+    }
+  ],
+  "fmType": {
+    "type": "field",
+    "control": "popupMenu"
+  }
+}

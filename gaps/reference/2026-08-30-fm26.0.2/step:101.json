@@ -1,0 +1,68 @@
+{
+  "kindId": "step:101",
+  "op": "read:script",
+  "kind": "step:101",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Copy Record/Request",
+      "context": {
+        "script": "Records",
+        "stepName": "Copy Record/Request"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Copy Record/Request",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Copy Record/Request"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Copy Record/Request",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Copy Record/Request"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

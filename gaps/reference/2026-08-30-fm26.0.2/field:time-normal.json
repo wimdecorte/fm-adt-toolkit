@@ -1,0 +1,172 @@
+{
+  "kindId": "field:time-normal",
+  "op": "read:field",
+  "kind": "field:Time/Normal",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "9",
+      "name": "TimeField1",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "6",
+      "name": "timeToCreate",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "10",
+      "name": "timeToUpload",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "7",
+      "name": "time_of_day",
+      "context": {
+        "table": "validation"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 4
+    },
+    {
+      "path": "@datatype",
+      "present": 4
+    },
+    {
+      "path": "@fieldtype",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Annotation",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter@prohibitModification",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter@type",
+      "present": 4
+    },
+    {
+      "path": "DisplayNames",
+      "present": 4
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 4
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "Storage@autoIndex",
+      "present": 4
+    },
+    {
+      "path": "Storage@global",
+      "present": 4
+    },
+    {
+      "path": "Storage@index",
+      "present": 4
+    },
+    {
+      "path": "Storage@maxRepetitions",
+      "present": 4
+    },
+    {
+      "path": "Storage/LanguageReference",
+      "present": 4
+    },
+    {
+      "path": "Storage/LanguageReference@id",
+      "present": 4
+    },
+    {
+      "path": "Storage/LanguageReference@name",
+      "present": 4
+    },
+    {
+      "path": "TagList",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 4
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 4
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 4
+    },
+    {
+      "path": "UUID@userName",
+      "present": 4
+    },
+    {
+      "path": "Validation",
+      "present": 3
+    },
+    {
+      "path": "Validation@allowOverride",
+      "present": 4
+    },
+    {
+      "path": "Validation@alwaysValidate",
+      "present": 4
+    },
+    {
+      "path": "Validation@existing",
+      "present": 4
+    },
+    {
+      "path": "Validation@notEmpty",
+      "present": 4
+    },
+    {
+      "path": "Validation@type",
+      "present": 4
+    },
+    {
+      "path": "Validation@unique",
+      "present": 4
+    },
+    {
+      "path": "Validation/Strict",
+      "present": 1
+    }
+  ]
+}

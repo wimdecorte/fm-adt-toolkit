@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FMSaveAsXML version="2.3.0.0" Source="26.0.2" File="Mini.fmp12" UUID="0">
+<Structure><AddAction>
+<RelationshipCatalog>
+<Relationship id="1"><UUID>r</UUID><LeftTable cascadeCreate="False" cascadeDelete="True" name="A"/><RightTable name="B"/><JoinPredicateList><JoinPredicate type="Equal"><LeftField name="ID"/><RightField name="ID_A"/></JoinPredicate></JoinPredicateList></Relationship>
+</RelationshipCatalog>
+</AddAction></Structure>
+</FMSaveAsXML>

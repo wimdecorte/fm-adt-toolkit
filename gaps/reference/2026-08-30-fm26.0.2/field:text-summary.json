@@ -1,0 +1,148 @@
+{
+  "kindId": "field:text-summary",
+  "op": "read:field",
+  "kind": "field:Text/Summary",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "13",
+      "name": "SummaryField1",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "9",
+      "name": "listOf_s",
+      "context": {
+        "table": "Contacts"
+      }
+    },
+    {
+      "id": "30",
+      "name": "summary_listOf",
+      "context": {
+        "table": "summary_fields"
+      }
+    },
+    {
+      "id": "31",
+      "name": "summary_listOf_repsIndividual",
+      "context": {
+        "table": "summary_fields"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 4
+    },
+    {
+      "path": "@datatype",
+      "present": 4
+    },
+    {
+      "path": "@fieldtype",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Annotation",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter@prohibitModification",
+      "present": 4
+    },
+    {
+      "path": "AutoEnter@type",
+      "present": 4
+    },
+    {
+      "path": "DisplayNames",
+      "present": 4
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo@operation",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo@restartEachGroup",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo@summarizeRepetition",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference@id",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference@name",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference/BaseTableReference",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference/BaseTableReference@id",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference/BaseTableReference@name",
+      "present": 4
+    },
+    {
+      "path": "SummaryInfo/SummaryField/FieldReference/BaseTableReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "TagList",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 4
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 4
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 4
+    },
+    {
+      "path": "UUID@userName",
+      "present": 4
+    }
+  ]
+}

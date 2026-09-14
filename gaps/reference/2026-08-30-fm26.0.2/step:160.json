@@ -1,0 +1,360 @@
+{
+  "kindId": "step:160",
+  "op": "read:script",
+  "kind": "step:160",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Insert from URL",
+      "context": {
+        "script": "Fields",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Insert from URL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Insert from URL",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Insert from URL"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Insert from URL",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Insert from URL"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 25
+    },
+    {
+      "path": "@hash",
+      "present": 25
+    },
+    {
+      "path": "@id",
+      "present": 25
+    },
+    {
+      "path": "@index",
+      "present": 25
+    },
+    {
+      "path": "@name",
+      "present": 25
+    },
+    {
+      "path": "Options",
+      "present": 25
+    },
+    {
+      "path": "OwnerID",
+      "present": 23
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/URL",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/URL@autoEncode",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/URL/Calculation@datatype",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/URL/Calculation@position",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/URL/Calculation/Calculation/Text",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable@value",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 25
+    }
+  ]
+}

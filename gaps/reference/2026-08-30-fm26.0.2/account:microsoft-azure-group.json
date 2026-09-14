@@ -1,0 +1,84 @@
+{
+  "kindId": "account:microsoft-azure-group",
+  "op": "read:account",
+  "kind": "account:Microsoft Azure Group",
+  "file": "AccountsCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "9",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 1
+    },
+    {
+      "path": "@id",
+      "present": 1
+    },
+    {
+      "path": "@kind",
+      "present": 1
+    },
+    {
+      "path": "@type",
+      "present": 1
+    },
+    {
+      "path": "Authentication/AccountName",
+      "present": 1
+    },
+    {
+      "path": "Authentication/PasswordEncrypted/Context",
+      "present": 1
+    },
+    {
+      "path": "Authentication/PasswordEncrypted/Data",
+      "present": 1
+    },
+    {
+      "path": "Description",
+      "present": 1
+    },
+    {
+      "path": "PrivilegeSetReference",
+      "present": 1
+    },
+    {
+      "path": "PrivilegeSetReference@id",
+      "present": 1
+    },
+    {
+      "path": "PrivilegeSetReference@name",
+      "present": 1
+    },
+    {
+      "path": "TagList",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 1
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 1
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 1
+    },
+    {
+      "path": "UUID@userName",
+      "present": 1
+    }
+  ]
+}

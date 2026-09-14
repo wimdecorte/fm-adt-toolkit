@@ -1,0 +1,139 @@
+{
+  "kindId": "external-data-source",
+  "op": "read:externalDataSource",
+  "kind": "externalDataSource",
+  "file": "ExternalDataSourceCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "Ooe_dev",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "TestFile_dev2",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "BrojDva",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "Self",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "by_variable",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "ETS_22_0",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "mariadb_wugin",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "@type",
+      "present": 7
+    },
+    {
+      "path": "File/UniversalPathList",
+      "present": 5
+    },
+    {
+      "path": "ODBC@name",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Authentication",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Authentication@Password",
+      "present": 1
+    },
+    {
+      "path": "ODBC/Authentication@type",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Authentication@UserName",
+      "present": 1
+    },
+    {
+      "path": "ODBC/Filter",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@catalogName",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@schemaName",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@systemTable",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@tableName",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@tables",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@typeBasedFilter",
+      "present": 2
+    },
+    {
+      "path": "ODBC/Filter@views",
+      "present": 2
+    },
+    {
+      "path": "TagList",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 7
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 7
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 7
+    },
+    {
+      "path": "UUID@userName",
+      "present": 7
+    }
+  ]
+}

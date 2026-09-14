@@ -1,0 +1,140 @@
+{
+  "kindId": "layout-object:slidepanel",
+  "op": "read:layout",
+  "kind": "object:slidePanel",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "62",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "63",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "109",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "111",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "62",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "63",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "109",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "111",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 8
+    },
+    {
+      "path": "@id",
+      "present": 8
+    },
+    {
+      "path": "@kind",
+      "present": 8
+    },
+    {
+      "path": "@name",
+      "present": 8
+    },
+    {
+      "path": "@type",
+      "present": 8
+    },
+    {
+      "path": "Bounds",
+      "present": 8
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 8
+    },
+    {
+      "path": "Bounds@left",
+      "present": 8
+    },
+    {
+      "path": "Bounds@right",
+      "present": 8
+    },
+    {
+      "path": "Bounds@top",
+      "present": 8
+    },
+    {
+      "path": "Options",
+      "present": 8
+    },
+    {
+      "path": "SlidePanel/ObjectList",
+      "present": 2
+    },
+    {
+      "path": "SlidePanel/ObjectList@membercount",
+      "present": 8
+    },
+    {
+      "path": "SlidePanel/Options",
+      "present": 8
+    },
+    {
+      "path": "UUID",
+      "present": 8
+    }
+  ],
+  "fmType": {
+    "type": "slidePanel",
+    "control": null
+  }
+}

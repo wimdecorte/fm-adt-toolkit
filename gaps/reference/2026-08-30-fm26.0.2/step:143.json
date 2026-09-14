@@ -1,0 +1,248 @@
+{
+  "kindId": "step:143",
+  "op": "read:script",
+  "kind": "step:143",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "Records",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save Records as Excel"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Save Records as Excel",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save Records as Excel"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 10
+    },
+    {
+      "path": "@hash",
+      "present": 10
+    },
+    {
+      "path": "@id",
+      "present": 10
+    },
+    {
+      "path": "@index",
+      "present": 10
+    },
+    {
+      "path": "@name",
+      "present": 10
+    },
+    {
+      "path": "Options",
+      "present": 10
+    },
+    {
+      "path": "OwnerID",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Options",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Parameter@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Parameter/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Parameter/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Parameter/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Save",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Save@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Save@useFieldNames",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Save@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@AutoOpen",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@CreateMail",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@fileType",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Boolean",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Boolean@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Boolean@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Parameter@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Parameter/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Parameter/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/Excel/Parameter/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 10
+    }
+  ]
+}

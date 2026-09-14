@@ -1,0 +1,159 @@
+{
+  "kindId": "custom-function",
+  "op": "read:customFunction",
+  "kind": "customFunction",
+  "file": "CustomFunctionsCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "2",
+      "name": "OrderOfOperations",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "MyCustomFunctionParentFolder",
+      "context": {}
+    },
+    {
+      "id": "11",
+      "name": "GFN",
+      "context": {}
+    },
+    {
+      "id": "12",
+      "name": "GTN",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "GetExternalContainerPath",
+      "context": {}
+    },
+    {
+      "id": "14",
+      "name": "MyEmptyCustomFunctionFolder",
+      "context": {}
+    },
+    {
+      "id": "15",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "MyCustomFunctionFolder",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "GetFileMakerVersionMajor",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "GetFileMakerVersionMinor",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "GetFileMakerVersionPatch",
+      "context": {}
+    },
+    {
+      "id": "10",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "1",
+      "name": "MyCustomFunction",
+      "context": {}
+    },
+    {
+      "id": "16",
+      "name": "_NULL",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@access",
+      "present": 15
+    },
+    {
+      "path": "@id",
+      "present": 15
+    },
+    {
+      "path": "@isFolder",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 15
+    },
+    {
+      "path": "Calculation/DDRREF",
+      "present": 9
+    },
+    {
+      "path": "Calculation/DDRREF@hash",
+      "present": 9
+    },
+    {
+      "path": "Calculation/DDRREF@kind",
+      "present": 9
+    },
+    {
+      "path": "Calculation/Text",
+      "present": 9
+    },
+    {
+      "path": "Display",
+      "present": 15
+    },
+    {
+      "path": "ObjectList@membercount",
+      "present": 4
+    },
+    {
+      "path": "ObjectList/Parameter",
+      "present": 4
+    },
+    {
+      "path": "ObjectList/Parameter@name",
+      "present": 4
+    },
+    {
+      "path": "TagList",
+      "present": 15
+    },
+    {
+      "path": "UUID",
+      "present": 15
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 15
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 15
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 15
+    },
+    {
+      "path": "UUID@userName",
+      "present": 15
+    }
+  ]
+}

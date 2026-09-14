@@ -1,0 +1,60 @@
+{
+  "kindId": "part:title-footer",
+  "op": "read:layout",
+  "kind": "part:Title Footer",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "context": {
+        "layout": "My Layout for TestTable"
+      }
+    },
+    {
+      "id": "1",
+      "context": {
+        "layout": "My Layout for TestTable - Wim"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@kind",
+      "present": 2
+    },
+    {
+      "path": "@type",
+      "present": 2
+    },
+    {
+      "path": "Definition",
+      "present": 2
+    },
+    {
+      "path": "Definition@absolute",
+      "present": 2
+    },
+    {
+      "path": "Definition@kind",
+      "present": 2
+    },
+    {
+      "path": "Definition@Options",
+      "present": 2
+    },
+    {
+      "path": "Definition@size",
+      "present": 2
+    },
+    {
+      "path": "Definition@type",
+      "present": 2
+    },
+    {
+      "path": "ObjectList@membercount",
+      "present": 2
+    }
+  ]
+}

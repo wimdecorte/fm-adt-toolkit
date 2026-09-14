@@ -1,0 +1,252 @@
+{
+  "kindId": "step:87",
+  "op": "read:script",
+  "kind": "step:87",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "Hello world",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "Miscellaneous",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Show Custom Dialog"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Show Custom Dialog",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Show Custom Dialog"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 12
+    },
+    {
+      "path": "@hash",
+      "present": 12
+    },
+    {
+      "path": "@id",
+      "present": 12
+    },
+    {
+      "path": "@index",
+      "present": 12
+    },
+    {
+      "path": "@name",
+      "present": 12
+    },
+    {
+      "path": "Options",
+      "present": 12
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter@type",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable@value",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "SourceUUID",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 12
+    }
+  ]
+}

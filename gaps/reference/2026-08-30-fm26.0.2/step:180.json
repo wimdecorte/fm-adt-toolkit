@@ -1,0 +1,116 @@
+{
+  "kindId": "step:180",
+  "op": "read:script",
+  "kind": "step:180",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "Miscellaneous",
+        "stepName": "Refresh Portal"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Refresh Portal"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Refresh Portal"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Refresh Portal"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Refresh Portal"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Refresh Portal",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Refresh Portal"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Name/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Name/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Name/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

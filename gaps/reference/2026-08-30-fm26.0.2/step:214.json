@@ -1,0 +1,240 @@
+{
+  "kindId": "step:214",
+  "op": "read:script",
+  "kind": "step:214",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "Artificial Intelligence",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Perform SQL Query by Natural Language",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform SQL Query by Natural Language"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 9
+    },
+    {
+      "path": "@hash",
+      "present": 9
+    },
+    {
+      "path": "@id",
+      "present": 9
+    },
+    {
+      "path": "@index",
+      "present": 9
+    },
+    {
+      "path": "@name",
+      "present": 9
+    },
+    {
+      "path": "Options",
+      "present": 9
+    },
+    {
+      "path": "OwnerID",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter@type",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrence/TableOccurrenceReference",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrence/TableOccurrenceReference@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrence/TableOccurrenceReference@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrence/TableOccurrenceReference@UUID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable@value",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 9
+    }
+  ]
+}

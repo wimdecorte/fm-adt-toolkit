@@ -1,0 +1,280 @@
+{
+  "kindId": "step:218",
+  "op": "read:script",
+  "kind": "step:218",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "Artificial Intelligence",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Perform Semantic Find",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Semantic Find"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 11
+    },
+    {
+      "path": "@hash",
+      "present": 11
+    },
+    {
+      "path": "@id",
+      "present": 11
+    },
+    {
+      "path": "@index",
+      "present": 11
+    },
+    {
+      "path": "@name",
+      "present": 11
+    },
+    {
+      "path": "Options",
+      "present": 11
+    },
+    {
+      "path": "OwnerID",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable@value",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 11
+    }
+  ]
+}

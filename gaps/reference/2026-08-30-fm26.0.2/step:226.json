@@ -1,0 +1,124 @@
+{
+  "kindId": "step:226",
+  "op": "read:script",
+  "kind": "step:226",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "Artificial Intelligence",
+        "stepName": "Configure Prompt Template"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Configure Prompt Template"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Configure Prompt Template"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Configure Prompt Template"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Configure Prompt Template"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Configure Prompt Template",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Configure Prompt Template"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

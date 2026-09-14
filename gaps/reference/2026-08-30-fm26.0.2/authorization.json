@@ -1,0 +1,84 @@
+{
+  "kindId": "authorization",
+  "op": "read:authorization",
+  "kind": "authorization",
+  "file": "FileAccessCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "3",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 5
+    },
+    {
+      "path": "@type",
+      "present": 5
+    },
+    {
+      "path": "Authentication",
+      "present": 5
+    },
+    {
+      "path": "Display",
+      "present": 5
+    },
+    {
+      "path": "Source",
+      "present": 5
+    },
+    {
+      "path": "Source@CreationAccountName",
+      "present": 5
+    },
+    {
+      "path": "Source@CreationTimestamp",
+      "present": 5
+    },
+    {
+      "path": "TagList",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 5
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 5
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 5
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 5
+    },
+    {
+      "path": "UUID@userName",
+      "present": 5
+    }
+  ]
+}

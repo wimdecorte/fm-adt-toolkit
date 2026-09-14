@@ -1,0 +1,108 @@
+{
+  "kindId": "account:filemaker",
+  "op": "read:account",
+  "kind": "account:FileMaker",
+  "file": "AccountsCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "context": {}
+    },
+    {
+      "id": "14",
+      "context": {}
+    },
+    {
+      "id": "15",
+      "context": {}
+    },
+    {
+      "id": "17",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@kind",
+      "present": 6
+    },
+    {
+      "path": "@type",
+      "present": 6
+    },
+    {
+      "path": "Authentication/AccountName",
+      "present": 6
+    },
+    {
+      "path": "Authentication/ChangePasswordOnNextLogin",
+      "present": 1
+    },
+    {
+      "path": "Authentication/PasswordEncrypted/Context",
+      "present": 5
+    },
+    {
+      "path": "Authentication/PasswordEncrypted/Data",
+      "present": 5
+    },
+    {
+      "path": "Description",
+      "present": 6
+    },
+    {
+      "path": "PrivilegeSetReference",
+      "present": 6
+    },
+    {
+      "path": "PrivilegeSetReference@id",
+      "present": 6
+    },
+    {
+      "path": "PrivilegeSetReference@name",
+      "present": 6
+    },
+    {
+      "path": "TagList",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 6
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 6
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 6
+    },
+    {
+      "path": "UUID@userName",
+      "present": 6
+    }
+  ]
+}

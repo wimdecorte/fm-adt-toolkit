@@ -1,0 +1,136 @@
+{
+  "kindId": "step:166",
+  "op": "read:script",
+  "kind": "step:166",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "Windows",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Show/Hide Menubar"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Show/Hide Menubar",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Show/Hide Menubar"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

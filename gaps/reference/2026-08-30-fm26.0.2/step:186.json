@@ -1,0 +1,176 @@
+{
+  "kindId": "step:186",
+  "op": "read:script",
+  "kind": "step:186",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "<Unknown external script step from missing plug-in ( IpIn 23 )>",
+      "context": {
+        "script": "IP",
+        "stepName": "<Unknown external script step from missing plug-in ( IpIn 23 )>"
+      }
+    },
+    {
+      "id": "1",
+      "name": "MBS",
+      "context": {
+        "script": "MBS Plug-In",
+        "stepName": "MBS"
+      }
+    },
+    {
+      "id": "2",
+      "name": "MBS",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "MBS"
+      }
+    },
+    {
+      "id": "3",
+      "name": "MBS",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "MBS"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 4
+    },
+    {
+      "path": "@hash",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@index",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "External",
+      "present": 1
+    },
+    {
+      "path": "External@index",
+      "present": 4
+    },
+    {
+      "path": "External@selectAll",
+      "present": 4
+    },
+    {
+      "path": "External@Source",
+      "present": 4
+    },
+    {
+      "path": "External/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "External/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "External/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "External/FieldReference/repetition/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "External/FieldReference/repetition/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "External/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "External/PluginStep/Parameter",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@DataType",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@ID",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@Label",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@ShowInline",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@ShowInLine",
+      "present": 3
+    },
+    {
+      "path": "External/PluginStep/Parameter@Type",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 4
+    },
+    {
+      "path": "OwnerID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter@index",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    }
+  ]
+}

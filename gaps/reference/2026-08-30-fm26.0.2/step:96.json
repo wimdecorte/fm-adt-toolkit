@@ -1,0 +1,136 @@
+{
+  "kindId": "step:96",
+  "op": "read:script",
+  "kind": "step:96",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "Miscellaneous",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Save a Copy as Add-on Package",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Save a Copy as Add-on Package"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

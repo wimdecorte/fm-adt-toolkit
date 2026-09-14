@@ -1,0 +1,248 @@
+{
+  "kindId": "relation",
+  "op": "read:relation",
+  "kind": "relation",
+  "file": "RelationshipCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "context": {}
+    },
+    {
+      "id": "10",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList@membercount",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate@type",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference@id",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference@name",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference/TableOccurrenceReference",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference/TableOccurrenceReference@id",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference/TableOccurrenceReference@name",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/LeftField/FieldReference/TableOccurrenceReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference@id",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference@name",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference/TableOccurrenceReference",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference/TableOccurrenceReference@id",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference/TableOccurrenceReference@name",
+      "present": 10
+    },
+    {
+      "path": "JoinPredicateList/JoinPredicate/RightField/FieldReference/TableOccurrenceReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "LeftTable@cascadeCreate",
+      "present": 10
+    },
+    {
+      "path": "LeftTable@cascadeDelete",
+      "present": 10
+    },
+    {
+      "path": "LeftTable@type",
+      "present": 10
+    },
+    {
+      "path": "LeftTable/SortSpecification@blanksLast",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification@maintain",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification@value",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList@membercount",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort@type",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/SortSpecification/SortList/Sort/PrimaryField/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "LeftTable/TableOccurrenceReference",
+      "present": 10
+    },
+    {
+      "path": "LeftTable/TableOccurrenceReference@id",
+      "present": 10
+    },
+    {
+      "path": "LeftTable/TableOccurrenceReference@name",
+      "present": 10
+    },
+    {
+      "path": "LeftTable/TableOccurrenceReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "RightTable@cascadeCreate",
+      "present": 10
+    },
+    {
+      "path": "RightTable@cascadeDelete",
+      "present": 10
+    },
+    {
+      "path": "RightTable@type",
+      "present": 10
+    },
+    {
+      "path": "RightTable/TableOccurrenceReference",
+      "present": 10
+    },
+    {
+      "path": "RightTable/TableOccurrenceReference@id",
+      "present": 10
+    },
+    {
+      "path": "RightTable/TableOccurrenceReference@name",
+      "present": 10
+    },
+    {
+      "path": "RightTable/TableOccurrenceReference@UUID",
+      "present": 10
+    },
+    {
+      "path": "TagList",
+      "present": 10
+    },
+    {
+      "path": "UUID",
+      "present": 10
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 10
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 10
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 10
+    },
+    {
+      "path": "UUID@userName",
+      "present": 10
+    }
+  ]
+}

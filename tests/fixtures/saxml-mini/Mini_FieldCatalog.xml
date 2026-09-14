@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FMSaveAsXML version="2.3.0.0" Source="26.0.2" File="Mini.fmp12" UUID="0">
+<Structure><AddAction><FieldsForTables>
+<FieldCatalog>
+  <BaseTableReference id="129" name="T"/>
+  <ObjectList>
+    <Field id="6" name="F" fieldtype="Normal" datatype="Text" comment=""><UUID>x</UUID><Storage><Index>None</Index></Storage></Field>
+    <Field id="7" name="C" fieldtype="Normal" datatype="Container" comment=""><Storage><Container external="True"/></Storage></Field>
+  </ObjectList>
+</FieldCatalog>
+</FieldsForTables></AddAction></Structure>
+</FMSaveAsXML>

@@ -1,0 +1,172 @@
+{
+  "kindId": "file-options",
+  "op": "none",
+  "kind": "fileOptions",
+  "file": "Metadata",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@membercount",
+      "present": 1
+    },
+    {
+      "path": "Defaults/LayoutReference",
+      "present": 1
+    },
+    {
+      "path": "Defaults/LayoutReference@id",
+      "present": 1
+    },
+    {
+      "path": "Defaults/LayoutReference@name",
+      "present": 1
+    },
+    {
+      "path": "Defaults/LayoutReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "Encryption",
+      "present": 1
+    },
+    {
+      "path": "Encryption@type",
+      "present": 1
+    },
+    {
+      "path": "HideClientSharing",
+      "present": 1
+    },
+    {
+      "path": "HideClientSharing@enable",
+      "present": 1
+    },
+    {
+      "path": "HideWebDirectSharing",
+      "present": 1
+    },
+    {
+      "path": "HideWebDirectSharing@enable",
+      "present": 1
+    },
+    {
+      "path": "Login",
+      "present": 1
+    },
+    {
+      "path": "Login@type",
+      "present": 1
+    },
+    {
+      "path": "Minimum",
+      "present": 1
+    },
+    {
+      "path": "Minimum@value",
+      "present": 1
+    },
+    {
+      "path": "Minimum@version",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/Orientation",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/Orientation@name",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/Orientation@value",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/scale",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/scale@value",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/size",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/size@height",
+      "present": 1
+    },
+    {
+      "path": "PageSetup/size@width",
+      "present": 1
+    },
+    {
+      "path": "SavePassword",
+      "present": 1
+    },
+    {
+      "path": "SavePassword@keychain",
+      "present": 1
+    },
+    {
+      "path": "SavePassword@requireMobile",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers@membercount",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@action",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@browseMode",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@id",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@id",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@name",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ShowSignInFields",
+      "present": 1
+    },
+    {
+      "path": "ShowSignInFields@enable",
+      "present": 1
+    },
+    {
+      "path": "UseDefaultFields",
+      "present": 1
+    },
+    {
+      "path": "UseDefaultFields@enable",
+      "present": 1
+    }
+  ]
+}

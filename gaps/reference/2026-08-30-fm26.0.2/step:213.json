@@ -1,0 +1,172 @@
+{
+  "kindId": "step:213",
+  "op": "read:script",
+  "kind": "step:213",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Fine-Tune Model",
+      "context": {
+        "script": "Artificial Intelligence",
+        "stepName": "Fine-Tune Model"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Fine-Tune Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Fine-Tune Model"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Fine-Tune Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Fine-Tune Model"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Fine-Tune Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Fine-Tune Model"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Fine-Tune Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Fine-Tune Model"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 5
+    },
+    {
+      "path": "@hash",
+      "present": 5
+    },
+    {
+      "path": "@id",
+      "present": 5
+    },
+    {
+      "path": "@index",
+      "present": 5
+    },
+    {
+      "path": "@name",
+      "present": 5
+    },
+    {
+      "path": "Options",
+      "present": 5
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 5
+    }
+  ]
+}

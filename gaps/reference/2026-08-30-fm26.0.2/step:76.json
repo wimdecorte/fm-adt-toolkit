@@ -1,0 +1,268 @@
+{
+  "kindId": "step:76",
+  "op": "read:script",
+  "kind": "step:76",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Field",
+      "context": {
+        "script": "Decode base64 image",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Field",
+      "context": {
+        "script": "Constrain without indexes",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Set Field",
+      "context": {
+        "script": "Fields",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Set Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Set Field",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Field"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 20
+    },
+    {
+      "path": "@hash",
+      "present": 20
+    },
+    {
+      "path": "@id",
+      "present": 20
+    },
+    {
+      "path": "@index",
+      "present": 20
+    },
+    {
+      "path": "@name",
+      "present": 20
+    },
+    {
+      "path": "Options",
+      "present": 20
+    },
+    {
+      "path": "OwnerID",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 12
+    },
+    {
+      "path": "SourceUUID",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 20
+    }
+  ]
+}

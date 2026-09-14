@@ -1,0 +1,156 @@
+{
+  "kindId": "step:18",
+  "op": "read:script",
+  "kind": "step:18",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Check Selection",
+      "context": {
+        "script": "Spelling",
+        "stepName": "Check Selection"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Check Selection",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Check Selection"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Check Selection",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Check Selection"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Check Selection",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Check Selection"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Check Selection",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Check Selection"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Check Selection",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Check Selection"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

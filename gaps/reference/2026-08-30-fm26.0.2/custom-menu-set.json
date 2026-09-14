@@ -1,0 +1,74 @@
+{
+  "kindId": "custom-menu-set",
+  "op": "read:customMenuSet",
+  "kind": "customMenuSet",
+  "file": "CustomMenuSetCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "2",
+      "name": "MyCustomMenuSet",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "SecondCustomMenuSet",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 2
+    },
+    {
+      "path": "@id",
+      "present": 2
+    },
+    {
+      "path": "@name",
+      "present": 2
+    },
+    {
+      "path": "CustomMenuList@membercount",
+      "present": 2
+    },
+    {
+      "path": "CustomMenuList/CustomMenuReference",
+      "present": 2
+    },
+    {
+      "path": "CustomMenuList/CustomMenuReference@id",
+      "present": 2
+    },
+    {
+      "path": "CustomMenuList/CustomMenuReference@name",
+      "present": 2
+    },
+    {
+      "path": "TagList",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 2
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 2
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 2
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 2
+    },
+    {
+      "path": "UUID@userName",
+      "present": 2
+    }
+  ]
+}

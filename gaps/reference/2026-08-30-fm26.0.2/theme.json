@@ -1,0 +1,595 @@
+{
+  "kindId": "theme",
+  "op": "none",
+  "kind": "theme",
+  "file": "ThemeCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "com.filemaker.theme.custom.A2E1567C_3C83_4902_AE0C_8DF012467D56",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "com.filemaker.theme.custom.652F8B0F_1C44_4213_95C6_F833E0F68CF6",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "com.filemaker.theme.minimalist",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@baseName",
+      "present": 2
+    },
+    {
+      "path": "@baseVersion",
+      "present": 2
+    },
+    {
+      "path": "@defaultTheme",
+      "present": 1
+    },
+    {
+      "path": "@Display",
+      "present": 3
+    },
+    {
+      "path": "@Group",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@locale",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "@platform",
+      "present": 3
+    },
+    {
+      "path": "@version",
+      "present": 3
+    },
+    {
+      "path": "Metadata/charting/colorScheme",
+      "present": 3
+    },
+    {
+      "path": "Metadata/colorpalette/swatch1",
+      "present": 2
+    },
+    {
+      "path": "Metadata/colorpalette/swatch2",
+      "present": 2
+    },
+    {
+      "path": "Metadata/colorpalette/swatch3",
+      "present": 2
+    },
+    {
+      "path": "Metadata/colorpalette/swatch4",
+      "present": 2
+    },
+    {
+      "path": "Metadata/colorpalette/swatch5",
+      "present": 2
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBackgroundPaddingBottom",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBackgroundPaddingLeft",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBackgroundPaddingRight",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBackgroundPaddingTop",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBaseFontSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBodyMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBodyPartPaddingBottom",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBodyPartPaddingTop",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kBottomNavPartMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kFirstPartPaddingTop",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kFooterMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kHeaderMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kLastPartPaddingBottom",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kLeadingPartPaddingBottom",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kLeadingPartPaddingTop",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kPartPaddingLeft",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kPartPaddingRight",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kReportBreakFieldIndent",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kSummaryPartMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kTitleFooterMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kTitleHeaderMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kTopNavPartMinSize",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kTrailingPartPaddingBottom",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kTrailingPartPaddingTop",
+      "present": 3
+    },
+    {
+      "path": "Metadata/layoutbuilder/kVerticalFieldSpacing",
+      "present": 3
+    },
+    {
+      "path": "Metadata/namedstyles/alternating_part",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/alternating_underlined_part",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/background_black",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/background_dark",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/background_gray",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/background_white",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/bordered_bottom",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/bordered_top",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/bordered_webview",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/center_aligned_field",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/colored_dot_control",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/colored_part",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/developer_note",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/faded_gray_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/faded_gray_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/filled_header_rect",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/filled_inverse_left_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/filled_portal",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/filled_white_rect",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/FM-38B338BC-4795-4BF4-902F-3D14983EC456",
+      "present": 1
+    },
+    {
+      "path": "Metadata/namedstyles/FM-413A4E13-09BF-4799-B66D-27BE078F05E7",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/giant_text_bordered",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/gray_line",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/hover_primary_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/inverse_transparent_border_right_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/inverse_transparent_borderless_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/inverse_transparent_borderless_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/inverse_transparent_divided_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/inverse_transparent_left_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/large_filled",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/large_filled_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/large_inverted_strong_text_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/large_inverted_text_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/large_text",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/left_aligned_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/left_aligned_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/light_gray_part",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/medium_bottom_primary",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/medium_inverted_centered_text",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/medium_strong_field",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/medium_valigned_bottom_editbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/medium_valigned_btmright_editbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/part_dark_gray",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/part_gray",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/part_gray_top_bottom",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/pill_edit_box_field",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/primary_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/primary_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/primary_line",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/right_aligned_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/right_aligned_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/right_aligned_field",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/right_aligned_indented_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/row_lines_portal",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/shadow_rect",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/single_alt_checkbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/single_checkbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/small_bottom_aligned_text",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/small_center_aligned_text",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/small_valigned_top_editbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_bar_left",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_bar_right",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_inverse_left_text_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/tinted_black_rect",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/top_line_container",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/top_line_dropdown",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/top_line_edit_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/top_line_popup",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_bar_left",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_bordered",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_bordered_center_container",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_calendar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_centered_edit_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_checkbox",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_container",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_drop_down",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_edit_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_footer_navigation_button_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_left_indented_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_pop_up",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_popover",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_portal",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_radio",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_right_edit_box",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_slider",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_tab_panel",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/transparent_web_viewer",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/underlined_inverse_bar",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/underlined_part",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/warning_button",
+      "present": 2
+    },
+    {
+      "path": "Metadata/namedstyles/white_part",
+      "present": 2
+    },
+    {
+      "path": "TagList",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 3
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 3
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 3
+    },
+    {
+      "path": "UUID@userName",
+      "present": 3
+    }
+  ]
+}

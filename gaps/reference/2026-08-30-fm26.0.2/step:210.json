@@ -1,0 +1,188 @@
+{
+  "kindId": "step:210",
+  "op": "read:script",
+  "kind": "step:210",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "Control",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Perform Script on Server with Callback",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Perform Script on Server with Callback"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/CallbackScriptReference",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/CallbackScriptReference@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/CallbackScriptReference@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/CallbackScriptReference@UUID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List/ScriptReference",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List/ScriptReference@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List/ScriptReference@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List/ScriptReference@UUID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter@type",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

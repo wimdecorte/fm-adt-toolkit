@@ -1,0 +1,128 @@
+{
+  "kindId": "step:123",
+  "op": "read:script",
+  "kind": "step:123",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Select Window",
+      "context": {
+        "script": "Capture_WindowUUID",
+        "stepName": "Select Window"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Select Window",
+      "context": {
+        "script": "Windows",
+        "stepName": "Select Window"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Select Window",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Select Window"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Select Window",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Select Window"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Select Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Select Window"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Select Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Select Window"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select@kind",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name@current",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

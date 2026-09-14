@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FMSaveAsXML version="2.3.0.0" Source="26.0.2" File="Mini.fmp12" UUID="00000000-0000-0000-0000-000000000000">
+<Structure><AddAction>
+<LayoutCatalog>
+<UUID>1</UUID>
+<Layout id="11" name="Home" width="740">
+  <TableOccurrenceReference id="1065089" name="T"/>
+  <Options>0</Options>
+  <PartsList>
+    <Part type="Body" kind="4">
+      <Definition type="Body" kind="4" size="450" absolute="0" Options="1024"/>
+      <ObjectList>
+        <LayoutObject hash="A" id="21" type="Edit Box" name="" kind="1">
+          <Bounds top="316" left="214" bottom="347" right="315"/>
+          <Options><Locked>False</Locked></Options>
+          <Field><FieldReference id="12" name="T::F"/></Field>
+        </LayoutObject>
+        <LayoutObject hash="B" id="22" type="Text" name="" kind="2">
+          <Bounds top="10" left="10" bottom="20" right="200"/>
+          <TextObj><Style/></TextObj>
+        </LayoutObject>
+        <LayoutObject hash="C" id="23" type="Group" name="g" kind="8">
+          <Bounds top="1" left="1" bottom="2" right="2"/>
+          <ObjectList>
+            <LayoutObject hash="D" id="24" type="Text" name="" kind="2"><Bounds top="1" left="1" bottom="2" right="2"/></LayoutObject>
+          </ObjectList>
+        </LayoutObject>
+      </ObjectList>
+    </Part>
+  </PartsList>
+</Layout>
+<Layout id="12" name="List" width="740">
+  <TableOccurrenceReference id="1065089" name="T"/>
+  <PartsList><Part type="Header" kind="1"><Definition type="Header" kind="1" size="40" absolute="0" Options="0"/></Part></PartsList>
+</Layout>
+</LayoutCatalog>
+</AddAction></Structure>
+</FMSaveAsXML>

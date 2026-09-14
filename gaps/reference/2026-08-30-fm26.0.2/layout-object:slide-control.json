@@ -1,0 +1,104 @@
+{
+  "kindId": "layout-object:slide-control",
+  "op": "read:layout",
+  "kind": "object:Slide Control",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "60",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "108",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "60",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "108",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@kind",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "@type",
+      "present": 4
+    },
+    {
+      "path": "Bounds",
+      "present": 4
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 4
+    },
+    {
+      "path": "Bounds@left",
+      "present": 4
+    },
+    {
+      "path": "Bounds@right",
+      "present": 4
+    },
+    {
+      "path": "Bounds@top",
+      "present": 4
+    },
+    {
+      "path": "Options",
+      "present": 4
+    },
+    {
+      "path": "SlideControl/ObjectList@membercount",
+      "present": 4
+    },
+    {
+      "path": "SlideControl/Options",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    }
+  ],
+  "fmType": {
+    "type": "slideControl",
+    "control": null
+  }
+}

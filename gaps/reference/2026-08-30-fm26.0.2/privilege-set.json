@@ -1,0 +1,551 @@
+{
+  "kindId": "privilege-set",
+  "op": "read:privilegeSet",
+  "kind": "privilegeSet",
+  "file": "PrivilegeSetsCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "[Full Access]",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "[Data Entry Only]",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "[Read-Only Access]",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "MyRestrictedPrivilegeSet",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "MyPrivSet2",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "NoAccessPrivSet",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "restapi",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "access@default",
+      "present": 3
+    },
+    {
+      "path": "access/Layouts",
+      "present": 5
+    },
+    {
+      "path": "access/Layouts@Create",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts@Custom",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts@Delete",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts@Edit",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts@View",
+      "present": 3
+    },
+    {
+      "path": "access/Layouts/Custom@Create",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList@membercount",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout@access",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout@records",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout@type",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout/LayoutReference",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout/LayoutReference@id",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout/LayoutReference@name",
+      "present": 2
+    },
+    {
+      "path": "access/Layouts/Custom/ObjectList/Layout/LayoutReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "access/Other@allowOpenQuickly",
+      "present": 7
+    },
+    {
+      "path": "access/Other@allowOverride",
+      "present": 7
+    },
+    {
+      "path": "access/Other@commands",
+      "present": 7
+    },
+    {
+      "path": "access/Other@disconnectIdle",
+      "present": 7
+    },
+    {
+      "path": "access/Other@Export",
+      "present": 7
+    },
+    {
+      "path": "access/Other@manageAccounts",
+      "present": 7
+    },
+    {
+      "path": "access/Other@manageCustomMenus",
+      "present": 7
+    },
+    {
+      "path": "access/Other@manageDatabase",
+      "present": 7
+    },
+    {
+      "path": "access/Other@manageExtPrivs",
+      "present": 7
+    },
+    {
+      "path": "access/Other@Print",
+      "present": 7
+    },
+    {
+      "path": "access/Other@value",
+      "present": 7
+    },
+    {
+      "path": "access/Other/Password",
+      "present": 7
+    },
+    {
+      "path": "access/Other/Password@interval",
+      "present": 1
+    },
+    {
+      "path": "access/Other/Password@Minimum",
+      "present": 1
+    },
+    {
+      "path": "access/Other/Password@prohibitModification",
+      "present": 7
+    },
+    {
+      "path": "access/Records",
+      "present": 5
+    },
+    {
+      "path": "access/Records@Create",
+      "present": 4
+    },
+    {
+      "path": "access/Records@Custom",
+      "present": 2
+    },
+    {
+      "path": "access/Records@Delete",
+      "present": 4
+    },
+    {
+      "path": "access/Records@Edit",
+      "present": 4
+    },
+    {
+      "path": "access/Records@View",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList@membercount",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table@type",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/BaseTableReference",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/BaseTableReference@id",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/BaseTableReference@name",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/BaseTableReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Create",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Create@access",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete@access",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/DDRREF",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/DDRREF@hash",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/DDRREF@kind",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Delete/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit@access",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/DDRREF",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/DDRREF@hash",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/DDRREF@kind",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Edit/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields@access",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field@access",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field@type",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference/BaseTableReference",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference/BaseTableReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference/BaseTableReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/Fields/Field/FieldReference/BaseTableReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View@access",
+      "present": 2
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/DDRREF",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/DDRREF@hash",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/DDRREF@kind",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "access/Records/Custom/ObjectList/Table/View/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "access/Scripts",
+      "present": 5
+    },
+    {
+      "path": "access/Scripts@Create",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts@Custom",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts@Delete",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts@Edit",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts@View",
+      "present": 3
+    },
+    {
+      "path": "access/Scripts/Custom@Create",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList@membercount",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script@access",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script@type",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script/ScriptReference",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script/ScriptReference@id",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script/ScriptReference@name",
+      "present": 2
+    },
+    {
+      "path": "access/Scripts/Custom/ObjectList/Script/ScriptReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "access/ValueLists",
+      "present": 6
+    },
+    {
+      "path": "access/ValueLists@Create",
+      "present": 3
+    },
+    {
+      "path": "access/ValueLists@Custom",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists@Delete",
+      "present": 3
+    },
+    {
+      "path": "access/ValueLists@Edit",
+      "present": 3
+    },
+    {
+      "path": "access/ValueLists@View",
+      "present": 3
+    },
+    {
+      "path": "access/ValueLists/Custom@Create",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList@membercount",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList@access",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList@type",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList/ValueListReference",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList/ValueListReference@id",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList/ValueListReference@name",
+      "present": 1
+    },
+    {
+      "path": "access/ValueLists/Custom/ObjectList/ValueList/ValueListReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "Description",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 7
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 7
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 7
+    },
+    {
+      "path": "UUID@userName",
+      "present": 7
+    }
+  ]
+}

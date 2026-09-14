@@ -1,0 +1,120 @@
+{
+  "kindId": "step:178",
+  "op": "read:script",
+  "kind": "step:178",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "Miscellaneous",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "1",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "2",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "3",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "4",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "5",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    },
+    {
+      "id": "6",
+      "name": "AVPlayer Set Playback State",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "AVPlayer Set Playback State"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

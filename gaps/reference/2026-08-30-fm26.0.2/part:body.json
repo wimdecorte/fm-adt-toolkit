@@ -1,0 +1,156 @@
+{
+  "kindId": "part:body",
+  "op": "read:layout",
+  "kind": "part:Body",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "context": {
+        "layout": "File Open"
+      }
+    },
+    {
+      "id": "1",
+      "context": {
+        "layout": "table_with_custom_row_height"
+      }
+    },
+    {
+      "id": "2",
+      "context": {
+        "layout": "printing"
+      }
+    },
+    {
+      "id": "3",
+      "context": {
+        "layout": "My Layout for TestTable"
+      }
+    },
+    {
+      "id": "4",
+      "context": {
+        "layout": "accessibility"
+      }
+    },
+    {
+      "id": "5",
+      "context": {
+        "layout": "-"
+      }
+    },
+    {
+      "id": "6",
+      "context": {
+        "layout": "Contacts"
+      }
+    },
+    {
+      "id": "7",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext"
+      }
+    },
+    {
+      "id": "8",
+      "context": {
+        "layout": "My Layout for TestTable - Wim"
+      }
+    },
+    {
+      "id": "9",
+      "context": {
+        "layout": "FM26Test"
+      }
+    },
+    {
+      "id": "10",
+      "context": {
+        "layout": "FM26Test_Source"
+      }
+    },
+    {
+      "id": "11",
+      "context": {
+        "layout": "summary_fields"
+      }
+    },
+    {
+      "id": "12",
+      "context": {
+        "layout": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "13",
+      "context": {
+        "layout": "dateTime_calcs"
+      }
+    },
+    {
+      "id": "14",
+      "context": {
+        "layout": "LLM_tagged_fields"
+      }
+    },
+    {
+      "id": "15",
+      "context": {
+        "layout": "index_languages"
+      }
+    },
+    {
+      "id": "16",
+      "context": {
+        "layout": "furigama"
+      }
+    },
+    {
+      "id": "17",
+      "context": {
+        "layout": "validation"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@kind",
+      "present": 18
+    },
+    {
+      "path": "@type",
+      "present": 18
+    },
+    {
+      "path": "Definition",
+      "present": 18
+    },
+    {
+      "path": "Definition@absolute",
+      "present": 18
+    },
+    {
+      "path": "Definition@kind",
+      "present": 18
+    },
+    {
+      "path": "Definition@Options",
+      "present": 18
+    },
+    {
+      "path": "Definition@size",
+      "present": 18
+    },
+    {
+      "path": "Definition@type",
+      "present": 18
+    },
+    {
+      "path": "ObjectList@membercount",
+      "present": 14
+    }
+  ]
+}

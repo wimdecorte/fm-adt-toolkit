@@ -1,0 +1,1152 @@
+{
+  "kindId": "step:141",
+  "op": "read:script",
+  "kind": "step:141",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Variable",
+      "context": {
+        "script": "Capture_WindowUUID",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Set Variable",
+      "context": {
+        "script": "Control",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Set Variable",
+      "context": {
+        "script": "complex_calc",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "30",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "31",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "32",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "33",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "34",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "35",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "36",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "37",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "38",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "39",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "40",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "41",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "42",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "43",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "44",
+      "name": "Set Variable",
+      "context": {
+        "script": "calc_examples",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "45",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "46",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "47",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "48",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "49",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "50",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "51",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "52",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "53",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "54",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "55",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "56",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "57",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "58",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "59",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "60",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "61",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "62",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "63",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "64",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "65",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "66",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "67",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "68",
+      "name": "Set Variable",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "69",
+      "name": "Set Variable",
+      "context": {
+        "script": "all_functions",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "70",
+      "name": "Set Variable",
+      "context": {
+        "script": "all_functions",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "71",
+      "name": "Set Variable",
+      "context": {
+        "script": "all_functions",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "72",
+      "name": "Set Variable",
+      "context": {
+        "script": "all_functions",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "73",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "74",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "75",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "76",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "77",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "78",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "79",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "80",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "81",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "82",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "83",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "84",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "85",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "86",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "87",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "88",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "89",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "90",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "91",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "92",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "93",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "94",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "95",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "96",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "97",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "98",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "99",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "100",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "101",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "102",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "103",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "104",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "105",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "106",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "107",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "108",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "109",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "110",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "111",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "112",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "113",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "114",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "115",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "116",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "117",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "118",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "119",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "120",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "121",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "122",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "123",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "124",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "125",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "126",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "127",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "128",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "129",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "130",
+      "name": "Set Variable",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "stepName": "Set Variable"
+      }
+    },
+    {
+      "id": "131",
+      "name": "Set Variable",
+      "context": {
+        "script": "complex_calc 2",
+        "stepName": "Set Variable"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 132
+    },
+    {
+      "path": "@hash",
+      "present": 132
+    },
+    {
+      "path": "@id",
+      "present": 132
+    },
+    {
+      "path": "@index",
+      "present": 132
+    },
+    {
+      "path": "@name",
+      "present": 132
+    },
+    {
+      "path": "Options",
+      "present": 132
+    },
+    {
+      "path": "OwnerID",
+      "present": 74
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 132
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 132
+    },
+    {
+      "path": "ParameterValues/Parameter/Name",
+      "present": 132
+    },
+    {
+      "path": "ParameterValues/Parameter/Name@value",
+      "present": 132
+    },
+    {
+      "path": "ParameterValues/Parameter/repetition",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/repetition/Calculation@datatype",
+      "present": 108
+    },
+    {
+      "path": "ParameterValues/Parameter/repetition/Calculation@position",
+      "present": 108
+    },
+    {
+      "path": "ParameterValues/Parameter/repetition/Calculation/Calculation/Text",
+      "present": 108
+    },
+    {
+      "path": "ParameterValues/Parameter/value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/value/Calculation@datatype",
+      "present": 127
+    },
+    {
+      "path": "ParameterValues/Parameter/value/Calculation@position",
+      "present": 127
+    },
+    {
+      "path": "ParameterValues/Parameter/value/Calculation/Calculation/Text",
+      "present": 127
+    },
+    {
+      "path": "SourceUUID",
+      "present": 58
+    },
+    {
+      "path": "UUID",
+      "present": 132
+    }
+  ]
+}

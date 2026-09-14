@@ -1,0 +1,121 @@
+{
+  "kindId": "table",
+  "op": "read:table",
+  "kind": "table",
+  "file": "BaseTableCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "129",
+      "name": "TestTable",
+      "context": {}
+    },
+    {
+      "id": "131",
+      "name": "Contacts",
+      "context": {}
+    },
+    {
+      "id": "132",
+      "name": "blank",
+      "context": {}
+    },
+    {
+      "id": "135",
+      "name": "SaXMLDelivery",
+      "context": {}
+    },
+    {
+      "id": "136",
+      "name": "FM26Test",
+      "context": {}
+    },
+    {
+      "id": "137",
+      "name": "FM26Test_Source",
+      "context": {}
+    },
+    {
+      "id": "139",
+      "name": "summary_fields",
+      "context": {}
+    },
+    {
+      "id": "140",
+      "name": "autoEnter_fields",
+      "context": {}
+    },
+    {
+      "id": "141",
+      "name": "dateTime_calcs",
+      "context": {}
+    },
+    {
+      "id": "142",
+      "name": "LLM_tagged_fields",
+      "context": {}
+    },
+    {
+      "id": "143",
+      "name": "index_languages",
+      "context": {}
+    },
+    {
+      "id": "144",
+      "name": "furigama",
+      "context": {}
+    },
+    {
+      "id": "145",
+      "name": "validation",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 13
+    },
+    {
+      "path": "@id",
+      "present": 13
+    },
+    {
+      "path": "@name",
+      "present": 13
+    },
+    {
+      "path": "OwnerID",
+      "present": 1
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "TagList",
+      "present": 13
+    },
+    {
+      "path": "UUID",
+      "present": 13
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 13
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 13
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 13
+    },
+    {
+      "path": "UUID@userName",
+      "present": 13
+    }
+  ]
+}

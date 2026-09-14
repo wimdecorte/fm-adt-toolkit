@@ -1,0 +1,92 @@
+{
+  "kindId": "layout-object:button-bar",
+  "op": "read:layout",
+  "kind": "object:Button Bar",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "47",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "47",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 2
+    },
+    {
+      "path": "@id",
+      "present": 2
+    },
+    {
+      "path": "@kind",
+      "present": 2
+    },
+    {
+      "path": "@name",
+      "present": 2
+    },
+    {
+      "path": "@type",
+      "present": 2
+    },
+    {
+      "path": "Bounds",
+      "present": 2
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 2
+    },
+    {
+      "path": "Bounds@left",
+      "present": 2
+    },
+    {
+      "path": "Bounds@right",
+      "present": 2
+    },
+    {
+      "path": "Bounds@top",
+      "present": 2
+    },
+    {
+      "path": "ButtonBar/ObjectList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ButtonBar/Options",
+      "present": 2
+    },
+    {
+      "path": "ButtonBar/Select/id",
+      "present": 2
+    },
+    {
+      "path": "Options",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 2
+    }
+  ],
+  "fmType": {
+    "type": "buttonBar",
+    "control": null
+  }
+}

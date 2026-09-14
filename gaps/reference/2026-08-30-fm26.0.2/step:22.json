@@ -1,0 +1,172 @@
+{
+  "kindId": "step:22",
+  "op": "read:script",
+  "kind": "step:22",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "Constrain without indexes",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "Navigation",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Enter Find Mode"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Enter Find Mode",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "stepName": "Enter Find Mode"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 10
+    },
+    {
+      "path": "@hash",
+      "present": 10
+    },
+    {
+      "path": "@id",
+      "present": 10
+    },
+    {
+      "path": "@index",
+      "present": 10
+    },
+    {
+      "path": "@name",
+      "present": 10
+    },
+    {
+      "path": "Options",
+      "present": 10
+    },
+    {
+      "path": "OwnerID",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/FindRequestSet@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FindRequestSet/FindRequest",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FindRequestSet/FindRequest@action",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FindRequestSet/FindRequest@index",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FindRequestSet/FindRequest@membercount",
+      "present": 2
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 10
+    }
+  ]
+}

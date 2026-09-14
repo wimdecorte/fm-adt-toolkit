@@ -1,0 +1,156 @@
+{
+  "kindId": "step:188",
+  "op": "read:script",
+  "kind": "step:188",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Get File Exists",
+      "context": {
+        "script": "Files",
+        "stepName": "Get File Exists"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Get File Exists",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Get File Exists"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Get File Exists",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Get File Exists"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Get File Exists",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Get File Exists"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Get File Exists",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Get File Exists"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Get File Exists",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Get File Exists"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable@value",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "kindId": "layout",
+  "op": "read:layout",
+  "kind": "layout",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "11",
+      "name": "File Open",
+      "context": {}
+    },
+    {
+      "id": "31",
+      "name": "table_with_custom_row_height",
+      "context": {}
+    },
+    {
+      "id": "33",
+      "name": "printing",
+      "context": {}
+    },
+    {
+      "id": "1",
+      "name": "My Layout for TestTable",
+      "context": {}
+    },
+    {
+      "id": "27",
+      "name": "accessibility",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "-",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "MyLayoutFolder",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "EmptyLayoutFolder",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "MyLayoutSubfolder",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "Contacts",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "18",
+      "name": "SaXMLDelivery",
+      "context": {}
+    },
+    {
+      "id": "19",
+      "name": "SaXMLDeliveryExecutionContext",
+      "context": {}
+    },
+    {
+      "id": "20",
+      "name": "--",
+      "context": {}
+    },
+    {
+      "id": "21",
+      "name": "My Layout for TestTable - Wim",
+      "context": {}
+    },
+    {
+      "id": "22",
+      "name": "FM26Test",
+      "context": {}
+    },
+    {
+      "id": "23",
+      "name": "FM26Test_Source",
+      "context": {}
+    },
+    {
+      "id": "24",
+      "name": "summary_fields",
+      "context": {}
+    },
+    {
+      "id": "25",
+      "name": "autoEnter_fields",
+      "context": {}
+    },
+    {
+      "id": "26",
+      "name": "dateTime_calcs",
+      "context": {}
+    },
+    {
+      "id": "28",
+      "name": "LLM_tagged_fields",
+      "context": {}
+    },
+    {
+      "id": "29",
+      "name": "index_languages",
+      "context": {}
+    },
+    {
+      "id": "30",
+      "name": "furigama",
+      "context": {}
+    },
+    {
+      "id": "32",
+      "name": "validation",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 26
+    },
+    {
+      "path": "@isFolder",
+      "present": 8
+    },
+    {
+      "path": "@isSeparatorItem",
+      "present": 1
+    },
+    {
+      "path": "@name",
+      "present": 26
+    },
+    {
+      "path": "@width",
+      "present": 18
+    },
+    {
+      "path": "ClientType",
+      "present": 26
+    },
+    {
+      "path": "ColumnCount",
+      "present": 1
+    },
+    {
+      "path": "FixedMargins",
+      "present": 1
+    },
+    {
+      "path": "FixedMargins@bottom",
+      "present": 1
+    },
+    {
+      "path": "FixedMargins@left",
+      "present": 1
+    },
+    {
+      "path": "FixedMargins@right",
+      "present": 1
+    },
+    {
+      "path": "FixedMargins@top",
+      "present": 1
+    },
+    {
+      "path": "GridStyle/Color",
+      "present": 26
+    },
+    {
+      "path": "GridStyle/Color@alpha",
+      "present": 26
+    },
+    {
+      "path": "GridStyle/Color@blue",
+      "present": 26
+    },
+    {
+      "path": "GridStyle/Color@green",
+      "present": 26
+    },
+    {
+      "path": "GridStyle/Color@red",
+      "present": 26
+    },
+    {
+      "path": "GridStyle/Style",
+      "present": 26
+    },
+    {
+      "path": "LayoutThemeReference",
+      "present": 18
+    },
+    {
+      "path": "LayoutThemeReference@Base",
+      "present": 18
+    },
+    {
+      "path": "LayoutThemeReference@Display",
+      "present": 17
+    },
+    {
+      "path": "LayoutThemeReference@id",
+      "present": 18
+    },
+    {
+      "path": "LayoutThemeReference@name",
+      "present": 18
+    },
+    {
+      "path": "LayoutThemeReference@UUID",
+      "present": 18
+    },
+    {
+      "path": "MenuSet/CustomMenuSetReference",
+      "present": 26
+    },
+    {
+      "path": "MenuSet/CustomMenuSetReference@id",
+      "present": 26
+    },
+    {
+      "path": "MenuSet/CustomMenuSetReference@name",
+      "present": 26
+    },
+    {
+      "path": "MenuSet/CustomMenuSetReference@UUID",
+      "present": 26
+    },
+    {
+      "path": "Options",
+      "present": 26
+    },
+    {
+      "path": "Options@hidden",
+      "present": 26
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "RowHeight",
+      "present": 1
+    },
+    {
+      "path": "ScriptTriggers@membercount",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@action",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@browseMode",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@findMode",
+      "present": 2
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@id",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger@previewMode",
+      "present": 2
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@id",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@name",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF@hash",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF@kind",
+      "present": 3
+    },
+    {
+      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "SourceUUID",
+      "present": 3
+    },
+    {
+      "path": "TableOccurrenceReference",
+      "present": 18
+    },
+    {
+      "path": "TableOccurrenceReference@id",
+      "present": 18
+    },
+    {
+      "path": "TableOccurrenceReference@name",
+      "present": 18
+    },
+    {
+      "path": "TableOccurrenceReference@UUID",
+      "present": 18
+    },
+    {
+      "path": "TableView/ObjectList@membercount",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject@hidden",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject@id",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject@name",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject@width",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference@id",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference@name",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference@repetition",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference@UUID",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference/TableOccurrenceReference",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference/TableOccurrenceReference@id",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference/TableOccurrenceReference@name",
+      "present": 14
+    },
+    {
+      "path": "TableView/ObjectList/TableViewLayoutObject/FieldReference/TableOccurrenceReference@UUID",
+      "present": 14
+    },
+    {
+      "path": "TagList",
+      "present": 26
+    },
+    {
+      "path": "UUID",
+      "present": 26
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 26
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 26
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 26
+    },
+    {
+      "path": "UUID@userName",
+      "present": 26
+    }
+  ]
+}

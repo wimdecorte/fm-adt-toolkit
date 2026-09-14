@@ -1,0 +1,260 @@
+{
+  "kindId": "step:16",
+  "op": "read:script",
+  "kind": "step:16",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "Navigation",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Go to Record/Request/Page",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Go to Record/Request/Page"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 21
+    },
+    {
+      "path": "@hash",
+      "present": 21
+    },
+    {
+      "path": "@id",
+      "present": 21
+    },
+    {
+      "path": "@index",
+      "present": 21
+    },
+    {
+      "path": "@name",
+      "present": 21
+    },
+    {
+      "path": "Options",
+      "present": 21
+    },
+    {
+      "path": "OwnerID",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@position",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@type",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@value",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@datatype",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@position",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation/Calculation/Text",
+      "present": 8
+    },
+    {
+      "path": "UUID",
+      "present": 21
+    }
+  ]
+}

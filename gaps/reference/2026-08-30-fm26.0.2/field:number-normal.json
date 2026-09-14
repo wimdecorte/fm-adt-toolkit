@@ -1,0 +1,237 @@
+{
+  "kindId": "field:number-normal",
+  "op": "read:field",
+  "kind": "field:Number/Normal",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "22",
+      "name": "SerialNumberOnCreateIncBy1",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "23",
+      "name": "SerialNumberOnCommitIncBy10",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "10",
+      "name": "serialNumber_onCreate",
+      "context": {
+        "table": "Contacts"
+      }
+    },
+    {
+      "id": "11",
+      "name": "serialNumber_onCommit",
+      "context": {
+        "table": "Contacts"
+      }
+    },
+    {
+      "id": "5",
+      "name": "sizeInBytes",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "8",
+      "name": "input_number",
+      "context": {
+        "table": "summary_fields"
+      }
+    },
+    {
+      "id": "16",
+      "name": "nbr_serial_onCreate",
+      "context": {
+        "table": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "17",
+      "name": "nbr_serial_onCommit",
+      "context": {
+        "table": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "18",
+      "name": "nbr_serial_onCommit_differentStart",
+      "context": {
+        "table": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "19",
+      "name": "nbr_serial_onCommit_differentStart_differentIncrement",
+      "context": {
+        "table": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "6",
+      "name": "numeric_strict",
+      "context": {
+        "table": "validation"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 11
+    },
+    {
+      "path": "@datatype",
+      "present": 11
+    },
+    {
+      "path": "@fieldtype",
+      "present": 11
+    },
+    {
+      "path": "@id",
+      "present": 11
+    },
+    {
+      "path": "@name",
+      "present": 11
+    },
+    {
+      "path": "Annotation",
+      "present": 11
+    },
+    {
+      "path": "AutoEnter",
+      "present": 3
+    },
+    {
+      "path": "AutoEnter@prohibitModification",
+      "present": 11
+    },
+    {
+      "path": "AutoEnter@type",
+      "present": 11
+    },
+    {
+      "path": "AutoEnter/SerialNumber",
+      "present": 8
+    },
+    {
+      "path": "AutoEnter/SerialNumber@generate",
+      "present": 8
+    },
+    {
+      "path": "AutoEnter/SerialNumber@increment",
+      "present": 8
+    },
+    {
+      "path": "AutoEnter/SerialNumber@nextvalue",
+      "present": 8
+    },
+    {
+      "path": "DisplayNames",
+      "present": 11
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 11
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "Storage@autoIndex",
+      "present": 11
+    },
+    {
+      "path": "Storage@global",
+      "present": 11
+    },
+    {
+      "path": "Storage@index",
+      "present": 11
+    },
+    {
+      "path": "Storage@maxRepetitions",
+      "present": 11
+    },
+    {
+      "path": "Storage/LanguageReference",
+      "present": 11
+    },
+    {
+      "path": "Storage/LanguageReference@id",
+      "present": 11
+    },
+    {
+      "path": "Storage/LanguageReference@name",
+      "present": 11
+    },
+    {
+      "path": "TagList",
+      "present": 11
+    },
+    {
+      "path": "UUID",
+      "present": 11
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 11
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 11
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 11
+    },
+    {
+      "path": "UUID@userName",
+      "present": 11
+    },
+    {
+      "path": "Validation",
+      "present": 10
+    },
+    {
+      "path": "Validation@allowOverride",
+      "present": 11
+    },
+    {
+      "path": "Validation@alwaysValidate",
+      "present": 11
+    },
+    {
+      "path": "Validation@existing",
+      "present": 11
+    },
+    {
+      "path": "Validation@notEmpty",
+      "present": 11
+    },
+    {
+      "path": "Validation@type",
+      "present": 11
+    },
+    {
+      "path": "Validation@unique",
+      "present": 11
+    },
+    {
+      "path": "Validation/Strict",
+      "present": 1
+    }
+  ]
+}

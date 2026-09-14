@@ -1,0 +1,138 @@
+{
+  "kindId": "part:top-navigation",
+  "op": "read:layout",
+  "kind": "part:Top Navigation",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "context": {
+        "layout": "table_with_custom_row_height"
+      }
+    },
+    {
+      "id": "1",
+      "context": {
+        "layout": "printing"
+      }
+    },
+    {
+      "id": "2",
+      "context": {
+        "layout": "My Layout for TestTable"
+      }
+    },
+    {
+      "id": "3",
+      "context": {
+        "layout": "-"
+      }
+    },
+    {
+      "id": "4",
+      "context": {
+        "layout": "Contacts"
+      }
+    },
+    {
+      "id": "5",
+      "context": {
+        "layout": "My Layout for TestTable - Wim"
+      }
+    },
+    {
+      "id": "6",
+      "context": {
+        "layout": "FM26Test"
+      }
+    },
+    {
+      "id": "7",
+      "context": {
+        "layout": "FM26Test_Source"
+      }
+    },
+    {
+      "id": "8",
+      "context": {
+        "layout": "summary_fields"
+      }
+    },
+    {
+      "id": "9",
+      "context": {
+        "layout": "autoEnter_fields"
+      }
+    },
+    {
+      "id": "10",
+      "context": {
+        "layout": "dateTime_calcs"
+      }
+    },
+    {
+      "id": "11",
+      "context": {
+        "layout": "LLM_tagged_fields"
+      }
+    },
+    {
+      "id": "12",
+      "context": {
+        "layout": "index_languages"
+      }
+    },
+    {
+      "id": "13",
+      "context": {
+        "layout": "furigama"
+      }
+    },
+    {
+      "id": "14",
+      "context": {
+        "layout": "validation"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@kind",
+      "present": 15
+    },
+    {
+      "path": "@type",
+      "present": 15
+    },
+    {
+      "path": "Definition",
+      "present": 15
+    },
+    {
+      "path": "Definition@absolute",
+      "present": 15
+    },
+    {
+      "path": "Definition@kind",
+      "present": 15
+    },
+    {
+      "path": "Definition@Options",
+      "present": 15
+    },
+    {
+      "path": "Definition@size",
+      "present": 15
+    },
+    {
+      "path": "Definition@type",
+      "present": 15
+    },
+    {
+      "path": "ObjectList@membercount",
+      "present": 2
+    }
+  ]
+}

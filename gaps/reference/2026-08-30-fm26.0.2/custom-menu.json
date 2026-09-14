@@ -1,0 +1,233 @@
+{
+  "kindId": "custom-menu",
+  "op": "read:customMenu",
+  "kind": "customMenu",
+  "file": "CustomMenuCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1",
+      "name": "[Format]",
+      "context": {}
+    },
+    {
+      "id": "2",
+      "name": "[Scripts]",
+      "context": {}
+    },
+    {
+      "id": "3",
+      "name": "[Window]",
+      "context": {}
+    },
+    {
+      "id": "4",
+      "name": "[Recent]",
+      "context": {}
+    },
+    {
+      "id": "5",
+      "name": "[Import Records]",
+      "context": {}
+    },
+    {
+      "id": "6",
+      "name": "[Save/Send Records As]",
+      "context": {}
+    },
+    {
+      "id": "7",
+      "name": "[Go to Layout]",
+      "context": {}
+    },
+    {
+      "id": "8",
+      "name": "[Align Text]",
+      "context": {}
+    },
+    {
+      "id": "9",
+      "name": "[Manage]",
+      "context": {}
+    },
+    {
+      "id": "10",
+      "name": "[Find/Replace]",
+      "context": {}
+    },
+    {
+      "id": "11",
+      "name": "[Font]",
+      "context": {}
+    },
+    {
+      "id": "12",
+      "name": "[Line Spacing]",
+      "context": {}
+    },
+    {
+      "id": "13",
+      "name": "[Sharing]",
+      "context": {}
+    },
+    {
+      "id": "14",
+      "name": "[Go to Request]",
+      "context": {}
+    },
+    {
+      "id": "15",
+      "name": "[Go to Record]",
+      "context": {}
+    },
+    {
+      "id": "16",
+      "name": "[Show Window]",
+      "context": {}
+    },
+    {
+      "id": "17",
+      "name": "[Size]",
+      "context": {}
+    },
+    {
+      "id": "18",
+      "name": "[Spelling]",
+      "context": {}
+    },
+    {
+      "id": "19",
+      "name": "[Style]",
+      "context": {}
+    },
+    {
+      "id": "20",
+      "name": "[Text Color]",
+      "context": {}
+    },
+    {
+      "id": "21",
+      "name": "[Saved Finds]",
+      "context": {}
+    },
+    {
+      "id": "22",
+      "name": "[Send]",
+      "context": {}
+    },
+    {
+      "id": "23",
+      "name": "[Favorites]",
+      "context": {}
+    },
+    {
+      "id": "24",
+      "name": "[Hosts]",
+      "context": {}
+    },
+    {
+      "id": "26",
+      "name": "MyCustomMenu",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@id",
+      "present": 25
+    },
+    {
+      "path": "@name",
+      "present": 25
+    },
+    {
+      "path": "Base",
+      "present": 24
+    },
+    {
+      "path": "Base@name",
+      "present": 24
+    },
+    {
+      "path": "Base@value",
+      "present": 24
+    },
+    {
+      "path": "Comment",
+      "present": 25
+    },
+    {
+      "path": "Conditions/Install/Calculation/DDRREF",
+      "present": 25
+    },
+    {
+      "path": "Conditions/Install/Calculation/DDRREF@hash",
+      "present": 25
+    },
+    {
+      "path": "Conditions/Install/Calculation/DDRREF@kind",
+      "present": 25
+    },
+    {
+      "path": "Conditions/Install/Calculation/Text",
+      "present": 25
+    },
+    {
+      "path": "Options",
+      "present": 24
+    },
+    {
+      "path": "Options@browseMode",
+      "present": 25
+    },
+    {
+      "path": "Options@findMode",
+      "present": 25
+    },
+    {
+      "path": "Options@previewMode",
+      "present": 25
+    },
+    {
+      "path": "Options/Override/Title/Calculation/DDRREF",
+      "present": 1
+    },
+    {
+      "path": "Options/Override/Title/Calculation/DDRREF@hash",
+      "present": 1
+    },
+    {
+      "path": "Options/Override/Title/Calculation/DDRREF@kind",
+      "present": 1
+    },
+    {
+      "path": "Options/Override/Title/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "TagList",
+      "present": 25
+    },
+    {
+      "path": "UUID",
+      "present": 25
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 25
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 25
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 25
+    },
+    {
+      "path": "UUID@userName",
+      "present": 25
+    }
+  ]
+}

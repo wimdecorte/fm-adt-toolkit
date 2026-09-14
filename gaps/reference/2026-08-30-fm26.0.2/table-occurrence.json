@@ -1,0 +1,251 @@
+{
+  "kindId": "table-occurrence",
+  "op": "read:tableOccurrence",
+  "kind": "tableOccurrence",
+  "file": "TableOccurrenceCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "1065089",
+      "name": "TestTable",
+      "context": {}
+    },
+    {
+      "id": "1065091",
+      "name": "Contacts",
+      "context": {}
+    },
+    {
+      "id": "1065093",
+      "name": "Contacts_TestTable",
+      "context": {}
+    },
+    {
+      "id": "1065094",
+      "name": "TestTable_Contacts",
+      "context": {}
+    },
+    {
+      "id": "1065095",
+      "name": "blank",
+      "context": {}
+    },
+    {
+      "id": "1065096",
+      "name": "Invoice",
+      "context": {}
+    },
+    {
+      "id": "1065099",
+      "name": "SaXMLDelivery",
+      "context": {}
+    },
+    {
+      "id": "1065100",
+      "name": "FM26Test",
+      "context": {}
+    },
+    {
+      "id": "1065101",
+      "name": "FM26Test_Source",
+      "context": {}
+    },
+    {
+      "id": "1065103",
+      "name": "FM26Test_Source__notEqual",
+      "context": {}
+    },
+    {
+      "id": "1065104",
+      "name": "FM26Test_Source__lessThan",
+      "context": {}
+    },
+    {
+      "id": "1065105",
+      "name": "FM26Test_Source__lessThanOrEqual",
+      "context": {}
+    },
+    {
+      "id": "1065106",
+      "name": "FM26Test_Source__greaterThan",
+      "context": {}
+    },
+    {
+      "id": "1065107",
+      "name": "FM26Test_Source__greaterThanOrEqual",
+      "context": {}
+    },
+    {
+      "id": "1065108",
+      "name": "FM26Test_Source__cartesian",
+      "context": {}
+    },
+    {
+      "id": "1065109",
+      "name": "summary_fields",
+      "context": {}
+    },
+    {
+      "id": "1065110",
+      "name": "autoEnter_fields",
+      "context": {}
+    },
+    {
+      "id": "1065111",
+      "name": "autoEnter_fields__Self_x",
+      "context": {}
+    },
+    {
+      "id": "1065112",
+      "name": "dateTime_calcs",
+      "context": {}
+    },
+    {
+      "id": "1065113",
+      "name": "LLM_tagged_fields",
+      "context": {}
+    },
+    {
+      "id": "1065114",
+      "name": "index_languages",
+      "context": {}
+    },
+    {
+      "id": "1065115",
+      "name": "furigama",
+      "context": {}
+    },
+    {
+      "id": "1065116",
+      "name": "validation",
+      "context": {}
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@height",
+      "present": 23
+    },
+    {
+      "path": "@id",
+      "present": 23
+    },
+    {
+      "path": "@name",
+      "present": 23
+    },
+    {
+      "path": "@type",
+      "present": 23
+    },
+    {
+      "path": "@View",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference@type",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference/BaseTableReference",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference/BaseTableReference@id",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference/BaseTableReference@name",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference/BaseTableReference@UUID",
+      "present": 23
+    },
+    {
+      "path": "BaseTableSourceReference/DataSourceReference",
+      "present": 1
+    },
+    {
+      "path": "BaseTableSourceReference/DataSourceReference@id",
+      "present": 1
+    },
+    {
+      "path": "BaseTableSourceReference/DataSourceReference@name",
+      "present": 1
+    },
+    {
+      "path": "BaseTableSourceReference/DataSourceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "Color",
+      "present": 23
+    },
+    {
+      "path": "Color@alpha",
+      "present": 23
+    },
+    {
+      "path": "Color@blue",
+      "present": 23
+    },
+    {
+      "path": "Color@green",
+      "present": 23
+    },
+    {
+      "path": "Color@red",
+      "present": 23
+    },
+    {
+      "path": "CoordRect",
+      "present": 23
+    },
+    {
+      "path": "CoordRect@bottom",
+      "present": 23
+    },
+    {
+      "path": "CoordRect@left",
+      "present": 23
+    },
+    {
+      "path": "CoordRect@right",
+      "present": 23
+    },
+    {
+      "path": "CoordRect@top",
+      "present": 23
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "TagList",
+      "present": 23
+    },
+    {
+      "path": "UUID",
+      "present": 23
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 23
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 23
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 23
+    },
+    {
+      "path": "UUID@userName",
+      "present": 23
+    }
+  ]
+}

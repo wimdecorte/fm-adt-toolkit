@@ -1,0 +1,220 @@
+{
+  "kindId": "step:134",
+  "op": "read:script",
+  "kind": "step:134",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Add Account",
+      "context": {
+        "script": "Accounts",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Add Account"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 15
+    },
+    {
+      "path": "@hash",
+      "present": 15
+    },
+    {
+      "path": "@id",
+      "present": 15
+    },
+    {
+      "path": "@index",
+      "present": 15
+    },
+    {
+      "path": "@name",
+      "present": 15
+    },
+    {
+      "path": "Options",
+      "present": 15
+    },
+    {
+      "path": "OwnerID",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference@id",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference@name",
+      "present": 15
+    },
+    {
+      "path": "UUID",
+      "present": 15
+    }
+  ]
+}

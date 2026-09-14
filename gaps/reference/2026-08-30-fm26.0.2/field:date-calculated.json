@@ -1,0 +1,147 @@
+{
+  "kindId": "field:date-calculated",
+  "op": "read:field",
+  "kind": "field:Date/Calculated",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "6",
+      "name": "Calculated_Date",
+      "context": {
+        "table": "dateTime_calcs"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 1
+    },
+    {
+      "path": "@datatype",
+      "present": 1
+    },
+    {
+      "path": "@fieldtype",
+      "present": 1
+    },
+    {
+      "path": "@id",
+      "present": 1
+    },
+    {
+      "path": "@name",
+      "present": 1
+    },
+    {
+      "path": "Annotation",
+      "present": 1
+    },
+    {
+      "path": "AutoEnter",
+      "present": 1
+    },
+    {
+      "path": "AutoEnter@alwaysEvaluate",
+      "present": 1
+    },
+    {
+      "path": "Calculation/DDRREF",
+      "present": 1
+    },
+    {
+      "path": "Calculation/DDRREF@hash",
+      "present": 1
+    },
+    {
+      "path": "Calculation/DDRREF@kind",
+      "present": 1
+    },
+    {
+      "path": "Calculation/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "Calculation/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "Calculation/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "Calculation/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "DisplayNames",
+      "present": 1
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 1
+    },
+    {
+      "path": "Storage@autoIndex",
+      "present": 1
+    },
+    {
+      "path": "Storage@global",
+      "present": 1
+    },
+    {
+      "path": "Storage@index",
+      "present": 1
+    },
+    {
+      "path": "Storage@maxRepetitions",
+      "present": 1
+    },
+    {
+      "path": "Storage@storeCalculationResults",
+      "present": 1
+    },
+    {
+      "path": "Storage/LanguageReference",
+      "present": 1
+    },
+    {
+      "path": "Storage/LanguageReference@id",
+      "present": 1
+    },
+    {
+      "path": "Storage/LanguageReference@name",
+      "present": 1
+    },
+    {
+      "path": "TagList",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 1
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 1
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 1
+    },
+    {
+      "path": "UUID@userName",
+      "present": 1
+    }
+  ]
+}

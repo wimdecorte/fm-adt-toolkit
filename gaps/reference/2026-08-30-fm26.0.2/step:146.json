@@ -1,0 +1,176 @@
+{
+  "kindId": "step:146",
+  "op": "read:script",
+  "kind": "step:146",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "Miscellaneous",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Web Viewer"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Set Web Viewer",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "stepName": "Set Web Viewer"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 11
+    },
+    {
+      "path": "@hash",
+      "present": 11
+    },
+    {
+      "path": "@id",
+      "present": 11
+    },
+    {
+      "path": "@index",
+      "present": 11
+    },
+    {
+      "path": "@name",
+      "present": 11
+    },
+    {
+      "path": "Options",
+      "present": 11
+    },
+    {
+      "path": "OwnerID",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 11
+    }
+  ]
+}

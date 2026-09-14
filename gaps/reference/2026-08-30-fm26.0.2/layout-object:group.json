@@ -1,0 +1,116 @@
+{
+  "kindId": "layout-object:group",
+  "op": "read:layout",
+  "kind": "object:Group",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "98",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "97",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "96",
+      "name": "NamedLayoutObjectSubgroup",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "98",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "97",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "96",
+      "name": "NamedLayoutObjectSubgroup",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@kind",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "@type",
+      "present": 6
+    },
+    {
+      "path": "Bounds",
+      "present": 6
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 6
+    },
+    {
+      "path": "Bounds@left",
+      "present": 6
+    },
+    {
+      "path": "Bounds@right",
+      "present": 6
+    },
+    {
+      "path": "Bounds@top",
+      "present": 6
+    },
+    {
+      "path": "GroupedButton/ObjectList@membercount",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ],
+  "fmType": {
+    "type": "group",
+    "control": null
+  }
+}
