@@ -21,6 +21,12 @@ export interface RunOptions {
   noPrompt?: boolean;
   /** Pass --timeout=<seconds>. */
   timeoutSeconds?: number;
+  /** Kill the child (SIGKILL) if it has not exited within this many
+   *  milliseconds. fm's own --timeout is a request the CLI can choose to
+   *  honour; this is the Node-side backstop for when it does not. A run
+   *  killed this way reports `fatal: { code: 'runner_timeout', … }`,
+   *  `ok: false`, `exitCode: -1`. */
+  killAfterMs?: number;
 }
 
 /** Split the CLI's stdout and stderr into op results, summary, fatal and notices.
@@ -131,17 +137,20 @@ export async function runOps(
     if (paths.ops) await writeFile(paths.ops, opsToNdjson(ops));
     const argv = buildArgv(target, opts, paths);
 
-    const { code, stdout, stderr } = await spawnAndCollect(cli.path, argv, opts, paths.ops ? null : opsToNdjson(ops));
+    const { code, stdout, stderr, killed } = await spawnAndCollect(cli.path, argv, opts, paths.ops ? null : opsToNdjson(ops));
     const outText = paths.out ? await readFile(paths.out, 'utf8').catch(() => '') : '';
     const combinedStdout = outText ? outText + (stdout ? '\n' + stdout : '') : stdout;
     const { results, summary, notices, fatal } = parseResultLines(combinedStdout, stderr);
+    const timeoutFatal = killed
+      ? { code: 'runner_timeout', message: `fm did not exit within ${opts.killAfterMs} ms; killed` }
+      : null;
     return {
-      ok: code === 0 && summary !== null && !summary.rolledBack,
-      exitCode: code,
+      ok: !killed && code === 0 && summary !== null && !summary.rolledBack,
+      exitCode: killed ? -1 : code,
       results,
       summary,
       notices,
-      ...(fatal ? { fatal } : {}),
+      ...(timeoutFatal ? { fatal: timeoutFatal } : fatal ? { fatal } : {}),
       stderr,
       stdout: combinedStdout,
       argv,
@@ -156,15 +165,25 @@ function spawnAndCollect(
   argv: string[],
   opts: RunOptions,
   stdinText: string | null,
-): Promise<{ code: number; stdout: string; stderr: string }> {
+): Promise<{ code: number; stdout: string; stderr: string; killed: boolean }> {
   return new Promise((resolve, reject) => {
     const child = spawn(bin, argv, { env: { ...process.env, ...opts.env } });
     let stdout = '';
     let stderr = '';
+    let killed = false;
+    const timer = opts.killAfterMs !== undefined
+      ? setTimeout(() => {
+          killed = true;
+          child.kill('SIGKILL');
+        }, opts.killAfterMs)
+      : null;
     child.stdout.on('data', (chunk) => (stdout += chunk));
     child.stderr.on('data', (chunk) => (stderr += chunk));
     child.on('error', reject);
-    child.on('close', (code) => resolve({ code: code ?? -1, stdout, stderr }));
+    child.on('close', (code) => {
+      if (timer) clearTimeout(timer);
+      resolve({ code: code ?? -1, stdout, stderr, killed });
+    });
     // A refused target closes stdin before an ops payload larger than the ~64 KB
     // pipe buffer is drained, and an unhandled 'error' on a stdio stream is an
     // uncaught exception. The 'close' handler already reports the exit code and
