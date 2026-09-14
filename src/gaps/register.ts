@@ -9,6 +9,10 @@ export interface GapEvidence {
   build: string;
   date: string;
   outcome: 'open' | 'passed' | 'error';
+  /** Set only when `outcome` is 'error' for a reason the checker itself
+   *  detected (as opposed to fm refusing the op), e.g. a result/probe op
+   *  mismatch at this entry's position in the batch. */
+  reason?: string;
   /** The exact command line the checker ran, temp paths included. */
   command: string;
   /** The exact ops written to the ops file for this entry. */
@@ -16,6 +20,10 @@ export interface GapEvidence {
   /** fm's response verbatim: every stdout line and every stderr line as parsed
    *  JSON, in order, plus the exit code. Never summarised or trimmed. */
   response: { stdout: unknown[]; stderr: unknown[]; exitCode: number };
+  /** Where this entry's probe sat in the one fm invocation that ran every
+   *  probe together. `position` is 0-based. The summary and exit code in
+   *  `response` belong to the whole batch, not to this one op. */
+  batch: { size: number; position: number };
 }
 
 export interface GapEntry {

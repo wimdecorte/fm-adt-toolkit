@@ -1,4 +1,4 @@
-import type { AdtOp, AdtRunResult } from '../types.ts';
+import type { AdtFatal, AdtOp, AdtRunResult } from '../types.ts';
 import { evaluateCheck } from './checks.ts';
 import type { GapEntry, GapEvidence } from './register.ts';
 
@@ -16,10 +16,15 @@ export async function runChecks(
   entries: GapEntry[],
   run: (ops: AdtOp[]) => Promise<AdtRunResult>,
   meta: { version: string; build: string; date: string; commandFor: (argv: string[]) => string },
-): Promise<{ entries: GapEntry[]; stillOpen: GapEntry[]; newlyPassing: GapEntry[]; errored: GapEntry[] }> {
+): Promise<{
+  entries: GapEntry[];
+  stillOpen: GapEntry[];
+  newlyPassing: GapEntry[];
+  errored: GapEntry[];
+  fatal?: AdtFatal;
+}> {
   const ops = entries.map((e) => e.probe.ops[0]);
   const result = await run(ops);
-  const stdoutLines = parseLines(result.stdout);
   const stderrLines = parseLines(result.stderr);
   const command = meta.commandFor(result.argv);
 
@@ -29,17 +34,24 @@ export async function runChecks(
 
   const updated = entries.map((entry, i) => {
     const line = result.results[i];
-    const own = line ? [line] : [];
+    const probeOp = entry.probe.ops[0].op;
     let outcome: GapEvidence['outcome'];
+    let reason: string | undefined;
     if (!line) {
       outcome = 'error';
+    } else if (line.op !== probeOp) {
+      outcome = 'error';
+      reason = `result op ${line.op} does not match probe op ${probeOp} at position ${i}`;
     } else {
-      outcome = evaluateCheck(entry.probe.check, own).passed ? 'passed' : 'open';
+      outcome = evaluateCheck(entry.probe.check, [line]).passed ? 'passed' : 'open';
     }
     const evidence: GapEvidence = {
-      version: meta.version, build: meta.build, date: meta.date, outcome, command,
+      version: meta.version, build: meta.build, date: meta.date, outcome,
+      ...(reason ? { reason } : {}),
+      command,
       ops: entry.probe.ops,
-      response: { stdout: line ? [line] : stdoutLines, stderr: stderrLines, exitCode: result.exitCode },
+      response: { stdout: line ? [line] : [], stderr: stderrLines, exitCode: result.exitCode },
+      batch: { size: entries.length, position: i },
     };
     const next = { ...entry, lastChecked: evidence };
     if (outcome === 'error') errored.push(next);
@@ -48,5 +60,5 @@ export async function runChecks(
     return next;
   });
 
-  return { entries: updated, stillOpen, newlyPassing, errored };
+  return { entries: updated, stillOpen, newlyPassing, errored, ...(result.fatal ? { fatal: result.fatal } : {}) };
 }
