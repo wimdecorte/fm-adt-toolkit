@@ -18,6 +18,12 @@ export interface Reference {
 
 const CHUNK = /^_[0-9A-Fa-f]{8}-/;   // DDR_INFO chunk elements are named after uuids; never attributes of anything
 
+/** Elements that are pure DDR provenance: present in the SaXML export but reported by no fm read
+ *  op, under any kind. `DDRREF` is the one seen so far (a hash/uuid pointer back to the export's own
+ *  DDR_INFO tree) — excluded globally rather than per-rule, since it can appear as a child of any
+ *  element the DDR annotates, not only Step. */
+const PROVENANCE = new Set(['DDRREF']);
+
 /** Find every element reached by `chain` from `root`. '*' matches any number of intermediate elements. */
 export function findByChain(root: XmlNode, chain: string[]): { node: XmlNode; ancestors: XmlNode[] }[] {
   const out: { node: XmlNode; ancestors: XmlNode[] }[] = [];
@@ -46,7 +52,7 @@ export function attributePaths(node: XmlNode, skip: string[]): string[] {
   for (const a of Object.keys(node.attrs)) out.add('@' + a);
   const walk = (el: XmlNode, prefix: string) => {
     for (const c of el.children) {
-      if (skip.includes(c.tag) || CHUNK.test(c.tag)) continue;
+      if (skip.includes(c.tag) || PROVENANCE.has(c.tag) || CHUNK.test(c.tag)) continue;
       const p = prefix ? prefix + '/' + c.tag : c.tag;
       if (c.text.trim() !== '' || c.children.length === 0) out.add(p);
       for (const a of Object.keys(c.attrs)) out.add(p + '@' + a);
@@ -71,15 +77,30 @@ function contextOf(rule: KindRule, ancestors: XmlNode[], node: XmlNode): Record<
       ctx.table = ref?.attrs.name ?? '';
     }
     // `Script` names one script two different ways depending on which catalog it comes from:
-    // ScriptCatalog's own `Script` carries `name` directly; StepsForScripts' `Script` carries none
-    // and points at its script through a `ScriptReference` child instead. Only the name is kept in
-    // context (probes look scripts up by name, like `read:layout` does for layouts).
+    // ScriptCatalog's own `Script` carries `name`/`id` directly; StepsForScripts' `Script` carries
+    // neither and points at its script through a `ScriptReference` child instead. The numeric id is
+    // kept (not just the name): 8 scripts in Ooe are named "--", and fm's own script lookup is
+    // documented to error on an ambiguous name, so a probe must be able to address a script by id.
     if (a.tag === 'Script') {
-      ctx.script = a.attrs.name ?? a.children.find((c) => c.tag === 'ScriptReference')?.attrs.name ?? '';
+      if (a.attrs.name !== undefined) {
+        ctx.script = a.attrs.name;
+        ctx.scriptId = a.attrs.id ?? '';
+      } else {
+        const ref = a.children.find((c) => c.tag === 'ScriptReference');
+        ctx.script = ref?.attrs.name ?? '';
+        ctx.scriptId = ref?.attrs.id ?? '';
+      }
     }
     if (a.tag === 'CustomMenu') ctx.menuId = a.attrs.id ?? '';
   }
-  if (rule.kind === 'step') ctx.stepName = node.attrs.name ?? '';
+  // `step` has no `idAttr` (its `id` field is a sequence number among occurrences of this step
+  // shape, not the step's own id — the shape itself is already the group), so `stepId` here is the
+  // only way a probe recovers the step's real numeric id.
+  if (rule.kind === 'step') {
+    ctx.stepName = node.attrs.name ?? '';
+    ctx.stepId = node.attrs.id ?? '';
+    ctx.index = node.attrs.index ?? '';
+  }
   if (rule.kind === 'customMenuItem') ctx.index = node.attrs.index ?? String(ancestors[ancestors.length - 1].children.indexOf(node));
   return ctx;
 }
@@ -157,11 +178,19 @@ export function enumerateExport(dir: string, filePrefix: string, exportLabel: st
   return refs;
 }
 
+/** The file name `writeReferences` uses for one kind's reference, and the name a later task
+ *  resolves a kind's file by. `:` (the grouped-kind separator, e.g. 'layout-object:edit-box') is
+ *  illegal in an NTFS file name, and `gaps/` ships in the npm tarball, so it is replaced with `__`
+ *  rather than kept: 'layout-object:edit-box' -> 'layout-object__edit-box.json'. */
+export function referenceFileName(kindId: string): string {
+  return kindId.replace(/:/g, '__') + '.json';
+}
+
 export function writeReferences(outDir: string, refs: Reference[]): string[] {
   fs.mkdirSync(outDir, { recursive: true });
   const written: string[] = [];
   for (const r of refs) {
-    const f = path.join(outDir, r.kindId.replace(/[^a-z0-9:-]/gi, '-') + '.json');
+    const f = path.join(outDir, referenceFileName(r.kindId));
     fs.writeFileSync(f, JSON.stringify(r, null, 2) + '\n');
     written.push(f);
   }

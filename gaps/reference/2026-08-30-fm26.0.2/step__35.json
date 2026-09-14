@@ -1,0 +1,1159 @@
+{
+  "kindId": "step:35",
+  "op": "read:script",
+  "kind": "step:35",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Import Records",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "9"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "440"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "441"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "442"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "443"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "444"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "445"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "446"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "447"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "448"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "449"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "450"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "451"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "452"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "453"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "454"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "455"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "456"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "457"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "458"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "459"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "460"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "461"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "462"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "463"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "464"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "465"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "466"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "467"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "468"
+      }
+    },
+    {
+      "id": "30",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "469"
+      }
+    },
+    {
+      "id": "31",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "470"
+      }
+    },
+    {
+      "id": "32",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "471"
+      }
+    },
+    {
+      "id": "33",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "472"
+      }
+    },
+    {
+      "id": "34",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "473"
+      }
+    },
+    {
+      "id": "35",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "474"
+      }
+    },
+    {
+      "id": "36",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "475"
+      }
+    },
+    {
+      "id": "37",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "476"
+      }
+    },
+    {
+      "id": "38",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "477"
+      }
+    },
+    {
+      "id": "39",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "489"
+      }
+    },
+    {
+      "id": "40",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "490"
+      }
+    },
+    {
+      "id": "41",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "491"
+      }
+    },
+    {
+      "id": "42",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "492"
+      }
+    },
+    {
+      "id": "43",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "493"
+      }
+    },
+    {
+      "id": "44",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "494"
+      }
+    },
+    {
+      "id": "45",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "495"
+      }
+    },
+    {
+      "id": "46",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "496"
+      }
+    },
+    {
+      "id": "47",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "497"
+      }
+    },
+    {
+      "id": "48",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "498"
+      }
+    },
+    {
+      "id": "49",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "499"
+      }
+    },
+    {
+      "id": "50",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "500"
+      }
+    },
+    {
+      "id": "51",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "501"
+      }
+    },
+    {
+      "id": "52",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "502"
+      }
+    },
+    {
+      "id": "53",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "503"
+      }
+    },
+    {
+      "id": "54",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "504"
+      }
+    },
+    {
+      "id": "55",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "505"
+      }
+    },
+    {
+      "id": "56",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "506"
+      }
+    },
+    {
+      "id": "57",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "507"
+      }
+    },
+    {
+      "id": "58",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "508"
+      }
+    },
+    {
+      "id": "59",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "509"
+      }
+    },
+    {
+      "id": "60",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "510"
+      }
+    },
+    {
+      "id": "61",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "511"
+      }
+    },
+    {
+      "id": "62",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "512"
+      }
+    },
+    {
+      "id": "63",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "513"
+      }
+    },
+    {
+      "id": "64",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "514"
+      }
+    },
+    {
+      "id": "65",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "515"
+      }
+    },
+    {
+      "id": "66",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "516"
+      }
+    },
+    {
+      "id": "67",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "517"
+      }
+    },
+    {
+      "id": "68",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "518"
+      }
+    },
+    {
+      "id": "69",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "519"
+      }
+    },
+    {
+      "id": "70",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "520"
+      }
+    },
+    {
+      "id": "71",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "521"
+      }
+    },
+    {
+      "id": "72",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "522"
+      }
+    },
+    {
+      "id": "73",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "523"
+      }
+    },
+    {
+      "id": "74",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "524"
+      }
+    },
+    {
+      "id": "75",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "525"
+      }
+    },
+    {
+      "id": "76",
+      "name": "Import Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Import Records",
+        "stepId": "35",
+        "index": "526"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 77
+    },
+    {
+      "path": "@hash",
+      "present": 77
+    },
+    {
+      "path": "@id",
+      "present": 77
+    },
+    {
+      "path": "@index",
+      "present": 77
+    },
+    {
+      "path": "@name",
+      "present": 77
+    },
+    {
+      "path": "Options",
+      "present": 77
+    },
+    {
+      "path": "OwnerID",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 77
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@delimiter",
+      "present": 74
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@fileType",
+      "present": 74
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@isPredefined",
+      "present": 74
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@value",
+      "present": 74
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder@FileReference",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder@Include",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder@name",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder@Text",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder/UniversalPathList@fileType",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder/UniversalPathList@membercount",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/Folder/UniversalPathList/ObjectList/Location",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/UniversalPathList@fileType",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/UniversalPathList@membercount",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/UniversalPathList/ObjectList/Location",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML@index",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML/Calculation/Text",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML/UniversalPathList@fileType",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML/UniversalPathList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML/UniversalPathList/ObjectList/Location",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL@index",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/Calculation/Text",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList@fileType",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList/ObjectList/Location",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField@addasnew",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField@delimiter",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField@fieldNameRow",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField@isPredefined",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/action",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/action@name",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/action@value",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/CharacterSet",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/CharacterSet@name",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/CharacterSet@value",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field@membercount",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@id",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@index",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@kind",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@name",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@New",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map@Options",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference",
+      "present": 35
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference@id",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference@name",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference@UUID",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Field/Map/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options@copyContainersAsIs",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options@doAutoEntry",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options@keepOriginalData",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options@matchFieldNames",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Options@splitRepetitions",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Target",
+      "present": 35
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Target/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Target/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Target/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/ImportField/Target/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 77
+    }
+  ]
+}

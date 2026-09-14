@@ -1,0 +1,171 @@
+{
+  "kindId": "step:69",
+  "op": "read:script",
+  "kind": "step:69",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Else",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "26"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Else",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "28"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Else",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "38"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "59"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "117"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "174"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "93"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "147"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Else",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "Else",
+        "stepId": "69",
+        "index": "169"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 9
+    },
+    {
+      "path": "@hash",
+      "present": 9
+    },
+    {
+      "path": "@id",
+      "present": 9
+    },
+    {
+      "path": "@index",
+      "present": 9
+    },
+    {
+      "path": "@name",
+      "present": 9
+    },
+    {
+      "path": "Options",
+      "present": 9
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 9
+    },
+    {
+      "path": "SourceUUID",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 9
+    }
+  ]
+}

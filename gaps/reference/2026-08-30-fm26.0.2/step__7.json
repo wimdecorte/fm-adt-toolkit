@@ -1,0 +1,92 @@
+{
+  "kindId": "step:7",
+  "op": "read:script",
+  "kind": "step:7",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "New Record/Request",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "New Record/Request",
+        "stepId": "7",
+        "index": "10"
+      }
+    },
+    {
+      "id": "1",
+      "name": "New Record/Request",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "New Record/Request",
+        "stepId": "7",
+        "index": "479"
+      }
+    },
+    {
+      "id": "2",
+      "name": "New Record/Request",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "New Record/Request",
+        "stepId": "7",
+        "index": "528"
+      }
+    },
+    {
+      "id": "3",
+      "name": "New Record/Request",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "New Record/Request",
+        "stepId": "7",
+        "index": "106"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 4
+    },
+    {
+      "path": "@hash",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@index",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Options",
+      "present": 4
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    }
+  ]
+}

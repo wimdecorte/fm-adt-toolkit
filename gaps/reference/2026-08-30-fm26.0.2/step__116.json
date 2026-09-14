@@ -1,0 +1,181 @@
+{
+  "kindId": "step:116",
+  "op": "read:script",
+  "kind": "step:116",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "Fields",
+        "scriptId": "25",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "19"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "390"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "391"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "392"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "441"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "442"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Set Next Serial Value",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Next Serial Value",
+        "stepId": "116",
+        "index": "443"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

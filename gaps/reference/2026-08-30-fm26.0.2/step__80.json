@@ -1,0 +1,123 @@
+{
+  "kindId": "step:80",
+  "op": "read:script",
+  "kind": "step:80",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Refresh Window",
+      "context": {
+        "script": "Windows",
+        "scriptId": "28",
+        "stepName": "Refresh Window",
+        "stepId": "80",
+        "index": "6"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Refresh Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Refresh Window",
+        "stepId": "80",
+        "index": "589"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Refresh Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Refresh Window",
+        "stepId": "80",
+        "index": "590"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Refresh Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Refresh Window",
+        "stepId": "80",
+        "index": "652"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Refresh Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Refresh Window",
+        "stepId": "80",
+        "index": "653"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 5
+    },
+    {
+      "path": "@hash",
+      "present": 5
+    },
+    {
+      "path": "@id",
+      "present": 5
+    },
+    {
+      "path": "@index",
+      "present": 5
+    },
+    {
+      "path": "@name",
+      "present": 5
+    },
+    {
+      "path": "Options",
+      "present": 5
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 5
+    }
+  ]
+}

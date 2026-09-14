@@ -1,0 +1,506 @@
+{
+  "kindId": "step:177",
+  "op": "read:script",
+  "kind": "step:177",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "Miscellaneous",
+        "scriptId": "34",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "2"
+      }
+    },
+    {
+      "id": "1",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "820"
+      }
+    },
+    {
+      "id": "2",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "821"
+      }
+    },
+    {
+      "id": "3",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "822"
+      }
+    },
+    {
+      "id": "4",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "823"
+      }
+    },
+    {
+      "id": "5",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "825"
+      }
+    },
+    {
+      "id": "6",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "826"
+      }
+    },
+    {
+      "id": "7",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "828"
+      }
+    },
+    {
+      "id": "8",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "829"
+      }
+    },
+    {
+      "id": "9",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "830"
+      }
+    },
+    {
+      "id": "10",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "831"
+      }
+    },
+    {
+      "id": "11",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "832"
+      }
+    },
+    {
+      "id": "12",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "833"
+      }
+    },
+    {
+      "id": "13",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "834"
+      }
+    },
+    {
+      "id": "14",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "835"
+      }
+    },
+    {
+      "id": "15",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "836"
+      }
+    },
+    {
+      "id": "16",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1001"
+      }
+    },
+    {
+      "id": "17",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1002"
+      }
+    },
+    {
+      "id": "18",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1003"
+      }
+    },
+    {
+      "id": "19",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1004"
+      }
+    },
+    {
+      "id": "20",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1005"
+      }
+    },
+    {
+      "id": "21",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1006"
+      }
+    },
+    {
+      "id": "22",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1007"
+      }
+    },
+    {
+      "id": "23",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1008"
+      }
+    },
+    {
+      "id": "24",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1009"
+      }
+    },
+    {
+      "id": "25",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1010"
+      }
+    },
+    {
+      "id": "26",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1011"
+      }
+    },
+    {
+      "id": "27",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1012"
+      }
+    },
+    {
+      "id": "28",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1013"
+      }
+    },
+    {
+      "id": "29",
+      "name": "AVPlayer Play",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Play",
+        "stepId": "177",
+        "index": "1014"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 30
+    },
+    {
+      "path": "@hash",
+      "present": 30
+    },
+    {
+      "path": "@id",
+      "present": 30
+    },
+    {
+      "path": "@index",
+      "present": 30
+    },
+    {
+      "path": "@name",
+      "present": 30
+    },
+    {
+      "path": "Options",
+      "present": 30
+    },
+    {
+      "path": "OwnerID",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 17
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 9
+    },
+    {
+      "path": "ParameterValues/Parameter/Source@type",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Calculation@datatype",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Calculation@position",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Calculation/Calculation/Text",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/repetition/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/repetition/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Name/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Name/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/Name/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/repetition",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/repetition/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/repetition/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Source/repetition/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 30
+    }
+  ]
+}

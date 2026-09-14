@@ -1,0 +1,207 @@
+{
+  "kindId": "step:120",
+  "op": "read:script",
+  "kind": "step:120",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "Windows",
+        "scriptId": "28",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "1"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "570"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "571"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "572"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "573"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "630"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "631"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "632"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "633"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "31"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "32"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "33"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Arrange All Windows",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Arrange All Windows",
+        "stepId": "120",
+        "index": "34"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 13
+    },
+    {
+      "path": "@hash",
+      "present": 13
+    },
+    {
+      "path": "@id",
+      "present": 13
+    },
+    {
+      "path": "@index",
+      "present": 13
+    },
+    {
+      "path": "@name",
+      "present": 13
+    },
+    {
+      "path": "Options",
+      "present": 13
+    },
+    {
+      "path": "OwnerID",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 13
+    },
+    {
+      "path": "UUID",
+      "present": 13
+    }
+  ]
+}

@@ -100,18 +100,6 @@
       "present": 15
     },
     {
-      "path": "Calculation/DDRREF",
-      "present": 9
-    },
-    {
-      "path": "Calculation/DDRREF@hash",
-      "present": 9
-    },
-    {
-      "path": "Calculation/DDRREF@kind",
-      "present": 9
-    },
-    {
       "path": "Calculation/Text",
       "present": 9
     },

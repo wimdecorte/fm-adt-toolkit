@@ -1,0 +1,240 @@
+{
+  "kindId": "step:31",
+  "op": "read:script",
+  "kind": "step:31",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Adjust Window",
+      "context": {
+        "script": "Windows",
+        "scriptId": "28",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "0"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "564"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "565"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "566"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "567"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "568"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "624"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "625"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "626"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "627"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Adjust Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "628"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Adjust Window",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "1"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Adjust Window",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "2"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Adjust Window",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "3"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Adjust Window",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "4"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Adjust Window",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Adjust Window",
+        "stepId": "31",
+        "index": "5"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 16
+    },
+    {
+      "path": "@hash",
+      "present": 16
+    },
+    {
+      "path": "@id",
+      "present": 16
+    },
+    {
+      "path": "@index",
+      "present": 16
+    },
+    {
+      "path": "@name",
+      "present": 16
+    },
+    {
+      "path": "Options",
+      "present": 16
+    },
+    {
+      "path": "OwnerID",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 16
+    },
+    {
+      "path": "UUID",
+      "present": 16
+    }
+  ]
+}

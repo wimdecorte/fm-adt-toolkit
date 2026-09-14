@@ -158,18 +158,6 @@
       "present": 25
     },
     {
-      "path": "Conditions/Install/Calculation/DDRREF",
-      "present": 25
-    },
-    {
-      "path": "Conditions/Install/Calculation/DDRREF@hash",
-      "present": 25
-    },
-    {
-      "path": "Conditions/Install/Calculation/DDRREF@kind",
-      "present": 25
-    },
-    {
       "path": "Conditions/Install/Calculation/Text",
       "present": 25
     },
@@ -188,18 +176,6 @@
     {
       "path": "Options@previewMode",
       "present": 25
-    },
-    {
-      "path": "Options/Override/Title/Calculation/DDRREF",
-      "present": 1
-    },
-    {
-      "path": "Options/Override/Title/Calculation/DDRREF@hash",
-      "present": 1
-    },
-    {
-      "path": "Options/Override/Title/Calculation/DDRREF@kind",
-      "present": 1
     },
     {
       "path": "Options/Override/Title/Calculation/Text",

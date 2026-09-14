@@ -1,0 +1,618 @@
+{
+  "kindId": "step:74",
+  "op": "read:script",
+  "kind": "step:74",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "Navigation",
+        "scriptId": "23",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "14"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "162"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "163"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "164"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "165"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "166"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "167"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "214"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "215"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "216"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "217"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "218"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "219"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "220"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "221"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "222"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "223"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "224"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "225"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "226"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "227"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "229"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "230"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "231"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "232"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "233"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "234"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "235"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "236"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Go to Related Record",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Related Record",
+        "stepId": "74",
+        "index": "237"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 30
+    },
+    {
+      "path": "@hash",
+      "present": 30
+    },
+    {
+      "path": "@id",
+      "present": 30
+    },
+    {
+      "path": "@index",
+      "present": 30
+    },
+    {
+      "path": "@name",
+      "present": 30
+    },
+    {
+      "path": "Options",
+      "present": 30
+    },
+    {
+      "path": "OwnerID",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Animation",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Animation@name",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Animation@value",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer@External",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer@value",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/DataSourceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/DataSourceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/DataSourceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/DataSourceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/Label",
+      "present": 23
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/LayoutReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/LayoutReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/LayoutReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/LayoutReferenceContainer/LayoutReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Options",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Options@matchFoundSet",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Options@ShowRelated",
+      "present": 28
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@id",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@UUID",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer@value",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/DataSourceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/DataSourceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/DataSourceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/DataSourceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/Label",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/LayoutReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/LayoutReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/LayoutReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/LayoutReferenceContainer/LayoutReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Name/Calculation@datatype",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Name/Calculation@position",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Name/Calculation/Calculation/Text",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options@value",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/Close",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/DimParentWindow",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/Maximize",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/MenuBar",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/Minimize",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/Resize",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Options/Toolbar",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Style",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Style@name",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Style@value",
+      "present": 11
+    },
+    {
+      "path": "UUID",
+      "present": 30
+    }
+  ]
+}

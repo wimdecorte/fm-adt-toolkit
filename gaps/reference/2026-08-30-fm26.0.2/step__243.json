@@ -1,0 +1,504 @@
+{
+  "kindId": "step:243",
+  "op": "read:script",
+  "kind": "step:243",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "0"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "1"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "2"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "3"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "4"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "5"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "6"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "7"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "8"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "9"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "10"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "11"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "12"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "13"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "14"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "15"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "16"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "17"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "18"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "19"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "20"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "21"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "22"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "23"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "24"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "25"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "26"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Create PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Create PDF",
+        "stepId": "243",
+        "index": "27"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 28
+    },
+    {
+      "path": "@hash",
+      "present": 28
+    },
+    {
+      "path": "@id",
+      "present": 28
+    },
+    {
+      "path": "@index",
+      "present": 28
+    },
+    {
+      "path": "@name",
+      "present": 28
+    },
+    {
+      "path": "Options",
+      "present": 28
+    },
+    {
+      "path": "OwnerID",
+      "present": 28
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 28
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 28
+    },
+    {
+      "path": "ParameterValues/Parameter/Options",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter@type",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation@datatype",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation@position",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation/Calculation/Text",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/AllowScreenReader",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/AllowScreenReader@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter@type",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation@datatype",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation@position",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation/Calculation/Text",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit@name",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/EnableCopying",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/EnableCopying@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter@type",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation@datatype",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation@position",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation/Calculation/Text",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print@name",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout@name",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification@name",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show@name",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show@value",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore",
+      "present": 28
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore@value",
+      "present": 28
+    },
+    {
+      "path": "UUID",
+      "present": 28
+    }
+  ]
+}

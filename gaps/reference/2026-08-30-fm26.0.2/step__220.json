@@ -1,0 +1,392 @@
+{
+  "kindId": "step:220",
+  "op": "read:script",
+  "kind": "step:220",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "Artificial Intelligence",
+        "scriptId": "31",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "6"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "865"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "866"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "867"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "868"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "869"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "870"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "871"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "872"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "873"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "874"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "875"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "876"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "877"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "878"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Generate Response from Model",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Generate Response from Model",
+        "stepId": "220",
+        "index": "879"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 16
+    },
+    {
+      "path": "@hash",
+      "present": 16
+    },
+    {
+      "path": "@id",
+      "present": 16
+    },
+    {
+      "path": "@index",
+      "present": 16
+    },
+    {
+      "path": "@name",
+      "present": 16
+    },
+    {
+      "path": "Options",
+      "present": 16
+    },
+    {
+      "path": "OwnerID",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 16
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter@type",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/LLMSlidingWindowVariable",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/LLMSlidingWindowVariable@IncludeToolCalls",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/LLMSlidingWindowVariable@value",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation@position",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable@value",
+      "present": 12
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition",
+      "present": 12
+    },
+    {
+      "path": "UUID",
+      "present": 16
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "kindId": "step:5",
+  "op": "read:script",
+  "kind": "step:5",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Go to Previous Field",
+      "context": {
+        "script": "Navigation",
+        "scriptId": "23",
+        "stepName": "Go to Previous Field",
+        "stepId": "5",
+        "index": "12"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Go to Previous Field",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Previous Field",
+        "stepId": "5",
+        "index": "146"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Go to Previous Field",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Previous Field",
+        "stepId": "5",
+        "index": "202"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

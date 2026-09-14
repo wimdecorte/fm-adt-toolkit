@@ -80,18 +80,6 @@
       "present": 3
     },
     {
-      "path": "action/Step/DDRREF",
-      "present": 3
-    },
-    {
-      "path": "action/Step/DDRREF@hash",
-      "present": 3
-    },
-    {
-      "path": "action/Step/DDRREF@kind",
-      "present": 3
-    },
-    {
       "path": "action/Step/Options",
       "present": 3
     },
@@ -129,18 +117,6 @@
     },
     {
       "path": "action/Step/ParameterValues/Parameter/Calculation@position",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Calculation/Calculation/DDRREF",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Calculation/Calculation/DDRREF@hash",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Calculation/Calculation/DDRREF@kind",
       "present": 1
     },
     {
@@ -188,18 +164,6 @@
       "present": 2
     },
     {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/Calculation/Calculation/DDRREF",
-      "present": 2
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/Calculation/Calculation/DDRREF@hash",
-      "present": 2
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/Calculation/Calculation/DDRREF@kind",
-      "present": 2
-    },
-    {
       "path": "action/Step/ParameterValues/Parameter/Parameter/Calculation/Calculation/Text",
       "present": 2
     },
@@ -221,18 +185,6 @@
     },
     {
       "path": "action/Step/ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation@position",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/DDRREF",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/DDRREF@hash",
-      "present": 1
-    },
-    {
-      "path": "action/Step/ParameterValues/Parameter/Parameter/FieldReference/repetition/Calculation/Calculation/DDRREF@kind",
       "present": 1
     },
     {
@@ -272,18 +224,6 @@
       "present": 1
     },
     {
-      "path": "Conditions/Install/Calculation/DDRREF",
-      "present": 5
-    },
-    {
-      "path": "Conditions/Install/Calculation/DDRREF@hash",
-      "present": 5
-    },
-    {
-      "path": "Conditions/Install/Calculation/DDRREF@kind",
-      "present": 5
-    },
-    {
       "path": "Conditions/Install/Calculation/Text",
       "present": 5
     },
@@ -298,18 +238,6 @@
     {
       "path": "CustomMenuReference@name",
       "present": 1
-    },
-    {
-      "path": "Name/Calculation/DDRREF",
-      "present": 4
-    },
-    {
-      "path": "Name/Calculation/DDRREF@hash",
-      "present": 4
-    },
-    {
-      "path": "Name/Calculation/DDRREF@kind",
-      "present": 4
     },
     {
       "path": "Name/Calculation/Text",

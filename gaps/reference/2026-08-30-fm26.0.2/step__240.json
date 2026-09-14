@@ -1,0 +1,212 @@
+{
+  "kindId": "step:240",
+  "op": "read:script",
+  "kind": "step:240",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "Capture_AICaptions",
+        "scriptId": "66",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "6"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "Artificial Intelligence",
+        "scriptId": "31",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "10"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "898"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "899"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "900"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "901"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "902"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Insert Image Captions in Found Set",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert Image Captions in Found Set",
+        "stepId": "240",
+        "index": "903"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 8
+    },
+    {
+      "path": "@hash",
+      "present": 8
+    },
+    {
+      "path": "@id",
+      "present": 8
+    },
+    {
+      "path": "@index",
+      "present": 8
+    },
+    {
+      "path": "@name",
+      "present": 8
+    },
+    {
+      "path": "Options",
+      "present": 8
+    },
+    {
+      "path": "OwnerID",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@repetition",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 8
+    }
+  ]
+}

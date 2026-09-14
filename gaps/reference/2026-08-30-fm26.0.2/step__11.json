@@ -1,0 +1,174 @@
+{
+  "kindId": "step:11",
+  "op": "read:script",
+  "kind": "step:11",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Insert from Index",
+      "context": {
+        "script": "Fields",
+        "scriptId": "25",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "9"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Insert from Index",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "325"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Insert from Index",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "372"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Insert from Index",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "373"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Insert from Index",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "374"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Insert from Index",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert from Index",
+        "stepId": "11",
+        "index": "375"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

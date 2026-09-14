@@ -105,13 +105,15 @@ export const KINDS: KindRule[] = [
   // names 'ScriptCatalog' because that is this rule's catalog-file SUFFIX convention slot, but the
   // path below reaches into StepsForScripts, which enumerateExport also loads from the ScriptCatalog
   // file group (see the note on `enumerateExport`).
-  // Context carries only `script` (name) and `stepName`, not the numeric script/step ids: those
-  // ids are redundant with what the kindId (`step:<id>`) and the Script ancestor's name already
-  // say, and keeping them out of `context` is what lets a step instance's context stay exactly
-  // `{ script, stepName }` (proven by tests/enumerate.test.ts). The probe below looks the script up
-  // by name, as `read:layout` does for layouts, and selects the step by its name within that body.
-  { id: 'step', op: 'read:script', kind: 'step', file: 'ScriptCatalog', path: ['Structure', 'AddAction', 'StepsForScripts', 'Script', '*', 'Step'], groupBy: 'id', skip: ['DDRREF'],
-    probe: (i) => ({ ops: [{ op: 'read:script', name: i.context.script ?? '' }], select: 'body[name=' + (i.context.stepName ?? '') + ']' }) },
+  // Context carries `script` (name), `scriptId`, `stepName` and `stepId` (plus `index`): the probe
+  // needs the script's numeric id and the step's numeric id, and neither is reconstructible from
+  // `i.id` (this rule has no `idAttr` — `id` is a sequence number among occurrences of this step
+  // shape, not the step's own id) or from name alone. fm's documented script-lookup-by-name is an
+  // error whenever the name is ambiguous, and 8 scripts in Ooe are literally named "--", so probing
+  // by name would be unsound even before considering that a step's `name` in fm's own script body is
+  // its variable/target value, not a stable key for the step itself.
+  { id: 'step', op: 'read:script', kind: 'step', file: 'ScriptCatalog', path: ['Structure', 'AddAction', 'StepsForScripts', 'Script', '*', 'Step'], groupBy: 'id', skip: [],
+    probe: (i) => ({ ops: [{ op: 'read:script', id: Number(i.context.scriptId ?? 0) }], select: 'body[stepID=' + (i.context.stepId ?? '') + ']' }) },
   { id: 'value-list', op: 'read:valueList', kind: 'valueList', file: 'ValueListCatalog', path: ['Structure', 'AddAction', 'ValueListCatalog', 'ValueList'], groupBy: 'Source@value', skip: [], idAttr: 'id',
     probe: (i) => ({ ops: [{ op: 'read:valueList', id: Number(i.id) }] }) },
   { id: 'custom-function', op: 'read:customFunction', kind: 'customFunction', file: 'CustomFunctionsCatalog', path: ['Structure', 'AddAction', 'CustomFunctionsCatalog', '*', 'CustomFunction'], skip: [], idAttr: 'id',

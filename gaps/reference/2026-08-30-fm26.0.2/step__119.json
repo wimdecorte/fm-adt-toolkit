@@ -1,0 +1,210 @@
+{
+  "kindId": "step:119",
+  "op": "read:script",
+  "kind": "step:119",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "Capture_WindowUUID",
+        "scriptId": "68",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "4"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "Windows",
+        "scriptId": "28",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "4"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "580"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "581"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "640"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Move/Resize Window",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Move/Resize Window",
+        "stepId": "119",
+        "index": "641"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/height/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/left/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/top/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Bounds/width/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select@kind",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name@current",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation@datatype",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation@position",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/WindowReference/Select/Name/Calculation/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

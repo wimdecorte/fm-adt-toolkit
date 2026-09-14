@@ -303,18 +303,6 @@
       "present": 3
     },
     {
-      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF",
-      "present": 3
-    },
-    {
-      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF@hash",
-      "present": 3
-    },
-    {
-      "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/DDRREF@kind",
-      "present": 3
-    },
-    {
       "path": "ScriptTriggers/ScriptTrigger/ScriptReference/Calculation/Text",
       "present": 2
     },

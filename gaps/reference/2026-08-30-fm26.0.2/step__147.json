@@ -1,0 +1,168 @@
+{
+  "kindId": "step:147",
+  "op": "read:script",
+  "kind": "step:147",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "Fields",
+        "scriptId": "25",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "18"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "383"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "384"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "386"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "387"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "436"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "437"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Set Field By Name",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Set Field By Name",
+        "stepId": "147",
+        "index": "439"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 8
+    },
+    {
+      "path": "@hash",
+      "present": 8
+    },
+    {
+      "path": "@id",
+      "present": 8
+    },
+    {
+      "path": "@index",
+      "present": 8
+    },
+    {
+      "path": "@name",
+      "present": 8
+    },
+    {
+      "path": "Options",
+      "present": 8
+    },
+    {
+      "path": "OwnerID",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 8
+    }
+  ]
+}

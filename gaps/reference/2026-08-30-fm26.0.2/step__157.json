@@ -1,0 +1,136 @@
+{
+  "kindId": "step:157",
+  "op": "read:script",
+  "kind": "step:157",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Install Plug-In File",
+      "context": {
+        "script": "Miscellaneous",
+        "scriptId": "34",
+        "stepName": "Install Plug-In File",
+        "stepId": "157",
+        "index": "14"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Install Plug-In File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Install Plug-In File",
+        "stepId": "157",
+        "index": "901"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Install Plug-In File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Install Plug-In File",
+        "stepId": "157",
+        "index": "1091"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Install Plug-In File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Install Plug-In File",
+        "stepId": "157",
+        "index": "1092"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 4
+    },
+    {
+      "path": "@hash",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@index",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Options",
+      "present": 4
+    },
+    {
+      "path": "OwnerID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    }
+  ]
+}

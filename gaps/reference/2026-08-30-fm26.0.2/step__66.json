@@ -1,0 +1,165 @@
+{
+  "kindId": "step:66",
+  "op": "read:script",
+  "kind": "step:66",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Speak",
+      "context": {
+        "script": "Miscellaneous",
+        "scriptId": "34",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "31"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "941"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "942"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "943"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "1144"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "1145"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Speak",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Speak",
+        "stepId": "66",
+        "index": "1146"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Voice",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Voice@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Voice@value",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

@@ -1,0 +1,514 @@
+{
+  "kindId": "step:36",
+  "op": "read:script",
+  "kind": "step:36",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Export Records",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "8"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "425"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "426"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "427"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "428"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "429"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "430"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "431"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "432"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "433"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "434"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "435"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "436"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "437"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "438"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "473"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "474"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "475"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "476"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "477"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "478"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "479"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "480"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "481"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "482"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "483"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "484"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "485"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "486"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Export Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Export Records",
+        "stepId": "36",
+        "index": "487"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 30
+    },
+    {
+      "path": "@hash",
+      "present": 30
+    },
+    {
+      "path": "@id",
+      "present": 30
+    },
+    {
+      "path": "@index",
+      "present": 30
+    },
+    {
+      "path": "@name",
+      "present": 30
+    },
+    {
+      "path": "Options",
+      "present": 30
+    },
+    {
+      "path": "OwnerID",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 30
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Options",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Options@Formatting",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Options@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Options@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order@type",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference",
+      "present": 20
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference@id",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference@UUID",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Field/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group@value",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference/TableOccurrenceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference/TableOccurrenceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference/TableOccurrenceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Export/Order/Group/FieldReference/TableOccurrenceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@AutoOpen",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@CreateMail",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@fileType",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 27
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 27
+    },
+    {
+      "path": "UUID",
+      "present": 30
+    }
+  ]
+}

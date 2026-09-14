@@ -1,0 +1,153 @@
+{
+  "kindId": "step:190",
+  "op": "read:script",
+  "kind": "step:190",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Create Data File",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "3"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "714"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "715"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "716"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "770"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "771"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Create Data File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Create Data File",
+        "stepId": "190",
+        "index": "772"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

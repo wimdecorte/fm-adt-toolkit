@@ -1,0 +1,260 @@
+{
+  "kindId": "layout-object:container",
+  "op": "read:layout",
+  "kind": "object:Container",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "23",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "79",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "23",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "79",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "6",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "8",
+      "name": "",
+      "context": {
+        "layout": "dateTime_calcs",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@kind",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "@type",
+      "present": 7
+    },
+    {
+      "path": "Accessibility/Label",
+      "present": 7
+    },
+    {
+      "path": "Bounds",
+      "present": 7
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 7
+    },
+    {
+      "path": "Bounds@left",
+      "present": 7
+    },
+    {
+      "path": "Bounds@right",
+      "present": 7
+    },
+    {
+      "path": "Bounds@top",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Graphic/Options",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/DecimalDigits",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Options",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@alpha",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@blue",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@green",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@red",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Time/Options",
+      "present": 7
+    },
+    {
+      "path": "Field/Display",
+      "present": 3
+    },
+    {
+      "path": "Field/Display@show",
+      "present": 7
+    },
+    {
+      "path": "Field/Display@Style",
+      "present": 7
+    },
+    {
+      "path": "Field/Display/Placeholder@findMode",
+      "present": 4
+    },
+    {
+      "path": "Field/Display/Placeholder/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "Field/FieldReference@id",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference@name",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference@repetition",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference@UUID",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@id",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@name",
+      "present": 7
+    },
+    {
+      "path": "Field/FieldReference/TableOccurrenceReference@UUID",
+      "present": 7
+    },
+    {
+      "path": "Field/Options",
+      "present": 7
+    },
+    {
+      "path": "Field/Usage",
+      "present": 7
+    },
+    {
+      "path": "Field/Usage@inputMode",
+      "present": 7
+    },
+    {
+      "path": "Field/Usage@type",
+      "present": 7
+    },
+    {
+      "path": "LocalCSS",
+      "present": 1
+    },
+    {
+      "path": "LocalCSS@displayName",
+      "present": 1
+    },
+    {
+      "path": "LocalCSS@name",
+      "present": 1
+    },
+    {
+      "path": "LocalCSS@type",
+      "present": 1
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "TabOrder@membercount",
+      "present": 1
+    },
+    {
+      "path": "TabOrder/Location",
+      "present": 1
+    },
+    {
+      "path": "TabOrder/Location@id",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ],
+  "fmType": {
+    "type": "field",
+    "control": null
+  }
+}

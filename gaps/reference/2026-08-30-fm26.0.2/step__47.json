@@ -1,0 +1,196 @@
+{
+  "kindId": "step:47",
+  "op": "read:script",
+  "kind": "step:47",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Copy",
+      "context": {
+        "script": "Editing",
+        "scriptId": "24",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "2"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "178"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "179"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "249"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "250"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "251"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "252"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Copy",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Copy",
+        "stepId": "47",
+        "index": "253"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 8
+    },
+    {
+      "path": "@hash",
+      "present": 8
+    },
+    {
+      "path": "@id",
+      "present": 8
+    },
+    {
+      "path": "@index",
+      "present": 8
+    },
+    {
+      "path": "@name",
+      "present": 8
+    },
+    {
+      "path": "Options",
+      "present": 8
+    },
+    {
+      "path": "OwnerID",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 8
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 8
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "kindId": "step:10",
+  "op": "read:script",
+  "kind": "step:10",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Delete All Records",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "4"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Delete All Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "414"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Delete All Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "415"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Delete All Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "462"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Delete All Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "463"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Delete All Records",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Delete All Records",
+        "stepId": "10",
+        "index": "100"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 6
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

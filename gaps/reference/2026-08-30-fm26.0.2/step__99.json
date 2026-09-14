@@ -1,0 +1,317 @@
+{
+  "kindId": "step:99",
+  "op": "read:script",
+  "kind": "step:99",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "Navigation",
+        "scriptId": "23",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "11"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "136"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "137"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "138"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "139"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "140"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "141"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "142"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "143"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "144"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "192"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "193"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "194"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "195"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "196"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "197"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "198"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "199"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Go to Portal Row",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Go to Portal Row",
+        "stepId": "99",
+        "index": "200"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 19
+    },
+    {
+      "path": "@hash",
+      "present": 19
+    },
+    {
+      "path": "@id",
+      "present": 19
+    },
+    {
+      "path": "@index",
+      "present": 19
+    },
+    {
+      "path": "@name",
+      "present": 19
+    },
+    {
+      "path": "Options",
+      "present": 19
+    },
+    {
+      "path": "OwnerID",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 19
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@position",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@type",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Boolean@value",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/List/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 19
+    }
+  ]
+}

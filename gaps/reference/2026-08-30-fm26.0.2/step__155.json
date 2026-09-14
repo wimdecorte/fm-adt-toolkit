@@ -1,0 +1,181 @@
+{
+  "kindId": "step:155",
+  "op": "read:script",
+  "kind": "step:155",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "Found Sets",
+        "scriptId": "27",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "2"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "521"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "522"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "523"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "579"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "580"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Find Matching Records",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Find Matching Records",
+        "stepId": "155",
+        "index": "581"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 7
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

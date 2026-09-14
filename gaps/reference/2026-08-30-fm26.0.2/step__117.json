@@ -1,0 +1,193 @@
+{
+  "kindId": "step:117",
+  "op": "read:script",
+  "kind": "step:117",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Execute SQL",
+      "context": {
+        "script": "CaptureSetupFK",
+        "scriptId": "65",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "1"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Execute SQL",
+      "context": {
+        "script": "Miscellaneous",
+        "scriptId": "34",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "9"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Execute SQL",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "884"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Execute SQL",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "885"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Execute SQL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "1072"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Execute SQL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "1073"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Execute SQL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Execute SQL",
+        "stepId": "117",
+        "index": "1074"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@DSN",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@HasODBCAuthCalc",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@import",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@index",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@Save",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@Script",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL@suppress",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL/DSN",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL/DSN@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL/DSN@Password",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/SQL/DSN@UserName",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

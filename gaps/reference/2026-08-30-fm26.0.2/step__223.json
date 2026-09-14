@@ -1,0 +1,86 @@
+{
+  "kindId": "step:223",
+  "op": "read:script",
+  "kind": "step:223",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Set Revert Transaction on Error",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Set Revert Transaction on Error",
+        "stepId": "223",
+        "index": "16"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Set Revert Transaction on Error",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Set Revert Transaction on Error",
+        "stepId": "223",
+        "index": "47"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 2
+    },
+    {
+      "path": "@hash",
+      "present": 2
+    },
+    {
+      "path": "@id",
+      "present": 2
+    },
+    {
+      "path": "@index",
+      "present": 2
+    },
+    {
+      "path": "@name",
+      "present": 2
+    },
+    {
+      "path": "Options",
+      "present": 2
+    },
+    {
+      "path": "OwnerID",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 2
+    }
+  ]
+}

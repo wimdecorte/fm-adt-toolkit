@@ -1,0 +1,161 @@
+{
+  "kindId": "step:33",
+  "op": "read:script",
+  "kind": "step:33",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Open File",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "10"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "651"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "652"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "653"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "713"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "714"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Open File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Open File",
+        "stepId": "33",
+        "index": "715"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

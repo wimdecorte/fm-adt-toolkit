@@ -1,0 +1,890 @@
+{
+  "kindId": "step:131",
+  "op": "read:script",
+  "kind": "step:131",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Insert File",
+      "context": {
+        "script": "Fields",
+        "scriptId": "25",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "7"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "268"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "269"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "270"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "272"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "273"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "274"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "275"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "276"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "277"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "278"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "279"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "280"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "281"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "282"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "284"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "285"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "286"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "287"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "288"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "289"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "290"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "291"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "292"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "293"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "294"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "297"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "298"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "299"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "300"
+      }
+    },
+    {
+      "id": "30",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "301"
+      }
+    },
+    {
+      "id": "31",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "302"
+      }
+    },
+    {
+      "id": "32",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "303"
+      }
+    },
+    {
+      "id": "33",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "304"
+      }
+    },
+    {
+      "id": "34",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "305"
+      }
+    },
+    {
+      "id": "35",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "323"
+      }
+    },
+    {
+      "id": "36",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "324"
+      }
+    },
+    {
+      "id": "37",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "325"
+      }
+    },
+    {
+      "id": "38",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "326"
+      }
+    },
+    {
+      "id": "39",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "327"
+      }
+    },
+    {
+      "id": "40",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "328"
+      }
+    },
+    {
+      "id": "41",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "329"
+      }
+    },
+    {
+      "id": "42",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "330"
+      }
+    },
+    {
+      "id": "43",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "331"
+      }
+    },
+    {
+      "id": "44",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "332"
+      }
+    },
+    {
+      "id": "45",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "333"
+      }
+    },
+    {
+      "id": "46",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "334"
+      }
+    },
+    {
+      "id": "47",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "335"
+      }
+    },
+    {
+      "id": "48",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "336"
+      }
+    },
+    {
+      "id": "49",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "337"
+      }
+    },
+    {
+      "id": "50",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "338"
+      }
+    },
+    {
+      "id": "51",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "339"
+      }
+    },
+    {
+      "id": "52",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "340"
+      }
+    },
+    {
+      "id": "53",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "341"
+      }
+    },
+    {
+      "id": "54",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "342"
+      }
+    },
+    {
+      "id": "55",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "343"
+      }
+    },
+    {
+      "id": "56",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "344"
+      }
+    },
+    {
+      "id": "57",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "345"
+      }
+    },
+    {
+      "id": "58",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "346"
+      }
+    },
+    {
+      "id": "59",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "347"
+      }
+    },
+    {
+      "id": "60",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "348"
+      }
+    },
+    {
+      "id": "61",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "349"
+      }
+    },
+    {
+      "id": "62",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "350"
+      }
+    },
+    {
+      "id": "63",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "351"
+      }
+    },
+    {
+      "id": "64",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "352"
+      }
+    },
+    {
+      "id": "65",
+      "name": "Insert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Insert File",
+        "stepId": "131",
+        "index": "353"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 66
+    },
+    {
+      "path": "@hash",
+      "present": 66
+    },
+    {
+      "path": "@id",
+      "present": 66
+    },
+    {
+      "path": "@index",
+      "present": 66
+    },
+    {
+      "path": "@name",
+      "present": 66
+    },
+    {
+      "path": "Options",
+      "present": 66
+    },
+    {
+      "path": "OwnerID",
+      "present": 66
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 64
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 64
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Options@type",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Compress",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Compress@name",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Compress@value",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Display",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Display@name",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Display@value",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Filters@size",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Filters/Filter@extension",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Filters/Filter/Calculation/Text",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Storage",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Storage@name",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Storage@value",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Title/Calculation@datatype",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Title/Calculation@position",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Title/Calculation/Calculation/Text",
+      "present": 61
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 60
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 60
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable@value",
+      "present": 51
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@datatype",
+      "present": 51
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation@position",
+      "present": 51
+    },
+    {
+      "path": "ParameterValues/Parameter/Variable/repetition/Calculation/Calculation/Text",
+      "present": 51
+    },
+    {
+      "path": "UUID",
+      "present": 66
+    }
+  ]
+}

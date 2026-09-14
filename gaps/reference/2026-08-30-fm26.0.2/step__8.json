@@ -1,0 +1,77 @@
+{
+  "kindId": "step:8",
+  "op": "read:script",
+  "kind": "step:8",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Duplicate Record/Request",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Duplicate Record/Request",
+        "stepId": "8",
+        "index": "7"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Duplicate Record/Request",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Duplicate Record/Request",
+        "stepId": "8",
+        "index": "423"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Duplicate Record/Request",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Duplicate Record/Request",
+        "stepId": "8",
+        "index": "471"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

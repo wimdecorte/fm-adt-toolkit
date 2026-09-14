@@ -1,0 +1,270 @@
+{
+  "kindId": "step:139",
+  "op": "read:script",
+  "kind": "step:139",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Convert File",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "2"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "644"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "645"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "646"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "647"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "705"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "706"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "707"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "708"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Convert File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Convert File",
+        "stepId": "139",
+        "index": "709"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 10
+    },
+    {
+      "path": "@hash",
+      "present": 10
+    },
+    {
+      "path": "@id",
+      "present": 10
+    },
+    {
+      "path": "@index",
+      "present": 10
+    },
+    {
+      "path": "@name",
+      "present": 10
+    },
+    {
+      "path": "Options",
+      "present": 10
+    },
+    {
+      "path": "OwnerID",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@delimiter",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@fileType",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@isPredefined",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@DSN",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@HasODBCAuthCalc",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@import",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@index",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@Save",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@Script",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL@suppress",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL/DSN",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL/DSN@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL/DSN@Password",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/SQL/DSN@UserName",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML@index",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XML/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL@index",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList@fileType",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference/XSL/UniversalPathList/ObjectList/Location",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 10
+    }
+  ]
+}

@@ -1,0 +1,625 @@
+{
+  "kindId": "step:144",
+  "op": "read:script",
+  "kind": "step:144",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "39"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "40"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "41"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "42"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "43"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_PDFCluster",
+        "scriptId": "67",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "44"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Capture_OtherEnhanced",
+        "scriptId": "69",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "1"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "15"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "491"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "492"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "493"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "494"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "495"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "496"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "497"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "498"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "499"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "500"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "501"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "546"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "547"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "548"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "549"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "550"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "551"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "552"
+      }
+    },
+    {
+      "id": "26",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "553"
+      }
+    },
+    {
+      "id": "27",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "554"
+      }
+    },
+    {
+      "id": "28",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "555"
+      }
+    },
+    {
+      "id": "29",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "556"
+      }
+    },
+    {
+      "id": "30",
+      "name": "Save Records as PDF",
+      "context": {
+        "script": "New Script",
+        "scriptId": "60",
+        "stepName": "Save Records as PDF",
+        "stepId": "144",
+        "index": "2"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 31
+    },
+    {
+      "path": "@hash",
+      "present": 31
+    },
+    {
+      "path": "@id",
+      "present": 31
+    },
+    {
+      "path": "@index",
+      "present": 31
+    },
+    {
+      "path": "@name",
+      "present": 31
+    },
+    {
+      "path": "Options",
+      "present": 31
+    },
+    {
+      "path": "OwnerID",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/Options",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Options@type",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document",
+      "present": 23
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Document/Parameter/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Include",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Include@All",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Parameter@type",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Parameter/Calculation@datatype",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Parameter/Calculation@position",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Pages/Parameter/Calculation/Calculation/Text",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/AllowScreenReader",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/AllowScreenReader@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control",
+      "present": 23
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Control/Parameter/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit@name",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Edit@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/EnableCopying",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/EnableCopying@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open",
+      "present": 23
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation@datatype",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation@position",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Open/Parameter/Calculation/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print@name",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/Security/Print@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout@name",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Layout@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification@name",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/Magnification@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show@name",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Options/View/show@value",
+      "present": 25
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore@value",
+      "present": 31
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@AutoOpen",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@CreateMail",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 15
+    },
+    {
+      "path": "UUID",
+      "present": 31
+    }
+  ]
+}

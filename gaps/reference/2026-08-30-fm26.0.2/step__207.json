@@ -1,0 +1,234 @@
+{
+  "kindId": "step:207",
+  "op": "read:script",
+  "kind": "step:207",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "17"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "44"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "47"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "48"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "49"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "52"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "55"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "65"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "68"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "69"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "70"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "73"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "76"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Revert Transaction",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Revert Transaction",
+        "stepId": "207",
+        "index": "79"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 14
+    },
+    {
+      "path": "@hash",
+      "present": 14
+    },
+    {
+      "path": "@id",
+      "present": 14
+    },
+    {
+      "path": "@index",
+      "present": 14
+    },
+    {
+      "path": "@name",
+      "present": 14
+    },
+    {
+      "path": "Options",
+      "present": 14
+    },
+    {
+      "path": "OwnerID",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 13
+    },
+    {
+      "path": "UUID",
+      "present": 14
+    }
+  ]
+}

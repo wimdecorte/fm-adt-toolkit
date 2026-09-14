@@ -1,0 +1,183 @@
+{
+  "kindId": "step:225",
+  "op": "read:script",
+  "kind": "step:225",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Save Records as JSONL",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Save Records as JSONL",
+        "stepId": "225",
+        "index": "14"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Save Records as JSONL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as JSONL",
+        "stepId": "225",
+        "index": "541"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Save Records as JSONL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as JSONL",
+        "stepId": "225",
+        "index": "542"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Save Records as JSONL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as JSONL",
+        "stepId": "225",
+        "index": "543"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Save Records as JSONL",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Save Records as JSONL",
+        "stepId": "225",
+        "index": "544"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 5
+    },
+    {
+      "path": "@hash",
+      "present": 5
+    },
+    {
+      "path": "@id",
+      "present": 5
+    },
+    {
+      "path": "@index",
+      "present": 5
+    },
+    {
+      "path": "@name",
+      "present": 5
+    },
+    {
+      "path": "Options",
+      "present": 5
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@id",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@name",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/TableOccurrenceReference@UUID",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@AutoOpen",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@CreateMail",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 4
+    },
+    {
+      "path": "UUID",
+      "present": 5
+    }
+  ]
+}

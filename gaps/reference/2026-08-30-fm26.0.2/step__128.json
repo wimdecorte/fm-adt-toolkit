@@ -1,0 +1,294 @@
+{
+  "kindId": "step:128",
+  "op": "read:script",
+  "kind": "step:128",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "Editing",
+        "scriptId": "24",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "5"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "190"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "191"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "192"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "193"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "194"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "195"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "266"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "267"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "268"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "269"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "270"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "271"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "272"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "273"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "274"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "275"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Perform Find/Replace",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Perform Find/Replace",
+        "stepId": "128",
+        "index": "276"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 18
+    },
+    {
+      "path": "@hash",
+      "present": 18
+    },
+    {
+      "path": "@id",
+      "present": 18
+    },
+    {
+      "path": "@index",
+      "present": 18
+    },
+    {
+      "path": "@name",
+      "present": 18
+    },
+    {
+      "path": "Options",
+      "present": 18
+    },
+    {
+      "path": "OwnerID",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 18
+    },
+    {
+      "path": "UUID",
+      "present": 18
+    }
+  ]
+}

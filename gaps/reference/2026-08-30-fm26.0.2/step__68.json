@@ -1,0 +1,557 @@
+{
+  "kindId": "step:68",
+  "op": "read:script",
+  "kind": "step:68",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "If",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "24"
+      }
+    },
+    {
+      "id": "1",
+      "name": "If",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "23"
+      }
+    },
+    {
+      "id": "2",
+      "name": "If",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "25"
+      }
+    },
+    {
+      "id": "3",
+      "name": "If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "33"
+      }
+    },
+    {
+      "id": "4",
+      "name": "If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "35"
+      }
+    },
+    {
+      "id": "5",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "48"
+      }
+    },
+    {
+      "id": "6",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "50"
+      }
+    },
+    {
+      "id": "7",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "54"
+      }
+    },
+    {
+      "id": "8",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "71"
+      }
+    },
+    {
+      "id": "9",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "87"
+      }
+    },
+    {
+      "id": "10",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "93"
+      }
+    },
+    {
+      "id": "11",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "99"
+      }
+    },
+    {
+      "id": "12",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "105"
+      }
+    },
+    {
+      "id": "13",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "112"
+      }
+    },
+    {
+      "id": "14",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "115"
+      }
+    },
+    {
+      "id": "15",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "127"
+      }
+    },
+    {
+      "id": "16",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "133"
+      }
+    },
+    {
+      "id": "17",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "143"
+      }
+    },
+    {
+      "id": "18",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "149"
+      }
+    },
+    {
+      "id": "19",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "152"
+      }
+    },
+    {
+      "id": "20",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "161"
+      }
+    },
+    {
+      "id": "21",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "162"
+      }
+    },
+    {
+      "id": "22",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "172"
+      }
+    },
+    {
+      "id": "23",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "37"
+      }
+    },
+    {
+      "id": "24",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "70"
+      }
+    },
+    {
+      "id": "25",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "76"
+      }
+    },
+    {
+      "id": "26",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "77"
+      }
+    },
+    {
+      "id": "27",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "79"
+      }
+    },
+    {
+      "id": "28",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "87"
+      }
+    },
+    {
+      "id": "29",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "88"
+      }
+    },
+    {
+      "id": "30",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "102"
+      }
+    },
+    {
+      "id": "31",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "107"
+      }
+    },
+    {
+      "id": "32",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "118"
+      }
+    },
+    {
+      "id": "33",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "119"
+      }
+    },
+    {
+      "id": "34",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "127"
+      }
+    },
+    {
+      "id": "35",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "128"
+      }
+    },
+    {
+      "id": "36",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "138"
+      }
+    },
+    {
+      "id": "37",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "139"
+      }
+    },
+    {
+      "id": "38",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "140"
+      }
+    },
+    {
+      "id": "39",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "143"
+      }
+    },
+    {
+      "id": "40",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "157"
+      }
+    },
+    {
+      "id": "41",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "158"
+      }
+    },
+    {
+      "id": "42",
+      "name": "If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "If",
+        "stepId": "68",
+        "index": "167"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 43
+    },
+    {
+      "path": "@hash",
+      "present": 43
+    },
+    {
+      "path": "@id",
+      "present": 43
+    },
+    {
+      "path": "@index",
+      "present": 43
+    },
+    {
+      "path": "@name",
+      "present": 43
+    },
+    {
+      "path": "Options",
+      "present": 43
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 43
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 40
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 40
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 40
+    },
+    {
+      "path": "SourceUUID",
+      "present": 38
+    },
+    {
+      "path": "UUID",
+      "present": 43
+    }
+  ]
+}

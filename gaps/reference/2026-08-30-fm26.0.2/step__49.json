@@ -1,0 +1,218 @@
+{
+  "kindId": "step:49",
+  "op": "read:script",
+  "kind": "step:49",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Clear",
+      "context": {
+        "script": "Editing",
+        "scriptId": "24",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "1"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "173"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "174"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "175"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "176"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "243"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "244"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "245"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "246"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Clear",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Clear",
+        "stepId": "49",
+        "index": "247"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 10
+    },
+    {
+      "path": "@hash",
+      "present": 10
+    },
+    {
+      "path": "@id",
+      "present": 10
+    },
+    {
+      "path": "@index",
+      "present": 10
+    },
+    {
+      "path": "@name",
+      "present": 10
+    },
+    {
+      "path": "Options",
+      "present": 10
+    },
+    {
+      "path": "OwnerID",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 10
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@name",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference@UUID",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@datatype",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation@position",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/repetition/Calculation/Calculation/Text",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@id",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@name",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/FieldReference/TableOccurrenceReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 10
+    }
+  ]
+}

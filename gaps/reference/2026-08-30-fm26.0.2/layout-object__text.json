@@ -1,0 +1,2088 @@
+{
+  "kindId": "layout-object:text",
+  "op": "read:layout",
+  "kind": "object:Text",
+  "file": "LayoutCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "File Open",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "70",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Top Navigation"
+      }
+    },
+    {
+      "id": "89",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Top Navigation"
+      }
+    },
+    {
+      "id": "71",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Title Header"
+      }
+    },
+    {
+      "id": "72",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Header"
+      }
+    },
+    {
+      "id": "73",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Leading Grand Summary"
+      }
+    },
+    {
+      "id": "74",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Leading Sub-summary"
+      }
+    },
+    {
+      "id": "22",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "24",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "26",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "28",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "30",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "32",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "34",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "36",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "38",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "40",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "56",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "59",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "64",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "110",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "80",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "81",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "83",
+      "name": "label_test1",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "85",
+      "name": "label_test2",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "86",
+      "name": "label_test1 Copy",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "91",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "92",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "93",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "94",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "95",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "100",
+      "name": "label_test1 Copy2",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "102",
+      "name": "label_test1 Copy3",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "103",
+      "name": "label_test1 Copy4",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "112",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "113",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "114",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "119",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "122",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "125",
+      "name": "label_test1 Copy5",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "126",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "127",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "131",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "142",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "144",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "75",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Trailing Grand Summary"
+      }
+    },
+    {
+      "id": "76",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Footer"
+      }
+    },
+    {
+      "id": "77",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Title Footer"
+      }
+    },
+    {
+      "id": "78",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable",
+        "part": "Bottom Navigation"
+      }
+    },
+    {
+      "id": "4",
+      "name": "",
+      "context": {
+        "layout": "accessibility",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "6",
+      "name": "",
+      "context": {
+        "layout": "accessibility",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "6",
+      "name": "",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "9",
+      "name": "",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "10",
+      "name": "label_test1 Copy2",
+      "context": {
+        "layout": "Contacts",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "2",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "4",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "6",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "8",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "10",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "12",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "14",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "15",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "16",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "21",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "22",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "24",
+      "name": "",
+      "context": {
+        "layout": "SaXMLDeliveryExecutionContext",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "70",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Top Navigation"
+      }
+    },
+    {
+      "id": "89",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Top Navigation"
+      }
+    },
+    {
+      "id": "71",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Title Header"
+      }
+    },
+    {
+      "id": "72",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Header"
+      }
+    },
+    {
+      "id": "73",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Leading Grand Summary"
+      }
+    },
+    {
+      "id": "74",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Leading Sub-summary"
+      }
+    },
+    {
+      "id": "22",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "24",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "26",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "28",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "30",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "32",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "34",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "36",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "38",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "40",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "56",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "59",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "64",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "110",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "80",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "81",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "83",
+      "name": "label_test1",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "85",
+      "name": "label_test2",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "86",
+      "name": "label_test1 Copy",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "91",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "92",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "93",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "94",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "95",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "100",
+      "name": "label_test1 Copy2",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "102",
+      "name": "label_test1 Copy3",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "103",
+      "name": "label_test1 Copy4",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "112",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "113",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "114",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "119",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "122",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "125",
+      "name": "label_test1 Copy5",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "126",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "127",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "131",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "141",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "75",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Trailing Grand Summary"
+      }
+    },
+    {
+      "id": "76",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Footer"
+      }
+    },
+    {
+      "id": "77",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Title Footer"
+      }
+    },
+    {
+      "id": "78",
+      "name": "",
+      "context": {
+        "layout": "My Layout for TestTable - Wim",
+        "part": "Bottom Navigation"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "14",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "16",
+      "name": "",
+      "context": {
+        "layout": "FM26Test",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "FM26Test_Source",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "FM26Test_Source",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "FM26Test_Source",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "9",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "11",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "13",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "15",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "17",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "19",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "21",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "23",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "25",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "27",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "29",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "31",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "33",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "35",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "37",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "39",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "41",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "43",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "45",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "47",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "49",
+      "name": "",
+      "context": {
+        "layout": "summary_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "9",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "11",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "13",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "15",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "17",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "19",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "21",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "23",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "25",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "27",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "29",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "31",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "33",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "35",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "37",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "39",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "41",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "43",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "45",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "47",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "49",
+      "name": "",
+      "context": {
+        "layout": "autoEnter_fields",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "dateTime_calcs",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "dateTime_calcs",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "dateTime_calcs",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "dateTime_calcs",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "9",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "11",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "13",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "15",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "17",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "19",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "21",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "23",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "25",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "27",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "29",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "31",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "33",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "35",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "37",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "39",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "41",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "43",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "45",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "47",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "49",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "51",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "53",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "55",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "57",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "59",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "61",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "63",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "65",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "67",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "69",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "71",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "73",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "75",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "77",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "79",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "81",
+      "name": "",
+      "context": {
+        "layout": "index_languages",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "5",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "7",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "9",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "11",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "13",
+      "name": "",
+      "context": {
+        "layout": "furigama",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "1",
+      "name": "",
+      "context": {
+        "layout": "validation",
+        "part": "Body"
+      }
+    },
+    {
+      "id": "3",
+      "name": "",
+      "context": {
+        "layout": "validation",
+        "part": "Body"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@hash",
+      "present": 228
+    },
+    {
+      "path": "@id",
+      "present": 228
+    },
+    {
+      "path": "@kind",
+      "present": 228
+    },
+    {
+      "path": "@name",
+      "present": 228
+    },
+    {
+      "path": "@type",
+      "present": 228
+    },
+    {
+      "path": "Bounds",
+      "present": 228
+    },
+    {
+      "path": "Bounds@bottom",
+      "present": 228
+    },
+    {
+      "path": "Bounds@left",
+      "present": 228
+    },
+    {
+      "path": "Bounds@right",
+      "present": 228
+    },
+    {
+      "path": "Bounds@top",
+      "present": 228
+    },
+    {
+      "path": "Conditions/Formatting@membercount",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition@id",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition@type",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/LocalCSS",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/LocalCSS@displayName",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/LocalCSS@name",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/LocalCSS@type",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Formatting/Condition/Options",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Hide@findMode",
+      "present": 2
+    },
+    {
+      "path": "Conditions/Hide/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "DisplayCalculations@membercount",
+      "present": 3
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/DecimalDigits",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Options",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@alpha",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@blue",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@green",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Numeric/Style/Negative/Color@red",
+      "present": 7
+    },
+    {
+      "path": "ExtendedAttributes/Formatting/Time/Options",
+      "present": 7
+    },
+    {
+      "path": "FieldList",
+      "present": 5
+    },
+    {
+      "path": "FieldList/FieldReference@id",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference@name",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference@repetition",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference/TableOccurrenceReference",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference/TableOccurrenceReference@id",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference/TableOccurrenceReference@name",
+      "present": 2
+    },
+    {
+      "path": "FieldList/FieldReference/TableOccurrenceReference@UUID",
+      "present": 2
+    },
+    {
+      "path": "LocalCSS",
+      "present": 126
+    },
+    {
+      "path": "LocalCSS@displayName",
+      "present": 126
+    },
+    {
+      "path": "LocalCSS@name",
+      "present": 126
+    },
+    {
+      "path": "LocalCSS@type",
+      "present": 126
+    },
+    {
+      "path": "Options",
+      "present": 228
+    },
+    {
+      "path": "SourceUUID",
+      "present": 12
+    },
+    {
+      "path": "Text/Options",
+      "present": 228
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList@membercount",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle@End",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle@Start",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference@id",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference@kind",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference@name",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference@postscriptName",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontReference@type",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontStyle",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontStyle@face",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Style/FontStyle@mask",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/CharacterStyleList/CharacterStyle/Text",
+      "present": 1
+    },
+    {
+      "path": "Text/StyledText/Data",
+      "present": 228
+    },
+    {
+      "path": "Tooltip/Calculation/Text",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 228
+    }
+  ],
+  "fmType": {
+    "type": "label",
+    "control": null
+  }
+}

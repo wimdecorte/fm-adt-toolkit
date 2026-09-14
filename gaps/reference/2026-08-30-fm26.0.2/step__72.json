@@ -1,0 +1,130 @@
+{
+  "kindId": "step:72",
+  "op": "read:script",
+  "kind": "step:72",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "30"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "41"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "53"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "56"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "59"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Exit Loop If",
+      "context": {
+        "script": "20260625_missing",
+        "scriptId": "70",
+        "stepName": "Exit Loop If",
+        "stepId": "72",
+        "index": "14"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 6
+    },
+    {
+      "path": "@hash",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@index",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Options",
+      "present": 6
+    },
+    {
+      "path": "OwnerID",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 6
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    }
+  ]
+}

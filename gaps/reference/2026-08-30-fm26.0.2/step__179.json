@@ -1,0 +1,803 @@
+{
+  "kindId": "step:179",
+  "op": "read:script",
+  "kind": "step:179",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "Miscellaneous",
+        "scriptId": "34",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "3"
+      }
+    },
+    {
+      "id": "1",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "839"
+      }
+    },
+    {
+      "id": "2",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "840"
+      }
+    },
+    {
+      "id": "3",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "841"
+      }
+    },
+    {
+      "id": "4",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "842"
+      }
+    },
+    {
+      "id": "5",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "843"
+      }
+    },
+    {
+      "id": "6",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "844"
+      }
+    },
+    {
+      "id": "7",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "845"
+      }
+    },
+    {
+      "id": "8",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "846"
+      }
+    },
+    {
+      "id": "9",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "847"
+      }
+    },
+    {
+      "id": "10",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "848"
+      }
+    },
+    {
+      "id": "11",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "849"
+      }
+    },
+    {
+      "id": "12",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "850"
+      }
+    },
+    {
+      "id": "13",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "851"
+      }
+    },
+    {
+      "id": "14",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "852"
+      }
+    },
+    {
+      "id": "15",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "853"
+      }
+    },
+    {
+      "id": "16",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "854"
+      }
+    },
+    {
+      "id": "17",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "855"
+      }
+    },
+    {
+      "id": "18",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "857"
+      }
+    },
+    {
+      "id": "19",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "858"
+      }
+    },
+    {
+      "id": "20",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "859"
+      }
+    },
+    {
+      "id": "21",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "861"
+      }
+    },
+    {
+      "id": "22",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "862"
+      }
+    },
+    {
+      "id": "23",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "863"
+      }
+    },
+    {
+      "id": "24",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "864"
+      }
+    },
+    {
+      "id": "25",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "865"
+      }
+    },
+    {
+      "id": "26",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "866"
+      }
+    },
+    {
+      "id": "27",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "867"
+      }
+    },
+    {
+      "id": "28",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "869"
+      }
+    },
+    {
+      "id": "29",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1016"
+      }
+    },
+    {
+      "id": "30",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1017"
+      }
+    },
+    {
+      "id": "31",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1018"
+      }
+    },
+    {
+      "id": "32",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1019"
+      }
+    },
+    {
+      "id": "33",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1020"
+      }
+    },
+    {
+      "id": "34",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1021"
+      }
+    },
+    {
+      "id": "35",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1022"
+      }
+    },
+    {
+      "id": "36",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1023"
+      }
+    },
+    {
+      "id": "37",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1024"
+      }
+    },
+    {
+      "id": "38",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1025"
+      }
+    },
+    {
+      "id": "39",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1026"
+      }
+    },
+    {
+      "id": "40",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1027"
+      }
+    },
+    {
+      "id": "41",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1028"
+      }
+    },
+    {
+      "id": "42",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1029"
+      }
+    },
+    {
+      "id": "43",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1030"
+      }
+    },
+    {
+      "id": "44",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1031"
+      }
+    },
+    {
+      "id": "45",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1032"
+      }
+    },
+    {
+      "id": "46",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1033"
+      }
+    },
+    {
+      "id": "47",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1034"
+      }
+    },
+    {
+      "id": "48",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1035"
+      }
+    },
+    {
+      "id": "49",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1036"
+      }
+    },
+    {
+      "id": "50",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1037"
+      }
+    },
+    {
+      "id": "51",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1038"
+      }
+    },
+    {
+      "id": "52",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1039"
+      }
+    },
+    {
+      "id": "53",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1040"
+      }
+    },
+    {
+      "id": "54",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1041"
+      }
+    },
+    {
+      "id": "55",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1042"
+      }
+    },
+    {
+      "id": "56",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1043"
+      }
+    },
+    {
+      "id": "57",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1044"
+      }
+    },
+    {
+      "id": "58",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1045"
+      }
+    },
+    {
+      "id": "59",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1046"
+      }
+    },
+    {
+      "id": "60",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1047"
+      }
+    },
+    {
+      "id": "61",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1048"
+      }
+    },
+    {
+      "id": "62",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1049"
+      }
+    },
+    {
+      "id": "63",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1050"
+      }
+    },
+    {
+      "id": "64",
+      "name": "AVPlayer Set Options",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "AVPlayer Set Options",
+        "stepId": "179",
+        "index": "1051"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 65
+    },
+    {
+      "path": "@hash",
+      "present": 65
+    },
+    {
+      "path": "@id",
+      "present": 65
+    },
+    {
+      "path": "@index",
+      "present": 65
+    },
+    {
+      "path": "@name",
+      "present": 65
+    },
+    {
+      "path": "Options",
+      "present": 65
+    },
+    {
+      "path": "OwnerID",
+      "present": 65
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 64
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 64
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 36
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 24
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 62
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 62
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 62
+    },
+    {
+      "path": "UUID",
+      "present": 65
+    }
+  ]
+}

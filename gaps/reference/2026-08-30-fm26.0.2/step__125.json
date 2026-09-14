@@ -1,0 +1,161 @@
+{
+  "kindId": "step:125",
+  "op": "read:script",
+  "kind": "step:125",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Else If",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "25"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Else If",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "24"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Else If",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "26"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Else If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "34"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Else If",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "36"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Else If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "130"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Else If",
+      "context": {
+        "script": "saxmlDelivery_runPipeline",
+        "scriptId": "53",
+        "stepName": "Else If",
+        "stepId": "125",
+        "index": "151"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 7
+    },
+    {
+      "path": "@hash",
+      "present": 7
+    },
+    {
+      "path": "@id",
+      "present": 7
+    },
+    {
+      "path": "@index",
+      "present": 7
+    },
+    {
+      "path": "@name",
+      "present": 7
+    },
+    {
+      "path": "Options",
+      "present": 7
+    },
+    {
+      "path": "OwnerID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 4
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 4
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 7
+    }
+  ]
+}

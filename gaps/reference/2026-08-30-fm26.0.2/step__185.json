@@ -1,0 +1,314 @@
+{
+  "kindId": "step:185",
+  "op": "read:script",
+  "kind": "step:185",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "Control",
+        "scriptId": "20",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "22"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "14"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "15"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "16"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "17"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "18"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "19"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "20"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "21"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "14"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "15"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "16"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "17"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "18"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "19"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "20"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "21"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Configure Region Monitor Script",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Configure Region Monitor Script",
+        "stepId": "185",
+        "index": "22"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 18
+    },
+    {
+      "path": "@hash",
+      "present": 18
+    },
+    {
+      "path": "@id",
+      "present": 18
+    },
+    {
+      "path": "@index",
+      "present": 18
+    },
+    {
+      "path": "@name",
+      "present": 18
+    },
+    {
+      "path": "Options",
+      "present": 18
+    },
+    {
+      "path": "OwnerID",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@id",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@name",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/DataSourceReference@UUID",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 18
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference@id",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference@name",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference@UUID",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference/repetition/Calculation@datatype",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference/repetition/Calculation@position",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/ScriptReference/repetition/Calculation/Calculation/Text",
+      "present": 5
+    },
+    {
+      "path": "UUID",
+      "present": 18
+    }
+  ]
+}

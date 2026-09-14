@@ -1,0 +1,210 @@
+{
+  "kindId": "field:binary-normal",
+  "op": "read:field",
+  "kind": "field:Binary/Normal",
+  "file": "FieldCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "11",
+      "name": "ContainerField1",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "17",
+      "name": "ContainerField1_RC",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "19",
+      "name": "ContainerField1_RC_dynamicPath",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "31",
+      "name": "field_that_contains_embedding",
+      "context": {
+        "table": "TestTable"
+      }
+    },
+    {
+      "id": "7",
+      "name": "xmlFile",
+      "context": {
+        "table": "SaXMLDelivery"
+      }
+    },
+    {
+      "id": "3",
+      "name": "ProductPhoto",
+      "context": {
+        "table": "FM26Test"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@comment",
+      "present": 6
+    },
+    {
+      "path": "@datatype",
+      "present": 6
+    },
+    {
+      "path": "@fieldtype",
+      "present": 6
+    },
+    {
+      "path": "@id",
+      "present": 6
+    },
+    {
+      "path": "@name",
+      "present": 6
+    },
+    {
+      "path": "Annotation",
+      "present": 6
+    },
+    {
+      "path": "AutoEnter",
+      "present": 6
+    },
+    {
+      "path": "AutoEnter@prohibitModification",
+      "present": 6
+    },
+    {
+      "path": "AutoEnter@type",
+      "present": 6
+    },
+    {
+      "path": "DisplayNames",
+      "present": 6
+    },
+    {
+      "path": "DisplayNames@enable",
+      "present": 6
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "Storage",
+      "present": 3
+    },
+    {
+      "path": "Storage@global",
+      "present": 6
+    },
+    {
+      "path": "Storage@maxRepetitions",
+      "present": 6
+    },
+    {
+      "path": "Storage/Remote@type",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/BaseDirectoryReference",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/BaseDirectoryReference@absolute",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/BaseDirectoryReference@id",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/BaseDirectoryReference@name",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/BaseDirectoryReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/Location/Calculation/TableOccurrenceReference",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/Location/Calculation/TableOccurrenceReference@id",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/Location/Calculation/TableOccurrenceReference@name",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/Location/Calculation/TableOccurrenceReference@UUID",
+      "present": 3
+    },
+    {
+      "path": "Storage/Remote/Location/Calculation/Text",
+      "present": 3
+    },
+    {
+      "path": "TagList",
+      "present": 6
+    },
+    {
+      "path": "UUID",
+      "present": 6
+    },
+    {
+      "path": "UUID@accountName",
+      "present": 6
+    },
+    {
+      "path": "UUID@modifications",
+      "present": 6
+    },
+    {
+      "path": "UUID@timestamp",
+      "present": 6
+    },
+    {
+      "path": "UUID@userName",
+      "present": 6
+    },
+    {
+      "path": "Validation",
+      "present": 6
+    },
+    {
+      "path": "Validation@allowOverride",
+      "present": 6
+    },
+    {
+      "path": "Validation@alwaysValidate",
+      "present": 6
+    },
+    {
+      "path": "Validation@existing",
+      "present": 6
+    },
+    {
+      "path": "Validation@notEmpty",
+      "present": 6
+    },
+    {
+      "path": "Validation@type",
+      "present": 6
+    },
+    {
+      "path": "Validation@unique",
+      "present": 6
+    }
+  ]
+}

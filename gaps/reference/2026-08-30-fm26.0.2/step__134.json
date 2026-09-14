@@ -1,0 +1,265 @@
+{
+  "kindId": "step:134",
+  "op": "read:script",
+  "kind": "step:134",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Add Account",
+      "context": {
+        "script": "Accounts",
+        "scriptId": "30",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "0"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "749"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "750"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "751"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "806"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "807"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "808"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "809"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "810"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "811"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "812"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "813"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "814"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "815"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Add Account",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Add Account",
+        "stepId": "134",
+        "index": "816"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 15
+    },
+    {
+      "path": "@hash",
+      "present": 15
+    },
+    {
+      "path": "@id",
+      "present": 15
+    },
+    {
+      "path": "@index",
+      "present": 15
+    },
+    {
+      "path": "@name",
+      "present": 15
+    },
+    {
+      "path": "Options",
+      "present": 15
+    },
+    {
+      "path": "OwnerID",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 7
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 14
+    },
+    {
+      "path": "ParameterValues/Parameter/List",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/List@name",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/List@value",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference@id",
+      "present": 15
+    },
+    {
+      "path": "ParameterValues/Parameter/PrivilegeSetReference@name",
+      "present": 15
+    },
+    {
+      "path": "UUID",
+      "present": 15
+    }
+  ]
+}

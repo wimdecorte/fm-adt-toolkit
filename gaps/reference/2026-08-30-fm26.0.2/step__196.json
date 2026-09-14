@@ -1,0 +1,97 @@
+{
+  "kindId": "step:196",
+  "op": "read:script",
+  "kind": "step:196",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Close Data File",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Close Data File",
+        "stepId": "196",
+        "index": "0"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Close Data File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Close Data File",
+        "stepId": "196",
+        "index": "740"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Close Data File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Close Data File",
+        "stepId": "196",
+        "index": "797"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@datatype",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation@position",
+      "present": 1
+    },
+    {
+      "path": "ParameterValues/Parameter/Calculation/Calculation/Text",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

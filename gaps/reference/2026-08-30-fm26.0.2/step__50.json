@@ -1,0 +1,77 @@
+{
+  "kindId": "step:50",
+  "op": "read:script",
+  "kind": "step:50",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Select All",
+      "context": {
+        "script": "Editing",
+        "scriptId": "24",
+        "stepName": "Select All",
+        "stepId": "50",
+        "index": "6"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Select All",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Select All",
+        "stepId": "50",
+        "index": "197"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Select All",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Select All",
+        "stepId": "50",
+        "index": "278"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 3
+    },
+    {
+      "path": "@hash",
+      "present": 3
+    },
+    {
+      "path": "@id",
+      "present": 3
+    },
+    {
+      "path": "@index",
+      "present": 3
+    },
+    {
+      "path": "@name",
+      "present": 3
+    },
+    {
+      "path": "Options",
+      "present": 3
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "UUID",
+      "present": 3
+    }
+  ]
+}

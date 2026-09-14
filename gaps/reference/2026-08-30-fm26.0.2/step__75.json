@@ -1,0 +1,215 @@
+{
+  "kindId": "step:75",
+  "op": "read:script",
+  "kind": "step:75",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "Records",
+        "scriptId": "26",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "1"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "404"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "405"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "406"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "407"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "408"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "452"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "453"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "454"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "455"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "456"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "137"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Commit Records/Requests",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Commit Records/Requests",
+        "stepId": "75",
+        "index": "164"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 13
+    },
+    {
+      "path": "@hash",
+      "present": 13
+    },
+    {
+      "path": "@id",
+      "present": 13
+    },
+    {
+      "path": "@index",
+      "present": 13
+    },
+    {
+      "path": "@name",
+      "present": 13
+    },
+    {
+      "path": "Options",
+      "present": 13
+    },
+    {
+      "path": "OwnerID",
+      "present": 11
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 13
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 13
+    },
+    {
+      "path": "SourceUUID",
+      "present": 2
+    },
+    {
+      "path": "UUID",
+      "present": 13
+    }
+  ]
+}

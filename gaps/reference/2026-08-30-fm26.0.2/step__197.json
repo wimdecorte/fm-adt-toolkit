@@ -1,0 +1,108 @@
+{
+  "kindId": "step:197",
+  "op": "read:script",
+  "kind": "step:197",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Delete File",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Delete File",
+        "stepId": "197",
+        "index": "4"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Delete File",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Delete File",
+        "stepId": "197",
+        "index": "741"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Delete File",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Delete File",
+        "stepId": "197",
+        "index": "798"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Delete File",
+      "context": {
+        "script": "saxmlDelivery_createXml",
+        "scriptId": "51",
+        "stepName": "Delete File",
+        "stepId": "197",
+        "index": "144"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 4
+    },
+    {
+      "path": "@hash",
+      "present": 4
+    },
+    {
+      "path": "@id",
+      "present": 4
+    },
+    {
+      "path": "@index",
+      "present": 4
+    },
+    {
+      "path": "@name",
+      "present": 4
+    },
+    {
+      "path": "Options",
+      "present": 4
+    },
+    {
+      "path": "OwnerID",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList@membercount",
+      "present": 2
+    },
+    {
+      "path": "ParameterValues/Parameter/UniversalPathList/ObjectList/Location",
+      "present": 2
+    },
+    {
+      "path": "SourceUUID",
+      "present": 1
+    },
+    {
+      "path": "UUID",
+      "present": 4
+    }
+  ]
+}

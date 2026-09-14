@@ -1,0 +1,442 @@
+{
+  "kindId": "step:43",
+  "op": "read:script",
+  "kind": "step:43",
+  "file": "ScriptCatalog",
+  "exportLabel": "2026-08-30-fm26.0.2",
+  "source": "26.0.2",
+  "instances": [
+    {
+      "id": "0",
+      "name": "Print",
+      "context": {
+        "script": "Files",
+        "scriptId": "29",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "11"
+      }
+    },
+    {
+      "id": "1",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "655"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "656"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "657"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "658"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "659"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "660"
+      }
+    },
+    {
+      "id": "7",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "663"
+      }
+    },
+    {
+      "id": "8",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "664"
+      }
+    },
+    {
+      "id": "9",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "665"
+      }
+    },
+    {
+      "id": "10",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "666"
+      }
+    },
+    {
+      "id": "11",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "667"
+      }
+    },
+    {
+      "id": "12",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "668"
+      }
+    },
+    {
+      "id": "13",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "671"
+      }
+    },
+    {
+      "id": "14",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "672"
+      }
+    },
+    {
+      "id": "15",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options",
+        "scriptId": "39",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "673"
+      }
+    },
+    {
+      "id": "16",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "717"
+      }
+    },
+    {
+      "id": "17",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "718"
+      }
+    },
+    {
+      "id": "18",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "719"
+      }
+    },
+    {
+      "id": "19",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "720"
+      }
+    },
+    {
+      "id": "20",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "721"
+      }
+    },
+    {
+      "id": "21",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "722"
+      }
+    },
+    {
+      "id": "22",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "723"
+      }
+    },
+    {
+      "id": "23",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "725"
+      }
+    },
+    {
+      "id": "24",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "726"
+      }
+    },
+    {
+      "id": "25",
+      "name": "Print",
+      "context": {
+        "script": "All script steps and all options 20260318",
+        "scriptId": "55",
+        "stepName": "Print",
+        "stepId": "43",
+        "index": "727"
+      }
+    }
+  ],
+  "attributes": [
+    {
+      "path": "@enable",
+      "present": 26
+    },
+    {
+      "path": "@hash",
+      "present": 26
+    },
+    {
+      "path": "@id",
+      "present": 26
+    },
+    {
+      "path": "@index",
+      "present": 26
+    },
+    {
+      "path": "@name",
+      "present": 26
+    },
+    {
+      "path": "Options",
+      "present": 26
+    },
+    {
+      "path": "OwnerID",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues@membercount",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter@type",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@id",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@type",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/Boolean@value",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/Orientation",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/Orientation@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/Orientation@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/scale",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/scale@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/size",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/size@height",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/PageSetup/size@width",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print@name",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print@toFile",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print@type",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Copies",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Copies@collate",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Copies@value",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Pages",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Pages@All",
+      "present": 21
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Pages@from",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Pages@offset",
+      "present": 3
+    },
+    {
+      "path": "ParameterValues/Parameter/Print/Pages@to",
+      "present": 5
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore",
+      "present": 26
+    },
+    {
+      "path": "ParameterValues/Parameter/Restore@value",
+      "present": 26
+    },
+    {
+      "path": "UUID",
+      "present": 26
+    }
+  ]
+}
