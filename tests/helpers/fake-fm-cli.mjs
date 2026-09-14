@@ -4,6 +4,14 @@
 
 import { appendFileSync, readFileSync } from 'node:fs';
 
+// `--version` is answered immediately, whatever FAKE_FM_MODE is: the real CLI never
+// touches stdin or an ops file for it, and locateFmCli()/bin scripts probe it before
+// any op is ever sent -- reading stdin here would hang forever waiting for EOF.
+if (process.argv.includes('--version')) {
+  process.stdout.write('0.6.0 (29816214)\n');
+  process.exit(0);
+}
+
 const mode = process.env.FAKE_FM_MODE ?? 'ok';
 const opsPath = process.argv.slice(2).find((a) => !a.startsWith('--'));
 // `fatal` deliberately does NOT drain stdin: the real CLI fails to OPEN the file
@@ -72,6 +80,17 @@ if (mode === 'hang') {
   process.exit(2);
 } else if (mode === 'garbage') {
   process.stdout.write('not json at all\n');
+  process.exit(0);
+} else if (mode === 'fixture') {
+  const fixture = JSON.parse(readFileSync(process.env.FAKE_FM_FIXTURE, 'utf8'));
+  const lines = stdin.trimEnd().split('\n').filter(Boolean);
+  for (const line of lines) {
+    const op = JSON.parse(line).op;
+    emitResult(JSON.stringify({ op, status: 'ok', result: fixture }) + '\n');
+  }
+  process.stderr.write(
+    JSON.stringify({ type: 'summary', total: lines.length, ok: lines.length, errors: 0, dryRun, rolledBack: false }) + '\n',
+  );
   process.exit(0);
 } else if (mode === 'read') {
   emitResult(JSON.stringify({ op: 'read:table', status: 'ok',

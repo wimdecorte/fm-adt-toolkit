@@ -1,141 +1,57 @@
+import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path';
 import { describe, it, expect } from 'vitest';
 import { runChecks } from '../src/gaps/check.ts';
-import type { GapEntry } from '../src/gaps/register.ts';
+import type { SubjectEntry } from '../src/gaps/register.ts';
 import type { AdtOp, AdtRunResult } from '../src/types.ts';
 
-const entry = (id: string, check: GapEntry['probe']['check'], status: GapEntry['status'] = 'open'): GapEntry => ({
-  id, title: id, area: 'catalog:layout', description: '', status, firstSeen: '0.6.0', lastChecked: null,
-  reportedToClaris: null, blocks: [{ app: 'inspector', feature: id }],
-  probe: { target: 'reference', ops: [{ op: 'read:layout', name: 'File Open', detail: true }], check },
+const probe = { ops: [{ op: 'read:layout', name: 'Home', detail: true }] as AdtOp[], select: '**objects[id=21]' };
+const entry = (id: string, attrs: SubjectEntry['attributes'], extra: Partial<SubjectEntry> = {}): SubjectEntry => ({
+  id, op: 'read:layout', kind: 'object:Edit Box', probe, attributes: attrs, firstSeen: '0.6.0', reportedToClaris: null, lastChecked: null, blocks: [], ...extra,
 });
+const layoutResult = { op: 'read:layout', status: 'ok', result: { name: 'Home', contents: { objects: [ { id: 21, type: 'field', bounds: { top: 1 }, locked: false, newThing: 1 } ] } } };
+const run = (results: unknown[]) => async (ops: AdtOp[]): Promise<AdtRunResult> => ({
+  ok: true, exitCode: 0, results: results as AdtRunResult['results'], summary: { total: ops.length, ok: ops.length, errors: 0, dryRun: false, rolledBack: false }, notices: [],
+  stdout: results.map((r) => JSON.stringify(r)).join('\n') + '\n', stderr: '{"type":"summary","total":1,"ok":1,"errors":0,"dryRun":false,"rolledBack":false}\n', argv: ['--file=x', '--out=/tmp/o', '/tmp/i'],
+});
+const meta = (root: string) => ({ version: '0.6.0', build: '1', date: '2026-09-14', root, commandFor: (a: string[]) => 'fm ' + a.join(' ') });
 
 describe('runChecks', () => {
-  it('runs every probe in ONE batch, maps results back by position, records evidence', async () => {
+  it('runs each distinct probe once, evaluates every attribute, records evidence per probe, and finds unexplained keys', async () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
     const seen: AdtOp[][] = [];
-    const run = async (ops: AdtOp[]): Promise<AdtRunResult> => {
-      seen.push(ops);
-      return {
-        ok: true, exitCode: 0, summary: { total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }, notices: [],
-        results: [
-          { op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } },
-          { op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex', styles: [] } } },
-        ],
-        stdout: '{"op":"read:layout","status":"ok","result":{"theme":{"name":"Apex"}}}\n{"op":"read:layout","status":"ok","result":{"theme":{"name":"Apex","styles":[]}}}\n',
-        stderr: '{"type":"summary","total":2,"ok":2,"errors":0,"dryRun":false,"rolledBack":false}\n',
-        argv: ['--file=fmnet://localhost/ooe', '--username=admin', '--keychain', '--no-prompt', '--abort-on-error=false', '--out=/tmp/o', '/tmp/i'],
-      };
-    };
-    const out = await runChecks(
-      [entry('a', { kind: 'keyPresent', path: 'theme.styles' }), entry('b', { kind: 'keyPresent', path: 'theme.styles' })],
-      run,
-      { version: '0.6.0', build: '29816214', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') },
-    );
-    expect(seen).toHaveLength(1);
-    expect(seen[0]).toHaveLength(2);
-    expect(out.stillOpen.map((e) => e.id)).toEqual(['a']);
-    expect(out.newlyPassing.map((e) => e.id)).toEqual(['b']);
-    expect(out.errored).toEqual([]);
-    const a = out.entries[0].lastChecked!;
-    expect(a.outcome).toBe('open');
-    expect(a.command).toBe('fm --file=fmnet://localhost/ooe --username=admin --keychain --no-prompt --abort-on-error=false --out=/tmp/o /tmp/i');
-    expect(a.ops).toEqual([{ op: 'read:layout', name: 'File Open', detail: true }]);
-    expect(a.response.stdout).toEqual([{ op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } }]);
-    expect(a.response.stderr).toEqual([{ type: 'summary', total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }]);
-    expect(a.response.exitCode).toBe(0);
-    expect(out.entries[1].lastChecked!.outcome).toBe('passed');
-    // status is NOT flipped automatically; a human marks it fixed after reading the evidence
-    expect(out.entries[1].status).toBe('open');
+    const r = async (ops: AdtOp[]) => { seen.push(ops); return run([layoutResult])(ops); };
+    const a = entry('a', [
+      { name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true },
+      { name: 'locked', path: 'Options/Locked', knownFrom: 'SaXML', fmKey: 'locked', reported: false },   // marked missing but fm reports it -> newly reported
+      { name: 'cond', path: 'ConditionalFormatting', knownFrom: 'SaXML', fmKey: null, reported: false },
+      { name: 'gone', path: 'X', knownFrom: 'SaXML', fmKey: 'vanished', reported: true },                   // marked reported but absent -> regressed
+    ], { ignoreKeys: ['id', 'type'] });
+    const b = entry('b', [{ name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true }]);   // same probe as a
+    const out = await runChecks([a, b], r, meta(root));
+    expect(seen).toHaveLength(1); expect(seen[0]).toHaveLength(1);                     // one distinct probe, run once
+    const ea = out.entries[0].lastChecked!;
+    expect(ea.attributes).toEqual({ top: 'reported', locked: 'reported', cond: 'absent', gone: 'absent' });
+    expect(ea.unexplainedKeys).toEqual(['newThing']);                                   // bounds.top, locked claimed; id, type ignored; 'bounds' parent implied
+    expect(ea.evidence).toMatch(/^gaps\/evidence\/0\.6\.0\/[0-9a-f]{8}\.ndjson$/);
+    expect(fs.existsSync(path.join(root, ea.evidence))).toBe(true);
+    expect(out.entries[1].lastChecked!.evidence).toBe(ea.evidence);
+    expect(out.newlyReported.map((x) => x.attribute.name)).toEqual(['locked']);
+    expect(out.regressed.map((x) => x.attribute.name)).toEqual(['gone']);
+    expect(out.stillMissing.map((x) => x.attribute.name)).toEqual(['cond']);
+    expect(out.unexplained).toEqual([{ entry: out.entries[0], keys: ['newThing'] }]);
+    expect(out.entries[0].attributes[1].reported).toBe(false);                          // never edited by the checker
+    fs.rmSync(root, { recursive: true, force: true });
   });
-
-  it('marks an entry errored when the result at its position is a different op, without disturbing other entries', async () => {
-    const run = async (): Promise<AdtRunResult> => ({
-      ok: true, exitCode: 0, summary: { total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }, notices: [],
-      results: [
-        { op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } },
-        { op: 'read:table', status: 'ok', result: { kind: 'table' } },
-      ],
-      stdout: '{"op":"read:layout","status":"ok","result":{"theme":{"name":"Apex"}}}\n{"op":"read:table","status":"ok","result":{"kind":"table"}}\n',
-      stderr: '{"type":"summary","total":2,"ok":2,"errors":0,"dryRun":false,"rolledBack":false}\n',
-      argv: ['--file=x'],
-    });
-    const out = await runChecks(
-      [entry('a', { kind: 'keyPresent', path: 'theme.styles' }), entry('b', { kind: 'keyPresent', path: 'theme.styles' })],
-      run,
-      { version: '0.6.0', build: '1', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') },
-    );
-    // entry 1 (index 0) is unaffected: its own result matches its probe op.
-    expect(out.entries[0].lastChecked!.outcome).toBe('open');
-    // entry 2 (index 1) got a result line back, but for the wrong op.
-    expect(out.errored.map((e) => e.id)).toEqual(['b']);
-    expect(out.entries[1].lastChecked!.outcome).toBe('error');
-    expect(out.entries[1].lastChecked!.reason).toBe(
-      'result op read:table does not match probe op read:layout at position 1',
-    );
-  });
-
-  it('marks an entry errored when its result line is missing and never throws', async () => {
-    const run = async (): Promise<AdtRunResult> => ({
-      ok: false, exitCode: 2, summary: null, notices: [], results: [], stdout: '',
-      stderr: '{"type":"fatal","error":{"code":"open_failed","message":"nope"}}\n',
-      fatal: { code: 'open_failed', message: 'nope' }, argv: ['--file=x'],
-    });
-    const out = await runChecks([entry('a', { kind: 'opAccepted' })], run,
-      { version: '0.6.0', build: '1', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') });
+  it('marks an entry errored when its probe has no result or the selector finds nothing, and surfaces a fatal', async () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-chk-'));
+    const a = entry('a', [{ name: 'top', path: 'Bounds@top', knownFrom: 'SaXML', fmKey: 'bounds.top', reported: true }], { probe: { ops: probe.ops, select: '**objects[id=99]' } });
+    const out = await runChecks([a], run([layoutResult]), meta(root));
     expect(out.errored.map((e) => e.id)).toEqual(['a']);
-    expect(out.entries[0].lastChecked!.outcome).toBe('error');
-    expect(out.entries[0].lastChecked!.response.stderr[0]).toMatchObject({ type: 'fatal' });
-  });
-
-  it('stores [] for stdout, not the whole batch, when an entry has no result line of its own', async () => {
-    const run = async (): Promise<AdtRunResult> => ({
-      // Only entry 'a's own line came back; entry 'b' has nothing at position 1,
-      // but the batch's stdout still carries a's line — that must not leak into b's evidence.
-      ok: false, exitCode: 1, summary: { total: 2, ok: 1, errors: 1, dryRun: false, rolledBack: false }, notices: [],
-      results: [{ op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } }],
-      stdout: '{"op":"read:layout","status":"ok","result":{"theme":{"name":"Apex"}}}\n',
-      stderr: '{"type":"summary","total":2,"ok":1,"errors":1,"dryRun":false,"rolledBack":false}\n',
-      argv: ['--file=x'],
-    });
-    const out = await runChecks(
-      [entry('a', { kind: 'opAccepted' }), entry('b', { kind: 'opAccepted' })],
-      run,
-      { version: '0.6.0', build: '1', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') },
-    );
-    expect(out.entries[1].lastChecked!.outcome).toBe('error');
-    expect(out.entries[1].lastChecked!.response.stdout).toEqual([]);
-    // full stderr lines are still kept
-    expect(out.entries[1].lastChecked!.response.stderr).toEqual([
-      { type: 'summary', total: 2, ok: 1, errors: 1, dryRun: false, rolledBack: false },
-    ]);
-  });
-
-  it('returns the run-level fatal from runChecks when the run reports one', async () => {
-    const run = async (): Promise<AdtRunResult> => ({
-      ok: false, exitCode: 2, summary: null, notices: [], results: [], stdout: '',
-      stderr: '{"type":"fatal","error":{"code":"open_failed","message":"nope"}}\n',
-      fatal: { code: 'open_failed', message: 'nope' }, argv: ['--file=x'],
-    });
-    const out = await runChecks([entry('a', { kind: 'opAccepted' })], run,
-      { version: '0.6.0', build: '1', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') });
-    expect(out.fatal).toEqual({ code: 'open_failed', message: 'nope' });
-  });
-
-  it('records batch size and 0-based position on every entry\'s evidence', async () => {
-    const run = async (): Promise<AdtRunResult> => ({
-      ok: true, exitCode: 0, summary: { total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }, notices: [],
-      results: [
-        { op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } },
-        { op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } },
-      ],
-      stdout: '', stderr: '{"type":"summary","total":2,"ok":2,"errors":0,"dryRun":false,"rolledBack":false}\n',
-      argv: ['--file=x'],
-    });
-    const out = await runChecks(
-      [entry('a', { kind: 'opAccepted' }), entry('b', { kind: 'opAccepted' })],
-      run,
-      { version: '0.6.0', build: '1', date: '2026-09-14', commandFor: (argv) => 'fm ' + argv.join(' ') },
-    );
-    expect(out.entries[0].lastChecked!.batch).toEqual({ size: 2, position: 0 });
-    expect(out.entries[1].lastChecked!.batch).toEqual({ size: 2, position: 1 });
+    expect(out.entries[0].lastChecked!.reason).toMatch(/selector .* matched nothing/);
+    expect(out.entries[0].lastChecked!.attributes).toEqual({ top: 'error' });
+    const fatalRun = async (): Promise<AdtRunResult> => ({ ok: false, exitCode: 2, results: [], summary: null, notices: [], stdout: '', stderr: '{"type":"fatal","error":{"code":"open_failed","message":"no"}}\n', fatal: { code: 'open_failed', message: 'no' }, argv: ['--file=x'] });
+    const out2 = await runChecks([a], fatalRun, meta(root));
+    expect(out2.fatal?.code).toBe('open_failed');
+    fs.rmSync(root, { recursive: true, force: true });
   });
 });

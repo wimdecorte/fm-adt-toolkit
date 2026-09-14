@@ -9,9 +9,22 @@ Shared code for tools built on the Claris Agentic Development Toolkit `fm` CLI.
 
 Measured against fm 0.6.0 (29816214). Node 22.18 or later.
 
-## Re-checking the register on a new fm build
+## The coverage register
 
+The register is a per-kind coverage matrix: one entry per subject kind (`layout-object:edit-box`,
+`field:text`, ...), each with its full list of known attributes and, once checked, fm's actual
+response. Four commands maintain it:
+
+    npx fm-gaps enumerate --saxml=<dir> --prefix=<FileName> --label=<export label>
+    npx fm-gaps draft --kind=layout-object:edit-box --file=fmnet://localhost/ooe --username=admin
     npx fm-gaps check --file=fmnet://localhost/ooe --username=admin
     npx fm-gaps report --out=gaps-report.md
 
-`check` sends read ops only. It records the exact command and fm's verbatim response on every entry and never changes an entry's `status`; read the evidence, then set `status` to `fixed` by hand and commit the register.
+`enumerate` reads a Save as XML export (never writes to it) and writes one reference file per
+kind under `gaps/reference/<label>/`: attribute paths and counts, no values. `draft` reads one
+instance of each named kind through fm and writes a first-draft entry into the register for a
+human to review; an existing entry with that id is left alone. `check` sends read ops only, runs
+every distinct probe once, and records evidence (`gaps/evidence/<version>/<probe-id>.ndjson`) and
+a per-attribute outcome on every entry; it never edits `reported` or `fmKey` itself. `check` exits
+1 on errored probes or regressions; newly reported attributes are printed for a human to confirm
+by setting `fmKey` and `reported`. `report` renders the matrix as Markdown for Claris.

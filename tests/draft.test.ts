@@ -1,0 +1,39 @@
+import { describe, it, expect } from 'vitest';
+import { draftEntry } from '../src/gaps/draft.ts';
+import type { Reference, ReferenceInstance } from '../src/gaps/enumerate.ts';
+
+const paths = ['@id', '@name', 'Bounds@top', 'Options/Locked', 'ConditionalFormatting/Style'];
+
+const reference: Reference = {
+  kindId: 'layout-object:edit-box', op: 'read:layout', kind: 'object:Edit Box',
+  file: 'LayoutCatalog', exportLabel: '2026-08-30-fm26.0.2', source: 'Ooe',
+  instances: [{ id: '21', name: 'Home', context: {} }],
+  attributes: paths.map((p) => ({ path: p, present: 1 })),
+};
+
+const instance: ReferenceInstance = { id: '21', name: 'Home', context: {} };
+const fmInstance = { id: 21, name: '', bounds: { top: 1 }, locked: false, kind: 1 };
+const probe = { ops: [{ op: 'read:layout' as const, name: 'Home', detail: true }], select: '**objects[id=21]' };
+
+describe('draftEntry', () => {
+  it('drafts one attribute per reference path, auto-matched to the fm instance, in path order', () => {
+    const entry = draftEntry(reference, instance, probe, fmInstance, '0.6.0');
+    expect(entry.id).toBe(reference.kindId);
+    expect(entry.op).toBe('read:layout');
+    expect(entry.kind).toBe('object:Edit Box');
+    expect(entry.probe).toEqual(probe);
+    expect(entry.firstSeen).toBe('0.6.0');
+    expect(entry.ignoreKeys).toEqual([]);
+    expect(entry.reportedToClaris).toBeNull();
+    expect(entry.lastChecked).toBeNull();
+    expect(entry.blocks).toEqual([]);
+    expect(entry.attributes.map((a) => a.path)).toEqual(paths);
+    expect(entry.attributes).toEqual([
+      { name: 'id', path: '@id', knownFrom: 'SaXML LayoutCatalog @id', fmKey: 'id', reported: true },
+      { name: 'name', path: '@name', knownFrom: 'SaXML LayoutCatalog @name', fmKey: 'name', reported: true },
+      { name: 'Bounds top', path: 'Bounds@top', knownFrom: 'SaXML LayoutCatalog Bounds@top', fmKey: 'bounds.top', reported: true },
+      { name: 'Options Locked', path: 'Options/Locked', knownFrom: 'SaXML LayoutCatalog Options/Locked', fmKey: 'locked', reported: true },
+      { name: 'ConditionalFormatting Style', path: 'ConditionalFormatting/Style', knownFrom: 'SaXML LayoutCatalog ConditionalFormatting/Style', fmKey: null, reported: false },
+    ]);
+  });
+});

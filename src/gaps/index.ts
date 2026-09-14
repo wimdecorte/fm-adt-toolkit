@@ -1,6 +1,15 @@
 export { evaluateCheck } from './checks.ts';
 export type { GapCheck } from './checks.ts';
 export { loadRegister, saveRegister } from './register.ts';
-export type { GapEntry, GapEvidence, GapStatus } from './register.ts';
+export type { Attribute, SubjectEntry, SubjectEvidence } from './register.ts';
 export { runChecks } from './check.ts';
+export type { CheckOutcome } from './check.ts';
 export { renderReport } from './report.ts';
+export { probeId, writeEvidence, readEvidence, evidencePath } from './evidence.ts';
+export { selectInstance } from './select.ts';
+export { flattenKeys, normaliseName, autoMatch } from './match.ts';
+export { enumerateExport, enumerateKind, writeReferences, referenceFileName, attributePaths, findByChain } from './enumerate.ts';
+export type { Reference, ReferenceAttribute, ReferenceInstance } from './enumerate.ts';
+export { KINDS, groupSlug } from './kinds.ts';
+export type { KindRule } from './kinds.ts';
+export { draftEntry } from './draft.ts';
