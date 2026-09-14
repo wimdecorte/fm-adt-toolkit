@@ -5,7 +5,8 @@
  *  It builds a tree; the largest catalog in the reference export is 5 MB, which
  *  fits comfortably. It is not a general XML parser: no DTD, no namespaces
  *  handling beyond keeping the prefix in the tag name, no processing instructions
- *  inside the body. */
+ *  inside the body. A literal `>` inside a quoted attribute value (single or
+ *  double) does not end the tag early; the tag-end scan tracks quote state. */
 export interface XmlNode {
   tag: string;
   attrs: Record<string, string>;
@@ -24,6 +25,24 @@ function decode(s: string): string {
 }
 
 const ATTR = /([^\s=\/>]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g;
+
+/** Finds the index of the `>` that ends the tag starting at `lt` (the index of its `<`),
+ *  skipping over any `>` that falls inside a single- or double-quoted attribute value.
+ *  Returns -1 if the text ends before the tag closes. */
+function findTagEnd(text: string, lt: number): number {
+  let quote = '';
+  for (let j = lt + 1; j < text.length; j++) {
+    const c = text[j];
+    if (quote) {
+      if (c === quote) quote = '';
+    } else if (c === '"' || c === "'") {
+      quote = c;
+    } else if (c === '>') {
+      return j;
+    }
+  }
+  return -1;
+}
 
 export function parseXml(text: string): XmlNode {
   const stack: XmlNode[] = [];
@@ -54,7 +73,7 @@ export function parseXml(text: string): XmlNode {
       if (end === -1) throw new Error('unterminated declaration');
       i = end + 1; continue;
     }
-    const gt = text.indexOf('>', lt);
+    const gt = findTagEnd(text, lt);
     if (gt === -1) throw new Error('unterminated tag');
     const body = text.slice(lt + 1, gt);
     i = gt + 1;

@@ -32,6 +32,13 @@ describe('parseXml', () => {
   it('rejects a document whose tags do not balance', () => {
     expect(() => parseXml('<a><b></a>')).toThrow(/expected <\/b> but found <\/a>/);
   });
+  it('does not truncate the tag at an unescaped > inside a quoted attribute value', () => {
+    const root = parseXml('<Layout id="1" name="A > B" note=\'x>y\'><Part type="Body"/></Layout>');
+    expect(root.attrs.name).toBe('A > B');
+    expect(root.attrs.note).toBe('x>y');
+    expect(root.children).toHaveLength(1);
+    expect(root.children[0].tag).toBe('Part');
+  });
   it('parses a 5 MB document in bounded time', () => {
     const big = '<R>' + '<S id="1"><T x="y">t</T></S>'.repeat(120000) + '</R>';
     const t0 = Date.now();
