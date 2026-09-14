@@ -1,0 +1,1156 @@
+# Note: This script is used to check the output of fmCheckMates Print function
+# 
+# 20170516 MrW Script sorted alphabetically within categories for fm16
+# 
+# Calculation
+Set Variable [ $my_calc ; Value: Let( [ _calc_var = "something" ; _calc_var_two = If ( Contacts::ID = 1 ; True ; 0 ) ; _calc_var_three = BE_CurlTrace ]; Case( Contacts::Name = "wim" ; "some value" ; // comment: invoice is from external file Invoice::InvoiceNumber = _NULL ; $my_var… ]
+# 
+# =============
+# CONTROL STEPS
+# =============
+# 
+Allow User Abort [ Off ]
+Allow User Abort [ On ]
+# 
+Configure Region Monitor Script [ Monitor: iBeacon ]
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: "foobar" ]
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: "foobar" ; UUID: $UUID ]
+Configure Region Monitor Script [ Monitor: iBeacon ; UUID: $UUID ]
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: $BeaconName ; Script: “noop” ; Parameter: 1 ; UUID: $UUID ; Major: $Major ; Minor: $Minor ] ➜🌍 
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: $BeaconName ; Script: “saxmlDelivery_createXml” from file: “BrojDva” ; Parameter: 1 ; UUID: $UUID ] ➜🌍 
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: 123 ; Script: “noop” ; Parameter: 1 ; UUID: $UUID ] ➜🌍 
+Configure Region Monitor Script [ Monitor: iBeacon ; Name: Contacts::ID & Case(  1=1 ; Contacts::ID_TestTable ;  1=0 ; Contacts::Name ;  Invoice::InvoiceNumber ) ; Script: “noop” ; Parameter: 1 ; UUID: $UUID ] ➜🌍 
+Configure Region Monitor Script [ Monitor: Geofence ; Name: $BeaconName ; Script: “noop” ; Parameter: 1 ; Latitude: $Latitude ; Longitude: $Longitude ; Radius: $Radius ] ➜🌍 
+# 
+Configure Local Notification [ Action: Queue ]
+Configure Local Notification [ Action: Queue ; Name: "some name" ; Script: “noop” ; Delay: 1/2 ; Title: "some title" ; Body: "some body" ; Button 1 Label: "button 1 label" ; Button 2 Label: "button 2 label" ; Button 3 Label: "button 3 label" ; Button 1 Foreground: "button 1 foreground" ; Button 2 Foreground: "button 2 foreground" ; Button 3 Foreground: "button 3 foreground" ; Show when app in foreground: "show app" ] ➜🌍 
+Configure Local Notification [ Action: Clear ]
+Configure Local Notification [ Action: Clear ; Name: "some name" ]
+# 
+Configure NFC Reading [ Action: Read ]
+Configure NFC Reading [ Action: Read ; Script: “noop” ; Timeout: 1/2 ; Continuous Reading: "continuous" ; Format Result as JSON: "json" ] ➜🌍 
+Configure NFC Reading [ Action: Cancel ]
+# 
+If [ 1=0 ]
+Else If [ 1=1 ]
+	If [    ]
+	Else If [    ]
+	End If
+Else
+End If
+# 
+Exit Script [ Text Result:    ]
+Exit Script [ Text Result: _NULL ]
+Exit Script [ Text Result: $ScriptResult ]
+# 
+Halt Script
+# 
+#  specifyin no options removes the ontimer from the current window
+Install OnTimer Script []
+Install OnTimer Script [ “noop” ; Interval: 123 ]
+Install OnTimer Script [ “saxmlDelivery_createXml” from file: “BrojDva” ; Parameter: $Param ; Interval: 1+2 ]
+# 
+Loop [ Flush: Always ]
+	Exit Loop If [ 1=1 ]
+End Loop
+Loop [ Flush: Minimum ]
+	Exit Loop If [ 1=1 ]
+End Loop
+Loop [ Flush: Defer ]
+	Exit Loop If [ 1=1 ]
+End Loop
+# 
+# 
+# 
+Open Transaction []
+	Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message: "Broken" ]
+Commit Transaction
+Open Transaction [ Skip data entry validation ]
+	Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message:    ]
+	Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message:    ]
+	Revert Transaction [ Condition: 1=1 ]
+Commit Transaction
+Open Transaction [ Override ESS locking conflicts ]
+	Revert Transaction [ Error Code: 5000 ; Error Message: "Broken" ]
+Commit Transaction
+Open Transaction [ Skip auto-enter options ]
+	Revert Transaction [ Error Code: 5000 ; Error Message: "Broken" ]
+Commit Transaction
+Open Transaction [ Skip auto-enter options ; Skip data entry validation ; Override ESS locking conflicts ]
+	Revert Transaction [ Condition: 1=1 ; Error Code: 1 ; Error Message: "Broken" ]
+Commit Transaction
+# 
+Pause/Resume Script [ Indefinitely ]
+Pause/Resume Script [ Duration (seconds): 1 ]
+Pause/Resume Script [ Duration (seconds): 1/2 ]
+# 
+Perform Script [ “noop” ; Specified: From list ; Parameter:    ]
+Perform Script [ “saxmlDelivery_createXml” from file: “BrojDva” ; Specified: From list ; Parameter:    ]
+Perform Script [ “noop” ; Specified: From list ; Parameter: $ScriptParameter ]
+Perform Script [ Specified: By name ; // calc goes here Contacts::Name ; Parameter:    ]
+# 
+Perform Script on Server [ “noop” ; Specified: From list ; Parameter:    ; Wait for completion: On ]
+Perform Script on Server [ “noop” ; Specified: From list ; Parameter: // calc goes here  ; Wait for completion: Off ]
+Perform Script on Server [ Specified: By name ; "calc goes here" & Invoice::InvoiceNumber & Contacts::Name ; Parameter:    ; Wait for completion: Off ]
+Perform Script on Server [ “saxmlDelivery_readme” from file: “BrojDva” ; Specified: From list ; Parameter:    ; Wait for completion: Off ]
+# 
+Perform Script on Server with Callback [ “noop” ; Specified: From list ; Parameter:    ; Callback script specified: From list ; “Hello world” ; Parameter:    ; State: Continue ]
+Perform Script on Server with Callback [ “noop” ; Specified: From list ; Parameter:    ; Callback script specified: From list ; “Hello world” ; Parameter:    ; State: Halt ]
+Perform Script on Server with Callback [ “noop” ; Specified: From list ; Parameter:    ; Callback script specified: From list ; “Hello world” ; Parameter:    ; State: Exit ]
+Perform Script on Server with Callback [ “noop” ; Specified: From list ; Parameter:    ; Callback script specified: From list ; “Hello world” ; Parameter:    ; State: Resume ]
+Perform Script on Server with Callback [ “noop” ; Specified: From list ; Parameter:    ; Callback script specified: From list ; “Hello world” ; Parameter:    ; State: Pause ]
+Perform Script on Server with Callback [ Specified: By name ; // calc goes here ; Parameter: // calc goes here ; Callback script specified: By name ; // calc goes here ; Parameter:    ; State: Continue ]
+# 
+Set Error Capture [ On ]
+Set Error Capture [ Off ]
+# 
+Set Error Logging [ On ]
+Set Error Logging [ Off ]
+Set Error Logging [ On ; Custom debug info: Get ( CurrentHostTimestamp ) ]
+# 
+Set Layout Object Animation [ On ]
+Set Layout Object Animation [ Off ]
+# 
+Set Variable []
+Set Variable [ $var ; Value: _NULL ]
+Set Variable [ $var[// calc goes here Contacts::ID * 1] ; Value: _NULL ]
+Set Variable [ $var ]
+Set Variable [ $$var ; Value: Contacts::ID + Contacts::Name ]
+Set Variable [ $var ; Value: /*<Function Missing>( 2 ) + 4*/ ]
+# 
+# ================
+# NAVIGATION STEPS
+# ================
+# 
+# 
+Close Popover
+# 
+Enter Browse Mode [ Pause: On ]
+Enter Browse Mode [ Pause: Off ]
+# 
+Enter Find Mode [ Pause: On ]
+Enter Find Mode [ Pause: Off ]
+Enter Find Mode [ Restore ; Pause: On ]
+# 
+Enter Preview Mode [ Pause: On ]
+Enter Preview Mode [ Pause: Off ]
+# 
+Go to Field [ Contacts::CreatedBy ]
+Go to Field [ Select/perform ; Contacts::CreatedBy ]
+Go to Field [ Select/perform ; Contacts::CreatedBy[// calc goes here 2 + Invoice::InvoiceNumber] ]
+Go to Field [ Select/perform ]
+Go to Field [ <Table Missing> ]
+# 
+Go to Layout [ original layout ; Animation: None ]
+#  name calc
+Go to Layout [ // calc goes here Contacts::ID ; Animation: None ]
+#  id calc
+Go to Layout [ // calc goes here Contacts::ID ; Animation: None ]
+Go to Layout [ "Test" ; Animation: None ]
+Go to Layout [ "Test" ; Animation: Slide in from Left ]
+Go to Layout [ "Test" ; Animation: Slide in from Right ]
+Go to Layout [ "Test" ; Animation: Slide in from Bottom ]
+Go to Layout [ "Test" ; Animation: Slide out to Left ]
+Go to Layout [ "Test" ; Animation: Slide out to Right ]
+Go to Layout [ "Test" ; Animation: Slide out to Bottom ]
+Go to Layout [ "Test" ; Animation: Flip from Left ]
+Go to Layout [ "Test" ; Animation: Flip from Right ]
+Go to Layout [ "Test" ; Animation: Zoom In ]
+Go to Layout [ "Test" ; Animation: Zoom Out ]
+Go to Layout [ "Test" ; Animation: Cross Dissolve ]
+Go to Layout [ <unknown> ; Animation: None ]
+# 
+# 
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: None ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide in from Left ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide in from Right ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide in from Bottom ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide out to Left ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide out to Right ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Slide out to Bottom ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Flip from Left ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Flip from Right ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Zoom In ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Zoom Out ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: <Current Layout> ; Animation: Cross Dissolve ]
+#  the next batch looks the same but they are using different "new window" window styles (document / card / floating ...)
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: “File Open” (blank) ; New window ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: “File Open” (blank) ; New window ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: “File Open” (blank) ; New window ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: “File Open” (blank) ; New window ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: “File Open” (blank) ; Animation: None ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: // some calc that results in a name Contacts::Name ; Animation: None ]
+Go to List of Records [ List of record IDs: // calc goes here ; Using layout: // some calc that results in a number Contacts::Name ; Animation: None ]
+# 
+Go to Next Field
+# 
+Go to Object [ Repetition: 1 ]
+Go to Object [ Object Name: "RepField" ; Repetition: $Rep ]
+Go to Object [ Object Name: $Objektname ; Repetition: 1 ]
+Go to Object [ Object Name: Contacts::Name ; Repetition: 1 ]
+Go to Object [ Object Name: Contacts::Name & If ( True ; False ; True ) ; Repetition: 1 ]
+# 
+Go to Portal Row [ Select: On ; First ]
+Go to Portal Row [ Select: Off ; Last ]
+Go to Portal Row [ Select: Off ; Previous ; Exit after last: On ]
+Go to Portal Row [ Select: Off ; Previous ; Exit after last: Off ]
+Go to Portal Row [ Select: Off ; Next ; Exit after last: On ]
+Go to Portal Row [ Select: Off ; Next ; Exit after last: Off ]
+Go to Portal Row [ Select: Off ; With dialog: On ; $abc ]
+Go to Portal Row [ Select: Off ; With dialog: On ; Get( CurrentDate ) ]
+Go to Portal Row [ Select: Off ; With dialog: Off ; 1+1 ]
+# 
+Go to Previous Field
+# 
+Go to Record/Request/Page [ First ]
+Go to Record/Request/Page [ Last ]
+Go to Record/Request/Page [ Previous ; Exit after last: On ]
+Go to Record/Request/Page [ Previous ; Exit after last: Off ]
+Go to Record/Request/Page [ Next ; Exit after last: On ]
+Go to Record/Request/Page [ Next ; Exit after last: Off ]
+Go to Record/Request/Page [ With dialog: Off ; 1+1 ]
+Go to Record/Request/Page [ With dialog: Off ; Get( LayoutNumber ) + 1 ]
+Go to Record/Request/Page [ With dialog: On ; $Nr ]
+# 
+Go to Related Record [ Show only related records ; From table: <unknown> ; Using layout: <Current Layout> ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide in from Left ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide in from Right ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide in from Bottom ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide out to Left ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide out to Right ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Slide out to Bottom ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Flip from Left ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Flip from Right ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Zoom In ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Zoom Out ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Cross Dissolve ]
+Go to Related Record [ Show only related records ; Match found set ; From table: “Contacts” ; Using layout: <Current Layout> ; Animation: Cross Dissolve ]
+#  next batch uses all different window styles
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; New window ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; New window ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; New window ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; New window ]
+Go to Related Record [ Show only related records ; From table: “Contacts” ; Using layout: <Current Layout> ; New window ]
+Go to Related Record [ From table: “blank” ; Using layout: <Current Layout> ]
+Go to Related Record [ Show only related records ; Match found set ; From table: “blank” ; Using layout: “File Open” (blank) ; New window ]
+Go to Related Record [ Show only related records ; Match found set ; From table: “Invoice” ; External; Using layout: <unknown> ; New window ]
+Go to Related Record [ Show only related records ; Match found set ; From table: <unknown> ; Using layout: <unknown> ; New window ]
+# 
+# =============
+# EDITING STEPS
+# =============
+# 
+Clear [ Select ]
+Clear [ Select ; Contacts::ID ]
+Clear [ Select ; Contacts::ID["// some calc"] ]
+Clear [ Contacts::ID ]
+Clear [ Select ; <Table Missing> ]
+# 
+Copy [ Select ]
+Copy [ Select ; Contacts::ID ]
+Copy [ Select ; Contacts::ID["// some calc"] ]
+Copy [ Contacts::ID ]
+Copy [ Select ; <Table Missing> ]
+# 
+Cut [ Select ]
+Cut [ Select ; Contacts::ID["// some calc"] ]
+Cut [ <Table Missing> ]
+# 
+Paste [ Select ]
+Paste [ Select ; No style ]
+Paste [ Select ; Contacts::ID ]
+Paste [ Select ; No style ; Contacts::ID ]
+Paste [ Select ; Contacts::ID["// no calc"] ]
+Paste [ Select ; No style ; <Table Missing> ]
+# 
+Perform Find/Replace [ With dialog: On ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: On ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: On ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: Off ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: Off ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: Off ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: Off ; "// some calc" ; Find Next ]
+Perform Find/Replace [ With dialog: On ; $Suchen ; $Ersetzen ; Replace ]
+Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Find Next ]
+Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Replace & Find ]
+Perform Find/Replace [ With dialog: Off ; $Suchen ; $Ersetzen ; Replace All ]
+# 
+Select All
+# 
+Set Selection [ Contacts::ID ; Start Position: 1 ; End Position: 12 ]
+Set Selection [ <Table Missing> ; Start Position: 1 ; End Position: 12 ]
+# 
+Undo/Redo [ Toggle ]
+Undo/Redo [ Undo ]
+Undo/Redo [ Redo ]
+# 
+# ===========
+# FIELD STEPS
+# ===========
+# 
+Export Field Contents [ Create folders: Off ]
+Export Field Contents [ Contacts::ID ; “file.txt” ; Automatically open ; Create email ; Create folders: Off ]
+Export Field Contents [ <Table Missing> ; Create folders: Off ]
+Export Field Contents [ “file.txt” ; Automatically open ; Create email ; Create folders: Off ]
+# 
+Insert Audio/Video [ Reference ; “$AudioPath” ]
+# 
+Insert Calculated Result [ // some calc ]
+Insert Calculated Result [ Target: Contacts::ID["// some calc"] ; // some calc Contacts::ID_TestTable ]
+Insert Calculated Result [ Target: $TargetVar[100] ; // some calc Contacts::ID_TestTable ]
+Insert Calculated Result [ Target: $TargetVar ; $SourceVar ]
+Insert Calculated Result [ Select ; Target: $TargetVar ; // some calc Contacts::ID_TestTable ]
+Insert Calculated Result [ Select ; $SourceVar ]
+Insert Calculated Result [ Select ; Target: $TargetVar ; $SourceVar ]
+Insert Calculated Result [ Select ; Target: $TargetVar ; "Value" ]
+Insert Calculated Result [ Select ; Target: <Table Missing> ; /*_Syntax::_kCalculationChar*/ ]
+# 
+Insert Current Date []
+Insert Current Date [ Select ]
+Insert Current Date [ Target: $UseSetVariable ]
+Insert Current Date [ Select ; Target: $UseSetVariable ]
+Insert Current Date [ Select ; Target: Contacts::ModificationTimestamp ]
+# 
+Insert Current Time []
+Insert Current Time [ Select ]
+Insert Current Time [ Target: $UseSetVariable ]
+Insert Current Time [ Select ; Target: $UseSetVariable ]
+Insert Current Time [ Select ; Target: Contacts::CreationTimestamp ]
+# 
+Insert Current User Name [ Select ; Target: $UseSetVariable ]
+Insert Current User Name [ Select ; Target: Contacts::Name["// some calc"] ]
+# 
+Insert File [ Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Insert ; Target: $Target ; “$Path” ]
+Insert File [ Insert ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Insert ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Insert ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Insert ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Reference ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Reference ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Insert ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Insert ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Insert ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Insert ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Insert ; Display content ; Compress when possible ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Reference ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Filters ; Reference ; Display content ; Never compress ; Target: $Target ; “$Path” ]
+Insert File [ Target: $TargetFileContents ; “some file somewhere” ]
+Insert File [ Target: $TargetFileContents ; “$SourceFileName” ]
+Insert File [ Insert ; Never compress ; “$Path1” ]
+Insert File [ Reference ; Never compress ; “$Path1” ]
+Insert File [ “$Path1” ]
+Insert File [ Filters ]
+Insert File [ Filters ; Target: <Table Missing> ]
+Insert File [ Filters ; Target: <Table Missing> ; “$Path” ]
+Insert File [ Target: $FileContents ; “some file somewhere” ]
+# 
+Insert from Device [ Type: Music Library ]
+Insert from Device [ Contacts::Name ; Type: Photo Library ]
+Insert from Device [ Contacts::Name ; Type: Camera ; Camera: Back; Resolution: Full; Flash: Auto ]
+Insert from Device [ Contacts::Name ; Type: Camera ; Camera: Front; Resolution: Full; Flash: Auto ]
+Insert from Device [ Contacts::Name ; Type: Camera ; Camera: Front; Resolution: Large; Flash: Auto ]
+Insert from Device [ Contacts::Name ; Type: Camera ; Camera: Front; Resolution: Medium; Flash: Auto ]
+Insert from Device [ Contacts::Name ; Type: Camera ; Camera: Front; Resolution: Small; Flash: Auto ]
+Insert from Device [ Contacts::Name ; Type: Video Camera ; Camera: Back; Resolution: Full; Flash: Auto; Max duration: 60; Start immediately ]
+Insert from Device [ Contacts::Name ; Type: Video Camera ; Camera: Front; Resolution: Small; Flash: Auto; Max duration: 5; Start immediately ]
+Insert from Device [ Contacts::Name ; Type: Microphone ; Max duration: 12; Start immediately ]
+Insert from Device [ Contacts::Name ; Type: Barcode ; Camera: Back; Resolution: Full; Flashlight: Auto ]
+Insert from Device [ Contacts::Name ; Type: Barcode ; Scan from: Invoice::InvoiceNumber ]
+Insert from Device [ Contacts::Name ; Type: Photo Library ]
+Insert from Device [ Contacts::Name ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Full Screen ]
+Insert from Device [ Contacts::Name ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Overlay ]
+Insert from Device [ Contacts::Name ; Type: Signature ; Title: "Title"; Message: "Message"; Prompt: "Prompt"; Presentation: Embedded ]
+# 
+Insert from Index []
+Insert from Index [ Select ]
+Insert from Index [ Select ; Contacts::Name["// some calc here"] ]
+Insert from Index [ Select ; <Table Missing> ]
+# 
+Insert from Last Visited []
+Insert from Last Visited [ Select ]
+Insert from Last Visited [ Select ; Contacts::Name["// some calc goes here"] ]
+Insert from Last Visited [ Select ; <Table Missing> ]
+# 
+Insert from URL [ With dialog: Off ]
+Insert from URL [ With dialog: On ; Target: Contacts::Name ]
+Insert from URL [ Select ; With dialog: On ; Target: Contacts::Name ; $url ]
+Insert from URL [ With dialog: On ; Target: Contacts::Name ; $url ]
+Insert from URL [ Select ; With dialog: On ; Target: $response ; $url ]
+Insert from URL [ Select ; With dialog: Off ; Target: Contacts::Name ; $url ; cURL options: $CuropOptions ]
+Insert from URL [ With dialog: Off ; Target: Contacts::Name ; $URL ; Verify SSL Certificates ; Do not automatically encode URL ]
+Insert from URL [ Select ; With dialog: On ; cURL options: "-X PUT" ]
+# 
+Insert PDF []
+Insert PDF [ Reference ; “$PdfPath” ]
+# 
+Insert Picture []
+Insert Picture [ “Bild.png” ]
+Insert Picture [ Reference ; “Bild.png” ]
+# 
+Insert Text []
+Insert Text [ “A B C” ]
+Insert Text [ Target: $Code ; “A B C” ]
+Insert Text [ Select ; Target: $Code ; “A B C” ]
+Insert Text [ “$KeineSourceVar - sondern nur  text” ]
+Insert Text [ Target: $TargetVar ; “$KeineSourceVar - sondern nur  text” ]
+Insert Text [ Select ; Target: Contacts::Name ; “1+2” ]
+Insert Text [ Select ; Target: <Table Missing> ; “foo bar baz” ]
+Insert Text [ Select ; Target: $Code ; “A B C” ]
+Insert Text [ Target: $Code ; “A B C” ]
+Insert Text [ Target: $Code ; “$price” ]
+Insert Text [ Target: $Code ; “"” ]
+Insert Text [ Target: $Code ; “”” ]
+Insert Text [ Target: $Code ]
+# 
+Relookup Field Contents [ With dialog: On ]
+Relookup Field Contents [ With dialog: Off ; Contacts::Name["// some calc"] ]
+Relookup Field Contents [ With dialog: Off ; <Table Missing> ]
+# 
+Replace Field Contents [ With dialog: On ; Contacts::Name["// some calc here"] ]
+Replace Field Contents [ With dialog: Off ; Contacts::Name["// some calc here"] ]
+Replace Field Contents [ With dialog: Off ; 123456 ]
+Replace Field Contents [ With dialog: On ; Contacts::Name ; Current contents ]
+Replace Field Contents [ With dialog: On ; Contacts::ID ; Serial numbers ]
+Replace Field Contents [ With dialog: On ; Contacts::ID ; Serial numbers ]
+Replace Field Contents [ With dialog: On ; Contacts::ID ; Serial numbers ]
+Replace Field Contents [ With dialog: On ; Contacts::Name ; // some calc here ]
+Replace Field Contents [ With dialog: On ; Contacts::Name ; // some calc here ; Skip auto-enter options ]
+Replace Field Contents [ With dialog: On ; Contacts::Name ; Serial numbers ; Skip auto-enter options ]
+Replace Field Contents [ With dialog: On ; Contacts::Name ; Serial numbers ; Skip auto-enter options ]
+Replace Field Contents [ With dialog: On ; Contacts::serialNumber_onCreate ; Serial numbers ; Skip auto-enter options ]
+# 
+Set Field [ Contacts::ID ; 1+2 ]
+Set Field [ Contacts::ID[2+1] ; 1+2 ]
+Set Field [ Contacts::ID[2] ; 1+2 ]
+Set Field [ Invoice::CreatedBy[2] ; 1+2 ]
+Set Field [ <Table Missing> ; "Tabelle nicht vorhanden" ]
+# 
+Set Field By Name [ "Test::Egal" ; 1+2 ]
+Set Field By Name [ $FieldName ; "Value" ]
+# Note: The option to specify the target result or not is NOT part of the clipboard, rather is implied by the existence of a calculation -> copying and pasting the following step ADDS a target calculation
+Set Field By Name [ $FieldName ; "some Value" ]
+# 
+Set Next Serial Value [ 1 ]
+Set Next Serial Value [ Contacts::ID ; 1 ]
+Set Next Serial Value [ <Table Missing> ; 1 ]
+# 
+Save a Copy as Add-on Package [ Window name:    ; Replace UUIDs: Off ]
+Save a Copy as Add-on Package [ Window name: $WindowName ; Replace UUIDs: On ]
+# 
+# ============
+# RECORD STEPS
+# ============
+# 
+Commit Records/Requests [ With dialog: On ]
+Commit Records/Requests [ With dialog: Off ]
+Commit Records/Requests [ Skip data entry validation ; With dialog: On ]
+Commit Records/Requests [ Skip data entry validation ; With dialog: Off ]
+Commit Records/Requests [ Skip data entry validation ; With dialog: Off ; Force Commit ]
+# 
+Copy All Records/Requests
+# 
+Copy Record/Request
+# 
+Delete All Records [ With dialog: On ]
+Delete All Records [ With dialog: Off ]
+# 
+Delete Portal Row [ With dialog: On ]
+Delete Portal Row [ With dialog: Off ]
+# 
+Delete Record/Request [ With dialog: On ]
+Delete Record/Request [ With dialog: Off ]
+# 
+Duplicate Record/Request
+# 
+Export Records [ With dialog: On ; Create folders: Off ]
+Export Records [ With dialog: On ; Create folders: Off ; “file.txt” ]
+Export Records [ With dialog: On ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Unicode (UTF-8) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Unicode (UTF-16) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Windows (ANSI) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; ASCII (DOS) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Japanese (Shift-JIS) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Simplified Chinese (GB) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Traditional Chinese (Big-5) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Korean (EUC-KR) ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+Export Records [ With dialog: Off ; Create folders: Off ; “file.txt” ; Automatically open ; Create email ; Macintosh ]
+# 
+Import Records [ With dialog: Off ; Table: Contacts ; “fmSyntaxColorizer.fmp12” ; Add; Mac Roman ]
+Import Records [ With dialog: On ; “file.txt” ]
+Import Records [ With dialog: On ; “file.fmp12” ]
+Import Records [ With dialog: On ; “file.tab” ]
+Import Records [ With dialog: On ; “file.tab” ]
+Import Records [ With dialog: On ; “file.csv” ]
+Import Records [ With dialog: On ; “file.csv” ]
+Import Records [ With dialog: On ; “file.mer” ]
+Import Records [ With dialog: On ; “file.dbf” ]
+Import Records [ With dialog: On ; Source: "file:file.xls"; Worksheet: "" ]
+Import Records [ With dialog: On ; Source: "file:file.xls"; Worksheet: "" ]
+Import Records [ With dialog: On ; Source: "file:file.xlsx"; Worksheet: "" ]
+Import Records [ With dialog: On ; Source: "file:file.xlsx"; Worksheet: "" ]
+Import Records [ With dialog: On ; Table:  ; folder; Include all enclosed folders; Picture and movie files; Import only a reference ; Add; Mac Roman ; Verify SSL Certificates ]
+Import Records [ With dialog: On ; folder; Include all enclosed folders; Picture and movie files; Import only a reference ]
+Import Records [ With dialog: On ; folder; Picture and movie files ]
+Import Records [ With dialog: On ; folder; Text files ]
+Import Records [ With dialog: On ; folder; Text files ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Add; Mac Roman ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Replace; Mac Roman ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Mac Roman ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Mac Roman ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Windows ANSI ]
+Import Records [ With dialog: On ; Table:  ; folder; Include all enclosed folders; Text files ; Update; DOS OEM ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Unicode ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Unicode (big endian) ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; UTF-8 ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Shift JIS ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Simplified Chinese (GB) ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Traditional Chinese (Big-5) ]
+Import Records [ With dialog: On ; Table:  ; folder; Text files ; Update; Korean (EUC-KR) ]
+Import Records [ With dialog: Off ]
+Import Records [ With dialog: Off ; http://xslt.com/xsl.xml ]
+Import Records [ With dialog: Off ; http://xslt.com/xsl.xml; xsl.xsl ]
+Import Records [ With dialog: Off ; http://xslt.com/xsl.xml; $PathXSL ]
+Import Records [ With dialog: Off ; Table:  ; http://xslt.com/xsl.xml; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+Import Records [ With dialog: Off ; Table:  ; xml.xml; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+Import Records [ With dialog: Off ; Table:  ; $PathXML; http://xslt.com/xsl.xsl ; Replace; Mac Roman ]
+# 
+New Record/Request
+# 
+Open Record/Request
+# 
+Revert Record/Request [ With dialog: On ]
+Revert Record/Request [ With dialog: Off ]
+# 
+Save Records as Excel [ With dialog: On ; Create folders: Off ]
+Save Records as Excel [ With dialog: Off ; Create folders: Off ]
+Save Records as Excel [ Restore ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Records being browsed ; Create folders: Off ]
+Save Records as Excel [ Restore ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Current record ; Create folders: Off ]
+Save Records as Excel [ Restore ; With dialog: Off ; “$Path” ; Automatically open ; Create email ; Current record ; Create folders: Off ]
+# 
+Save Records as JSONL [ Format for fine-tuning: Off ; Table: “Contacts” ; Completion Field: Contacts::Name ; “$file” ; Create folders: Off ]
+Save Records as JSONL [ Format for fine-tuning: Off ; Table: “Contacts” ; Completion Field: Contacts::Name ; “$file” ; Automatically open ; Create folders: Off ]
+Save Records as JSONL [ Format for fine-tuning: Off ; Table: “Contacts” ; Completion Field: Contacts::Name ; “$file” ; Automatically open ; Create email ; Create folders: Off ]
+Save Records as JSONL [ Format for fine-tuning: Off ; Table: “Contacts” ; Completion Field: Contacts::Name ; “$file” ; Automatically open ; Create email ; Create folders: On ]
+# 
+Save Records as PDF [ Save to: File ; Create folders: Off ; With dialog: On ]
+Save Records as PDF [ Restore ; Save to: File ; Create folders: Off ; With dialog: On ; Records being browsed ]
+Save Records as PDF [ Restore ; Save to: File ; Create folders: Off ; With dialog: On ; Current record ]
+Save Records as PDF [ Save to: File ; Create folders: Off ; With dialog: On ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Records being browsed ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Current record ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Blank record, as formatted ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Blank record, with boxes ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Blank record, with underlines ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Blank record, with placeholder text ]
+Save Records as PDF [ Restore ; Save to: File ; Append ; “$Path” ; Create folders: Off ; With dialog: Off ; Automatically open ; Create email ; Records being browsed ]
+# 
+Save Records as Snapshot Link [ Records being browsed ; Create folders: Off ]
+Save Records as Snapshot Link [ “$Path” ; Create email ; Records being browsed ; Create folders: Off ]
+Save Records as Snapshot Link [ “$Path” ; Create email ; Current record ; Create folders: Off ]
+# 
+Truncate Table [ With dialog: On ; Table: <Current Table> ]
+Truncate Table [ With dialog: Off ; Table: <Current Table> ]
+Truncate Table [ With dialog: Off ; Table: “Contacts” ]
+Truncate Table [ With dialog: Off ; Table: “summary_fields” ]
+# 
+# ===============
+# FOUND SET STEPS
+# ===============
+# 
+Constrain Found Set []
+Constrain Found Set [ Find without indexes ]
+#  our design pattern is not use the "restore" option!
+Constrain Found Set [ Restore ]
+# 
+Extend Found Set []
+Extend Found Set [ Restore ]
+# 
+Find Matching Records [ Replace ; Contacts::Name ]
+Find Matching Records [ Constrain ; Contacts::Name ]
+Find Matching Records [ Extend ; Contacts::Name ]
+# 
+Modify Last Find
+# 
+Omit Multiple Records [ With dialog: On ]
+Omit Multiple Records [ With dialog: Off ; 123 ]
+Omit Multiple Records [ With dialog: Off ; "// some calc here" ]
+# 
+Omit Record
+# 
+Perform Find []
+Perform Find [ Restore ]
+# 
+Perform Quick Find []
+Perform Quick Find [ "Hello" // some calc here ]
+# 
+Show All Records
+# 
+Show Omitted Only
+# 
+Sort Records [ With dialog: Off ]
+Sort Records [ With dialog: On ]
+#  in asc - sort blanks
+Sort Records [ Restore ; With dialog: On ]
+# Don't keep sorted
+Sort Records [ Restore ; With dialog: Off ]
+# Keep sorted
+Sort Records [ Restore ; With dialog: Off ]
+# Descending
+Sort Records [ Restore ; With dialog: Off ]
+# Everything
+Sort Records [ Restore ; With dialog: Off ]
+# 
+Sort Records by Field [ Ascending ; Contacts::Name ]
+Sort Records by Field [ Descending ; Contacts::Name ]
+Sort Records by Field [ Associated value list ; Contacts::Name ]
+# 
+Unsort Records
+# 
+# =============
+# WINDOWS STEPS
+# =============
+# 
+Adjust Window [ Resize to Fit ]
+Adjust Window [ Maximize ]
+Adjust Window [ Minimize ]
+Adjust Window [ Restore ]
+Adjust Window [ Hide ]
+# 
+Arrange All Windows [ Tile Horizontally ]
+Arrange All Windows [ Tile Vertically ]
+Arrange All Windows [ Cascade Window ]
+Arrange All Windows [ Bring All To Front ]
+# 
+Close Window [ Current Window ]
+Close Window [ Name: $FensterName ; Current file ]
+# 
+Freeze Window
+# 
+Move/Resize Window [ Current Window ]
+Move/Resize Window [ Name: $FensterName ; Current file ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+# 
+New Window [ Style: Document ; Name: "Window" ; Using layout: <Current Layout> ]
+New Window [ Style: Document ; Using layout: “File Open” (blank) ; Height: 1 ; Width: 2 ; Top: 3 ; Left: 4 ]
+New Window [ Style: Document ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+New Window [ Style: Floating Document ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+New Window [ Style: Dialog ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+New Window [ Style: Card ; Name: $FensterName ; Using layout: <Current Layout> ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+New Window [ Style: Card ; Name: $FensterName ; Using layout: 1 + "calculated name" ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+New Window [ Style: Card ; Name: $FensterName ; Using layout: 1 + 5 ; Height: $FensterHoehe ; Width: $FensterBreite ; Top: $FensterOben ; Left: $FensterLinks ]
+# 
+Refresh Window []
+Refresh Window [ Flush cached join results ; Flush cached external data ]
+# 
+Scroll Window [ Home ]
+Scroll Window [ End ]
+Scroll Window [ Page Up ]
+Scroll Window [ Page Down ]
+Scroll Window [ To Selection ]
+# 
+Select Window [ Current Window ]
+Select Window [ Name: $FensterName ; Current file ]
+# 
+Set Window Title [ Current Window ; New Title: $FensterNameNeu ]
+Set Window Title [ Of Window: $FensterNameAlt ; New Title: $FensterNameNeu ]
+Set Window Title [ Of Window: $FensterNameAlt ; Current file ; New Title: $FensterNameNeu ]
+# 
+Set Zoom Level [ Lock: On ; 25% ]
+Set Zoom Level [ Lock: On ; 50% ]
+Set Zoom Level [ Lock: On ; 75% ]
+Set Zoom Level [ Lock: On ; 100% ]
+Set Zoom Level [ Lock: On ; 150% ]
+Set Zoom Level [ Lock: On ; 200% ]
+Set Zoom Level [ Lock: On ; 300% ]
+Set Zoom Level [ Lock: On ; 400% ]
+Set Zoom Level [ Lock: On ; Zoom In ]
+Set Zoom Level [ Lock: On ; Zoom Out ]
+Set Zoom Level [ Lock: On ; // some calc here Contacts::OrderOfOperationsTest_u% ]
+# 
+Show/Hide Menubar [ Lock: On ; Toggle ]
+Show/Hide Menubar [ Lock: On ; Hide ]
+Show/Hide Menubar [ Lock: On ; Show ]
+# 
+Show/Hide Text Ruler [ Toggle ]
+Show/Hide Text Ruler [ Show ]
+Show/Hide Text Ruler [ Hide ]
+# 
+Show/Hide Toolbars [ Toggle ]
+Show/Hide Toolbars [ Lock ; Show ]
+Show/Hide Toolbars [ Lock ; Include Edit Record Toolbar ; Hide ]
+Show/Hide Toolbars [ Lock ; Include Edit Record Toolbar ; Toggle ]
+# 
+View As [ Cycle ]
+View As [ View as Form ]
+View As [ View as List ]
+View As [ View as Table ]
+# 
+# ==========
+# FILE STEPS
+# ==========
+# 
+Close File [ Current File ]
+Close File [ “BrojDva” ]
+# 
+Convert File [ Open File ; With dialog: On ]
+Convert File [ Open File ; Skip Indexes ; With dialog: Off ; “$Path” ; Verify SSL Certificates ]
+Convert File [ Open File ; With dialog: On ; http:xml; $PathXSLT ]
+Convert File [ Open File ; Skip Indexes ; With dialog: Off ; http:xml; 1+2 ]
+Convert File [ Open File ; Skip Indexes ; With dialog: Off ; DSN: ets; SQL Text: SELECT * FROM transactions ; Verify SSL Certificates ]
+# 
+New File
+# 
+Open File [ Open hidden: On ; “BrojDva” ]
+Open File [ Open hidden: Off ; “BrojDva” ]
+Open File [ Open hidden: On ; <unknown> ]
+# 
+Print [ With dialog: On ]
+Print [ With dialog: Off ]
+Print [ Restore: HP OfficeJet Pro 8020 series ; With dialog: Off ]
+Print [ Restore: HP OfficeJet Pro 8020 series ; With dialog: Off ]
+Print [ Restore: HP OfficeJet Pro 8020 series ; With dialog: Off ]
+Print [ Restore: HP OfficeJet Pro 8020 series ; With dialog: Off ]
+Print [ Restore: HP OfficeJet Pro 8020 series ; With dialog: Off ]
+# Layout Print options
+Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+Print [ Restore: hp psc 1310 series USB ; With dialog: On ]
+# 
+Print Setup [ With dialog: On ]
+Print Setup [ Restore ; With dialog: On ]
+Print Setup [ Restore ; With dialog: Off ]
+Print Setup [ Restore ; With dialog: On ]
+# 
+# 
+# 
+Recover File [ With dialog: On ]
+Recover File [ With dialog: Off ]
+Recover File [ With dialog: Off ; “$file” ]
+# 
+Save a Copy as [ copy of current file ; Create folders: Off ]
+Save a Copy as [ clone (no records) ; Create folders: Off ]
+Save a Copy as [ compacted copy (smaller) ; Create folders: Off ]
+Save a Copy as [ self-contained copy (single file) ; Create folders: Off ]
+Save a Copy as [ “$test” ; copy of current file ; Automatically open ; Create email ; Create folders: Off ]
+Save a Copy as [ “Test.fmp12” ; clone (no records) ; Create folders: Off ]
+# 
+Set Multi-User [ On ]
+Set Multi-User [ On (Hidden) ]
+Set Multi-User [ Off ]
+# 
+Set Use System Formats [ On ]
+Set Use System Formats [ Off ]
+# 
+Set Variable [ $FileID ; Value: "" ]
+Set Variable [ $FileExists ; Value: "" ]
+Set Variable [ $FileSize ; Value: "" ]
+Set Variable [ $target ; Value: "" ]
+Set Variable [ $data ; Value: "" ]
+Set Variable [ $pos ; Value: "" ]
+# 
+# FileSteps
+Get File Exists [ ; Target: ]
+Get File Exists [ “abc.fmp12” ; Target: $FileExists ]
+Get File Exists [ “abc.fmp12” ; Target: Contacts::ID_TestTable[// some calc Contacts::ID] ]
+# 
+Get File Size [ ; Target: ]
+Get File Size [ “abc.fmp12” ; Target: $FileSize ]
+Get File Size [ “abc.fmp12” ; Target: Contacts::Name[// some calc Contacts::ID] ]
+# 
+Create Data File [ ; Create folders: Off ]
+Create Data File [ ; Create folders: On ]
+Create Data File [ “abc.def” ; Create folders: On ]
+# 
+Open Data File [ ; Target: ]
+Open Data File [ “abc.def” ; Target: Contacts::Name ]
+Open Data File [ “abc.def” ; Target: $target_variable ]
+# 
+Write to Data File [ Data source: ; Write as: UTF-16 ; Append line feed ]
+Write to Data File [ Data source: ; Write as: UTF-16 ]
+Write to Data File [ File ID: $FileID ; Data source: Contacts::Name ; Write as: UTF-8 ]
+Write to Data File [ File ID: $FileID ; Data source: $data ; Write as: UTF-16 ; Append line feed ]
+# 
+Read from Data File [ Target: ; Read as: Bytes ]
+Read from Data File [ File ID: $FileID ; Amount: 123 ; Target: Contacts::Name ; Read as: UTF-16 ]
+Read from Data File [ File ID: $FileID ; Amount (bytes): 123 ; Target: $target ; Read as: UTF-8 ]
+Read from Data File [ File ID: $FileID ; Amount (bytes): 123 ; Target: $target ; Read as: Bytes ]
+# 
+Get Data File Position [ Target: ]
+Get Data File Position [ File ID: $FileID ; Target: $Pos ]
+# 
+Set Data File Position []
+Set Data File Position [ File ID: $FileID ; New position:    ]
+Set Data File Position [ File ID:    ; New position: 123 ]
+Set Data File Position [ File ID: $FileID ; New position:    ]
+Set Data File Position [ File ID: $FileID ; New position: $Pos ]
+# 
+Close Data File [ File ID: // come calc Contacts::ID ]
+Delete File [ Target file: “$file” ]
+Rename File [ Source file: “$file” ; New name: // some calc Contacts::Name ]
+# 
+# 
+# =============
+# ACCOUNT STEPS
+# =============
+# 
+Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: [Data Entry Only] ; Expire password ]
+Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: [Read-Only Access] ]
+Add Account [ Authenticate via: FileMaker ; Account Name: $Kontoname ; Password: •••••••• ; Privilege Set: restapi ; Expire password ]
+Add Account [ Authenticate via: External Server ; Group Name:$Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Amazon ; Account Name: $Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Apple Account ; Account Name: $Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Google ; Account Name: $Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Microsoft Entra ID ; Account Name: $Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Microsoft Entra ID ; Group Name:$Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Custom OAuth ; Account Name: $Kontoname ; Privilege Set: restapi ]
+Add Account [ Authenticate via: Custom OAuth ; Group Name:$Kontoname ; Privilege Set: restapi ]
+# 
+Change Password [ Old Password: •••••••• ; Password: •••••••• ; With dialog: On ]
+Change Password [ Old Password: •••••••• ; Password: •••••••• ; With dialog: Off ]
+# 
+Delete Account [ Account Name: $Kontoname ]
+# 
+Enable Account [ Account Name: $Kontoname ; Activate ]
+Enable Account [ Account Name: $Kontoname ; Deactivate ]
+# 
+Re-Login [ Account Name: $Kontoname ; Password: •••••••• ; With dialog: Off ; Current File ]
+# 
+Reset Account Password [ Account Name: $Kontoname ; Password: •••••••• ; Expire password ]
+Reset Account Password [ Account Name: $Kontoname ; Password: •••••••• ]
+# 
+# ==============
+#  ARTIFICIAL INTELLIGENCE
+# ==============
+# 
+Configure AI Account [ Account Name: // some calc Contacts::Name ; Model Provider: OpenAI ; API key: // some calc Contacts::Name ]
+Configure AI Account [ Account Name: // some calc Contacts::Name ; Model Provider: Anthropic ; API key: // some calc Contacts::Name ]
+Configure AI Account [ Account Name: // some calc Contacts::Name ; Model Provider: Cohere ; API key: // some calc Contacts::Name ]
+Configure AI Account [ Account Name: // some calc Contacts::Name ; Model Provider: Google ; API key: // some calc Contacts::Name ]
+Configure AI Account [ Account Name: // some calc Contacts::Name ; Model Provider: Custom ; Endpoint: // some calc Contacts::Name ; API key: // some calc Contacts::Name ]
+# 
+Configure Machine Learning Model [ Operation: Unload ; Name: // some calc Contacts::Name ]
+# 
+Configure Prompt Template [ Template Name: // some calc Contacts::Name ; Model Provider: OpenAI ; Template Type: SQL Query ]
+Configure Prompt Template [ Template Name: // some calc Contacts::Name ; Model Provider: OpenAI ; Template Type: Find Request ]
+Configure Prompt Template [ Template Name: // some calc Contacts::Name ; Model Provider: OpenAI ; Template Type: RAG Prompt ]
+Configure Prompt Template [ Template Name: // some calc Contacts::Name ; Model Provider: Google ; Template Type: RAG Prompt ]
+Configure Prompt Template [ Template Name: // some calc Contacts::Name ; Model Provider: Custom ; Template Type: RAG Prompt ]
+# 
+Configure RAG Account  [ RAG Account Name: // some calc Contacts::Name ; Endpoint: // some calc Contacts::Name ; API key: // some calc Contacts::Name ]
+Configure RAG Account  [ RAG Account Name: // some calc Contacts::Name ; Endpoint: // some calc Contacts::Name ; API key: // some calc Contacts::Name ; Verify SSL Certificates ]
+# 
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ; Training Target Field: Contacts::ID[10] ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ; Training Target Field: Contacts::ID[10] ; Skip empty or invalid records ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ; Training Target Field: Contacts::ID[10] ; Skip empty or invalid records ; Parameters: // some calc here $Params ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ; Training Target Field: Contacts::ID[10] ; Skip empty or invalid records ; Parameters: // some calc here $Params ; Save Model To: Contacts::Name[// some calc here Contacts::ID] ]
+Configure Regression Model [ Action: Train Model ; Model Name: // some calc Contacts::Name ; Algorithm: Random Forest ; Training Vectors Field: Contacts::Name[100] ; Training Target Field: Contacts::ID[10] ; Skip empty or invalid records ; Parameters: // some calc here $Params ; Save Model To: $target[// some calc here Contacts::ID] ]
+# 
+Fine-Tune Model [ Account Name: // some calc here Contacts::ID ; Base Model: // some calc here Contacts::ID ; Training Data: Table ; “blank” ]
+Fine-Tune Model [ Account Name: // some calc here Contacts::ID ; Base Model: // some calc here Contacts::ID ; Training Data: File ; “$file” ]
+Fine-Tune Model [ Account Name: // some calc here Contacts::ID ; Base Model: // some calc here Contacts::ID ; Training Data: File ; “$file” ; Response Target: Contacts::Name[// some calc here Contacts::ID] ]
+Fine-Tune Model [ Account Name: // some calc here Contacts::ID ; Base Model: // some calc here Contacts::ID ; Training Data: File ; “$file” ; Response Target: Contacts::Name[// some calc here Contacts::ID] ; Parameters: // some calc here Contacts::ID ]
+# 
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Agentic mode ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: Contacts::Name[// some calc here Contacts::ID + 1] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[// some calc here Contacts::ID + 1] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: Contacts::Name[100] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: Contacts::Name[10] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ; Temperature: // some calc here Contacts::Name + 1 ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ; Temperature: // some calc here Contacts::Name + 1 ; Tool Definitions: // some calc here Contacts::Name + 1 ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ; Temperature: // some calc here Contacts::Name + 1 ; Tool Definitions: // some calc here Contacts::Name + 1 ; Stream ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ; Temperature: // some calc here Contacts::Name + 1 ; Tool Definitions: // some calc here Contacts::Name + 1 ; Stream ; Parameters: // some calc here Contacts::Name + 1 ]
+Generate Response from Model [ Account Name: // some calc here Contacts::ID ; Model: // some calc here Contacts::ID ; User Prompt: // some calc here Contacts::ID ; Response: $target[] ; Tool Calls from Model: $target[100] ; Instructions: // some calc here Contacts::ID + 1 ; Messages: $target[10] ; Save Message History To: $history[// some calc here Contacts::Name + 1] ; Message History Count: // some calc here Contacts::Name + 1 ; Include tool calls in message history ; Temperature: // some calc here Contacts::Name + 1 ; Tool Definitions: // some calc here Contacts::Name + 1 ; Stream ; Parameters: // some calc here Contacts::Name + 1 ; Web Viewer: // some calc here Contacts::Name + 1 ; Function Name: // some calc here Contacts::Name + 1 ]
+# 
+Insert Embedding [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ]
+Insert Embedding [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ]
+Insert Embedding [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Target: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Insert Embedding [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Target: $target[// some calc here Contacts::Name + 1] ]
+# 
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ; Target Field: Contacts::Name ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ; Target Field: Contacts::Name ; Replace target contents ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ; Target Field: Contacts::Name ; Replace target contents ; Continue on error ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ; Target Field: Contacts::Name ; Replace target contents ; Continue on error ; Show summary ]
+Insert Embedding in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::Name ; Target Field: Contacts::Name ; Replace target contents ; Continue on error ; Show summary ; Parameters: // some calc here Contacts::Name + 1 ]
+# 
+Insert Image Caption [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ]
+Insert Image Caption [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ; Target: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Insert Image Caption [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Input: // some calc here Contacts::Name + 1 ; Target: $target[// some calc here Contacts::Name + 1] ]
+# 
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ]
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Target Field: Contacts::Name[10] ]
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::ModifiedBy[11] ; Target Field: Contacts::Name[10] ]
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::ModifiedBy[11] ; Target Field: Contacts::Name[10] ; Replace target contents ]
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::ModifiedBy[11] ; Target Field: Contacts::Name[10] ; Replace target contents ; Continue on error ]
+Insert Image Captions in Found Set [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Source Field: Contacts::ModifiedBy[11] ; Target Field: Contacts::Name[10] ; Replace target contents ; Continue on error ; Parameters: // some calc here Contacts::Name + 1 ]
+# 
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set as JSON ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Find Request as JSON ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set ; Parameters: // some calc here Contacts::Name + 1 ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set ; Parameters: // some calc here Contacts::Name + 1 ; Prompt Template Name: // some calc here Contacts::Name + 1 ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set as JSON ; Parameters: // some calc here Contacts::Name + 1 ; Response Target: TestTable::repeating_text[5] ; Prompt Template Name: // some calc here Contacts::Name + 1 ]
+Perform Find by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Get: Found Set as JSON ; Parameters: // some calc here Contacts::Name + 1 ; Response Target: $target ; Prompt Template Name: // some calc here Contacts::Name + 1 ]
+# 
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Text ; "some text - this is a calc window" ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Send Prompt ; Prompt: // some calc here Contacts::Name + 1 ; AI Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Stream: Off ; Prompt Template Name: "some prompt template" ; Parameters: "some prompt parameters" ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Send Prompt ; Prompt: // some calc here Contacts::Name + 1 ; AI Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Stream: On ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From File ; “$path” ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From File (Async) ; “$path” ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Container ; Container Field: TestTable::ContainerField1 ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Container (Async) ; Container Field: TestTable::ContainerField1 ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Text ;    ; Tokens per Text Chunk: // some calc here Contacts::Name + 1 ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Text ;    ; Tokens per Text Chunk: // some calc here Contacts::Name + 1 ; Response Target: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Perform RAG Action [ RAG Account Name: // some calc here Contacts::Name + 1 ; Space ID: // some calc here Contacts::Name + 1 ; Action: Add Data ; RAG Data: From Text ;    ; Tokens per Text Chunk: // some calc here Contacts::Name + 1 ; Response Target: $target[// some calc here Contacts::Name + 1] ]
+# 
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: Current found set ]
+Perform Semantic Find [ Query by: Vector data ; Vector: // some calc here Contacts::Name + 1 ; Record set: All records ]
+Perform Semantic Find [ Query by: Image ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Image: // some calc here Contacts::Name + 1 ; Record set: All records ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ; Return count: // some calc here Contacts::Name + 1 ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ; Return count: // some calc here Contacts::Name + 1 ; Cosine similarity condition: greater than ; Cosine similarity value: // some calc here Contacts::Name + 1 ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ; Return count: // some calc here Contacts::Name + 1 ; Cosine similarity condition: greater than ; Cosine similarity value: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ; Return count: // some calc here Contacts::Name + 1 ; Cosine similarity condition: greater than ; Cosine similarity value: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Save result: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Perform Semantic Find [ Query by: Natural language ; Account Name: // some calc here Contacts::Name + 1 ; Embedding Model: // some calc here Contacts::Name + 1 ; Text: // some calc here Contacts::Name + 1 ; Record set: All records ; Target field: Contacts::Name[// some calc here Contacts::Name + 1] ; Return count: // some calc here Contacts::Name + 1 ; Cosine similarity condition: greater than ; Cosine similarity value: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Save result: $target[// some calc here Contacts::Name + 1] ]
+# 
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: By JSON data ; // some calc here Contacts::Name + 1 ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: // some calc here Contacts::Name + 1 ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Response Target: Contacts::Name[// some calc here Contacts::Name + 1] ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Response Target: $target[// some calc here Contacts::Name + 1] ]
+Perform SQL Query by Natural Language [ Account Name: // some calc here Contacts::Name + 1 ; Model: // some calc here Contacts::Name + 1 ; Prompt: // some calc here Contacts::Name + 1 ; Options specified: From list ; Action: Query ; Data Tables: From list ; Tables... ; Stream ; Prompt Template Name: // some calc here Contacts::Name + 1 ; Parameters: // some calc here Contacts::Name + 1 ; Response Target: $target[// some calc here Contacts::Name + 1] ; Web Viewer: // some calc here Contacts::Name + 1 ; Function Name: // some calc here Contacts::Name + 1 ]
+# 
+Set AI Call Logging [ Off ; Verbose: Off ]
+Set AI Call Logging [ On ; Verbose: Off ]
+Set AI Call Logging [ On ; Verbose: On ; Truncate Messages: Off ]
+Set AI Call Logging [ On ; Verbose: On ; Truncate Messages: On ]
+Set AI Call Logging [ On ; Filename: // some calc here Contacts::Name + 1 ; Verbose: On ; Truncate Messages: On ]
+# 
+# ==============
+# SPELLING STEPS
+# ==============
+# 
+Check Found Set
+# 
+Check Record
+# 
+Check Selection [ Select ; Contacts::Name ]
+Check Selection [ Contacts::Name ]
+Check Selection [ Select ; <Table Missing> ]
+# 
+Correct Word
+# 
+Edit User Dictionary
+# 
+Select Dictionaries
+# 
+Spelling Options
+# 
+# ====================
+# OPEN MENU ITEM STEPS
+# ====================
+# 
+Open Edit Saved Finds
+Open Favorites
+Open File Options
+Open Find/Replace
+Open Help
+Open Hosts
+Open Manage Containers
+Open Manage Data Sources
+Open Manage Database
+Open Manage Layouts
+Open Manage Themes
+Open Manage Value Lists
+Open Script Workspace
+Open Settings
+Open Sharing
+Open Upload to Host
+# 
+# 
+# ===================
+# MISCELLANEOUS STEPS
+# ===================
+# 
+#  this is just a comment, can contain some sort of returns
+like this is a second line
+# 
+Allow Formatting Bar [ On ]
+Allow Formatting Bar [ Off ]
+# 
+AVPlayer Play [ Object Name : <Active Object> ]
+AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 1 ; Position: // some calc here Contacts::Name + 1 ]
+AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 1 ; Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ Object Name : "AVPlayer" ; Repetition: 2 ; Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ Field : Contacts::Name[// some calc here Contacts::Name + 1] ; Presentation: Full Screen Only ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Presentation: Full Screen Only ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: No ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: Yes ; Hide Controls: No ; Position: 123 ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Disable Interaction: Yes ; Hide Controls: Yes ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Hide Controls: No ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Position: $abc ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; Start Offset: 1 ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ; End Offset: 234 ]
+AVPlayer Play [ URL : "http://www.fmworkmate.de" ]
+# 
+AVPlayer Set Options [ Presentation: Start Full Screen ; Disable Interaction: No ; Hide Controls: No ; Disable External Controls: No ; Pause in Background: No ; Position: 123 ; Start Offset: 123 ; End Offset: 123 ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Start Full Screen ]
+AVPlayer Set Options [ Presentation: Full Screen Only ]
+AVPlayer Set Options [ Presentation: Start Embedded ]
+AVPlayer Set Options [ Presentation: Audio Only ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: No ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: No ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: No ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: No ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Sequence: None ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Sequence: Previous ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Fit ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Fill ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Stretch ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Fit Only ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Fill Only ; Sequence: Next ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: // some calc here Contacts::Name + 1 ; Zoom: Stretch Only ; Sequence: Next ]
+AVPlayer Set Options [ Sequence: None ]
+AVPlayer Set Options [ Sequence: Next ]
+AVPlayer Set Options [ Sequence: Previous ]
+AVPlayer Set Options [ Volume: 1000 ]
+AVPlayer Set Options [ Zoom: Fit ]
+AVPlayer Set Options [ Zoom: Fill ]
+AVPlayer Set Options [ Zoom: Stretch ]
+AVPlayer Set Options [ Zoom: Fit Only ]
+AVPlayer Set Options [ Zoom: Fill Only ]
+AVPlayer Set Options [ Zoom: Stretch Only ]
+AVPlayer Set Options [ Presentation: Audio Only ; Disable Interaction: Yes ; Hide Controls: Yes ; Disable External Controls: Yes ; Pause in Background: Yes ; Position: 123 ; Start Offset: 1 ; End Offset: 456 ; Volume: $Volume ; Zoom: Stretch ; Sequence: Previous ]
+# 
+AVPlayer Set Playback State [ Stopped ]
+AVPlayer Set Playback State [ Paused ]
+AVPlayer Set Playback State [ Playing ]
+# 
+Beep
+# 
+Dial Phone [ With dialog: On ; // some calc here Contacts::Name + 1 ]
+Dial Phone [ With dialog: Off ; 12345678 ]
+# 
+Enable Touch Keyboard [ Off ]
+Enable Touch Keyboard [ Toggle ]
+Enable Touch Keyboard [ On ]
+# 
+Execute FileMaker Data API [ Select ; // some calc here Contacts::Name + 1 ]
+Execute FileMaker Data API [ // some calc here Contacts::Name + 1 ]
+Execute FileMaker Data API [ Select ; Target: Contacts::Name[// some calc here Contacts::Name + 1] ; // some calc here Contacts::Name + 1 ]
+Execute FileMaker Data API [ Select ; Target: $target[// some calc here Contacts::Name + 1] ; // some calc here Contacts::Name + 1 ]
+Execute FileMaker Data API [ Select ; Target: $target[// some calc here Contacts::Name + 1] ; // some calc here Contacts::Name + 1 ]
+# 
+Execute SQL [ With dialog: Off ; SQL Text: SELECT * FROM orders ]
+Execute SQL [ With dialog: On ; SQL Text: SELECT * FROM orders ]
+Execute SQL [ With dialog: On ; Calculated SQL Text: // some calc here Contacts::Name + 1 ]
+# 
+Exit Application
+# 
+Flush Cache to Disk
+# 
+Flush Web Viewer Cookies
+# 
+Get Folder Path []
+Get Folder Path [ Allow Folder Creation ]
+Get Folder Path [ Allow Folder Creation ; $FolderPath[// some calc here Contacts::Name + 1] ; $DefaultLocation ]
+Get Folder Path [ $FolderPath ; $Title ; $DefaultLocation ]
+# 
+Install Menu Set [ “[File Default]” ]
+Install Menu Set [ “[Standard FileMaker Menus]” ; Use as file default: Off ]
+Install Menu Set [ “MyCustomMenuSet” ; Use as file default: On ]
+# 
+Install Plug-In File [ TestTable::ContainerField1_RC ]
+Install Plug-In File []
+# 
+Open URL [ With dialog: On ; "http://db.de" ]
+Open URL [ With dialog: On ; In external browser ; "http://db.de" ]
+Open URL [ With dialog: Off ; // some calc here Contacts::Name + 1 ]
+# 
+Perform AppleScript [ "display dialog "Hello world!"" ]
+Perform AppleScript [ // some calc here Contacts::Name + 1 ]
+# 
+Perform JavaScript in Web Viewer [ Object Name: <Active Object> ]
+Perform JavaScript in Web Viewer [ Object Name: // some calc here Contacts::Name + 1 ; Function Name: // some calc here Contacts::Name + 1 ; Parameters: $p1 &  List( 1;2;3;4), $p2 ]
+# 
+Refresh Object [ Object Name: // some calc here Contacts::Name + 1 ; Repetition: // some calc here Contacts::Name + 1 ]
+# 
+Refresh Portal [ Object Name: "Portal1" ]
+Refresh Portal [ Object Name: $MoreComplexName ]
+Refresh Portal [ Object Name: // some calc here Contacts::Name + 1 ]
+# 
+Save a Copy as Add-on Package [ Window name: // some calc here Contacts::Name + 1 ; Replace UUIDs: Off ]
+Save a Copy as Add-on Package [ Window name: // some calc here Contacts::Name + 1 ; Replace UUIDs: On ]
+# 
+Send DDE Execute
+# 
+Send Event [ “iCal.app” ; “aevt” ; “oapp” ]
+Send Event [ “Calendar.app” ; “misc” ; “dosc” ]
+Send Event [ “TextMate.app” ; “aevt” ; “odoc” ; “fmxmlsnippet.xml” ]
+Send Event [ “AppleScript-Editor.app” ; “misc” ; “dosc” ; “ FMClipboard_Save.scpt” ]
+Send Event [ “AppleScript-Editor.app” ; “misc” ; “dosc” ; “get name of every field of current layout” ]
+# 
+Send Mail [ Send via E-mail Client ; With dialog: On ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+Send Mail [ Send via E-mail Client ; With dialog: Off ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+#  collect turned on
+Send Mail [ Send via E-mail Client ; With dialog: Off ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+#  multiple
+Send Mail [ Send via E-mail Client ; With dialog: Off ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+Send Mail [ Send via SMTP Server ; No dialog ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+Send Mail [ Send via OAuth 2.0 ; No dialog ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; “$FilePath” ]
+Send Mail [ Send via OAuth 2.0 ; No dialog ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; 2 Attachments ]
+#  multiple emails
+Send Mail [ Send via OAuth 2.0 ; No dialog ; To: $To ; CC: $CC ; BCC: $BCC ; Subject: $Subject ; Message: $Message ; 2 Attachments ]
+# 
+Set Session Identifier [ // some calc here Contacts::Name + 1 ]
+# 
+Set Web Viewer [ Object Name: // some calc here Contacts::Name + 1 ; Action: Reset ]
+Set Web Viewer [ Object Name: "wv" ; Action: Reload ]
+Set Web Viewer [ Object Name: "wv" ; Action: Go Forward ]
+Set Web Viewer [ Object Name: "wv" ; Action: Go Back ]
+Set Web Viewer [ Object Name: "wv" ; URL: "http://www.mapquest.com/maps/map.adp?" & "formtype=address&" & "searchtype=address&" & "cid=filemkr&" & "address=" & "" & "&country=" & "" ]
+# 
+Show Custom Dialog [ // some calc here Contacts::Nam… ; // some calc here Contacts::Name + 1 ; Height: // some calc here Contacts::Name + 1 ; Width: // some calc here Contacts::Name + 1 ; Top: // some calc here Contacts::Name + 1 ; Left: // some calc here Contacts::Name + 1 ]
+Show Custom Dialog [ $DlgTitle ; "Only Button 1 and 3¶" & "and input 2" ; Contacts::Name ; $some_var[11] ; Contacts::ID[12] ]
+# 
+Speak [ "Standard voice" ]
+Speak [ "Agnes says.." ]
+Speak [ "Albert" ]
+# 
+# =====================
+# EXTERNAL SCRIPT STEPS
+# =====================
+# 
+MBS [ Select ; Destination: <Table Missing> ; Function: $Command ; P1: $P1 ; P2: $P2 ; P3: $P3 ; P4: $P4 ]
+# 
+# 

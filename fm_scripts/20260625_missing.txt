@@ -1,0 +1,48 @@
+# 
+Adjust Window [ Resize to Fit ]
+Adjust Window [ Maximize ]
+Adjust Window [ Minimize ]
+Adjust Window [ Restore ]
+Adjust Window [ Hide ]
+# 
+View As [ Cycle ]
+View As [ View as Form ]
+View As [ View as List ]
+View As [ View as Table ]
+# 
+#  below, only the "exit loop if" is important
+Loop [ Flush: Always ]
+	Exit Loop If [ // some calc ]
+End Loop
+# 
+Scroll Window [ Home ]
+Scroll Window [ End ]
+Scroll Window [ Page Up ]
+Scroll Window [ Page Down ]
+Scroll Window [ To Selection ]
+# 
+Set Multi-User [ On ]
+Set Multi-User [ On (Hidden) ]
+Set Multi-User [ Off ]
+# 
+Show/Hide Text Ruler [ Show ]
+Show/Hide Text Ruler [ Hide ]
+Show/Hide Text Ruler [ Toggle ]
+# 
+Arrange All Windows [ Tile Horizontally ]
+Arrange All Windows [ Tile Vertically ]
+Arrange All Windows [ Cascade Window ]
+Arrange All Windows [ Bring All To Front ]
+# 
+Enable Touch Keyboard [ On ]
+Enable Touch Keyboard [ Off ]
+Enable Touch Keyboard [ Toggle ]
+# 
+Set Dictionary [ Spelling Language: US English ]
+Set Dictionary [ Spelling Language: Português (Brasil) ]
+# 
+Trigger Claris Connect Flow [ Flow: Authorize_Net - Active ; JSON Data:    ]
+Trigger Claris Connect Flow [ Flow: Authorize_Net - Active ; JSON Data:    ; Target: Contacts::CreatedBy[2] ]
+Trigger Claris Connect Flow [ Flow: Authorize_Net - Active ; JSON Data: "{}" ; Target: Contacts::CreatedBy[2] ]
+# 
+Set Revert Transaction on Error [ Off ]
