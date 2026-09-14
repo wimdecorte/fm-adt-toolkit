@@ -17,6 +17,10 @@ export function renderReport(entries: GapEntry[]): string {
       if (e.lastChecked) {
         const c = e.lastChecked;
         out.push(`Last checked: fm ${c.version} (${c.build}) on ${c.date}, outcome **${c.outcome}**.`, '');
+        out.push(
+          `Probe ${c.batch.position + 1} of ${c.batch.size} in one fm invocation; the summary and exit code below are the batch's.`,
+          '',
+        );
         out.push('Command:', '', '```', c.command, '```', '');
         out.push('Ops file:', '', '```json', ...c.ops.map((op) => JSON.stringify(op)), '```', '');
         out.push('Response (stdout, then stderr, exit ' + c.response.exitCode + '):', '', '```json',

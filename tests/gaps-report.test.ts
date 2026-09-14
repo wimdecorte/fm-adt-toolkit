@@ -11,6 +11,7 @@ const e: GapEntry = {
     ops: [{ op: 'read:layout', name: 'File Open', detail: true }],
     response: { stdout: [{ op: 'read:layout', status: 'ok', result: { theme: { name: 'Apex' } } }],
                 stderr: [{ type: 'summary', total: 1, ok: 1, errors: 0, dryRun: false, rolledBack: false }], exitCode: 0 },
+    batch: { size: 11, position: 3 },
   },
   reportedToClaris: null, blocks: [{ app: 'inspector', feature: 'theme-moodboard' }],
   probe: { target: 'reference', ops: [{ op: 'read:layout', name: 'File Open', detail: true }], check: { kind: 'keyPresent', path: 'theme.styles' } },
@@ -27,5 +28,6 @@ describe('renderReport', () => {
     expect(md).toContain('"theme": {');
     expect(md).not.toContain('### x');
     expect(md).toMatch(/Checked against fm 0\.6\.0 \(29816214\) on 2026-09-14/);
+    expect(md).toContain('Probe 4 of 11 in one fm invocation; the summary and exit code below are the batch\'s.');
   });
 });
