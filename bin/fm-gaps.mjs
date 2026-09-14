@@ -26,7 +26,7 @@ if (cmd === 'report') {
   if (args.out) fs.writeFileSync(path.resolve(args.out), md); else process.stdout.write(md);
   process.exit(0);
 }
-if (cmd !== 'check' || !args.file) {
+if (cmd !== 'check' || !args.file || !args.username || args.username === true) {
   console.error('usage: fm-gaps check --file=<target> --username=<account> [--register=<path>]\n       fm-gaps report [--register=<path>] [--out=<path>]');
   process.exit(2);
 }
@@ -36,18 +36,22 @@ if (!cli) { console.error('fm CLI not found'); process.exit(2); }
 // `--version` prints `0.6.0 (29816214)`; locate keeps the version, the build number is read here.
 const build = execFileSync(cli.path, ['--version']).toString().match(/\((\d+)\)/)?.[1] ?? '';
 const entries = loadRegister(registerPath);
-const target = { file: args.file, username: args.username ?? '' };
-let lastRun;
-const run = async (ops) => (lastRun = await runOps(cli, target, ops, { dryRun: false, opsFile: true, outFile: true, abortOnError: false, noPrompt: true }));
+const target = { file: args.file, username: args.username };
+const run = async (ops) => runOps(cli, target, ops, {
+  dryRun: false, opsFile: true, outFile: true, abortOnError: false, noPrompt: true,
+  killAfterMs: 10 * 60 * 1000,
+});
 const out = await runChecks(entries, run, {
   version: cli.version, build, date: new Date().toISOString().slice(0, 10),
   commandFor: (argv) => ['fm', ...argv].join(' '),
 });
-saveRegister(registerPath, out.entries);
-if (lastRun?.fatal) {
-  console.error(`fatal: ${lastRun.fatal.code}: ${lastRun.fatal.message}`);
-  for (const s of lastRun.fatal.suggestions ?? []) console.error(s);
+if (out.fatal) {
+  console.error(`fatal: ${out.fatal.code}: ${out.fatal.message}`);
+  for (const s of out.fatal.suggestions ?? []) console.error(s);
+  console.error('register not written: the run never opened the file');
+  process.exit(1);
 }
+saveRegister(registerPath, out.entries);
 const show = (label, list) => {
   console.log(`\n${label} (${list.length})`);
   for (const e of list) {
