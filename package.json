@@ -1,0 +1,39 @@
+{
+  "name": "fm-adt-toolkit",
+  "version": "0.1.0",
+  "description": "Shared plumbing for tools built on the Claris ADT fm CLI: runner, script step display, gap register",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22.18" },
+  "files": ["dist", "gaps", "bin", "src/catalogs/fm-step-display.json"],
+  "bin": { "fm-gaps": "bin/fm-gaps.mjs" },
+  "exports": {
+    "./types": { "types": "./dist/types.d.ts", "default": "./dist/types.js" },
+    "./runner": { "types": "./dist/runner/index.d.ts", "default": "./dist/runner/index.js" },
+    "./step-display": { "types": "./dist/step-display/index.d.ts", "default": "./dist/step-display/index.js" },
+    "./gaps": { "types": "./dist/gaps/index.d.ts", "default": "./dist/gaps/index.js" },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "types": ["dist/types.d.ts"],
+      "runner": ["dist/runner/index.d.ts"],
+      "step-display": ["dist/step-display/index.d.ts"],
+      "gaps": ["dist/gaps/index.d.ts"]
+    }
+  },
+  "scripts": {
+    "build": "npm run build:catalog && tsc -p tsconfig.json",
+    "build:catalog": "node scripts/emit-catalog-module.mjs",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "derive:step-display": "node scripts/derive-step-display.mjs",
+    "roundtrip:step-display": "node scripts/roundtrip-step-display.mjs && npm run build:catalog"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  }
+}
