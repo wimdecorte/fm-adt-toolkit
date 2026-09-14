@@ -23,7 +23,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { locateFmCli, runOps } from '../dist/runner/index.js';
 import { assertReadOnly } from '../dist/read-only.js';
-import { loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName, KINDS, draftEntry, selectInstance } from '../dist/gaps/index.js';
+import { loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName, KINDS, draftEntry, selectInstance, evidenceDir } from '../dist/gaps/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cmd = process.argv[2];
@@ -107,5 +107,5 @@ show('Newly reported (set fmKey/reported by hand after reading the evidence)', o
 show('Regressed (was reported, now absent)', out.regressed, (r) => `${r.entry.id}  ${r.attribute.name} (${r.attribute.fmKey})`);
 show('Unexplained keys on the instance (candidates for closing a gap)', out.unexplained, (r) => `${r.entry.id}  ${r.keys.join(', ')}`);
 show('Errored', out.errored, (e) => `${e.id}  ${e.lastChecked?.reason ?? ''}`);
-console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}; evidence under ${path.relative(process.cwd(), path.join(evidenceRoot, 'gaps', 'evidence', cli.version))}/`);
+console.log(`\nregister written: ${path.relative(process.cwd(), registerPath)}; evidence under ${path.relative(process.cwd(), path.join(evidenceRoot, 'gaps', 'evidence', evidenceDir(cli.version, build)))}/`);
 process.exit(out.errored.length > 0 || out.regressed.length > 0 ? 1 : 0);

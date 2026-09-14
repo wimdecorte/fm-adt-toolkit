@@ -13,21 +13,30 @@ export function probeId(op: AdtOp): string {
   return createHash('sha1').update(canonical(op)).digest('hex').slice(0, 8);
 }
 
-export function evidencePath(version: string, op: AdtOp): string {
-  return path.posix.join('gaps', 'evidence', version, probeId(op) + '.ndjson');
+/** The directory one fm build's evidence lives in: `<version>-<build>`. Two builds of the
+ *  same version answer differently often enough that keeping both is the point — the
+ *  build-to-build key is what lets a check diff this run's keys against the previous
+ *  build's. A build-less caller (a test, an fm that reports no build) falls back to the
+ *  bare version. */
+export function evidenceDir(version: string, build: string): string {
+  return build ? `${version}-${build}` : version;
+}
+
+export function evidencePath(version: string, build: string, op: AdtOp): string {
+  return path.posix.join('gaps', 'evidence', evidenceDir(version, build), probeId(op) + '.ndjson');
 }
 
 /** One file per probe per fm version: a meta line, then every stdout line, then every
  *  stderr line, all verbatim. Overwritten on every check of that version. */
 export function writeEvidence(
-  root: string, version: string, op: AdtOp,
-  data: { command: string; batch: { size: number; position: number }; stdout: unknown[]; stderr: unknown[]; exitCode: number; build?: string; date?: string },
+  root: string, version: string, build: string, op: AdtOp,
+  data: { command: string; batch: { size: number; position: number }; stdout: unknown[]; stderr: unknown[]; exitCode: number; date?: string },
 ): string {
-  const rel = evidencePath(version, op);
+  const rel = evidencePath(version, build, op);
   const abs = path.join(root, rel);
   fs.mkdirSync(path.dirname(abs), { recursive: true });
   const lines = [
-    JSON.stringify({ type: 'meta', op, version, build: data.build ?? '', date: data.date ?? '', command: data.command, batch: data.batch, exitCode: data.exitCode }),
+    JSON.stringify({ type: 'meta', op, version, build, date: data.date ?? '', command: data.command, batch: data.batch, exitCode: data.exitCode }),
     ...data.stdout.map((line) => JSON.stringify({ type: 'stdout', line })),
     ...data.stderr.map((line) => JSON.stringify({ type: 'stderr', line })),
   ];

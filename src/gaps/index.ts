@@ -5,7 +5,7 @@ export type { Attribute, Probe, SubjectEntry, SubjectEvidence } from './register
 export { runChecks } from './check.ts';
 export type { CheckOutcome } from './check.ts';
 export { renderReport } from './report.ts';
-export { probeId, writeEvidence, readEvidence, evidencePath } from './evidence.ts';
+export { probeId, writeEvidence, readEvidence, evidencePath, evidenceDir } from './evidence.ts';
 export { selectInstance } from './select.ts';
 export { flattenKeys, normaliseName, autoMatch } from './match.ts';
 export { enumerateExport, enumerateKind, writeReferences, referenceFileName, attributePaths, findByChain } from './enumerate.ts';

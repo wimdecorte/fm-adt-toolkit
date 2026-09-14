@@ -80,8 +80,8 @@ export async function runChecks(
   const evidenceFor = new Map<string, string>();
   ids.forEach((id, i) => {
     const line = result.results[i];
-    evidenceFor.set(id, writeEvidence(meta.root, meta.version, ops[i], {
-      command, batch: { size: ops.length, position: i }, build: meta.build, date: meta.date,
+    evidenceFor.set(id, writeEvidence(meta.root, meta.version, meta.build, ops[i], {
+      command, batch: { size: ops.length, position: i }, date: meta.date,
       stdout: line ? [line] : [], stderr: stderrLines, exitCode: result.exitCode,
     }));
   });

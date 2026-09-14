@@ -32,7 +32,7 @@ describe('runChecks', () => {
     const ea = out.entries[0].lastChecked!;
     expect(ea.attributes).toEqual({ top: 'reported', locked: 'reported', cond: 'absent', gone: 'absent' });
     expect(ea.unexplainedKeys).toEqual(['newThing']);                                   // bounds.top, locked claimed; id, type ignored; 'bounds' parent implied
-    expect(ea.evidence).toMatch(/^gaps\/evidence\/0\.6\.0\/[0-9a-f]{8}\.ndjson$/);
+    expect(ea.evidence).toMatch(/^gaps\/evidence\/0\.6\.0-1\/[0-9a-f]{8}\.ndjson$/);
     expect(fs.existsSync(path.join(root, ea.evidence))).toBe(true);
     expect(out.entries[1].lastChecked!.evidence).toBe(ea.evidence);
     expect(out.newlyReported.map((x) => x.attribute.name)).toEqual(['locked']);

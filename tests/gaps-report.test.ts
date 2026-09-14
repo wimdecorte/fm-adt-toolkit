@@ -6,11 +6,11 @@ import type { SubjectEntry } from '../src/gaps/register.ts';
 
 function verifiedEntry(root: string): SubjectEntry {
   const op = { op: 'read:layout', name: 'Home', detail: true };
-  const evidence = writeEvidence(root, '0.6.0', op, {
+  const evidence = writeEvidence(root, '0.6.0', '29816214', op, {
     command: 'fm --file=x --username=a', batch: { size: 1, position: 0 },
     stdout: [{ op: 'read:layout', status: 'ok', result: { name: 'Home' } }],
     stderr: [{ type: 'summary', total: 1, ok: 1, errors: 0, dryRun: false, rolledBack: false }],
-    exitCode: 0, build: '29816214', date: '2026-09-14',
+    exitCode: 0, date: '2026-09-14',
   });
   return {
     id: 'layout-object:edit-box', op: 'read:layout', kind: 'object:Edit Box',
@@ -48,7 +48,7 @@ const erroredEntry: SubjectEntry = {
   firstSeen: '0.6.0', reportedToClaris: null,
   lastChecked: {
     version: '0.6.0', build: '29816214', date: '2026-09-14',
-    command: 'fm --file=x --username=a', batch: { size: 1, position: 0 }, evidence: 'gaps/evidence/0.6.0/missing.ndjson',
+    command: 'fm --file=x --username=a', batch: { size: 1, position: 0 }, evidence: 'gaps/evidence/0.6.0-29816214/missing.ndjson',
     attributes: { source: 'error' }, unexplainedKeys: [], reason: 'selector **objects[id=77] matched nothing',
   },
   blocks: [],
@@ -57,17 +57,17 @@ const erroredEntry: SubjectEntry = {
 function entryWithVerifiedOnAttribute(root: string): SubjectEntry {
   const op = { op: 'read:layout', name: 'Home', detail: true };
   const otherOp = { op: 'read:layout', name: 'List', detail: true };
-  const evidence = writeEvidence(root, '0.6.0', op, {
+  const evidence = writeEvidence(root, '0.6.0', '29816214', op, {
     command: 'fm --file=x --username=a', batch: { size: 2, position: 0 },
     stdout: [{ op: 'read:layout', status: 'ok', result: { name: 'Home' } }],
     stderr: [{ type: 'summary', total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }],
-    exitCode: 0, build: '29816214', date: '2026-09-14',
+    exitCode: 0, date: '2026-09-14',
   });
-  const otherEvidence = writeEvidence(root, '0.6.0', otherOp, {
+  const otherEvidence = writeEvidence(root, '0.6.0', '29816214', otherOp, {
     command: 'fm --file=x --username=a', batch: { size: 2, position: 1 },
     stdout: [{ op: 'read:layout', status: 'ok', result: { name: 'List' } }],
     stderr: [{ type: 'summary', total: 2, ok: 2, errors: 0, dryRun: false, rolledBack: false }],
-    exitCode: 0, build: '29816214', date: '2026-09-14',
+    exitCode: 0, date: '2026-09-14',
   });
   return {
     id: 'layout-object:verified', op: 'read:layout', kind: 'object:Verified',
