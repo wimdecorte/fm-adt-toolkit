@@ -12,6 +12,7 @@
     "./runner": { "types": "./dist/runner/index.d.ts", "default": "./dist/runner/index.js" },
     "./step-display": { "types": "./dist/step-display/index.d.ts", "default": "./dist/step-display/index.js" },
     "./gaps": { "types": "./dist/gaps/index.d.ts", "default": "./dist/gaps/index.js" },
+    "./gaps/checks": { "types": "./dist/gaps/checks.d.ts", "default": "./dist/gaps/checks.js" },
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -19,7 +20,8 @@
       "types": ["dist/types.d.ts"],
       "runner": ["dist/runner/index.d.ts"],
       "step-display": ["dist/step-display/index.d.ts"],
-      "gaps": ["dist/gaps/index.d.ts"]
+      "gaps": ["dist/gaps/index.d.ts"],
+      "gaps/checks": ["dist/gaps/checks.d.ts"]
     }
   },
   "scripts": {
