@@ -26,8 +26,9 @@
     "build": "npm run build:catalog && tsc -p tsconfig.json",
     "build:catalog": "node scripts/emit-catalog-module.mjs",
     "prepare": "npm run build",
-    "test": "vitest run",
+    "test": "vitest run && npm run lint && npm run lint:tests",
     "lint": "tsc --noEmit -p tsconfig.json",
+    "lint:tests": "tsc -p tsconfig.tests.json",
     "derive:step-display": "node scripts/derive-step-display.mjs",
     "roundtrip:step-display": "node scripts/roundtrip-step-display.mjs && npm run build:catalog"
   },
