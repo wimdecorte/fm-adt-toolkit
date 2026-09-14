@@ -2579,7 +2579,7 @@
         "name": "action step is enabled",
         "path": "action/Step@enable",
         "knownFrom": "SaXML CustomMenuCatalog MenuItemList/CustomMenuItem action/Step@enable; File > Manage > Custom Menus > Custom Menus tab > Edit Custom Menu > Menu Items > Action > Specify Script Step, which offers no Disable command for the step it holds. All three action Step elements in Ooe carry enable=“True” and fm reports no disabled key on any of them; the script-step twin of this row (register entry step:1) records disabled as the key a disabled step would use",
-        "fmKey": null,
+        "fmKey": "action.enabled",
         "reported": false,
         "wontfix": "not exercised on the probe instance: all three CustomMenuItem action steps in Ooe are enabled and fm reports no key for the flag"
       },
@@ -2679,7 +2679,7 @@
         "name": "action boolean value",
         "path": "action/Step/ParameterValues/Parameter/Boolean@value",
         "knownFrom": "SaXML CustomMenuCatalog MenuItemList/CustomMenuItem action/Step/ParameterValues/Parameter/Boolean@value; File > Manage > Custom Menus > Custom Menus tab > Edit Custom Menu > Menu Items > Action > Specify Script Step. Written only by the Show Custom Dialog action on item index 2, where the one path carries four options that fm reports as action’s \"button 1 commit\", \"button 2 commit\", \"button 3 commit\" and \"input 1 password\"; the discriminated rows for that step are on the register’s step:87 entry",
-        "fmKey": null,
+        "fmKey": "action.button 1 commit",
         "reported": false,
         "wontfix": "not exercised on the probe instance: the probe item’s action is Perform Script, which writes no Boolean option; one SaXML path, several options of a different step — step:87 owns the discriminated rows"
       },
@@ -4292,8 +4292,17 @@
         "path": "(fm only)",
         "knownFrom": "SaXML location not yet located: the only field in the file that carries it, containers::encrypted_with_fewer_folders, was added on 2026-09-14 and postdates the 2026-08-30 export the reference is enumerated from; Field Options > Storage > Container > Secure storage > Use fewer folders",
         "fmKey": "options.container.fewerFolders",
-        "reported": false,
-        "wontfix": "not exercised on the probe instance: containers::encrypted_with_fewer_folders reports container.fewerFolders true; it is the only field in the file with secure storage, and it was added on 2026-09-14, after the 2026-08-30 export. Verified read-only on 2026-09-14 against the same file with one extra batch of `read:table` and `read:field` listing (detail) ops covering every Ooe table, run with the same flags the check uses. The fmKey stays on this row so the key fm uses is named."
+        "reported": true,
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:field",
+              "table": "containers",
+              "name": "encrypted_with_fewer_folders",
+              "detail": true
+            }
+          ]
+        }
       }
     ],
     "ignoreKeys": [
@@ -9185,7 +9194,8 @@
         "feature": "file-metadata-card",
         "attribute": "file script trigger event"
       }
-    ]
+    ],
+    "expectedError": "probe refused: unknown_catalog"
   },
   {
     "id": "file-encryption",
@@ -9297,7 +9307,7 @@
         "name": "print columns (number of columns)",
         "path": "ColumnCount",
         "knownFrom": "SaXML LayoutCatalog Layout ColumnCount; Layout Setup > Printing > Print in <n> columns",
-        "fmKey": null,
+        "fmKey": "geometry.columns.count",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has print columns in Ooe); fmai shape-coverage-layout.md verifies fm carries it as geometry.columns.count"
       },
@@ -9305,7 +9315,7 @@
         "name": "fixed page margins (in use)",
         "path": "FixedMargins",
         "knownFrom": "SaXML LayoutCatalog Layout FixedMargins; Layout Setup > Printing > Use fixed page margins",
-        "fmKey": null,
+        "fmKey": "geometry.fixedMargins",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has fixed margins in Ooe); fmai shape-coverage-layout.md verifies fm carries the margins under geometry.fixedMargins"
       },
@@ -9313,7 +9323,7 @@
         "name": "fixed page margin, bottom",
         "path": "FixedMargins@bottom",
         "knownFrom": "SaXML LayoutCatalog Layout FixedMargins@bottom; Layout Setup > Printing > Use fixed page margins",
-        "fmKey": null,
+        "fmKey": "geometry.fixedMargins.height",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has fixed margins in Ooe); fmai shape-coverage-layout.md records fm reporting geometry.fixedMargins.height 0 against the file's bottom=\"20\" — a misread, not an omission"
       },
@@ -9321,7 +9331,7 @@
         "name": "fixed page margin, left",
         "path": "FixedMargins@left",
         "knownFrom": "SaXML LayoutCatalog Layout FixedMargins@left; Layout Setup > Printing > Use fixed page margins",
-        "fmKey": null,
+        "fmKey": "geometry.fixedMargins.left",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has fixed margins in Ooe); fmai shape-coverage-layout.md verifies fm carries it as geometry.fixedMargins.left"
       },
@@ -9329,7 +9339,7 @@
         "name": "fixed page margin, right",
         "path": "FixedMargins@right",
         "knownFrom": "SaXML LayoutCatalog Layout FixedMargins@right; Layout Setup > Printing > Use fixed page margins",
-        "fmKey": null,
+        "fmKey": "geometry.fixedMargins.width",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has fixed margins in Ooe); fmai shape-coverage-layout.md records fm reporting geometry.fixedMargins.width 0 against the file's right=\"20\" — a misread, not an omission"
       },
@@ -9337,7 +9347,7 @@
         "name": "fixed page margin, top",
         "path": "FixedMargins@top",
         "knownFrom": "SaXML LayoutCatalog Layout FixedMargins@top; Layout Setup > Printing > Use fixed page margins",
-        "fmKey": null,
+        "fmKey": "geometry.fixedMargins.top",
         "reported": false,
         "wontfix": "not exercised on the probe layout (only the `printing` layout has fixed margins in Ooe); fmai shape-coverage-layout.md verifies fm carries it as geometry.fixedMargins.top"
       },
@@ -9467,7 +9477,10 @@
         "path": "Options bit 0",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 0 (0x1, fm flag \"onlyShowCurrentFrames\"); Layout Setup > General > Delineate fields on current record only",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "onlyShowCurrentFrames"
+        }
       },
       {
         "name": "layout option: form view enabled",
@@ -9495,21 +9508,41 @@
         "path": "Options bit 4",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 4 (0x10, fm flag \"confirmRecordSave\"); Layout Setup > General > Save record changes automatically (the flag is set when the confirmation dialog is asked for)",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "confirmRecordSave"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: show field frames when record is active",
         "path": "Options bit 5",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 5 (0x20, fm flag \"showActiveFrames\"); Layout Setup > General > Show field frames when record is active",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "showActiveFrames"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: use fixed page margins",
         "path": "Options bit 6",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 6 (0x40, fm flag \"fixedMargins\"); Layout Setup > Printing > Use fixed page margins",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "fixedMargins"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "printing",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: facing pages",
@@ -9523,7 +9556,11 @@
         "path": "Options bit 8",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 8 (0x100, fm flag \"columnMajorOrder\"); Layout Setup > Printing > Down first / Across first",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "columnMajorOrder"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: default view is list",
@@ -9537,21 +9574,40 @@
         "path": "Options bit 10",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 10 (0x400, fm flag \"hasColumns\"); Layout Setup > Printing > Print in <n> columns",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "hasColumns"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "printing",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: part labels vertical",
         "path": "Options bit 11",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 11 (0x800, fm flag \"verticalPartLabels\"); Layout mode > Ctrl-click (Windows) or Command-click (macOS) a part label to switch the labels between vertical and horizontal",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "verticalPartLabels"
+        }
       },
       {
         "name": "layout option: text ruler shown",
         "path": "Options bit 12",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 12 (0x1000, fm flag \"textRuler\"); Layout mode > View menu > Text Ruler",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "textRuler"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: default view is table",
@@ -9565,140 +9621,253 @@
         "path": "Options bit 15",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 15 (0x8000, fm flag \"disableQuickFind\"); Layout Setup > General > Enable Quick Find (the flag is set when quick find is off)",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "disableQuickFind"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: table view horizontal grid",
         "path": "Options bit 16",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 16 (0x10000, fm flag \"horizontalGrid\"); Layout Setup > Views > Table View Properties > grid Horizontal",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "horizontalGrid"
+        }
       },
       {
         "name": "layout option: table view vertical grid",
         "path": "Options bit 17",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 17 (0x20000, fm flag \"verticalGrid\"); Layout Setup > Views > Table View Properties > grid Vertical",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "verticalGrid"
+        }
       },
       {
         "name": "layout option: table view shows the header part",
         "path": "Options bit 18",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 18 (0x40000, fm flag \"includeHeader\"); Layout Setup > Views > Table View Properties > parts to display: header",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "includeHeader"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: table view shows the footer part",
         "path": "Options bit 19",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 19 (0x80000, fm flag \"includeFooter\"); Layout Setup > Views > Table View Properties > parts to display: footer",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "includeFooter"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: include column headers",
         "path": "Options bit 20",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 20 (0x100000, fm flag \"columnHeader\"); Layout Setup > Views > Table View Properties > Include column headers",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "columnHeader"
+        }
       },
       {
         "name": "layout option: resizable columns",
         "path": "Options bit 21",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 21 (0x200000, fm flag \"columnResize\"); Layout Setup > Views > Table View Properties > Resizable columns",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "columnResize"
+        }
       },
       {
         "name": "layout option: reorderable columns",
         "path": "Options bit 22",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 22 (0x400000, fm flag \"columnReorder\"); Layout Setup > Views > Table View Properties > Reorderable columns",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "columnReorder"
+        }
       },
       {
         "name": "layout option: sort when a column header is selected",
         "path": "Options bit 23",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 23 (0x800000, fm flag \"sortOnSelect\"); Browse mode > Table View > select a column heading to sort",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "sortOnSelect"
+        }
       },
       {
         "name": "layout option: use custom row height",
         "path": "Options bit 24",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 24 (0x1000000, fm flag \"customRowHeight\"); Layout Setup > Views > Table View Properties > Use custom height",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "customRowHeight"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "table_with_custom_row_height",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: layout width locked",
         "path": "Options bit 25",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 25 (0x2000000, fm flag \"widthLocked\"); no FileMaker Pro control found for this bit; fm names it in flags.set and gates geometry.maxWidth on it",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "widthLocked"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: table view columns in a custom order",
         "path": "Options bit 26",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 26 (0x4000000, fm flag \"customColumnOrder\"); Browse mode > Table View > drag a column heading to reorder",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "customColumnOrder"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: field delineation off",
         "path": "Options bit 27",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 27 (0x8000000, fm flag \"noFieldDelineation\"); Layout Setup > General, the field-frame group (the companion of Delineate fields on current record only)",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "noFieldDelineation"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: show current record indicator in List View",
         "path": "Options bit 28",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 28 (0x10000000, fm flag \"disableGutter\"); Layout Setup > General > Show current record indicator in List View (the flag is set when the indicator is off)",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "disableGutter"
+        }
       },
       {
         "name": "layout option: table view shows the top navigation part",
         "path": "Options bit 29",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 29 (0x20000000, fm flag \"includeTopNav\"); Layout Setup > Views > Table View Properties > parts to display: top navigation",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "includeTopNav"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: table view shows the bottom navigation part",
         "path": "Options bit 30",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 30 (0x40000000, fm flag \"includeBottomNav\"); Layout Setup > Views > Table View Properties > parts to display: bottom navigation",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": false,
+        "expect": {
+          "contains": "includeBottomNav"
+        },
+        "wontfix": "not exercised on any reference layout: fm’s flag table names it but no Ooe layout sets the bit"
       },
       {
         "name": "layout option: system appearance (macOS)",
         "path": "Options bit 32",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 32 (0x100000000, fm flag \"systemTheme\"); Layout Setup > Views > Table View Properties > System appearance",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "systemTheme"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "File Open",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: comfortable formatting (macOS)",
         "path": "Options bit 33",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 33 (0x200000000, fm flag \"tableViewComfortStyle\"); Layout Setup > Views > Table View Properties > Comfortable formatting",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "tableViewComfortStyle"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "File Open",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: alternating row colours (macOS)",
         "path": "Options bit 34",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 34 (0x400000000, fm flag \"tableViewAltRow\"); Layout Setup > Views > Table View Properties > Alternating row colors",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "tableViewAltRow"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "File Open",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "layout option: row numbers (macOS)",
         "path": "Options bit 35",
         "knownFrom": "SaXML LayoutCatalog Layout Options bit 35 (0x800000000, fm flag \"tableViewRowNumber\"); Layout Setup > Views > Table View Properties > Row numbers",
         "fmKey": "flags.set",
-        "reported": true
+        "reported": true,
+        "expect": {
+          "contains": "tableViewRowNumber"
+        },
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:layout",
+              "name": "File Open",
+              "detail": true
+            }
+          ]
+        }
       },
       {
         "name": "include in layout menus",
@@ -10923,7 +11092,11 @@
         "feature": "unreferenced-and-broken-references",
         "attribute": "conditional formatting rule calculation"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "button",
+      "control": null
+    }
   },
   {
     "id": "layout-object:button-bar",
@@ -11228,7 +11401,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "buttonBar",
+      "control": null
+    }
   },
   {
     "id": "layout-object:chart",
@@ -13464,7 +13641,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "chart",
+      "control": null
+    }
   },
   {
     "id": "layout-object:checkbox-set",
@@ -14003,23 +14184,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -14032,9 +14213,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -14271,7 +14452,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "checkboxSet"
+    }
   },
   {
     "id": "layout-object:concealed-edit-box",
@@ -14752,23 +14937,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -14781,9 +14966,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -15012,7 +15197,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "secureText"
+    }
   },
   {
     "id": "layout-object:container",
@@ -15609,23 +15798,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -15638,9 +15827,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -15895,7 +16084,11 @@
         "feature": "catalog-object-styles",
         "attribute": "named theme style"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": null
+    }
   },
   {
     "id": "layout-object:drop-down-calendar",
@@ -16418,23 +16611,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -16447,9 +16640,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -16684,7 +16877,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "dropDownCalendar"
+    }
   },
   {
     "id": "layout-object:drop-down-list",
@@ -17236,23 +17433,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -17265,9 +17462,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -17506,7 +17703,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "dropDownList"
+    }
   },
   {
     "id": "layout-object:edit-box",
@@ -18254,23 +18455,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -18283,9 +18484,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -18591,7 +18792,11 @@
         "feature": "unreferenced-and-broken-references",
         "attribute": "conditional formatting rule calculation"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "editBox"
+    }
   },
   {
     "id": "layout-object:graphic",
@@ -18979,7 +19184,11 @@
         "feature": "object-tooltips",
         "attribute": "tooltip calculation"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "graphic",
+      "control": null
+    }
   },
   {
     "id": "layout-object:group",
@@ -19250,7 +19459,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "group",
+      "control": null
+    }
   },
   {
     "id": "layout-object:grouped-button",
@@ -19714,7 +19927,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "group",
+      "control": null
+    }
   },
   {
     "id": "layout-object:line",
@@ -19983,7 +20200,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "line",
+      "control": null
+    }
   },
   {
     "id": "layout-object:oval",
@@ -20252,7 +20473,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "oval",
+      "control": null
+    }
   },
   {
     "id": "layout-object:pop-up-menu",
@@ -20804,23 +21029,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -20833,9 +21058,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -21074,7 +21299,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "popupMenu"
+    }
   },
   {
     "id": "layout-object:popover-button",
@@ -21442,7 +21671,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "popoverButton",
+      "control": null
+    }
   },
   {
     "id": "layout-object:popoverpanel",
@@ -21792,7 +22025,11 @@
         "feature": "unreferenced-and-broken-references",
         "attribute": "hide condition"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "popover",
+      "control": null
+    }
   },
   {
     "id": "layout-object:portal",
@@ -22296,7 +22533,11 @@
         "feature": "unreferenced-and-broken-references",
         "attribute": "portal filter calculation"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "portal",
+      "control": null
+    }
   },
   {
     "id": "layout-object:radio-button-set",
@@ -22835,23 +23076,23 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "touch keyboard type (bit 0)",
-        "path": "Field/Usage@type bit 0",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 0; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 0 (systemDefault)",
+        "path": "Field/Usage@type value 0",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 0; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 0 as \"systemDefault\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 1)",
-        "path": "Field/Usage@type bit 1",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 1; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 3 (url)",
+        "path": "Field/Usage@type value 3",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 3; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 3 as \"url\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
       {
-        "name": "touch keyboard type (bit 2)",
-        "path": "Field/Usage@type bit 2",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@type bit 2; Inspector > Data > Behavior > Keyboard type (bits 0-2 per fmai fmadt/layout-object-settings; fm reports the decoded enum as keyboardType)",
+        "name": "touch keyboard type value 5 (numeric10Key)",
+        "path": "Field/Usage@type value 5",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@type value 5; Inspector > Data > Behavior > Keyboard type. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 5 as \"numeric10Key\", and fm reports the decoded enum as keyboardType.",
         "fmKey": "keyboardType",
         "reported": true
       },
@@ -22864,9 +23105,9 @@
         "wontfix": "meaning unknown"
       },
       {
-        "name": "an input method is set",
-        "path": "Field/Usage@inputMode bit 7",
-        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode bit 7; Inspector > Data > Behavior > Input method (bit 7 per fmai fmadt/layout-object-settings; the low bits select which method and fm reports the decoded enum as inputMode — Ooe writes inputMode=\"0\" -> \"automatic\" and inputMode=\"130\" -> \"roman\")",
+        "name": "input method value 128 (synchronizeWithFieldLanguage)",
+        "path": "Field/Usage@inputMode value 128",
+        "knownFrom": "SaXML LayoutCatalog Field/Usage@inputMode value 128; Inspector > Data > Behavior > Input method. The attribute is an enum word, not a bit field: fmai fmadt/layout-object-settings measures the value 128 as \"synchronizeWithFieldLanguage\", and fm reports the decoded enum as inputMode.",
         "fmKey": "inputMode",
         "reported": true
       },
@@ -23103,7 +23344,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "field",
+      "control": "radioButtonSet"
+    }
   },
   {
     "id": "layout-object:rectangle",
@@ -23381,7 +23626,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "rectangle",
+      "control": null
+    }
   },
   {
     "id": "layout-object:rounded-rectangle",
@@ -23650,7 +23899,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "roundedRectangle",
+      "control": null
+    }
   },
   {
     "id": "layout-object:slide-control",
@@ -23969,7 +24222,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "slideControl",
+      "control": null
+    }
   },
   {
     "id": "layout-object:slidepanel",
@@ -24258,7 +24515,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "slidePanel",
+      "control": null
+    }
   },
   {
     "id": "layout-object:tab-control",
@@ -24649,7 +24910,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "tabControl",
+      "control": null
+    }
   },
   {
     "id": "layout-object:tabpanel",
@@ -24963,7 +25228,11 @@
         "feature": "layout-wireframe",
         "attribute": "object type"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "tabPanel",
+      "control": null
+    }
   },
   {
     "id": "layout-object:text",
@@ -25697,7 +25966,11 @@
         "feature": "unreferenced-and-broken-references",
         "attribute": "merge field name"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "label",
+      "control": null
+    }
   },
   {
     "id": "layout-object:web-viewer",
@@ -26080,7 +26353,11 @@
         "feature": "object-script-triggers",
         "attribute": "object script triggers"
       }
-    ]
+    ],
+    "fmType": {
+      "type": "webViewer",
+      "control": null
+    }
   },
   {
     "id": "part:body",
@@ -26100,14 +26377,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26199,7 +26476,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:bottom-navigation",
@@ -26219,14 +26497,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26318,7 +26596,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:footer",
@@ -26338,14 +26617,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26437,7 +26716,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:header",
@@ -26457,14 +26737,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26556,7 +26836,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:leading-grand-summary",
@@ -26576,14 +26857,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26675,7 +26956,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:leading-sub-summary",
@@ -26695,21 +26977,21 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part name",
         "path": "@name",
-        "knownFrom": "SaXML LayoutCatalog Part @name; Part Setup dialog — Part Setup dialog (the part label)",
+        "knownFrom": "SaXML LayoutCatalog Part @name; Part Setup dialog (the part label)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26852,7 +27134,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:title-footer",
@@ -26872,14 +27155,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -26971,7 +27254,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:title-header",
@@ -26991,14 +27275,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -27090,7 +27374,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:top-navigation",
@@ -27110,14 +27395,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -27209,7 +27494,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "part:trailing-grand-summary",
@@ -27229,14 +27515,14 @@
       {
         "name": "part type code",
         "path": "@kind",
-        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog — Part Setup dialog (the numeric part type FileMaker stores)",
+        "knownFrom": "SaXML LayoutCatalog Part @kind; Part Setup dialog (the numeric part type FileMaker stores)",
         "fmKey": null,
         "reported": false
       },
       {
         "name": "part type",
         "path": "@type",
-        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog — Part Setup dialog (the part list)",
+        "knownFrom": "SaXML LayoutCatalog Part @type; Part Setup dialog (the part list)",
         "fmKey": null,
         "reported": false
       },
@@ -27328,7 +27614,8 @@
         "feature": "wireframe-part-bands",
         "attribute": "part height"
       }
-    ]
+    ],
+    "expectedError": "container key absent: contents.parts"
   },
   {
     "id": "persistent-store",
@@ -29233,8 +29520,15 @@
         "path": "(fm only)",
         "knownFrom": "SaXML location not yet located: the enumerated ScriptCatalog reference carries no OwnerID under <Script> (unlike BaseTable and Field, which do); the add-on that created the script; fm reports it on a script",
         "fmKey": "ownerId",
-        "reported": false,
-        "wontfix": "not exercised on the probe instance: `read:script {id:51}` (saxmlDelivery_createXml) reports ownerId \"2A304F13-808B-4E37-A2AC-2E3DFFED95D5\", the same UUID the SaXMLDelivery base table carries as its <OwnerID>; the probe script was created by no add-on. Verified read-only on 2026-09-14 in one extra batch of read:script ops run with the same flags the check uses."
+        "reported": true,
+        "verifiedOn": {
+          "ops": [
+            {
+              "op": "read:script",
+              "id": 51
+            }
+          ]
+        }
       }
     ],
     "ignoreKeys": [
@@ -36149,7 +36443,7 @@
         "name": "bit 0x8000 of the options word (Filters (this word is Insert File only))",
         "path": "Options bit 0x8000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=131] Options bit 0x8000; Script Workspace > the Insert File step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → Filters (this word is Insert File only). Evidence 14 of 31, confidence measured (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -36544,7 +36838,8 @@
         "path": "Options bit 0x1",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=132] Options bit 0x1; Script Workspace > the Export Field Contents step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set, when the `field` key is absent → <Table Missing> (the broken-reference placeholder). Evidence 1 of 3, confidence low (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
         "fmKey": "flags",
-        "reported": true
+        "reported": false,
+        "wontfix": "not exercised on the probe instance: the bit is clear in this step’s own options word. fm reports the word as a number, not a list of names, so there is no member an `expect` could require — only the whole word, which this row’s sibling already claims."
       },
       {
         "name": "Options (undecoded bits)",
@@ -46026,7 +46321,7 @@
         "name": "bit 0x4000 of the options word (Object Name: <Active Object>)",
         "path": "Options bit 0x4000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=175] Options bit 0x4000; Script Workspace > the Perform JavaScript in Web Viewer step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: clear → Object Name: <Active Object>. Evidence 1 of 2, confidence low (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -46345,7 +46640,7 @@
         "name": "bit 0x4000 of the options word (Object Name: <Active Object>)",
         "path": "Options bit 0x4000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=177] Options bit 0x4000; Script Workspace > the AVPlayer Play step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: clear → Object Name: <Active Object>. Evidence 1 of 14, confidence low; an absent-key default is the cheaper reading (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -59578,7 +59873,7 @@
         "name": "bit 0x20000000 of the options word (Automatically open)",
         "path": "Options bit 0x20000000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=225] Options bit 0x20000000; Script Workspace > the Save Records as JSONL step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → Automatically open. Evidence 3 of 4, confidence measured (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -59586,7 +59881,7 @@
         "name": "bit 0x40000000 of the options word (Create email)",
         "path": "Options bit 0x40000000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=225] Options bit 0x40000000; Script Workspace > the Save Records as JSONL step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → Create email. Evidence 2 of 4, confidence measured (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -66125,7 +66420,7 @@
         "name": "bit 0x10 of the options word (Current File)",
         "path": "Options bit 0x10",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=34] Options bit 0x10; Script Workspace > the Close File step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: clear → Current File. Evidence 1 of 2, confidence low; an absent-key default is the cheaper reading (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -66310,7 +66605,8 @@
         "path": "Options bit 0x10000000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=35] Options bit 0x10000000; Script Workspace > the Import Records step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → Verify SSL Certificates. Evidence 1 of 38, confidence low (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
         "fmKey": "flags",
-        "reported": true
+        "reported": false,
+        "wontfix": "not exercised on the probe instance: the bit is clear in this step’s own options word. fm reports the word as a number, not a list of names, so there is no member an `expect` could require — only the whole word, which this row’s sibling already claims."
       },
       {
         "name": "Options (undecoded bits)",
@@ -68759,7 +69055,8 @@
         "path": "Options bit 0x2000000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=42] Options bit 0x2000000; Script Workspace > the Page Setup step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → Restore. Evidence 3 of 4, confidence measured (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
         "fmKey": "flags",
-        "reported": true
+        "reported": false,
+        "wontfix": "not exercised on the probe instance: the bit is clear in this step’s own options word. fm reports the word as a number, not a list of names, so there is no member an `expect` could require — only the whole word, which this row’s sibling already claims."
       },
       {
         "name": "Options (undecoded bits)",
@@ -69032,7 +69329,8 @@
         "path": "Options bit 0x2000000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=43] Options bit 0x2000000; Script Workspace > the Print step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → the Restore option appears, with a printer’s name under it that no number can hold. Evidence 8 of 10, confidence presence only (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
         "fmKey": "flags",
-        "reported": true
+        "reported": false,
+        "wontfix": "not exercised on the probe instance: the bit is clear in this step’s own options word. fm reports the word as a number, not a list of names, so there is no member an `expect` could require — only the whole word, which this row’s sibling already claims."
       },
       {
         "name": "Options (undecoded bits)",
@@ -75749,7 +76047,7 @@
         "name": "bit 0x100 of the options word (External)",
         "path": "Options bit 0x100",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=74] Options bit 0x100; Script Workspace > the Go to Related Record step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: set → External. Evidence 1 of 23, confidence low (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -80800,7 +81098,7 @@
         "name": "bit 0x4000 of the options word (Window name: with nothing after it (an e)",
         "path": "Options bit 0x4000",
         "knownFrom": "SaXML ScriptCatalog StepsForScripts Script/ObjectList/Step[@id=96] Options bit 0x4000; Script Workspace > the Save a Copy as Add-on Package step’s options; fm carries this option in NO key of its own — only the raw word. FileMaker prints: clear → Window name: with nothing after it (an empty option slot). Evidence 1 of 4, confidence low (docs/fm-step-flags-reference.md, measured on 1203 paired script steps).",
-        "fmKey": null,
+        "fmKey": "flags",
         "reported": false,
         "wontfix": "not exercised on the probe instance: fm omits `flags` when the word is 0"
       },
@@ -84029,5 +84327,60 @@
         "attribute": "last modified by user name"
       }
     ]
+  },
+  {
+    "id": "calculation-tokens",
+    "op": "none",
+    "kind": "calculation",
+    "probe": {
+      "ops": [
+        {
+          "op": "validate:calculation",
+          "calculation": "Contacts::Name & $$SMTP Server",
+          "context": "Contacts"
+        }
+      ]
+    },
+    "attributes": [
+      {
+        "name": "tokenised references of a formula (fields, occurrences, variables, functions, scripts)",
+        "path": "DDR_INFO/Chunk[type=FieldReference|VariableReference|FunctionRef|CustomFunctionRef|ScriptRef]",
+        "knownFrom": "SaXML DDR_INFO writes one Chunk per reference a formula makes — FieldReference, VariableReference, FunctionRef, CustomFunctionRef and ScriptRef are the FileMaker 2026 chunk types — which is how a DDR answers \"where is this field used\". fm reports calculation text only; `validate:calculation` reports valid/invalid and names no token of the formula it just parsed.",
+        "fmKey": null,
+        "reported": false
+      }
+    ],
+    "ignoreKeys": [],
+    "firstSeen": "0.6.0",
+    "reportedToClaris": null,
+    "lastChecked": null,
+    "blocks": []
+  },
+  {
+    "id": "plugin-call-sites",
+    "op": "none",
+    "kind": "calculation:plugin",
+    "probe": {
+      "ops": [
+        {
+          "op": "validate:calculation",
+          "calculation": "BE_Version"
+        }
+      ]
+    },
+    "attributes": [
+      {
+        "name": "plug-in function call site in a formula",
+        "path": "DDR_INFO/Chunk[type=FunctionRef] (plug-in function)",
+        "knownFrom": "SaXML DDR_INFO writes a FunctionRef chunk for a call to a plug-in function; fm help: plug-in functions are the one gap of the evaluator, which answers calc_unknown_function for a function no installed plug-in declares, so a formula’s plug-in call sites cannot be recovered from fm at all.",
+        "fmKey": null,
+        "reported": false
+      }
+    ],
+    "ignoreKeys": [],
+    "firstSeen": "0.6.0",
+    "reportedToClaris": null,
+    "lastChecked": null,
+    "blocks": []
   }
 ]
