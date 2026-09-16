@@ -83,7 +83,7 @@ function elideOwned(value: unknown, owned: { prefixes: string[]; deep: string[] 
   return out;
 }
 
-export function renderReport(entries: SubjectEntry[], root: string): string {
+export function renderReport(entries: SubjectEntry[], root: string, helpSince?: { prevLabel: string; text: string }): string {
   const byOp = new Map<string, SubjectEntry[]>();
   for (const e of entries) byOp.set(e.op, [...(byOp.get(e.op) ?? []), e]);
   const ops = [...byOp.entries()].sort();
@@ -100,6 +100,9 @@ export function renderReport(entries: SubjectEntry[], root: string): string {
   out.push(`${entries.length} kinds, ${missingTotal} attributes not reported.`, '');
   const unverifiedCount = entries.length - verifiedEntries.length;
   if (unverifiedCount > 0) out.push(`${unverifiedCount} kinds not yet verified.`, '');
+
+  // --- CLI surface (fm's own help, diffed build to build) ---------------------------
+  if (helpSince) out.push(`## CLI surface since ${helpSince.prevLabel}`, '', helpSince.text, '');
 
   // --- executive summary -----------------------------------------------------------
   const opName = (op: string) => (op === 'none' ? 'No read op exists' : op);

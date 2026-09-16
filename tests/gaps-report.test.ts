@@ -213,4 +213,19 @@ describe('renderReport', () => {
     expect(md).not.toContain('Not yet verified against fm');
     fs.rmSync(root, { recursive: true, force: true });
   });
+
+  it('renders a "CLI surface since" section from an already-rendered help diff, when given one', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-rpt-'));
+    const md = renderReport([verifiedEntry(root)], root, { prevLabel: '0.6.0-29816214', text: '0.6.0-29816214 -> 0.7.0-29823677\n+ catalog theme' });
+    expect(md).toContain('## CLI surface since 0.6.0-29816214');
+    expect(md).toContain('+ catalog theme');
+    fs.rmSync(root, { recursive: true, force: true });
+  });
+
+  it('omits the "CLI surface since" section when no help diff is given', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-rpt-'));
+    const md = renderReport([verifiedEntry(root)], root);
+    expect(md).not.toContain('CLI surface since');
+    fs.rmSync(root, { recursive: true, force: true });
+  });
 });

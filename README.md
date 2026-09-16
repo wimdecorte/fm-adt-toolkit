@@ -43,3 +43,27 @@ Three entry-level fields shape what `check` does with an entry:
 - An attribute's `expect: { contains: "<member>" }` makes membership of an array value the test
   rather than the key's presence — 28 layout option rows all read `flags.set`, and only the member
   tells them apart.
+
+## Intake per fm build
+
+`check` also snapshots the CLI's own `fm help --json --all` under `gaps/help/<version>-<build>.json`
+and prints how it differs from the previous build's — catalogs, ops and keys gained or lost. That
+is the authoritative surface: a probe only notices a rename or a new catalog once something breaks,
+while `fm help` says so directly. `report` repeats the same diff as a `## CLI surface since <prev>`
+section, and `fm-gaps help-diff --from=<version-build> [--to=<version-build>]` prints it on demand
+for any two stored snapshots (`--to` defaults to the greatest one stored).
+
+The runbook for picking up a new fm build:
+
+1. Install the build.
+2. Commit or stash whatever is in progress, so the diff below is only the new build's doing.
+3. `npx fm-gaps check --file=fmnet://localhost/ooe --username=admin`
+4. Read the output in this order: Help since, Errored, Regressed, Expected failure resolved,
+   Newly reported, Unexplained keys (and nested).
+5. Fix the register: fmKey renames, new selectors, dropped `expectedError`s, new "(fm only)" rows
+   for anything the CLI now reports that nothing in the register named yet. Re-run `check` until it
+   exits 0 with only the known expected errors.
+6. `npx fm-gaps report --out=gaps/reports/<date>-fm-<version>.md`
+7. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts, then
+   `npm run derive:step-display`.
+8. Bump this package's version and tag it; consumers (fm-ai, the inspector) bump their pin.

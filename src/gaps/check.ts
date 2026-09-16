@@ -1,8 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { AdtFatal, AdtOp, AdtRunResult } from '../types.ts';
 import { selectInstance, selectorContainer, selectorFailure } from './select.ts';
 import { flattenKeys } from './match.ts';
-import { probeId, writeEvidence, readEvidence, previousEvidenceDir } from './evidence.ts';
+import { probeId, writeEvidence, readEvidence, previousEvidenceDir, evidenceDir } from './evidence.ts';
 import { fmTypeMismatch } from './draft.ts';
+import { captureHelp, helpSnapshotPath, writeHelpSnapshot, previousHelpSnapshot } from './help-snapshot.ts';
+import { summariseHelp, diffHelp, renderHelpDiff } from './help-diff.ts';
+import type { HelpJson } from './help-diff.ts';
 import type { Attribute, Probe, SubjectEntry, SubjectEvidence } from './register.ts';
 
 export interface CheckOutcome {
@@ -343,4 +348,44 @@ export async function runChecks(
   }
 
   return { entries: updatedEntries, stillMissing, newlyReported, regressed, unexplained, nestedUnexplained, keyDiff, errored, erroredExpected, expectedResolved, attributeErrors };
+}
+
+/** The rendered diff of fm's help surface: what a reader of `check`'s or `report`'s output
+ *  is shown under "Help since <prev label>" / "## CLI surface since <prev>". */
+export interface HelpSince {
+  prevLabel: string;
+  text: string;
+}
+
+/** `text` (this build's help JSON, already captured) diffed against whatever the previous
+ *  build's stored snapshot says, or null when there is no previous build to diff against. */
+function helpDiffSince(root: string, version: string, build: string, text: string): HelpSince | null {
+  const prevPath = previousHelpSnapshot(root, version, build);
+  if (!prevPath) return null;
+  const prevLabel = path.basename(prevPath, '.json');
+  const nextLabel = evidenceDir(version, build);
+  const prev = summariseHelp(JSON.parse(fs.readFileSync(prevPath, 'utf8')) as HelpJson);
+  const next = summariseHelp(JSON.parse(text) as HelpJson);
+  return { prevLabel, text: renderHelpDiff(diffHelp(prev, next), prevLabel, nextLabel) };
+}
+
+/** `check`'s half of the help snapshot: run before any probe (help does not touch the
+ *  file), so a fatal probe batch still leaves this build's help on disk. Writes only when
+ *  the text is new; the diff never affects `check`'s exit code -- it is reported and
+ *  nothing else reads it. */
+export async function captureHelpSince(cliPath: string, root: string, version: string, build: string): Promise<HelpSince | null> {
+  const text = await captureHelp(cliPath);
+  writeHelpSnapshot(root, version, build, text);
+  return helpDiffSince(root, version, build, text);
+}
+
+/** `report`'s half: `report` never runs fm, so it reads back whatever `check` already
+ *  captured for this build (identified by the register's own `lastChecked.version`/
+ *  `.build`) rather than capturing anything new. Null when this build's snapshot was never
+ *  captured -- an older register, or a register whose evidence root has no `gaps/help` at
+ *  all -- in which case there is nothing to render a section for. */
+export function helpSurfaceSince(root: string, version: string, build: string): HelpSince | null {
+  const current = helpSnapshotPath(root, version, build);
+  if (!fs.existsSync(current)) return null;
+  return helpDiffSince(root, version, build, fs.readFileSync(current, 'utf8'));
 }
