@@ -358,25 +358,46 @@ export interface HelpSince {
 }
 
 /** `text` (this build's help JSON, already captured) diffed against whatever the previous
- *  build's stored snapshot says, or null when there is no previous build to diff against. */
-function helpDiffSince(root: string, version: string, build: string, text: string): HelpSince | null {
+ *  build's stored snapshot says, or null when there is no previous build to diff against.
+ *  A help-surface problem is never allowed to be fatal: a stored snapshot can be corrupted
+ *  (a previous build interrupted mid-write, hand-edited, truncated) and `text` itself is
+ *  whatever the CLI printed, not something this function can trust to parse -- either is
+ *  reported with one warning line and treated as "nothing to diff", never thrown. */
+function helpDiffSince(root: string, version: string, build: string, text: string, warn: (line: string) => void): HelpSince | null {
   const prevPath = previousHelpSnapshot(root, version, build);
   if (!prevPath) return null;
-  const prevLabel = path.basename(prevPath, '.json');
-  const nextLabel = evidenceDir(version, build);
-  const prev = summariseHelp(JSON.parse(fs.readFileSync(prevPath, 'utf8')) as HelpJson);
-  const next = summariseHelp(JSON.parse(text) as HelpJson);
-  return { prevLabel, text: renderHelpDiff(diffHelp(prev, next), prevLabel, nextLabel) };
+  try {
+    const prevLabel = path.basename(prevPath, '.json');
+    const nextLabel = evidenceDir(version, build);
+    const prev = summariseHelp(JSON.parse(fs.readFileSync(prevPath, 'utf8')) as HelpJson);
+    const next = summariseHelp(JSON.parse(text) as HelpJson);
+    return { prevLabel, text: renderHelpDiff(diffHelp(prev, next), prevLabel, nextLabel) };
+  } catch (err) {
+    warn(`help snapshot skipped: ${err instanceof Error ? err.message : String(err)}`);
+    return null;
+  }
 }
 
 /** `check`'s half of the help snapshot: run before any probe (help does not touch the
  *  file), so a fatal probe batch still leaves this build's help on disk. Writes only when
  *  the text is new; the diff never affects `check`'s exit code -- it is reported and
- *  nothing else reads it. */
-export async function captureHelpSince(cliPath: string, root: string, version: string, build: string): Promise<HelpSince | null> {
-  const text = await captureHelp(cliPath);
+ *  nothing else reads it.
+ *
+ *  A help-capture problem -- the CLI's `help` subcommand exiting non-zero, an older build
+ *  without `--json --all` support, a transient spawn failure -- must never stop `check`:
+ *  it is caught, warned about once (`warn`, defaulting to `console.error`), and `check`
+ *  proceeds exactly as if there were no previous build to diff against. Nothing is written
+ *  when capture itself fails, since there is no text to write. */
+export async function captureHelpSince(cliPath: string, root: string, version: string, build: string, warn: (line: string) => void = (l) => console.error(l)): Promise<HelpSince | null> {
+  let text: string;
+  try {
+    text = await captureHelp(cliPath);
+  } catch (err) {
+    warn(`help snapshot skipped: ${err instanceof Error ? err.message : String(err)}`);
+    return null;
+  }
   writeHelpSnapshot(root, version, build, text);
-  return helpDiffSince(root, version, build, text);
+  return helpDiffSince(root, version, build, text, warn);
 }
 
 /** `report`'s half: `report` never runs fm, so it reads back whatever `check` already
@@ -384,8 +405,8 @@ export async function captureHelpSince(cliPath: string, root: string, version: s
  *  `.build`) rather than capturing anything new. Null when this build's snapshot was never
  *  captured -- an older register, or a register whose evidence root has no `gaps/help` at
  *  all -- in which case there is nothing to render a section for. */
-export function helpSurfaceSince(root: string, version: string, build: string): HelpSince | null {
+export function helpSurfaceSince(root: string, version: string, build: string, warn: (line: string) => void = (l) => console.error(l)): HelpSince | null {
   const current = helpSnapshotPath(root, version, build);
   if (!fs.existsSync(current)) return null;
-  return helpDiffSince(root, version, build, fs.readFileSync(current, 'utf8'));
+  return helpDiffSince(root, version, build, fs.readFileSync(current, 'utf8'), warn);
 }
