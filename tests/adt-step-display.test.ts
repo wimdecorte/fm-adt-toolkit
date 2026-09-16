@@ -1,6 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { keyLabel, stepDisplay, stepDisplayText } from '../src/step-display/step-display.ts';
-import { STEP_MASK } from '../src/step-display/step-display-render.ts';
+import {
+  STEP_MASK, catalogEntry, renderStepFromCatalog, stepConventions,
+} from '../src/step-display/step-display-render.ts';
+import { CATALOG } from '../src/step-display/step-display.ts';
 import type { ScriptDetailStep } from '../src/types.ts';
 
 /** The renderer reads `src/catalogs/fm-step-display.json`, so most of what is asserted
@@ -11,12 +14,18 @@ import type { ScriptDetailStep } from '../src/types.ts';
  *  from what the CLI sends). A line below that a reader would have to take on trust
  *  says where it comes from.
  *
- *  Every step fixture is a step as fm 0.6.0 actually reported it — a probe script
+ *  Every step fixture is a step as fm actually reported it — a probe script
  *  holding a comment, an empty comment, two Set Variables, an If/Else If/Else/End If, a
  *  Loop/Exit Loop If/End Loop, two Insert from URLs and four unrelated steps, written to
  *  a scratch `--create` file and read straight back. So the keys, their spellings and
  *  the values that come back unasked — `collapsed: false`, `flush: "always"`,
- *  `target type: 1`, `cURL options specified: false` — are measured too.
+ *  `targetType: 1`, `curlOptionsSpecified: false` — are measured too.
+ *
+ *  The SPELLINGS are fm 0.7.0's: that build renamed every multi-word option key to
+ *  camelCase (`with dialog` -> `withDialog`, `verify SSL certificates` ->
+ *  `verifySslCertificates`), and the catalog was re-derived from the same two ooe
+ *  scripts read back with it. `a step an older fm reported` at the end of this file
+ *  pins what a consumer still on 0.6.0 gets.
  *
  *  WHAT CHANGED WHEN THE CATALOG REPLACED SEVEN HAND-WRITTEN CASES, because several
  *  assertions here moved and each move is a correction rather than a preference:
@@ -38,11 +47,11 @@ const INSERT_FROM_URL: ScriptDetailStep = {
   step: 'Insert from URL',
   target: '$result',
   url: '$url',
-  'cURL options': '$cURL_options',
-  'verify SSL certificates': true,
+  'curlOptions': '$cURL_options',
+  'verifySslCertificates': true,
   select: true,
-  'with dialog': false,
-  'cURL options specified': false,
+  'withDialog': false,
+  'curlOptionsSpecified': false,
 };
 
 const GROUND_TRUTH =
@@ -67,7 +76,7 @@ describe('Insert from URL, against the measured FileMaker line', () => {
       stepDisplayText({
         ...INSERT_FROM_URL,
         uuid: '092F3716-B45F-473D-9BAD-49AA11D5C1A5',
-        'target type': 1,
+        'targetType': 1,
         flags: 268456071,
       }),
     ).toBe(GROUND_TRUTH);
@@ -81,11 +90,11 @@ describe('Insert from URL, against the measured FileMaker line', () => {
         step: 'Insert from URL',
         target: '$r2',
         url: '"https://x"',
-        'verify SSL certificates': false,
+        'verifySslCertificates': false,
         select: true,
-        'with dialog': false,
-        'target type': 1,
-        'cURL options specified': false,
+        'withDialog': false,
+        'targetType': 1,
+        'curlOptionsSpecified': false,
         flags: 20615,
       }),
     ).toBe('Insert from URL [ Select ; With dialog: Off ; Target: $r2 ; "https://x" ]');
@@ -103,13 +112,13 @@ describe('Insert from URL, against the measured FileMaker line', () => {
     // source, which answers that dependence and takes the claim to `measured` — and deliberately
     // not in the renderer, where it would be the "renderer decides what may print" coupling all
     // over again. So the line is the same either way, and that is what this pins.
-    expect(stepDisplayText({ ...INSERT_FROM_URL, 'cURL options specified': true })).toBe(GROUND_TRUTH);
-    expect(stepDisplayText({ ...INSERT_FROM_URL, 'cURL options specified': false })).toBe(GROUND_TRUTH);
+    expect(stepDisplayText({ ...INSERT_FROM_URL, 'curlOptionsSpecified': true })).toBe(GROUND_TRUTH);
+    expect(stepDisplayText({ ...INSERT_FROM_URL, 'curlOptionsSpecified': false })).toBe(GROUND_TRUTH);
   });
 
   it('says With dialog: On when the switch is on', () => {
     expect(
-      stepDisplayText({ stepID: 160, step: 'Insert from URL', 'with dialog': true, url: '$u' }),
+      stepDisplayText({ stepID: 160, step: 'Insert from URL', 'withDialog': true, url: '$u' }),
     ).toBe('Insert from URL [ With dialog: On ; $u ]');
   });
 
@@ -336,15 +345,15 @@ describe('the block steps', () => {
  *  as "print nothing for this key". Every line below is FileMaker's own, from the corpus. */
 describe('the empty option slot, on the owner’s ruling', () => {
   it('prints a labelled slot for a key the CLI does not report', () => {
-    // script 55 step 69. `error message` is absent and FileMaker still prints its label.
+    // script 55 step 69. `errorMessage` is absent and FileMaker still prints its label.
     expect(
       stepDisplayText({
         stepID: 207,
         step: 'Revert Transaction',
-        'has condition': true,
+        'hasCondition': true,
         condition: '1=1',
-        'has error code': true,
-        'error code': '5000',
+        'hasErrorCode': true,
+        'errorCode': '5000',
       }),
     ).toBe('Revert Transaction [ Condition: 1=1 ; Error Code: 5000 ; Error Message: ]');
   });
@@ -360,7 +369,7 @@ describe('the empty option slot, on the owner’s ruling', () => {
   it('prints the unlabelled slot beside an option that does render', () => {
     // script 55 step 771.
     expect(
-      stepDisplayText({ stepID: 190, step: 'Create Data File', 'create folders': false }),
+      stepDisplayText({ stepID: 190, step: 'Create Data File', 'createFolders': false }),
     ).toBe('Create Data File [ ; Create folders: Off ]');
   });
 
@@ -424,7 +433,7 @@ describe('a value FileMaker prints its own word for', () => {
 
 describe('an option whose label points at one key and whose value comes from another', () => {
   it('writes Return count from the key that holds the count, not from the switch', () => {
-    // script 55 step 930. The label spells the boolean `return count`, which cannot
+    // script 55 step 930. The label spells the boolean `returnCount`, which cannot
     // produce a calculation; the text is `count`'s value, and `count` is reported in
     // exactly the five examples FileMaker shows the option in.
     expect(
@@ -434,7 +443,7 @@ describe('an option whose label points at one key and whose value comes from ano
         query: 'text',
         records: 'allRecords',
         count: '$n',
-        'return count': true,
+        'returnCount': true,
       }),
     ).toBe('Perform Semantic Find [ Query by: Natural language ; Record set: All records ; Return count: $n ]');
   });
@@ -447,7 +456,7 @@ describe('an option whose label points at one key and whose value comes from ano
         step: 'Perform Semantic Find',
         query: 'text',
         records: 'allRecords',
-        'return count': false,
+        'returnCount': false,
       }),
     ).toBe('Perform Semantic Find [ Query by: Natural language ; Record set: All records ]');
   });
@@ -463,7 +472,7 @@ describe('an option that follows from a value the CLI does not name', () => {
     step: 'Go to Related Record',
     target: 'currentLayout',
     from: 'Contacts',
-    'show only related records': true,
+    'showOnlyRelatedRecords': true,
     animation: 19,
   } as ScriptDetailStep;
 
@@ -501,16 +510,16 @@ describe('steps whose old rendering was known to be wrong', () => {
     // The design spec named this step and `Go to Layout` as two the convention got
     // wrong. `Specified: By name` is a measured option whose text follows from WHICH
     // keys the CLI reports rather than from any value, and the script name is quoted
-    // because FileMaker quotes it. `on error` is a key none of the four measured examples
+    // because FileMaker quotes it. `onError` is a key none of the four measured examples
     // carries, so the catalog says nothing about it and the convention appends it last.
     expect(
       stepDisplayText({
         stepID: 1,
         step: 'Perform Script',
         uuid: '95F0A919',
-        'script name': '"Other"',
+        'scriptName': '"Other"',
         parameter: '"p"',
-        'on error': 'exit',
+        'onError': 'exit',
         flags: 18432,
       }),
     ).toBe('Perform Script [ Specified: By name ; "Other" ; Parameter: "p" ; On error: exit ]');
@@ -538,10 +547,10 @@ describe('steps whose old rendering was known to be wrong', () => {
         step: 'Show Custom Dialog',
         title: '"Hi"',
         message: '"there"',
-        'input 1 password': false,
-        'button 1 text': 'OK',
-        'button 1 commit': false,
-        'auto close': false,
+        'input1Password': false,
+        'button1Text': 'OK',
+        'button1Commit': false,
+        'autoClose': false,
         flags: 16388,
       }),
     ).toBe('Show Custom Dialog [ "Hi" ; "there" ]');
@@ -591,7 +600,7 @@ describe('the convention fallback, for a step type the catalog has never seen', 
     // The point of a catalog-backed fallback: the inferred rule would write
     // `Verify SSL certificates`, and FileMaker capitalises all three words. That
     // spelling was read off FileMaker's own line, on another step type.
-    expect(stepDisplayText({ stepID: 5, step: 'Odd', 'verify SSL certificates': true })).toBe(
+    expect(stepDisplayText({ stepID: 5, step: 'Odd', 'verifySslCertificates': true })).toBe(
       'Odd [ Verify SSL Certificates ]',
     );
   });
@@ -673,7 +682,7 @@ describe('a masked value never reaches the output', () => {
     // rather than about a step type: whatever the shape, the literal is not on screen.
     const shapes: ScriptDetailStep[] = [
       { stepID: 137, step: 'Add Account', account: '$a', password: SECRET },
-      { stepID: 137, step: 'Add Account', account: '$a', password: SECRET, 'account type': '1' },
+      { stepID: 137, step: 'Add Account', account: '$a', password: SECRET, 'accountType': '1' },
       { stepID: 139, step: 'Re-Login', account: '$a', password: SECRET },
       { stepID: 140, step: 'Reset Account Password', account: '$a', password: SECRET },
       { stepID: 138, step: 'Change Password', old: SECRET, new: SECRET },
@@ -718,7 +727,7 @@ describe('a value the catalog cannot place is still printed', () => {
   });
 
   it('prints a key the derivation could not settle either way', () => {
-    // `Perform JavaScript in Web Viewer`'s `arg 1`/`arg 2` are `unresolved` — `refuted`,
+    // `Perform JavaScript in Web Viewer`'s `arg1`/`arg2` are `unresolved` — `refuted`,
     // because FileMaker's line DID show their values and the matcher could not attribute
     // them. So the catalog's own record says the content is displayed, and printing nothing
     // for it was the worst of the three possible answers.
@@ -726,10 +735,10 @@ describe('a value the catalog cannot place is still printed', () => {
       stepDisplayText({
         stepID: 174,
         step: 'Perform JavaScript in Web Viewer',
-        'object name': '$w',
+        'objectName': '$w',
         'function name': '$f',
-        'arg 1': '$p1',
-        'arg 2': '$p2',
+        'arg1': '$p1',
+        'arg2': '$p2',
       }),
     ).toBe(
       'Perform JavaScript in Web Viewer [ Object Name: $w ; Function name: $f ; Arg 1: $p1 ; Arg 2: $p2 ]',
@@ -757,7 +766,7 @@ describe('a value the catalog cannot place is still printed', () => {
         stepID: 200,
         step: 'Set Error Logging',
         enabled: true,
-        'custom debug info': 'Get ( CurrentHostTimeStamp )',
+        'customDebugInfo': 'Get ( CurrentHostTimeStamp )',
       }),
       // FileMaker's own line for this step, script 55 step 109, reads
       // `Set Error Logging [ On ; Custom debug info: Get ( CurrentHostTimestamp ) ]` — one
@@ -769,7 +778,7 @@ describe('a value the catalog cannot place is still printed', () => {
   it('does not print an option a measured option on the same line already labels', () => {
     // The one shape the owner rejected outright, and the line the baseline must not cross:
     // FileMaker prints `Return count: $n` from the key holding the COUNT, and the boolean
-    // switch is itself called `return count`. Printing both gives `Return count: $n ; Return
+    // switch is itself called `returnCount`. Printing both gives `Return count: $n ; Return
     // count` — the same option twice, which is a duplicate rather than an extra option.
     expect(
       stepDisplayText({
@@ -777,29 +786,29 @@ describe('a value the catalog cannot place is still printed', () => {
         step: 'Perform Semantic Find',
         query: 'text',
         count: '$n',
-        'return count': true,
+        'returnCount': true,
       }),
     ).toBe('Perform Semantic Find [ Query by: Natural language ; Return count: $n ]');
   });
 
   it('still prints nothing for a key measured never to be shown', () => {
-    // The other line: `button 1 text` and `button 3 text` are `ignored` at `measured`
+    // The other line: `button1Text` and `button3Text` are `ignored` at `measured`
     // confidence — observed twice, with nothing against them — so they stay unprinted. That
     // claim is a measurement of FileMaker, and this change deliberately does not reclassify
-    // it. `button 2 text` rests on ONE example and does print, which is the whole distinction
+    // it. `button2Text` rests on ONE example and does print, which is the whole distinction
     // in one step type.
     expect(
       stepDisplayText({
         stepID: 87,
         step: 'Show Custom Dialog',
         title: '"Hi"',
-        'button 1 text': 'OK',
-        'button 3 text': 'Cancel',
-        'auto close': false,
+        'button1Text': 'OK',
+        'button3Text': 'Cancel',
+        'autoClose': false,
       }),
     ).toBe('Show Custom Dialog [ "Hi" ]');
     expect(
-      stepDisplayText({ stepID: 87, step: 'Show Custom Dialog', title: '"Hi"', 'button 2 text': 'No' }),
+      stepDisplayText({ stepID: 87, step: 'Show Custom Dialog', title: '"Hi"', 'button2Text': 'No' }),
     ).toBe('Show Custom Dialog [ "Hi" ; Button 2 text: No ]');
   });
 });
@@ -810,15 +819,15 @@ describe('the widened secret test', () => {
   const SECRET = 'S3cret!Literal';
 
   it('masks a compound password key the baseline would otherwise print', () => {
-    // `Save Records as PDF`'s `edit password` is `ignored` at `low` confidence, so the baseline
+    // `Save Records as PDF`'s `editPassword` is `ignored` at `low` confidence, so the baseline
     // prints it — and the catalog does not mask it, because `masked` was only ever derived for
     // a key called `password`. The moment the baseline started printing values the catalog
     // could not place, a key whose NAME contains a masked one became a way out for a literal.
     // Nine such names exist in the corpus behind the catalog, all of them password-ish.
     for (const step of [
-      { stepID: 128, step: 'Save Records as PDF', 'edit password': SECRET },
+      { stepID: 128, step: 'Save Records as PDF', 'editPassword': SECRET },
       { stepID: 5, step: 'Unheard Of', 'Some Password Here': SECRET },
-      { stepID: 5, step: 'Unheard Of', 'smtp password': SECRET },
+      { stepID: 5, step: 'Unheard Of', 'smtpPassword': SECRET },
     ] as ScriptDetailStep[]) {
       const line = stepDisplayText(step);
       expect(line).not.toContain(SECRET);
@@ -827,11 +836,11 @@ describe('the widened secret test', () => {
   });
 
   it('prints nothing at all for a password key measured never to be shown', () => {
-    // `Send Mail`'s `smtp password` is `ignored` at `measured` confidence, so it does not reach
+    // `Send Mail`'s `smtpPassword` is `ignored` at `measured` confidence, so it does not reach
     // the baseline on that step type at all. Recorded because it is the safe side of a
     // decision the owner has not taken yet: if those claims are ever released to the baseline,
     // the test above is what stops this one becoming a leak.
-    const line = stepDisplayText({ stepID: 133, step: 'Send Mail', 'smtp password': SECRET });
+    const line = stepDisplayText({ stepID: 133, step: 'Send Mail', 'smtpPassword': SECRET });
     expect(line).not.toContain(SECRET);
     expect(line).toBe('Send Mail');
   });
@@ -846,7 +855,7 @@ describe('the widened secret test', () => {
       { stepID: 141, step: 'Set Variable', name: '$x', slots: { calc: { 0: { password: SECRET } } } },
       { stepID: 9, step: 'Zz Unknown', slots: { calc: { 0: { deep: [{ Password: SECRET }] } } } },
       // a segment whose measured display form is missing, falling back to the value
-      { stepID: 128, step: 'Save Records as PDF', 'open password': SECRET },
+      { stepID: 128, step: 'Save Records as PDF', 'openPassword': SECRET },
       { stepID: 71, step: 'Loop', flush: { password: SECRET } },
       // a suffix whose host option rendered nothing, printed as an option of its own
       { stepID: 141, step: 'Set Variable', repetition: '5', password: SECRET },
@@ -859,41 +868,41 @@ describe('the widened secret test', () => {
       expect(line).toContain(STEP_MASK);
     }
     // And the mask says WHAT is hidden even where the segment prints no label of its own.
-    expect(stepDisplayText({ stepID: 128, step: 'Save Records as PDF', 'open password': SECRET })).toBe(
+    expect(stepDisplayText({ stepID: 128, step: 'Save Records as PDF', 'openPassword': SECRET })).toBe(
       `Save Records as PDF [ Open password: ${STEP_MASK} ]`,
     );
   });
 
   it('does not mask a word inside a longer word', () => {
     // `old` and `new` are masked key names on `Change Password`, and a substring test would
-    // swallow `threshold`, `create folders` and `allow Folder Creation`. Measured: word
+    // swallow `threshold`, `createFolders` and `allowFolderCreation`. Measured: word
     // matching adds nine names to the set and neither `old` nor `new` adds any. The label here
     // is the catalog's measured one for the key, which is beside the point being pinned: the
     // VALUE comes through.
     expect(stepDisplayText({ stepID: 5, step: 'Unheard Of', threshold: '0.5' })).toContain('0.5');
-    expect(stepDisplayText({ stepID: 5, step: 'Unheard Of', 'create folders': 'x' })).toContain('x');
+    expect(stepDisplayText({ stepID: 5, step: 'Unheard Of', 'createFolders': 'x' })).toContain('x');
   });
 
   it('leaves a measured option that prints no value alone', () => {
-    // `Add Account`'s `expire password` is a measured `bareWhenTrue`: FileMaker prints the
+    // `Add Account`'s `expirePassword` is a measured `bareWhenTrue`: FileMaker prints the
     // option's own name and never a value, so there is nothing to mask, and masking it would
     // replace a measured option with a mask for nothing.
     expect(
-      stepDisplayText({ stepID: 137, step: 'Add Account', account: '$a', 'expire password': true }),
+      stepDisplayText({ stepID: 137, step: 'Add Account', account: '$a', 'expirePassword': true }),
     ).toContain('Expire password');
   });
 });
 
 describe('keyLabel', () => {
   it('uses the label FileMaker was measured to print', () => {
-    expect(keyLabel('verify SSL certificates')).toBe('Verify SSL Certificates');
+    expect(keyLabel('verifySslCertificates')).toBe('Verify SSL Certificates');
   });
 
   it('prefers the label of the step type it is given', () => {
-    // `data source` is labelled four ways across the catalog, so it has no global
+    // `dataSource` is labelled four ways across the catalog, so it has no global
     // answer; on this step type FileMaker prints it inside the script option as
     // `from file`.
-    expect(keyLabel('data source', 'Perform Script')).toBe('from file');
+    expect(keyLabel('dataSource', 'Perform Script')).toBe('from file');
   });
 
   it('falls back to the inferred rule for a key the catalog never labels', () => {
@@ -902,13 +911,24 @@ describe('keyLabel', () => {
   });
 
   it('leaves FileMaker’s own lower-case acronym alone', () => {
-    // `cURL options` is a MEASURED label, so it comes back untouched without the inferred
-    // rule being consulted at all — a review found this test claiming to pin a rule it
-    // never reached. The second case is a key the catalog never labels, which is the only
-    // way to reach that rule: it must not capitalise a key whose second character already
-    // is.
-    expect(keyLabel('cURL options')).toBe('cURL options');
+    // fm 0.7.0 spells the key `curlOptions` and no longer carries FileMaker's `cURL`
+    // anywhere, so the acronym survives ONLY because the label is MEASURED — the
+    // inferred rule is not consulted at all, and could not produce it if it were. That
+    // is the whole reason the labels are measured rather than derived from key names.
+    expect(keyLabel('curlOptions')).toBe('cURL options');
+    // A key the catalog never labels, which is the only way to reach the inferred rule:
+    // it must not capitalise a key whose second character already is, and it must leave
+    // a key that is not the CLI's own identifier shape (this one carries spaces) alone.
     expect(keyLabel('xYZ setting no FileMaker has')).toBe('xYZ setting no FileMaker has');
+  });
+
+  it('spells a 0.7.0 camelCase key as words for a key the catalog never labels', () => {
+    // `withDialog` IS labelled by the catalog, so the rule is reached with a key no
+    // FileMaker reports. fm 0.7.0 made every multi-word key camelCase, so the inferred
+    // rule has to read the capital as the word boundary a space used to be: without
+    // this, a consumer printed `someUnmeasuredThing: On` at a user.
+    expect(keyLabel('someUnmeasuredThing')).toBe('Some unmeasured thing');
+    expect(keyLabel('unmeasuredArg2')).toBe('Unmeasured arg 2');
   });
 
   it('leaves an already-capitalised key alone', () => {
@@ -965,7 +985,7 @@ describe('hiddenWhen, the option FileMaker stops printing', () => {
       step: 'Add Account',
       account: '$a',
       password: '$p',
-      'account type': '1',
+      'accountType': '1',
     });
     expect(external).not.toContain('Password');
     expect(external).toContain('Authenticate via: External Server');
@@ -973,5 +993,85 @@ describe('hiddenWhen, the option FileMaker stops printing', () => {
     expect(stepDisplayText({ stepID: 137, step: 'Add Account', account: '$a', password: '$p' })).toContain(
       `Password: ${STEP_MASK}`,
     );
+  });
+});
+
+/** THE 0.7.0 KEY RENAME, from both sides.
+ *
+ *  fm 0.7.0 respelled every multi-word option key in camelCase, and the catalog is keyed
+ *  on the key the CLI sends — so what a consumer gets depends on which fm wrote the step
+ *  it is holding. Both sides are pinned here because the first is the contract and the
+ *  second is the failure mode: a consumer still on 0.6.0 does not get an error, it gets a
+ *  quieter line, and that is worth seeing in a test rather than in a bug report. */
+describe('a step as fm 0.7.0 reports it', () => {
+  // Script 55 step 583 of the corpus, verbatim, minus the uuid and the slots.
+  const PDF: ScriptDetailStep = {
+    stepID: 144,
+    step: 'Save Records as PDF',
+    records: 'browsedRecords',
+    withDialog: true,
+    createFolders: false,
+    openAutomatically: false,
+    createEmail: false,
+    appendToExistingPdf: false,
+    restore: false,
+  };
+
+  it('renders every camelCase option the catalog measured', () => {
+    expect(stepDisplayText(PDF)).toBe(
+      'Save Records as PDF [ Create folders: Off ; With dialog: On ; Records being browsed ]',
+    );
+  });
+
+  it('leaves no gap and takes nothing from the baseline', () => {
+    const { gaps, baseline, contributed } = renderStepFromCatalog(
+      PDF,
+      catalogEntry(CATALOG, 'Save Records as PDF')!,
+      stepConventions(CATALOG),
+    );
+    // No segment produced nothing, and no key fell through to the convention: every
+    // option on that line is a measured fact about `withDialog` and `createFolders`.
+    expect(gaps).toEqual([]);
+    expect(baseline).toEqual([]);
+    expect(contributed).toEqual(['createFolders', 'withDialog', 'records']);
+  });
+});
+
+describe('a step an older fm reported', () => {
+  // The same step as fm 0.6.0 spelled it. Nothing aliases the old names back: the catalog
+  // says what was MEASURED, and measuring 0.7.0 is not a licence to assert 0.6.0.
+  const OLD: ScriptDetailStep = {
+    stepID: 144,
+    step: 'Save Records as PDF',
+    records: 'browsedRecords',
+    'with dialog': true,
+    'create folders': false,
+    restore: false,
+  };
+
+  it('prints the old key from the BASELINE, which is the visible signal', () => {
+    const { baseline, contributed, gaps } = renderStepFromCatalog(
+      OLD,
+      catalogEntry(CATALOG, 'Save Records as PDF')!,
+      stepConventions(CATALOG),
+    );
+    // `gaps` is for a measured segment that produced nothing, and no segment is keyed on
+    // `with dialog` any more, so the key cannot reach one. What it reaches instead is
+    // `baseline` — the renderer's own record of an option it printed by convention rather
+    // than by measurement — and that IS the signal: a consumer asking how much of a line
+    // is measured sees this key named.
+    expect(gaps).toEqual([]);
+    expect(baseline).toEqual(['with dialog']);
+    expect(contributed).toEqual(['records', 'with dialog']);
+  });
+
+  it('shows what the old spelling costs: a coarser option, and a lost one', () => {
+    // `With dialog` without its `: On`, because the measured `labelledState` render is
+    // keyed on `withDialog` and the baseline knows only that the flag is true. And
+    // `create folders: false` prints NOTHING: the baseline drops a false flag, where the
+    // measured segment would have written `Create folders: Off`. Neither is an error, and
+    // that is exactly why it is pinned.
+    expect(stepDisplayText(OLD)).toBe('Save Records as PDF [ Records being browsed ; With dialog ]');
+    expect(stepDisplayText(OLD)).not.toContain('Create folders');
   });
 });

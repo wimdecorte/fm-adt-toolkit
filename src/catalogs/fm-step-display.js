@@ -10,7 +10,7 @@ export default {
  "Add Account": {
   "segments": [
    {
-    "key": "account type",
+    "key": "accountType",
     "render": "labelledEnum",
     "label": "Authenticate via",
     "values": {
@@ -40,7 +40,7 @@ export default {
     "render": "labelled",
     "label": "Account Name",
     "labelWhen": {
-     "key": "account type",
+     "key": "accountType",
      "labels": {
       "1": "Group Name",
       "18": "Account Name",
@@ -65,14 +65,14 @@ export default {
     "render": "masked",
     "label": "Password",
     "hiddenWhen": {
-     "keyPresent": "account type"
+     "keyPresent": "accountType"
     },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "expire password",
+    "key": "expirePassword",
     "render": "bareWhenTrue",
     "label": "Expire password",
     "examples": 2,
@@ -171,7 +171,7 @@ export default {
  "AVPlayer Play": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "examples": 3,
@@ -214,7 +214,7 @@ export default {
     ]
    },
    {
-    "key": "object repetition",
+    "key": "objectRepetition",
     "render": "labelled",
     "label": "Repetition",
     "examples": 3,
@@ -234,7 +234,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "disable interaction",
+    "key": "disableInteraction",
     "render": "labelledEnum",
     "label": "Disable Interaction",
     "values": {
@@ -328,7 +328,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "disable interaction",
+    "key": "disableInteraction",
     "render": "labelledEnum",
     "label": "Disable Interaction",
     "values": {
@@ -352,7 +352,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "disable external controls",
+    "key": "disableExternalControls",
     "render": "labelledEnum",
     "label": "Disable External Controls",
     "values": {
@@ -364,7 +364,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "pause in background",
+    "key": "pauseInBackground",
     "render": "labelledEnum",
     "label": "Pause in Background",
     "values": {
@@ -372,7 +372,7 @@ export default {
      "yes": "Yes"
     },
     "examples": 17,
-    "attribution": "valueWords",
+    "attribution": "anchored",
     "confidence": "measured"
    },
    {
@@ -526,7 +526,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -628,7 +628,7 @@ export default {
  "Close Data File": {
   "segments": [
    {
-    "key": "file ID",
+    "key": "fileId",
     "render": "labelled",
     "label": "File ID",
     "examples": 1,
@@ -646,7 +646,7 @@ export default {
  "Close File": {
   "segments": [
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "bare",
     "quoted": true,
     "examples": 1,
@@ -701,7 +701,7 @@ export default {
     ]
    },
    {
-    "key": "current file only",
+    "key": "currentFileOnly",
     "render": "bareWhenTrue",
     "label": "Current file",
     "examples": 1,
@@ -719,7 +719,7 @@ export default {
  "Commit Records/Requests": {
   "segments": [
    {
-    "key": "skip data entry validation",
+    "key": "skipDataEntryValidation",
     "render": "bareWhenTrue",
     "label": "Skip data entry validation",
     "examples": 3,
@@ -727,7 +727,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -739,7 +739,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "force commit",
+    "key": "forceCommit",
     "render": "bareWhenTrue",
     "label": "Force Commit",
     "examples": 1,
@@ -803,7 +803,7 @@ export default {
     ]
    },
    {
-    "key": "API key",
+    "key": "apiKey",
     "render": "labelled",
     "label": "API key",
     "examples": 5,
@@ -813,7 +813,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "verify SSL certificates",
+    "key": "verifySslCertificates",
     "examples": 5,
     "confidence": "measured"
    }
@@ -850,7 +850,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "script reference",
+    "key": "scriptReference",
     "render": "labelled",
     "label": "Script",
     "quoted": true,
@@ -895,7 +895,7 @@ export default {
     ]
    },
    {
-    "key": "button 1 label",
+    "key": "button1Label",
     "render": "labelled",
     "label": "Button 1 Label",
     "examples": 1,
@@ -906,7 +906,7 @@ export default {
     ]
    },
    {
-    "key": "button 2 label",
+    "key": "button2Label",
     "render": "labelled",
     "label": "Button 2 Label",
     "examples": 1,
@@ -917,7 +917,7 @@ export default {
     ]
    },
    {
-    "key": "button 3 label",
+    "key": "button3Label",
     "render": "labelled",
     "label": "Button 3 Label",
     "examples": 1,
@@ -928,7 +928,7 @@ export default {
     ]
    },
    {
-    "key": "button 1 foreground",
+    "key": "button1Foreground",
     "render": "labelled",
     "label": "Button 1 Foreground",
     "examples": 1,
@@ -939,7 +939,7 @@ export default {
     ]
    },
    {
-    "key": "button 2 foreground",
+    "key": "button2Foreground",
     "render": "labelled",
     "label": "Button 2 Foreground",
     "examples": 1,
@@ -950,7 +950,7 @@ export default {
     ]
    },
    {
-    "key": "button 3 foreground",
+    "key": "button3Foreground",
     "render": "labelled",
     "label": "Button 3 Foreground",
     "examples": 1,
@@ -961,7 +961,7 @@ export default {
     ]
    },
    {
-    "key": "show in foreground",
+    "key": "showInForeground",
     "render": "labelled",
     "label": "Show when app in foreground",
     "examples": 1,
@@ -1035,7 +1035,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "script reference",
+    "key": "scriptReference",
     "render": "labelled",
     "label": "Script",
     "quoted": true,
@@ -1058,7 +1058,7 @@ export default {
     ]
    },
    {
-    "key": "read multiple",
+    "key": "readMultiple",
     "render": "labelled",
     "label": "Continuous Reading",
     "examples": 1,
@@ -1069,7 +1069,7 @@ export default {
     ]
    },
    {
-    "key": "json output",
+    "key": "jsonOutput",
     "render": "labelled",
     "label": "Format Result as JSON",
     "examples": 1,
@@ -1087,7 +1087,7 @@ export default {
  "Configure Prompt Template": {
   "segments": [
    {
-    "key": "template name",
+    "key": "templateName",
     "render": "labelled",
     "label": "Template Name",
     "examples": 5,
@@ -1095,11 +1095,11 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "model provider",
+    "key": "modelProvider",
     "render": "labelledEnum",
     "label": "Model Provider",
     "values": {
-     "openAI": "OpenAI",
+     "openAi": "OpenAI",
      "custom": "Custom"
     },
     "whenAbsent": {
@@ -1111,7 +1111,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "template type",
+    "key": "templateType",
     "render": "labelledEnum",
     "label": "Template Type",
     "values": {
@@ -1199,7 +1199,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "API key",
+    "key": "apiKey",
     "render": "labelled",
     "label": "API key",
     "examples": 2,
@@ -1207,11 +1207,11 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "verify SSL Certificates",
+    "key": "verifySslCertificates",
     "render": "bareWhenTrue",
     "label": "Verify SSL Certificates",
     "examples": 1,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "low",
     "doubts": [
      "singleExample"
@@ -1247,7 +1247,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "script reference",
+    "key": "scriptReference",
     "render": "labelled",
     "label": "Script",
     "quoted": true,
@@ -1262,7 +1262,7 @@ export default {
     },
     "render": "labelled",
     "label": "from file",
-    "inlineOf": "script reference",
+    "inlineOf": "scriptReference",
     "quoted": true,
     "examples": 1,
     "attribution": "anchored",
@@ -1306,7 +1306,7 @@ export default {
     ]
    },
    {
-    "key": "beacon uuid",
+    "key": "beaconUuid",
     "render": "labelled",
     "label": "UUID",
     "examples": 6,
@@ -1366,7 +1366,7 @@ export default {
  "Configure Regression Model": {
   "segments": [
    {
-    "key": "model name",
+    "key": "modelName",
     "render": "labelled",
     "label": "Model Name",
     "examples": 7,
@@ -1385,7 +1385,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "vectors field",
+    "key": "vectorsField",
     "render": "labelled",
     "label": "Training Vectors Field",
     "examples": 6,
@@ -1396,7 +1396,7 @@ export default {
     ]
    },
    {
-    "key": "labels field",
+    "key": "labelsField",
     "render": "labelled",
     "label": "Training Target Field",
     "examples": 5,
@@ -1407,7 +1407,7 @@ export default {
     ]
    },
    {
-    "key": "skip empty or invalid records",
+    "key": "skipEmptyOrInvalidRecords",
     "render": "bareWhenTrue",
     "label": "Skip empty or invalid records",
     "examples": 4,
@@ -1454,7 +1454,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "find without indexes",
+    "key": "findWithoutIndexes",
     "render": "bareWhenTrue",
     "label": "Find without indexes",
     "examples": 1,
@@ -1489,7 +1489,7 @@ export default {
  "Convert File": {
   "segments": [
    {
-    "key": "open file",
+    "key": "openFile",
     "render": "bareWhenTrue",
     "label": "Open File",
     "examples": 5,
@@ -1497,7 +1497,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "skip Indexes",
+    "key": "skipIndexes",
     "render": "bareWhenTrue",
     "label": "Skip Indexes",
     "examples": 3,
@@ -1505,7 +1505,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -1551,11 +1551,11 @@ export default {
     ]
    },
    {
-    "key": "verify SSL Certificates",
+    "key": "verifySslCertificates",
     "render": "bareWhenTrue",
     "label": "Verify SSL Certificates",
     "examples": 2,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "measured"
    },
    {
@@ -1672,7 +1672,7 @@ export default {
     ]
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -1754,7 +1754,7 @@ export default {
  "Delete All Records": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -1793,7 +1793,7 @@ export default {
  "Delete Portal Row": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -1812,7 +1812,7 @@ export default {
  "Delete Record/Request": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -1831,7 +1831,7 @@ export default {
  "Dial Phone": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -1843,7 +1843,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "phone number",
+    "key": "phoneNumber",
     "render": "bare",
     "examples": 2,
     "attribution": "anchored",
@@ -2087,7 +2087,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "target type",
+    "key": "targetType",
     "examples": 5,
     "confidence": "measured"
    }
@@ -2098,7 +2098,7 @@ export default {
  "Execute SQL": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -2127,7 +2127,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "create folders",
+    "key": "createFolders",
     "examples": 3,
     "confidence": "measured"
    }
@@ -2202,7 +2202,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "open automatically",
+    "key": "openAutomatically",
     "render": "bareWhenTrue",
     "label": "Automatically open",
     "examples": 2,
@@ -2210,7 +2210,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create email",
+    "key": "createEmail",
     "render": "bareWhenTrue",
     "label": "Create email",
     "examples": 2,
@@ -2218,7 +2218,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -2497,7 +2497,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "base model",
+    "key": "baseModel",
     "render": "labelled",
     "label": "Base Model",
     "examples": 4,
@@ -2505,7 +2505,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "labelledEnum",
     "label": "Training Data",
     "values": {
@@ -2638,7 +2638,7 @@ export default {
     ]
    },
    {
-    "key": "tool calls",
+    "key": "toolCalls",
     "render": "labelled",
     "label": "Tool Calls from Model",
     "examples": 11,
@@ -2662,7 +2662,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "sliding window variable",
+    "key": "slidingWindowVariable",
     "render": "labelled",
     "label": "Save Message History To",
     "examples": 6,
@@ -2673,9 +2673,9 @@ export default {
     ]
    },
    {
-    "key": "sliding window variable repetition",
+    "key": "slidingWindowVariableRepetition",
     "render": "suffix",
-    "suffixOf": "sliding window variable",
+    "suffixOf": "slidingWindowVariable",
     "examples": 5,
     "attribution": "anchored",
     "confidence": "low",
@@ -2684,7 +2684,7 @@ export default {
     ]
    },
    {
-    "key": "sliding window count",
+    "key": "slidingWindowCount",
     "render": "labelled",
     "label": "Message History Count",
     "examples": 6,
@@ -2692,7 +2692,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "sliding window include tool calls",
+    "key": "slidingWindowIncludeToolCalls",
     "render": "enum",
     "values": {
      "1": "Include tool calls in message history"
@@ -2713,7 +2713,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "tool definitions",
+    "key": "toolDefinitions",
     "render": "labelled",
     "label": "Tool Definitions",
     "examples": 4,
@@ -2737,7 +2737,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "agentic mode",
+    "key": "agenticMode",
     "render": "bareWhenTrue",
     "label": "Agentic mode",
     "examples": 1,
@@ -2804,7 +2804,7 @@ export default {
     "cause": "withdrawn"
    },
    {
-    "key": "object name",
+    "key": "objectName",
     "cause": "withdrawn"
    }
   ],
@@ -2817,7 +2817,7 @@ export default {
  "Get Data File Position": {
   "segments": [
    {
-    "key": "file ID",
+    "key": "fileId",
     "render": "labelled",
     "label": "File ID",
     "examples": 1,
@@ -2974,7 +2974,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "allow Folder Creation",
+    "key": "allowFolderCreation",
     "render": "bareWhenTrue",
     "label": "Allow Folder Creation",
     "examples": 2,
@@ -3028,11 +3028,11 @@ export default {
  "Go to Field": {
   "segments": [
    {
-    "key": "select/perform",
+    "key": "selectPerform",
     "render": "bareWhenTrue",
     "label": "Select/perform",
     "examples": 3,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "measured"
    },
    {
@@ -3088,7 +3088,7 @@ export default {
     ]
    },
    {
-    "key": "layout name",
+    "key": "layoutName",
     "render": "bare",
     "examples": 14,
     "attribution": "anchored",
@@ -3140,7 +3140,7 @@ export default {
  "Go to List of Records": {
   "segments": [
    {
-    "key": "row list",
+    "key": "rowList",
     "render": "labelled",
     "label": "List of record IDs",
     "examples": 19,
@@ -3180,7 +3180,7 @@ export default {
     ]
    },
    {
-    "key": "layout by calculation",
+    "key": "layoutByCalculation",
     "render": "labelled",
     "label": "Using layout",
     "examples": 2,
@@ -3281,7 +3281,7 @@ export default {
  "Go to Object": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "examples": 4,
@@ -3316,7 +3316,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -3344,7 +3344,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "exit after last",
+    "key": "exitAfterLast",
     "render": "labelledState",
     "label": "Exit after last",
     "values": {
@@ -3392,7 +3392,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -3404,7 +3404,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "exit after last",
+    "key": "exitAfterLast",
     "render": "labelledState",
     "label": "Exit after last",
     "values": {
@@ -3430,7 +3430,7 @@ export default {
  "Go to Related Record": {
   "segments": [
    {
-    "key": "show only related records",
+    "key": "showOnlyRelatedRecords",
     "render": "bareWhenTrue",
     "label": "Show only related records",
     "examples": 22,
@@ -3438,7 +3438,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "match all records in found set",
+    "key": "matchAllRecordsInFoundSet",
     "render": "bareWhenTrue",
     "label": "Match found set",
     "examples": 4,
@@ -3646,7 +3646,7 @@ export default {
  "Insert Audio/Video": {
   "segments": [
    {
-    "key": "store only a reference",
+    "key": "storeOnlyReference",
     "render": "bareWhenTrue",
     "label": "Reference",
     "examples": 1,
@@ -3964,7 +3964,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "replace target contents",
+    "key": "replaceTargetContents",
     "render": "bareWhenTrue",
     "label": "Replace target contents",
     "examples": 4,
@@ -3972,7 +3972,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "continue on error",
+    "key": "continueOnError",
     "render": "bareWhenTrue",
     "label": "Continue on error",
     "examples": 3,
@@ -3980,7 +3980,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "show summary",
+    "key": "showSummary",
     "render": "bareWhenTrue",
     "label": "Show summary",
     "examples": 2,
@@ -4069,12 +4069,12 @@ export default {
   ],
   "ignored": [
    {
-    "key": "dialog options",
+    "key": "dialogOptions",
     "examples": 17,
     "confidence": "measured"
    },
    {
-    "key": "dialog title",
+    "key": "dialogTitle",
     "examples": 11,
     "confidence": "measured"
    },
@@ -4094,7 +4094,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "store as reference",
+    "key": "storeAsReference",
     "examples": 17,
     "confidence": "measured"
    }
@@ -4400,7 +4400,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -4427,18 +4427,18 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "verify SSL certificates",
+    "key": "verifySslCertificates",
     "render": "bareWhenTrue",
     "label": "Verify SSL Certificates",
     "examples": 1,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "low",
     "doubts": [
      "singleExample"
     ]
    },
    {
-    "key": "cURL options",
+    "key": "curlOptions",
     "render": "labelled",
     "label": "cURL options",
     "examples": 2,
@@ -4448,7 +4448,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "cURL options specified",
+    "key": "curlOptionsSpecified",
     "examples": 7,
     "confidence": "measured",
     "attestation": "CLAUDE.md, which records this key as reported but not displayed and not a gate: a FileMaker-authored working step reads it back false while its options render, and the options popover offers checkboxes for select entire contents, target and verify SSL certificates only, with no checkbox for the options themselves"
@@ -4457,8 +4457,8 @@ export default {
   "attestedOrder": [
    {
     "keys": [
-     "verify SSL certificates",
-     "cURL options"
+     "verifySslCertificates",
+     "curlOptions"
     ],
     "source": "CLAUDE.md, where a FileMaker-authored Insert from URL step is recorded as rendering (... ; Verify SSL Certificates ; cURL options: <calc>). No example in either script carries a true verify-SSL-certificates flag together with a non-empty cURL-options calculation, so these pairs cannot order the two; this is the one step type the app itself generates, so the order matters more here than anywhere else in the catalog."
    }
@@ -4568,7 +4568,7 @@ export default {
     ]
    },
    {
-    "key": "replace target contents",
+    "key": "replaceTargetContents",
     "render": "bareWhenTrue",
     "label": "Replace target contents",
     "examples": 3,
@@ -4576,7 +4576,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "continue on error",
+    "key": "continueOnError",
     "render": "bareWhenTrue",
     "label": "Continue on error",
     "examples": 2,
@@ -4603,7 +4603,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "store only a reference",
+    "key": "storeOnlyReference",
     "render": "bareWhenTrue",
     "label": "Reference",
     "examples": 1,
@@ -4634,7 +4634,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "store only a reference",
+    "key": "storeOnlyReference",
     "render": "bareWhenTrue",
     "label": "Reference",
     "examples": 1,
@@ -4720,7 +4720,7 @@ export default {
     ]
    },
    {
-    "key": "use as file default",
+    "key": "useAsFileDefault",
     "render": "labelledState",
     "label": "Use as file default",
     "values": {
@@ -4972,7 +4972,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "layout by calculation",
+    "key": "layoutByCalculation",
     "render": "labelled",
     "label": "Using layout",
     "examples": 2,
@@ -5050,7 +5050,7 @@ export default {
  "Omit Multiple Records": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -5129,7 +5129,7 @@ export default {
  "Open File": {
   "segments": [
    {
-    "key": "open hidden",
+    "key": "openHidden",
     "render": "labelledState",
     "label": "Open hidden",
     "values": {
@@ -5141,7 +5141,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "bare",
     "quoted": true,
     "examples": 2,
@@ -5258,15 +5258,15 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "skip auto-enter options",
+    "key": "skipAutoEnterOptions",
     "render": "bareWhenTrue",
     "label": "Skip auto-enter options",
     "examples": 2,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "measured"
    },
    {
-    "key": "skip data entry validation",
+    "key": "skipDataEntryValidation",
     "render": "bareWhenTrue",
     "label": "Skip data entry validation",
     "examples": 2,
@@ -5274,11 +5274,11 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "override ESS locking conflicts",
+    "key": "overrideEssLockingConflicts",
     "render": "bareWhenTrue",
     "label": "Override ESS locking conflicts",
     "examples": 2,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "measured"
    }
   ],
@@ -5301,7 +5301,7 @@ export default {
  "Open URL": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -5313,7 +5313,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "in external browser",
+    "key": "inExternalBrowser",
     "render": "bareWhenTrue",
     "label": "In external browser",
     "examples": 1,
@@ -5372,7 +5372,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "no style",
+    "key": "noStyle",
     "render": "bareWhenTrue",
     "label": "No style",
     "examples": 3,
@@ -5460,7 +5460,7 @@ export default {
     ]
    },
    {
-    "key": "script calculation",
+    "key": "scriptCalculation",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -5573,7 +5573,7 @@ export default {
     ]
    },
    {
-    "key": "prompt template",
+    "key": "promptTemplate",
     "render": "labelled",
     "label": "Prompt Template Name",
     "examples": 3,
@@ -5588,7 +5588,7 @@ export default {
  "Perform Find/Replace": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -5607,7 +5607,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "replace with",
+    "key": "replaceWith",
     "render": "bare",
     "examples": 4,
     "attribution": "anchored",
@@ -5639,12 +5639,12 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "match case",
+    "key": "matchCase",
     "examples": 11,
     "confidence": "measured"
    },
    {
-    "key": "match whole words only",
+    "key": "matchWholeWordsOnly",
     "examples": 11,
     "confidence": "measured"
    },
@@ -5660,7 +5660,7 @@ export default {
  "Perform JavaScript in Web Viewer": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "whenAbsent": {
@@ -5689,7 +5689,7 @@ export default {
   "ignored": [],
   "unresolved": [
    {
-    "key": "arg 1",
+    "key": "arg1",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -5697,7 +5697,7 @@ export default {
     ]
    },
    {
-    "key": "arg 2",
+    "key": "arg2",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -5769,7 +5769,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "AI account",
+    "key": "aiAccount",
     "render": "labelled",
     "label": "AI Account Name",
     "examples": 2,
@@ -5777,7 +5777,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "labelledEnum",
     "label": "RAG Data",
     "values": {
@@ -5800,7 +5800,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "tokens per text chunk",
+    "key": "tokensPerTextChunk",
     "render": "labelled",
     "label": "Tokens per Text Chunk",
     "examples": 3,
@@ -5808,7 +5808,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "add data response",
+    "key": "addDataResponse",
     "render": "labelled",
     "label": "Response Target",
     "examples": 2,
@@ -5828,7 +5828,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "prompt template",
+    "key": "promptTemplate",
     "render": "labelled",
     "label": "Prompt Template Name",
     "examples": 1,
@@ -5839,7 +5839,7 @@ export default {
     ]
    },
    {
-    "key": "prompt parameters",
+    "key": "promptParameters",
     "render": "labelled",
     "label": "Parameters",
     "examples": 1,
@@ -5856,7 +5856,7 @@ export default {
      "number": "10"
     },
     "render": "suffix",
-    "suffixOf": "add data response",
+    "suffixOf": "addDataResponse",
     "examples": 2,
     "attribution": "anchored",
     "confidence": "low",
@@ -5894,7 +5894,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "detect vertical text",
+    "key": "detectVerticalText",
     "examples": 10,
     "confidence": "measured"
    }
@@ -5909,14 +5909,14 @@ export default {
     "render": "bare",
     "quoted": true,
     "hiddenWhen": {
-     "keyPresent": "script name"
+     "keyPresent": "scriptName"
     },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "labelled",
     "label": "from file",
     "inlineOf": "script",
@@ -5929,7 +5929,7 @@ export default {
     ]
    },
    {
-    "key": "script name",
+    "key": "scriptName",
     "render": "keyPresence",
     "label": "Specified",
     "values": {
@@ -5941,7 +5941,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "script name",
+    "key": "scriptName",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -5994,14 +5994,14 @@ export default {
     "render": "bare",
     "quoted": true,
     "hiddenWhen": {
-     "keyPresent": "script name"
+     "keyPresent": "scriptName"
     },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "labelled",
     "label": "from file",
     "inlineOf": "script",
@@ -6014,7 +6014,7 @@ export default {
     ]
    },
    {
-    "key": "script name",
+    "key": "scriptName",
     "render": "keyPresence",
     "label": "Specified",
     "values": {
@@ -6026,7 +6026,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "script name",
+    "key": "scriptName",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -6055,7 +6055,7 @@ export default {
     ]
    },
    {
-    "key": "wait for completion",
+    "key": "waitForCompletion",
     "render": "labelledState",
     "label": "Wait for completion",
     "values": {
@@ -6095,14 +6095,14 @@ export default {
     "render": "bare",
     "quoted": true,
     "hiddenWhen": {
-     "keyPresent": "script name"
+     "keyPresent": "scriptName"
     },
     "examples": 5,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "script name",
+    "key": "scriptName",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -6131,7 +6131,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "callback state",
+    "key": "callbackState",
     "render": "labelledEnum",
     "label": "State",
     "values": {
@@ -6152,7 +6152,7 @@ export default {
     ]
    },
    {
-    "key": "callback by name",
+    "key": "callbackByName",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -6345,7 +6345,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "save result",
+    "key": "saveResult",
     "render": "labelled",
     "label": "Save result",
     "examples": 2,
@@ -6376,7 +6376,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "return count",
+    "key": "returnCount",
     "examples": 5,
     "confidence": "low",
     "doubts": [
@@ -6403,7 +6403,7 @@ export default {
  "Perform SQL Query by Natural Language": {
   "segments": [
    {
-    "key": "options name",
+    "key": "optionsName",
     "render": "labelled",
     "label": "Account Name",
     "examples": 1,
@@ -6443,7 +6443,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "options selection",
+    "key": "optionsSelection",
     "render": "labelledEnum",
     "label": "Options specified",
     "values": {
@@ -6466,7 +6466,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "tables selection",
+    "key": "tablesSelection",
     "render": "labelledEnum",
     "label": "Data Tables",
     "values": {
@@ -6488,7 +6488,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "prompt template",
+    "key": "promptTemplate",
     "render": "labelled",
     "label": "Prompt Template Name",
     "examples": 5,
@@ -6555,7 +6555,7 @@ export default {
     "cause": "withdrawn"
    },
    {
-    "key": "object name",
+    "key": "objectName",
     "cause": "withdrawn"
    }
   ],
@@ -6616,7 +6616,7 @@ export default {
     ]
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -6640,7 +6640,7 @@ export default {
  "Read from Data File": {
   "segments": [
    {
-    "key": "file ID",
+    "key": "fileId",
     "render": "labelled",
     "label": "File ID",
     "examples": 3,
@@ -6652,7 +6652,7 @@ export default {
     "render": "labelled",
     "label": "Amount (bytes)",
     "labelWhen": {
-     "key": "read as",
+     "key": "readAs",
      "labels": {
       "bytes": "Amount (bytes)",
       "utf16": "Amount",
@@ -6679,7 +6679,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "read as",
+    "key": "readAs",
     "render": "labelledEnum",
     "label": "Read as",
     "values": {
@@ -6702,7 +6702,7 @@ export default {
  "Recover File": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -6733,7 +6733,7 @@ export default {
  "Refresh Object": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "examples": 1,
@@ -6762,7 +6762,7 @@ export default {
  "Refresh Portal": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "examples": 3,
@@ -6778,7 +6778,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "flush cached join results",
+    "key": "flushCachedJoinResults",
     "render": "bareWhenTrue",
     "label": "Flush cached join results",
     "examples": 1,
@@ -6789,11 +6789,11 @@ export default {
     ]
    },
    {
-    "key": "flush cached SQL data",
+    "key": "flushCachedExternalData",
     "render": "bareWhenTrue",
     "label": "Flush cached external data",
     "examples": 1,
-    "attribution": "labelWords",
+    "attribution": "anchored",
     "confidence": "low",
     "doubts": [
      "singleExample"
@@ -6807,7 +6807,7 @@ export default {
  "Relookup Field Contents": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -6887,7 +6887,7 @@ export default {
  "Replace Field Contents": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -7036,7 +7036,7 @@ export default {
  "Revert Record/Request": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -7063,7 +7063,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "error code",
+    "key": "errorCode",
     "render": "labelled",
     "label": "Error Code",
     "examples": 6,
@@ -7071,7 +7071,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "error message",
+    "key": "errorMessage",
     "render": "labelled",
     "label": "Error Message",
     "whenAbsent": {
@@ -7085,12 +7085,12 @@ export default {
   ],
   "ignored": [
    {
-    "key": "has condition",
+    "key": "hasCondition",
     "examples": 7,
     "confidence": "measured"
    },
    {
-    "key": "has error code",
+    "key": "hasErrorCode",
     "examples": 7,
     "confidence": "measured"
    }
@@ -7126,7 +7126,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "open automatically",
+    "key": "openAutomatically",
     "render": "bareWhenTrue",
     "label": "Automatically open",
     "examples": 1,
@@ -7137,7 +7137,7 @@ export default {
     ]
    },
    {
-    "key": "create email",
+    "key": "createEmail",
     "render": "bareWhenTrue",
     "label": "Create email",
     "examples": 1,
@@ -7148,7 +7148,7 @@ export default {
     ]
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -7178,7 +7178,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "replace UUIDs",
+    "key": "replaceUuids",
     "render": "labelledState",
     "label": "Replace UUIDs",
     "values": {
@@ -7208,7 +7208,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -7240,7 +7240,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -7268,7 +7268,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "use field names",
+    "key": "useFieldNames",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -7290,14 +7290,14 @@ export default {
  "Save Records as JSONL": {
   "segments": [
    {
-    "key": "format for fine-tuning",
+    "key": "formatForFineTuning",
     "render": "labelledState",
     "label": "Format for fine-tuning",
     "values": {
      "false": "Off"
     },
     "examples": 4,
-    "attribution": "anchored",
+    "attribution": "labelWords",
     "confidence": "measured"
    },
    {
@@ -7327,7 +7327,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -7357,7 +7357,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "save type",
+    "key": "saveType",
     "render": "labelledEnum",
     "label": "Save to",
     "values": {
@@ -7372,7 +7372,7 @@ export default {
     ]
    },
    {
-    "key": "append to existing file",
+    "key": "appendToExistingPdf",
     "render": "bareWhenTrue",
     "label": "Append",
     "examples": 7,
@@ -7389,7 +7389,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -7400,7 +7400,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -7412,7 +7412,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "open automatically",
+    "key": "openAutomatically",
     "render": "bareWhenTrue",
     "label": "Automatically open",
     "examples": 6,
@@ -7420,7 +7420,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "open password",
+    "key": "openPassword",
     "render": "enum",
     "examples": 1,
     "attribution": "valueWords",
@@ -7431,7 +7431,7 @@ export default {
     ]
    },
    {
-    "key": "create email",
+    "key": "createEmail",
     "render": "bareWhenTrue",
     "label": "Create email",
     "examples": 7,
@@ -7558,12 +7558,12 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "allow copying",
+    "key": "allowCopying",
     "examples": 8,
     "confidence": "measured"
    },
    {
-    "key": "allow screen reader",
+    "key": "allowScreenReader",
     "examples": 9,
     "confidence": "measured"
    },
@@ -7576,12 +7576,12 @@ export default {
     ]
    },
    {
-    "key": "edit level",
+    "key": "editLevel",
     "examples": 9,
     "confidence": "measured"
    },
    {
-    "key": "edit password",
+    "key": "editPassword",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -7589,7 +7589,7 @@ export default {
     ]
    },
    {
-    "key": "include all pages",
+    "key": "includeAllPages",
     "examples": 9,
     "confidence": "measured"
    },
@@ -7607,22 +7607,22 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "page layout",
+    "key": "pageLayout",
     "examples": 9,
     "confidence": "measured"
    },
    {
-    "key": "pages from",
+    "key": "pagesFrom",
     "examples": 9,
     "confidence": "measured"
    },
    {
-    "key": "print level",
+    "key": "printLevel",
     "examples": 9,
     "confidence": "measured"
    },
    {
-    "key": "require edit password",
+    "key": "requireEditPassword",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -7630,7 +7630,7 @@ export default {
     ]
    },
    {
-    "key": "require open password",
+    "key": "requireOpenPassword",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -7643,12 +7643,12 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "specific pages end",
+    "key": "specificPagesEnd",
     "examples": 8,
     "confidence": "measured"
    },
    {
-    "key": "specific pages start",
+    "key": "specificPagesStart",
     "examples": 8,
     "confidence": "measured"
    },
@@ -7695,7 +7695,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "create folders",
+    "key": "createFolders",
     "render": "labelledState",
     "label": "Create folders",
     "values": {
@@ -7789,7 +7789,7 @@ export default {
     ]
    },
    {
-    "key": "current file only",
+    "key": "currentFileOnly",
     "render": "bareWhenTrue",
     "label": "Current file",
     "examples": 1,
@@ -7822,7 +7822,7 @@ export default {
  "Send Event": {
   "segments": [
    {
-    "key": "target application",
+    "key": "targetApplication",
     "render": "bare",
     "quoted": true,
     "examples": 5,
@@ -7830,7 +7830,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "event file",
+    "key": "eventFile",
     "render": "bare",
     "quoted": true,
     "pathForm": "fileName",
@@ -7839,7 +7839,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "event text",
+    "key": "eventText",
     "render": "bare",
     "quoted": true,
     "examples": 1,
@@ -7852,7 +7852,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "copy result",
+    "key": "copyResult",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -7860,12 +7860,12 @@ export default {
     ]
    },
    {
-    "key": "event class",
+    "key": "eventClass",
     "examples": 5,
     "confidence": "measured"
    },
    {
-    "key": "event id",
+    "key": "eventId",
     "examples": 5,
     "confidence": "measured"
    },
@@ -7875,7 +7875,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "target application type",
+    "key": "targetApplicationType",
     "examples": 5,
     "confidence": "measured"
    },
@@ -7894,7 +7894,7 @@ export default {
  "Send Mail": {
   "segments": [
    {
-    "key": "smtp server",
+    "key": "smtpServer",
     "render": "enum",
     "examples": 1,
     "attribution": "labelWords",
@@ -7919,7 +7919,7 @@ export default {
     ]
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -7993,7 +7993,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "bcc collect addresses",
+    "key": "bccCollectAddresses",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8001,7 +8001,7 @@ export default {
     ]
    },
    {
-    "key": "cc collect addresses",
+    "key": "ccCollectAddresses",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8019,22 +8019,22 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "oauth account email",
+    "key": "oauthAccountEmail",
     "examples": 3,
     "confidence": "measured"
    },
    {
-    "key": "oauth client id",
+    "key": "oauthClientId",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "oauth client secret",
+    "key": "oauthClientSecret",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "oauth email",
+    "key": "oauthEmail",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8042,37 +8042,37 @@ export default {
     ]
    },
    {
-    "key": "oauth name",
+    "key": "oauthName",
     "examples": 3,
     "confidence": "measured"
    },
    {
-    "key": "oauth principal name",
+    "key": "oauthPrincipalName",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "oauth private key",
+    "key": "oauthPrivateKey",
     "examples": 3,
     "confidence": "measured"
    },
    {
-    "key": "oauth provider",
+    "key": "oauthProvider",
     "examples": 8,
     "confidence": "measured"
    },
    {
-    "key": "oauth reply to",
+    "key": "oauthReplyTo",
     "examples": 3,
     "confidence": "measured"
    },
    {
-    "key": "oauth tenant id",
+    "key": "oauthTenantId",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "oauth user id",
+    "key": "oauthUserId",
     "examples": 3,
     "confidence": "measured"
    },
@@ -8085,32 +8085,32 @@ export default {
     ]
    },
    {
-    "key": "smtp email",
+    "key": "smtpEmail",
     "examples": 4,
     "confidence": "measured"
    },
    {
-    "key": "smtp name",
+    "key": "smtpName",
     "examples": 4,
     "confidence": "measured"
    },
    {
-    "key": "smtp password",
+    "key": "smtpPassword",
     "examples": 4,
     "confidence": "measured"
    },
    {
-    "key": "smtp port",
+    "key": "smtpPort",
     "examples": 4,
     "confidence": "measured"
    },
    {
-    "key": "smtp username",
+    "key": "smtpUsername",
     "examples": 4,
     "confidence": "measured"
    },
    {
-    "key": "to collect addresses",
+    "key": "toCollectAddresses",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8138,7 +8138,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "file name",
+    "key": "fileName",
     "render": "labelled",
     "label": "Filename",
     "examples": 1,
@@ -8161,7 +8161,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "truncate Messages",
+    "key": "truncateMessages",
     "render": "labelledState",
     "label": "Truncate Messages",
     "values": {
@@ -8184,7 +8184,7 @@ export default {
   "emptyBrackets": true,
   "segments": [
    {
-    "key": "file ID",
+    "key": "fileId",
     "render": "labelled",
     "label": "File ID",
     "whenAbsent": {
@@ -8269,7 +8269,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "custom debug info",
+    "key": "customDebugInfo",
     "render": "labelledMismatch",
     "label": "Custom debug info",
     "examples": 1,
@@ -8328,7 +8328,7 @@ export default {
   "displayName": "Set Field By Name",
   "segments": [
    {
-    "key": "field name",
+    "key": "fieldName",
     "render": "bare",
     "examples": 3,
     "attribution": "anchored",
@@ -8344,7 +8344,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "specify target field",
+    "key": "specifyTargetField",
     "examples": 3,
     "confidence": "measured"
    }
@@ -8438,7 +8438,7 @@ export default {
     ]
    },
    {
-    "key": "start position",
+    "key": "startPosition",
     "render": "labelled",
     "label": "Start Position",
     "examples": 2,
@@ -8446,7 +8446,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "end position",
+    "key": "endPosition",
     "render": "labelled",
     "label": "End Position",
     "examples": 2,
@@ -8543,7 +8543,7 @@ export default {
  "Set Web Viewer": {
   "segments": [
    {
-    "key": "object name",
+    "key": "objectName",
     "render": "labelled",
     "label": "Object Name",
     "examples": 5,
@@ -8561,14 +8561,14 @@ export default {
      "goBack": "Go Back"
     },
     "omittedValues": [
-     "goToURL"
+     "goToUrl"
     ],
     "examples": 4,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "URL",
+    "key": "url",
     "render": "labelled",
     "label": "URL",
     "examples": 1,
@@ -8594,7 +8594,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "current file only",
+    "key": "currentFileOnly",
     "render": "bareWhenTrue",
     "label": "Current Window",
     "examples": 2,
@@ -8758,7 +8758,7 @@ export default {
     ]
    },
    {
-    "key": "input 1",
+    "key": "input1",
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
@@ -8770,12 +8770,12 @@ export default {
   ],
   "ignored": [
    {
-    "key": "auto close",
+    "key": "autoClose",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "button 1",
+    "key": "button1",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8783,22 +8783,22 @@ export default {
     ]
    },
    {
-    "key": "button 1 commit",
+    "key": "button1Commit",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "button 1 text",
+    "key": "button1Text",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "button 2 commit",
+    "key": "button2Commit",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "button 2 text",
+    "key": "button2Text",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8806,7 +8806,7 @@ export default {
     ]
    },
    {
-    "key": "button 3",
+    "key": "button3",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8814,17 +8814,17 @@ export default {
     ]
    },
    {
-    "key": "button 3 commit",
+    "key": "button3Commit",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "button 3 text",
+    "key": "button3Text",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "input 1 label",
+    "key": "input1Label",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8832,12 +8832,12 @@ export default {
     ]
    },
    {
-    "key": "input 1 password",
+    "key": "input1Password",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "input 2 label",
+    "key": "input2Label",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8845,12 +8845,12 @@ export default {
     ]
    },
    {
-    "key": "input 2 password",
+    "key": "input2Password",
     "examples": 2,
     "confidence": "measured"
    },
    {
-    "key": "input 3 label",
+    "key": "input3Label",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -8858,14 +8858,14 @@ export default {
     ]
    },
    {
-    "key": "input 3 password",
+    "key": "input3Password",
     "examples": 2,
     "confidence": "measured"
    }
   ],
   "unresolved": [
    {
-    "key": "button 2",
+    "key": "button2",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -8873,7 +8873,7 @@ export default {
     ]
    },
    {
-    "key": "input 2",
+    "key": "input2",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -8881,7 +8881,7 @@ export default {
     ]
    },
    {
-    "key": "input 2 repetition",
+    "key": "input2Repetition",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -8889,7 +8889,7 @@ export default {
     ]
    },
    {
-    "key": "input 3",
+    "key": "input3",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -8897,7 +8897,7 @@ export default {
     ]
    },
    {
-    "key": "input 3 repetition",
+    "key": "input3Repetition",
     "cause": "refuted",
     "observations": 1,
     "refutedBy": [
@@ -9005,7 +9005,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "include edit record toolbar",
+    "key": "includeEditRecordToolbar",
     "render": "bareWhenTrue",
     "label": "Include Edit Record Toolbar",
     "examples": 2,
@@ -9055,7 +9055,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -9130,7 +9130,7 @@ export default {
     ]
    },
    {
-    "key": "voice creator",
+    "key": "voiceCreator",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -9138,7 +9138,7 @@ export default {
     ]
    },
    {
-    "key": "voice id",
+    "key": "voiceId",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -9171,7 +9171,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "json output",
+    "key": "jsonOutput",
     "render": "labelled",
     "label": "JSON Data",
     "whenAbsent": {
@@ -9215,7 +9215,7 @@ export default {
     ]
    },
    {
-    "key": "cURL options",
+    "key": "curlOptions",
     "examples": 3,
     "confidence": "measured"
    },
@@ -9230,12 +9230,12 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "verify SSL Certificates",
+    "key": "verifySslCertificates",
     "examples": 3,
     "confidence": "measured"
    },
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "examples": 3,
     "confidence": "measured"
    }
@@ -9249,7 +9249,7 @@ export default {
  "Truncate Table": {
   "segments": [
    {
-    "key": "with dialog",
+    "key": "withDialog",
     "render": "labelledState",
     "label": "With dialog",
     "values": {
@@ -9261,7 +9261,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "table selection",
+    "key": "tableSelection",
     "render": "labelledEnum",
     "label": "Table",
     "values": {
@@ -9359,7 +9359,7 @@ export default {
  "Write to Data File": {
   "segments": [
    {
-    "key": "file ID",
+    "key": "fileId",
     "render": "labelled",
     "label": "File ID",
     "examples": 2,
@@ -9367,7 +9367,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "data source",
+    "key": "dataSource",
     "render": "labelled",
     "label": "Data source",
     "whenAbsent": {
@@ -9379,7 +9379,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "write as",
+    "key": "writeAs",
     "render": "labelledEnum",
     "label": "Write as",
     "values": {
@@ -9391,7 +9391,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "append line feed",
+    "key": "appendLineFeed",
     "render": "bareWhenTrue",
     "label": "Append line feed",
     "examples": 2,

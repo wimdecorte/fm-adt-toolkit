@@ -142,16 +142,41 @@ function startCase(text) {
     .join(' ');
 }
 
-/** The spellings of a key observed as a label: verbatim (`cURL options`),
- *  leading capital (`With dialog`), start case (`Verify SSL Certificates`).
- *  No per-key table here — generating candidates and letting the data pick is
- *  what keeps the catalog measured. Labels FileMaker does not derive from the
- *  key at all (`account` -> `Account Name`) are found by value instead. */
+/** A camelCase key as words: `withDialog` -> `with Dialog`, `verifySslCertificates`
+ *  -> `verify Ssl Certificates`, `input1Password` -> `input 1 Password`.
+ *
+ *  fm 0.7.0 spells every multi-word option key in camelCase, so the word boundary
+ *  a space used to carry is now a capital. It also DESTROYED the acronym casing the
+ *  0.6.0 keys carried (`verify SSL Certificates` -> `verifySslCertificates`), which
+ *  is why the label match below is case-insensitive: case can no longer be evidence
+ *  about the key, only about the rendered text, and the rendered text is what the
+ *  catalog records. */
+function splitCamel(text) {
+  return String(text ?? '')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/([A-Za-z])([0-9])/g, '$1 $2');
+}
+
+/** The spellings of a key observed as a label: verbatim (`curlOptions`), split at
+ *  its camel humps (`curl Options`), leading capital (`With dialog`), start case
+ *  (`Verify Ssl Certificates`). No per-key table here — generating candidates and
+ *  letting the data pick is what keeps the catalog measured, and the MATCH is
+ *  case-insensitive (see `splitCamel`) so `Verify SSL Certificates` is still found
+ *  and still recorded with FileMaker's own capitals. Labels FileMaker does not
+ *  derive from the key at all (`account` -> `Account Name`) are found by value
+ *  instead. */
 export function labelCandidates(key) {
   const text = String(key ?? '');
   if (!text) return [];
-  const cased = startCase(text);
-  return [...new Set([text, upperFirst(text), cased, upperFirst(cased)])];
+  const spaced = splitCamel(text);
+  const lowered = spaced.toLowerCase();
+  const out = [text, upperFirst(text)];
+  for (const form of [spaced, lowered]) {
+    out.push(form, upperFirst(form), startCase(form), upperFirst(startCase(form)));
+  }
+  // Longest first, so a label match prefers the fullest spelling it can find.
+  return [...new Set(out)].sort((a, b) => b.length - a.length);
 }
 
 /** Is `index` the start of an option? Position 0, or just past a `;` and any
@@ -177,6 +202,15 @@ function segmentStarts(content, needle) {
     if (isSegmentStart(content, at)) found.push(at);
   }
   return found;
+}
+
+/** `segmentStarts`, ignoring case. Only pass 1 uses it, and only for a LABEL: a
+ *  0.7.0 key cannot spell `SSL` or `cURL` any more, so the capitals in the rendered
+ *  label are FileMaker's fact rather than the key's, and the caller records the
+ *  content's own slice rather than the candidate it matched. */
+function segmentStartsFolded(content, needle) {
+  if (!needle) return [];
+  return segmentStarts(content.toLowerCase(), needle.toLowerCase());
 }
 
 /** The forms a JSON value can take on screen.
@@ -218,12 +252,12 @@ function plainVariants(value) {
  *
  *  It CANNOT be the literal string, because one step can report two of them —
  *  measured on `Generate Response from Model`, where `repetition` is the response
- *  target's and `sliding window variable repetition` is the history variable's.
+ *  target's and `slidingWindowVariableRepetition` is the history variable's.
  *  Hard-coding the first left the second with no route to a `suffix` segment, so
  *  it read as never displayed while FileMaker was displaying it in 5 of its 6
  *  examples (`Save Message History To: $history[<calc>]`). */
 export function isRepetitionKey(key) {
-  return key === 'repetition' || / repetition$/.test(String(key));
+  return key === 'repetition' || /[a-z0-9]Repetition$/.test(String(key));
 }
 
 /** Does this key only ever render as a suffix on another option?
@@ -234,7 +268,7 @@ export function isRepetitionKey(key) {
  *  `addRepetitionSuffix` encodes — without it, a step whose repetition is a
  *  calculation lets the repetition claim another key's option, because they report
  *  the same text (`Insert Embedding [ … ; Input: <calc> ]`, and
- *  `Generate Response from Model`'s `sliding window variable repetition` claiming
+ *  `Generate Response from Model`'s `slidingWindowVariableRepetition` claiming
  *  `Web Viewer:`).
  *
  *  Only passes 2–4 consult this, which is deliberate: where FileMaker gives the
@@ -561,12 +595,14 @@ function anchorByKeyLabel({ content, keys, anchors, placed, labelClaims }) {
   for (const key of keys) {
     let best = null;
     for (const candidate of labelCandidates(key)) {
-      for (const at of segmentStarts(content, `${candidate}:`)) {
+      for (const at of segmentStartsFolded(content, `${candidate}:`)) {
         if (content[at + candidate.length + 1] === ':') continue; // `Name::Field`
         if (labelClaims.has(at)) continue;
+        // FileMaker's own capitals, not the candidate's: the key lost them in 0.7.0.
+        const shown = content.slice(at, at + candidate.length);
         const better =
-          !best || at < best.start || (at === best.start && candidate.length > best.label.length);
-        if (better) best = { start: at, label: candidate };
+          !best || at < best.start || (at === best.start && shown.length > best.label.length);
+        if (better) best = { start: at, label: shown };
         break;
       }
     }
@@ -674,9 +710,9 @@ function claimObservedLabels(
         // A repetition renders inside the option it belongs to, so the only label
         // it may take here is a REPETITION label — which FileMaker does print for
         // some steps, and for a key it does not spell: `AVPlayer Play`'s
-        // `object repetition` renders as `Repetition: 1`, so it cannot anchor in
+        // `objectRepetition` renders as `Repetition: 1`, so it cannot anchor in
         // pass 1 and must anchor here. Any other label belongs to another option,
-        // which is how `sliding window variable repetition` came to claim
+        // which is how `slidingWindowVariableRepetition` came to claim
         // `Web Viewer:` on a step where its value and that option's are identical.
         if (rendersAsSuffixOnly(key) && !wordsOf(label.label).includes('repetition')) continue;
         hits.push(label);
@@ -686,7 +722,7 @@ function claimObservedLabels(
     // Options can also share a value within one step (`Position: 123 ; Start
     // Offset: 123 ; End Offset: 123`), so prefer a label sharing a word.
     const withEvidence = hits.filter(
-      (candidate) => sharedWordCount(wordsOf(candidate.label), wordsOf(key)) > 0,
+      (candidate) => sharedWordCount(wordsOf(candidate.label), keyWords(key)) > 0,
     );
     const hit = requireWordEvidence ? withEvidence[0] : (withEvidence[0] ?? hits[0]);
     if (!hit) continue;
@@ -891,7 +927,7 @@ function addRepetitionSuffix(segments, step, positions) {
  *  was reached in `attributed`, so the next task can weigh it:
  *
  *   - `labelWords`: the option's label shares a word with exactly one unplaced
- *     key (`Hide Controls` / `hide`, `Save to` / `save type`). Evidence from the
+ *     key (`Hide Controls` / `hide`, `Save to` / `saveType`). Evidence from the
  *     pair itself.
  *   - `sole`: no word evidence, but exactly one option and exactly one unplaced
  *     key that could render at all remain, so there is nothing else it can be.
@@ -915,7 +951,7 @@ function attributeLeftover(gaps, leftoverKeys, step) {
   let openKeys = leftoverKeys.filter(canRender);
 
   /** Place `gap` on `key` unless the result would be incoherent. A label that
-   *  shares a word is not enough on its own: `has error code` shares "error"
+   *  shares a word is not enough on its own: `hasErrorCode` shares "error"
    *  with `Error Message:` but does not own it, and `repetition` was the only
    *  key left over next to `Action: Train Model`. If the option cannot be
    *  classified against the key's value, the option and the key stay
@@ -941,7 +977,7 @@ function attributeLeftover(gaps, leftoverKeys, step) {
     const scored = openKeys
       .map((key) => ({
         key,
-        label: sharedWordCount(labelWords, wordsOf(key)),
+        label: sharedWordCount(labelWords, keyWords(key)),
         // A bare state word IS value evidence: `Off` spells `false` as surely as
         // `First` spells `"first"`. It cannot go through `wordsOf`, which drops
         // words under three letters and would see `On` and `No` as nothing.
@@ -952,12 +988,12 @@ function attributeLeftover(gaps, leftoverKeys, step) {
       // A key the option cannot be classified against is not a candidate at all,
       // so it must not outrank one that can: `sliding window variable
       // repetition` shares more words with `Save Message History To:
-      // $history[…]` than `sliding window variable`, but only the latter's value
+      // $history[…]` than `slidingWindowVariable`, but only the latter's value
       // is in it.
       .filter((entry) => describeOption(gap, entry.key, step).render !== 'labelledMismatch')
       // Most shared words wins; on a tie the key whose own value spells the
       // option beats one whose name merely resembles it (`Last` is
-      // `selection: "last"`, not the `exit after last` that shares a word).
+      // `selection: "last"`, not the `exitAfterLast` that shares a word).
       .sort((a, b) => b.score - a.score || b.value - a.value);
     if (scored.length === 0) continue;
     const [best, next] = scored;
@@ -1114,6 +1150,13 @@ function wordsOf(text) {
     .split(/[^a-z0-9]+/)
     .filter((word) => word.length >= 3)
     .map((word) => (word.endsWith('s') ? word.slice(0, -1) : word));
+}
+
+/** The words of a KEY. A 0.7.0 key spells its word boundary as a capital, so it
+ *  has to be split at the humps before `wordsOf` can see the words at all —
+ *  `withDialog` is two words, not one. */
+function keyWords(key) {
+  return wordsOf(splitCamel(key));
 }
 
 /** The words inside an enum code the CLI reports: `findNext` -> find, next. */

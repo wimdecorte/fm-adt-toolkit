@@ -111,7 +111,7 @@ export function maskedKeysOf(catalog: StepDisplayCatalog): ReadonlySet<string> {
  *   - `disabled` is FileMaker's Disable; a step list draws it as a marker on the row
  *     rather than as one of the step's options.
  *   - `opaque`/`editable` are the CLI saying it could not project this step.
- *   - `target type` is derived from the varTarget string, is never sent, and has no
+ *   - `targetType` is derived from the varTarget string, is never sent, and has no
  *     counterpart on screen. */
 export const ARTEFACT_KEYS: ReadonlySet<string> = new Set([
   'stepID',
@@ -124,7 +124,7 @@ export const ARTEFACT_KEYS: ReadonlySet<string> = new Set([
   'disabled',
   'opaque',
   'editable',
-  'target type',
+  'targetType',
 ]);
 
 /** The catalog-derived tables both rendering paths need, built once per catalog.
@@ -153,14 +153,14 @@ export interface StepDisplayConventions {
    *  `isMaskedKey` answers "did the catalog measure FileMaker masking this key", which is a
    *  fact and is what a `masked` segment renders from. This answers a safety question
    *  instead: does the key NAME a secret? It is true when any WORD of the key equals a
-   *  masked key name, so `edit password`, `open password` and `smtp password` are caught as
+   *  masked key name, so `editPassword`, `openPassword` and `smtpPassword` are caught as
    *  well as `password` — and those three are exactly the keys the baseline started
    *  printing. Measured on this corpus: word matching adds nine key names, all of them
    *  password-ish, and `old`/`new` add none, while SUBSTRING matching would swallow
-   *  `threshold` and `create folders`. That is why it is words and not substrings.
+   *  `threshold` and `createFolders`. That is why it is words and not substrings.
    *
    *  It is deliberately NOT used where the catalog measured what FileMaker prints: `Add
-   *  Account`'s `expire password` is a measured `bareWhenTrue` that prints its own label and
+   *  Account`'s `expirePassword` is a measured `bareWhenTrue` that prints its own label and
    *  no value at all, and masking it would replace a measured option with a mask for
    *  nothing. The wide test governs the value; the measurement governs the option. */
   isSecretKey(key: string): boolean;
@@ -171,13 +171,43 @@ export interface StepDisplayConventions {
   writesBare(key: string): boolean;
 }
 
-/** FileMaker capitalises a label's first word, and the CLI's keys are lower case except
- *  where FileMaker's own spelling is not — so a key whose SECOND character is already a
- *  capital is left exactly as it is: `cURL options` must never become `CURL options`.
+/** The words of a key. fm 0.7.0 spells every multi-word option key in camelCase, so a
+ *  key's word boundary is a capital rather than a space and a splitter that only knows
+ *  about spaces sees `editPassword` as one word — which silently unmasked the three
+ *  password keys the wide secret test exists for. Split at the humps as well, keeping
+ *  an acronym run whole (`fileId` -> file, id; `verifySslCertificates` -> verify, ssl,
+ *  certificates), then lower case. */
+function keyWords(key: string): string[] {
+  return String(key)
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/([A-Za-z])([0-9])/g, '$1 $2')
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((word) => word !== '');
+}
+
+/** A key spelled the way the CLI spells one: lower-case first letter, then letters and
+ *  digits only. Only such a key gets the camel treatment — a key carrying spaces or its
+ *  own capitals came from somewhere else (a consumer on an older fm, a plugin step) and
+ *  is left as it was. */
+const CLI_KEY = /^[a-z][A-Za-z0-9]*$/;
+
+/** FileMaker capitalises a label's first word and lower-cases the rest, and a 0.7.0 key
+ *  spells those same words in camelCase — so `withDialog` infers `With dialog`. A key of
+ *  one word keeps its own spelling but for that first capital.
  *
  *  THE ONLY GUESS LEFT IN THE LABELS, and it cannot know about a capital inside a label
- *  (`Verify SSL Certificates`). Used only for a key the catalog never labels. */
+ *  (`Verify SSL Certificates`, `cURL options`) because fm 0.7.0 no longer spells one in
+ *  the key. Used only for a key the catalog never labels. */
 function inferredLabel(key: string): string {
+  if (CLI_KEY.test(key)) {
+    const words = keyWords(key);
+    if (words.length > 1) {
+      const text = words.join(' ');
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+  }
   if (/^[a-z][A-Z]/.test(key)) return key;
   return key.charAt(0).toUpperCase() + key.slice(1);
 }
@@ -217,7 +247,7 @@ export function stepConventions(catalog: StepDisplayCatalog): StepDisplayConvent
   // a key the catalog agrees about, it is a key whose meaning is per step type. The 12 keys
   // this withdraws are all of that shape — `stepValue`, whose one label came from
   // `Set Dictionary` while eight step types render it as an unlabelled enum; `value`,
-  // `records`, `repetition`, `script name`. Before this, the baseline printed
+  // `records`, `repetition`, `scriptName`. Before this, the baseline printed
   // `Configure AI Account [ … ; Spelling Language: 0 ]`, taking a label off an unrelated
   // step type and putting it on the CLI's generic name for a step's single value. A wrong
   // label is worse than an inferred one, which is the whole reason this table is measured.
@@ -237,9 +267,9 @@ export function stepConventions(catalog: StepDisplayCatalog): StepDisplayConvent
       const text = String(key).toLowerCase();
       if (maskedLower.has(text)) return true;
       // Word by word, so a masked name INSIDE a compound key is caught and a masked name
-      // that merely appears inside a longer word is not: `edit password` is a secret,
+      // that merely appears inside a longer word is not: `editPassword` is a secret,
       // `threshold` is not `old`.
-      return text.split(/[^a-z0-9]+/).some((word) => word !== '' && maskedLower.has(word));
+      return keyWords(key).some((word) => maskedLower.has(word));
     },
     labelFor(key, stepName) {
       const own = stepName === undefined ? undefined : perStep.get(stepName)?.get(key)?.label;
@@ -752,7 +782,7 @@ function redactedJson(
  *  A SECRET KEY IS MASKED HERE TOO, before the value is read for any purpose, and by the
  *  WIDE test: this is the path a step type the catalog has never seen takes, so it is the
  *  path a literal password would take out of a file this catalog was never derived from,
- *  and the name it arrives under may be a compound (`smtp password`) rather than one the
+ *  and the name it arrives under may be a compound (`smtpPassword`) rather than one the
  *  catalog measured.
  *
  *  `label` is given only for a value the CLI does not NAME, where the key is the CLI's word
@@ -919,7 +949,7 @@ function baselineOptions(
     // that label already, so printing it again is the one shape the owner rejected outright
     // (ruling 7) rather than an extra option he accepted. Measured on `Perform Semantic
     // Find`, where FileMaker prints `Return count: $n` from the key holding the COUNT and
-    // the boolean switch is called `return count`: the baseline would have written
+    // the boolean switch is called `returnCount`: the baseline would have written
     // `… ; Return count: $n ; Return count`.
     //
     // It is the same test the derivation applies as `labelOwnedElsewhere`, with two
