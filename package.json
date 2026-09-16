@@ -1,6 +1,6 @@
 {
   "name": "fm-adt-toolkit",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Shared plumbing for tools built on the Claris ADT fm CLI: runner, script step display, gap register",
   "type": "module",
   "license": "MIT",
