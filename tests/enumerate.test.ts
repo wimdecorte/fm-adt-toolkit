@@ -44,7 +44,9 @@ describe('enumerateExport', () => {
     const rule = KINDS.find((r) => r.id === 'part')!;
     expect(rule.probe(part.instances[0])).toEqual({
       ops: [{ op: 'read:layout', name: 'Home', detail: true }],
-      select: 'contents.parts[type=Body]',
+      // fm 0.7.0 reports the parts at the layout's top level; before it there were no
+      // parts in the response at all and the selector pointed under `contents`.
+      select: 'parts[type=Body]',
     });
   });
   it('groups fields by datatype and fieldtype', () => {
