@@ -1154,7 +1154,16 @@ function wordsOf(text) {
 
 /** The words of a KEY. A 0.7.0 key spells its word boundary as a capital, so it
  *  has to be split at the humps before `wordsOf` can see the words at all —
- *  `withDialog` is two words, not one. */
+ *  `withDialog` is two words, not one.
+ *
+ *  DELIBERATELY NOT THE SAME FUNCTION as `keyWords` in
+ *  src/step-display/step-display-render.ts, which splits identically and then keeps
+ *  every word as it is. This one goes on through `wordsOf`, which drops words under
+ *  three letters and folds a trailing `s`, because here a key is being compared with a
+ *  LABEL and a two-letter word shared with one is not evidence. The app's copy is
+ *  testing a key against a masked NAME and spelling labels out of the words, where that
+ *  filtering would be wrong — and the derivation must not depend on the app's source
+ *  in any case, since the app depends on what the derivation produces. */
 function keyWords(key) {
   return wordsOf(splitCamel(key));
 }

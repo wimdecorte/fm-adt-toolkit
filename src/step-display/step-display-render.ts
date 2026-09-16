@@ -176,7 +176,16 @@ export interface StepDisplayConventions {
  *  about spaces sees `editPassword` as one word — which silently unmasked the three
  *  password keys the wide secret test exists for. Split at the humps as well, keeping
  *  an acronym run whole (`fileId` -> file, id; `verifySslCertificates` -> verify, ssl,
- *  certificates), then lower case. */
+ *  certificates), then lower case. Also at a digit, because a numbered key spells its
+ *  number as one (`input1Password` -> input, 1, password).
+ *
+ *  DELIBERATELY NOT THE SAME FUNCTION as `keyWords` in scripts/fm-segment-parse.mjs, which
+ *  splits the same way and then drops words under three letters and folds a trailing `s`.
+ *  That one compares a key against a LABEL, where a short word is noise; this one tests a
+ *  key against a masked NAME and builds a label out of the words, where dropping `id` or
+ *  folding `options` to `option` would be wrong. The derivation must not depend on the
+ *  app's source anyway — see `oneLine` above for the same separation, checked rather
+ *  than claimed. */
 function keyWords(key: string): string[] {
   return String(key)
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
@@ -199,7 +208,10 @@ const CLI_KEY = /^[a-z][A-Za-z0-9]*$/;
  *
  *  THE ONLY GUESS LEFT IN THE LABELS, and it cannot know about a capital inside a label
  *  (`Verify SSL Certificates`, `cURL options`) because fm 0.7.0 no longer spells one in
- *  the key. Used only for a key the catalog never labels. */
+ *  the key. A TRAILING ACRONYM THEREFORE COMES OUT LOWER CASE: `externalID` infers
+ *  `External id`, not `External ID`, because the words are lower-cased before the first
+ *  is capitalised and nothing here knows which runs were acronyms. Used only for a key
+ *  the catalog never labels. */
 function inferredLabel(key: string): string {
   if (CLI_KEY.test(key)) {
     const words = keyWords(key);

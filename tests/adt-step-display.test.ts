@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { keyLabel, stepDisplay, stepDisplayText } from '../src/step-display/step-display.ts';
+import { CATALOG, keyLabel, stepDisplay, stepDisplayText } from '../src/step-display/step-display.ts';
 import {
   STEP_MASK, catalogEntry, renderStepFromCatalog, stepConventions,
 } from '../src/step-display/step-display-render.ts';
-import { CATALOG } from '../src/step-display/step-display.ts';
 import type { ScriptDetailStep } from '../src/types.ts';
 
 /** The renderer reads `src/catalogs/fm-step-display.json`, so most of what is asserted
@@ -1004,7 +1003,7 @@ describe('hiddenWhen, the option FileMaker stops printing', () => {
  *  second is the failure mode: a consumer still on 0.6.0 does not get an error, it gets a
  *  quieter line, and that is worth seeing in a test rather than in a bug report. */
 describe('a step as fm 0.7.0 reports it', () => {
-  // Script 55 step 583 of the corpus, verbatim, minus the uuid and the slots.
+  // Script 55 step 547 of the corpus, verbatim, minus the uuid and the slots.
   const PDF: ScriptDetailStep = {
     stepID: 144,
     step: 'Save Records as PDF',
@@ -1038,8 +1037,11 @@ describe('a step as fm 0.7.0 reports it', () => {
 });
 
 describe('a step an older fm reported', () => {
-  // The same step as fm 0.6.0 spelled it. Nothing aliases the old names back: the catalog
-  // says what was MEASURED, and measuring 0.7.0 is not a licence to assert 0.6.0.
+  // A SUBSET of the same step as fm 0.6.0 spelled it: the three keys that render nothing
+  // here either way (`open automatically`, `create email`, `append to existing file`, all
+  // false) are left out, so what the assertions below name is the whole of what is left.
+  // Nothing aliases the old names back: the catalog says what was MEASURED, and measuring
+  // 0.7.0 is not a licence to assert 0.6.0.
   const OLD: ScriptDetailStep = {
     stepID: 144,
     step: 'Save Records as PDF',
