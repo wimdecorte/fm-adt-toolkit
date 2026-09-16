@@ -457,11 +457,36 @@ function segmentReported(step: ScriptDetailStep, segment: StepSegment): boolean 
   return reports(step, segment.key, segment.slot);
 }
 
+/** A key folded to letters and digits, lower case: `withDialog`, `with dialog` and
+ *  `With Dialog` are one word under it. Exported so a consumer that reads a step's
+ *  keys itself (the inspector's analyses) can apply the same rule. */
+export function foldKey(key: string): string {
+  return key.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+/** The key on THIS step that answers for a catalog key: the exact spelling when the step
+ *  has it, else the one key whose fold matches, else nothing.
+ *
+ *  fm 0.7.0 respelled every multi-word option key in camelCase (`with dialog` became
+ *  `withDialog`; 109 of the 113 keys that changed differ only in case and separators).
+ *  The catalog is measured against one build and says exactly what that build spelled;
+ *  this fallback keeps a step written by another build rendering in the meantime. Exact
+ *  wins first because fm 0.6.0 itself emitted keys that differ only in case (`url` and
+ *  `URL`), and folding must never pick the wrong one of a pair the step really carries.
+ *  It absorbs case and spacing, not words: `append to existing file` does not fold to
+ *  `appendToExistingPdf`, and a key like that reaches the baseline, as before. */
+function keyOn(step: ScriptDetailStep, key: string): string | undefined {
+  if (Object.hasOwn(step, key)) return key;
+  const want = foldKey(key);
+  for (const held of Object.keys(step)) if (foldKey(held) === want) return held;
+  return undefined;
+}
+
 /** Does the CLI report this key — or, for a value it does not name, this slot? The one
  *  presence predicate, shared by a segment's own key and by `hiddenWhen`'s deciding key, so
  *  the two cannot answer the same question differently. */
 function reports(step: ScriptDetailStep, key: string, slot: StepSlotRef | undefined): boolean {
-  if (!slot) return Object.hasOwn(step, key);
+  if (!slot) return keyOn(step, key) !== undefined;
   const slots = step.slots;
   if (!isRecord(slots)) return false;
   const held = slots[slot.member];
@@ -476,7 +501,10 @@ function reports(step: ScriptDetailStep, key: string, slot: StepSlotRef | undefi
  *  (`slots.calc["0"]`), and a missing member or number is the same fact as a missing
  *  key: not reported. */
 function segmentValue(step: ScriptDetailStep, segment: StepSegment): unknown {
-  if (!segment.slot) return step[segment.key];
+  if (!segment.slot) {
+    const held = keyOn(step, segment.key);
+    return held === undefined ? undefined : step[held];
+  }
   const slots = step.slots;
   if (!isRecord(slots)) return undefined;
   const held = slots[segment.slot.member];
@@ -492,7 +520,8 @@ function labelOf(segment: StepSegment, step: ScriptDetailStep): string {
   const fixed = segment.label ?? '';
   if (!segment.labelWhen) return fixed;
   const decider = segment.labelWhen.key;
-  const state = Object.hasOwn(step, decider) ? oneLine(step[decider]) : 'absent';
+  const held = keyOn(step, decider);
+  const state = held === undefined ? 'absent' : oneLine(step[held]);
   return segment.labelWhen.labels[state] ?? fixed;
 }
 
@@ -944,7 +973,15 @@ function baselineOptions(
    *  would repeat one of them is dropped: see `taken` below. */
   taken: ReadonlySet<string> = new Set(),
 ): Array<{ key: string; text: string }> {
-  const strong = stronglyAccounted(entry);
+  // A named key a segment consumed under its folded spelling (see `keyOn`) is accounted
+  // for too, else the baseline would print `with dialog` a second time. Only the key the
+  // segment actually read is added: a step carrying both `url` and `URL` rendered `url`,
+  // and `URL` is a value of its own that the baseline still owes the reader.
+  const strong = new Set(stronglyAccounted(entry));
+  for (const id of [...strong]) {
+    const held = keyOn(step, id);
+    if (held !== undefined) strong.add(held);
+  }
   const places = reportedValues(step).filter((place) => !strong.has(place.id));
   const repeated = repeatedMembers(places);
   const options: Array<{ key: string; text: string }> = [];

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { CATALOG, keyLabel, stepDisplay, stepDisplayText } from '../src/step-display/step-display.ts';
 import {
-  STEP_MASK, catalogEntry, renderStepFromCatalog, stepConventions,
+  STEP_MASK, catalogEntry, foldKey, renderStepFromCatalog, stepConventions,
 } from '../src/step-display/step-display-render.ts';
 import type { ScriptDetailStep } from '../src/types.ts';
 
@@ -1040,8 +1040,8 @@ describe('a step an older fm reported', () => {
   // A SUBSET of the same step as fm 0.6.0 spelled it: the three keys that render nothing
   // here either way (`open automatically`, `create email`, `append to existing file`, all
   // false) are left out, so what the assertions below name is the whole of what is left.
-  // Nothing aliases the old names back: the catalog says what was MEASURED, and measuring
-  // 0.7.0 is not a licence to assert 0.6.0.
+  // The catalog still says only what was MEASURED (camelCase, fm 0.7.0); what bridges the
+  // two spellings is `keyOn`'s folded fallback in the renderer, not an alias in the data.
   const OLD: ScriptDetailStep = {
     stepID: 144,
     step: 'Save Records as PDF',
@@ -1050,30 +1050,51 @@ describe('a step an older fm reported', () => {
     'create folders': false,
     restore: false,
   };
+  const NEW: ScriptDetailStep = {
+    stepID: 144,
+    step: 'Save Records as PDF',
+    records: 'browsedRecords',
+    withDialog: true,
+    createFolders: false,
+    restore: false,
+  };
 
-  it('prints the old key from the BASELINE, which is the visible signal', () => {
-    const { baseline, contributed, gaps } = renderStepFromCatalog(
+  it('renders exactly as the camelCase spelling does, through the folded fallback', () => {
+    expect(stepDisplayText(OLD)).toBe(stepDisplayText(NEW));
+    expect(stepDisplayText(OLD)).toBe('Save Records as PDF [ Create folders: Off ; With dialog: On ; Records being browsed ]');
+  });
+
+  it('does not print the old key a second time from the baseline', () => {
+    const { baseline, gaps, contributed } = renderStepFromCatalog(
       OLD,
       catalogEntry(CATALOG, 'Save Records as PDF')!,
       stepConventions(CATALOG),
     );
-    // `gaps` is for a measured segment that produced nothing, and no segment is keyed on
-    // `with dialog` any more, so the key cannot reach one. What it reaches instead is
-    // `baseline` — the renderer's own record of an option it printed by convention rather
-    // than by measurement — and that IS the signal: a consumer asking how much of a line
-    // is measured sees this key named.
     expect(gaps).toEqual([]);
-    expect(baseline).toEqual(['with dialog']);
-    expect(contributed).toEqual(['records', 'with dialog']);
+    expect(baseline).toEqual([]);
+    expect(contributed).toEqual(['createFolders', 'withDialog', 'records']);
   });
 
-  it('shows what the old spelling costs: a coarser option, and a lost one', () => {
-    // `With dialog` without its `: On`, because the measured `labelledState` render is
-    // keyed on `withDialog` and the baseline knows only that the flag is true. And
-    // `create folders: false` prints NOTHING: the baseline drops a false flag, where the
-    // measured segment would have written `Create folders: Off`. Neither is an error, and
-    // that is exactly why it is pinned.
-    expect(stepDisplayText(OLD)).toBe('Save Records as PDF [ Records being browsed ; With dialog ]');
-    expect(stepDisplayText(OLD)).not.toContain('Create folders');
+  it('absorbs case and separators only: a key fm renamed by WORD still reaches the baseline', () => {
+    // `append to existing file` became `appendToExistingPdf`; no fold makes those equal.
+    const step: ScriptDetailStep = { ...OLD, 'append to existing file': true };
+    const { baseline } = renderStepFromCatalog(
+      step,
+      catalogEntry(CATALOG, 'Save Records as PDF')!,
+      stepConventions(CATALOG),
+    );
+    expect(baseline).toEqual(['append to existing file']);
+  });
+
+  it('prefers the exact key when a step carries two spellings that fold together', () => {
+    // fm 0.6.0 emitted both `url` and `URL` on Insert from URL; the measured key wins.
+    const entry = catalogEntry(CATALOG, 'Insert from URL')!;
+    const urlKey = entry.segments.find((s) => foldKey(s.key) === 'url')!.key;
+    const other = urlKey === 'url' ? 'URL' : 'url';
+    const step: ScriptDetailStep = { stepID: 160, step: 'Insert from URL', [urlKey]: '"https://exact"', [other]: '"https://folded"' };
+    const text = stepDisplayText(step);
+    expect(text).toContain('https://exact');
+    const { baseline } = renderStepFromCatalog(step, entry, stepConventions(CATALOG));
+    expect(baseline).toEqual([other]);
   });
 });

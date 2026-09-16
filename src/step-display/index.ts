@@ -2,7 +2,7 @@ export { stepDisplay, stepDisplayText, keyLabel, CATALOG } from './step-display.
 export type { StepDisplay } from './step-display.ts';
 export {
   renderStepFromCatalog, renderStepByConvention, stepConventions, catalogEntry,
-  segmentID, maskedKeysOf, oneLine, STEP_MASK, ARTEFACT_KEYS,
+  segmentID, maskedKeysOf, oneLine, STEP_MASK, ARTEFACT_KEYS, foldKey,
 } from './step-display-render.ts';
 export type {
   StepRendered, StepRenderGap, StepRenderGapKind, StepRenderList, StepDisplayConventions,
