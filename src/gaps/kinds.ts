@@ -87,7 +87,12 @@ export const KINDS: KindRule[] = [
   { id: 'layout', op: 'read:layout', kind: 'layout', file: 'LayoutCatalog', path: ['Structure', 'AddAction', 'LayoutCatalog', 'Layout'], skip: ['PartsList'], idAttr: 'id',
     probe: (i) => ({ ops: [{ op: 'read:layout', name: i.name ?? '', detail: true }] }) },
   { id: 'part', op: 'read:layout', kind: 'part', file: 'LayoutCatalog', path: ['Structure', 'AddAction', 'LayoutCatalog', 'Layout', 'PartsList', 'Part'], groupBy: 'type', skip: ['LayoutObject'],
-    probe: (i) => ({ ...layoutProbe(i), select: 'contents.parts[type=' + (i.context.part ?? '') + ']' }) },
+    // fm 0.7.0 reports the parts at the layout's TOP level (`parts`), not under `contents`
+    // — before 0.7.0 it reported no parts at all, and the register's part entries all
+    // carried `expectedError: container key absent: contents.parts`. The selector's value
+    // match is case- and punctuation-insensitive (see `select.ts`), so the export's
+    // `Leading Sub-summary` still finds fm's `leadingSubSummary`.
+    probe: (i) => ({ ...layoutProbe(i), select: 'parts[type=' + (i.context.part ?? '') + ']' }) },
   { id: 'layout-object', op: 'read:layout', kind: 'object', file: 'LayoutCatalog', path: ['Structure', 'AddAction', 'LayoutCatalog', 'Layout', 'PartsList', 'Part', '*', 'LayoutObject'],
     groupBy: 'type', groupKey: layoutObjectGroupKey, skip: ['LayoutObject'], idAttr: 'id',
     probe: (i) => ({ ...layoutProbe(i), select: '**objects[id=' + i.id + ']' }) },
@@ -140,10 +145,21 @@ export const KINDS: KindRule[] = [
     probe: (i) => ({ ops: [{ op: 'read:externalDataSource', id: Number(i.id) }] }) },
   { id: 'base-directory', op: 'read:baseDirectory', kind: 'baseDirectory', file: 'BaseDirectoryCatalog', path: ['Structure', 'AddAction', 'BaseDirectoryCatalog', 'BaseDirectory'], skip: [], idAttr: 'id',
     probe: (i) => ({ ops: [{ op: 'read:baseDirectory', id: Number(i.id) }] }) },
+  // fm 0.7.0 refuses `id` here: an entry of this catalog has no id in or out (see
+  // `fm help persistentData`) — FileMaker files it under one name built from the
+  // (instance, key) pair, so the pair IS the address. The export records the instance as
+  // `PersistentStore@instanceID` but `enumerateExport` keeps only `id` and `@name`, so
+  // the instance half comes from `context.instance` when a future reference carries it
+  // and otherwise from '' — the no-instance namespace, which is what Ooe's export writes
+  // for every entry, and which fm treats as a namespace of its own rather than a default.
   { id: 'persistent-store', op: 'read:persistentData', kind: 'persistentData', file: 'PersistentStoreCatalog', path: ['Structure', 'AddAction', 'PersistentStoreCatalog', 'PersistentStore'], skip: [], idAttr: 'id',
-    probe: (i) => ({ ops: [{ op: 'read:persistentData', id: Number(i.id) }] }) },
-  { id: 'theme', op: 'none', kind: 'theme', file: 'ThemeCatalog', path: ['Structure', 'AddAction', 'ThemeCatalog', 'Theme'], skip: ['CSS', 'Image'], idAttr: 'id',
-    probe: () => ({ ops: [{ op: 'read:layout', name: 'File Open', detail: true }], select: 'theme' }) },
+    probe: (i) => ({ ops: [{ op: 'read:persistentData', instance: i.context.instance ?? '', key: i.name ?? '' }] }) },
+  // fm 0.7.0 has a theme catalog of its own. Before it, the only theme fm reported was the
+  // summary a layout carries (`read:layout` -> `theme`), which is why this rule used to
+  // probe a layout; `read:theme` describe answers with the stylesheet, the palette, the
+  // named styles and the layouts using the theme.
+  { id: 'theme', op: 'read:theme', kind: 'theme', file: 'ThemeCatalog', path: ['Structure', 'AddAction', 'ThemeCatalog', 'Theme'], skip: ['CSS', 'Image'], idAttr: 'id',
+    probe: (i) => ({ ops: [{ op: 'read:theme', id: Number(i.id) }] }) },
   // Metadata's own document element is `Metadata` directly under the file root (no `Structure`
   // wrapper, unlike every other catalog); `AddAction` inside it wraps the 12-member File Options
   // block. `IconData` (the file's custom icon, as nested Base64/Hex binary streams) is skipped: it
