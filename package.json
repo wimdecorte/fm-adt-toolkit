@@ -37,6 +37,10 @@
       "types": "./dist/gaps/checks.d.ts",
       "default": "./dist/gaps/checks.js"
     },
+    "./intake": {
+      "types": "./gaps/intake.d.ts",
+      "default": "./gaps/intake.json"
+    },
     "./package.json": "./package.json",
     "./read-only": {
       "types": "./dist/read-only.d.ts",
@@ -62,6 +66,9 @@
       ],
       "read-only": [
         "dist/read-only.d.ts"
+      ],
+      "intake": [
+        "gaps/intake.d.ts"
       ]
     }
   },

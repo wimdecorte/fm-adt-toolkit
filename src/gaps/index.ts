@@ -9,6 +9,8 @@ export { probeId, writeEvidence, readEvidence, evidencePath, evidenceDir, previo
 export { captureHelp, helpSnapshotPath, writeHelpSnapshot, previousHelpSnapshot } from './help-snapshot.ts';
 export { summariseHelp, diffHelp, renderHelpDiff } from './help-diff.ts';
 export type { HelpKey, HelpNode, HelpJson, HelpSummary, HelpDiff } from './help-diff.ts';
+export { intakePath, writeIntake, readIntake } from './intake.ts';
+export type { Intake } from './intake.ts';
 export { selectInstance, selectorContainer, selectorFailure } from './select.ts';
 export { flattenKeys, normaliseName, autoMatch } from './match.ts';
 export { enumerateExport, enumerateKind, writeReferences, referenceFileName, attributePaths, findByChain } from './enumerate.ts';

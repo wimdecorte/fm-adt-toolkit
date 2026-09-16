@@ -33,7 +33,7 @@ import { assertReadOnly } from '../dist/read-only.js';
 import {
   loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName,
   KINDS, draftEntry, selectInstance, evidenceDir, fmTypeMismatch,
-  captureHelpSince, helpSurfaceSince, summariseHelp, diffHelp, renderHelpDiff,
+  captureHelpSince, helpSurfaceSince, summariseHelp, diffHelp, renderHelpDiff, writeIntake,
 } from '../dist/gaps/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -141,6 +141,10 @@ const entries = loadRegister(registerPath);
 const out = await runChecks(entries, run, { version: cli.version, build, date, root: evidenceRoot, commandFor: (argv) => ['fm', ...argv].join(' ') });
 if (out.fatal) { console.error(`fatal: ${out.fatal.code}: ${out.fatal.message}`); for (const s of out.fatal.suggestions ?? []) console.error(s); console.error(out.fatal.code === 'batch_misaligned' ? 'register not written: the batch did not line up with the ops sent' : 'register not written: the run never opened the file'); process.exit(1); }
 saveRegister(registerPath, out.entries);
+// Written with the register, not with the help snapshot above: this file's one job is to
+// agree with the register's own lastChecked stamps, so the fatal path that leaves the
+// register alone must leave this alone too.
+writeIntake(evidenceRoot, cli.version, build, date);
 const verbose = args.verbose === true || args.verbose === 'true';
 const show = (label, rows, fmt) => { console.log(`\n${label} (${rows.length})`); for (const r of rows) console.log('  ' + fmt(r)); };
 show('Still missing', out.stillMissing, (r) => `${r.entry.id}  ${r.attribute.name}`);

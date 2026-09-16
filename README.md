@@ -6,8 +6,40 @@ Shared code for tools built on the Claris Agentic Development Toolkit `fm` CLI.
 - `fm-adt-toolkit/step-display`: render a script step the way FileMaker's Script Workspace writes it, from the catalog in `src/catalogs/`. The catalog spells each option key exactly as the fm build it was measured against does; the renderer looks a key up exactly first and then by its case-and-separator fold (`foldKey`), so a step written by a build that only respelled a key (`with dialog` to `withDialog`) still renders. A key renamed by word reaches the baseline, as any unmeasured key does.
 - `fm-adt-toolkit/read-only`: `isReadOnlyOp` and `assertReadOnly`, the one guard every read-only entry point shares. Read-only means `read:*` plus `evaluate:calculation` and `validate:calculation`, which fm's help guarantees never change a file. Browser safe.
 - `fm-adt-toolkit/gaps`: the register of what the CLI cannot read yet, with `fm-gaps check` to re-run every probe against a new build and `fm-gaps report` to write the Markdown for Claris. `fm-adt-toolkit/gaps/checks` is the browser-safe subset — just `evaluateCheck` and the `GapCheck` type, with none of `gaps`'s `node:fs` dependency, for code that needs to evaluate a check result without pulling in the register.
+- `fm-adt-toolkit/intake`: which fm build everything above was measured against, as `{ version, build, checked }`. See [Which build this is](#which-build-this-is).
 
-Measured against fm 0.7.0 (29823677). Node 22.18 or later.
+Node 22.18 or later.
+
+## Which build this is
+
+[`gaps/intake.json`](gaps/intake.json) names the fm build this repo's measurements come from.
+`fm-gaps check` writes it from the CLI that just answered the probes, next to where it saves the
+register, so the record cannot disagree with the run that produced it and no one has to restate
+the build in prose. A fatal batch writes neither.
+
+Consumers can read it and compare against the CLI they actually located, which is worth doing:
+the step renderer folds a respelled option key but sends a *renamed* one to the baseline
+silently, so a newer fm than this one degrades quietly rather than loudly.
+
+```js
+import intake from 'fm-adt-toolkit/intake' with { type: 'json' };
+import { locateFmCli } from 'fm-adt-toolkit/runner';
+
+const cli = await locateFmCli();
+if (cli && cli.version !== intake.version) {
+  console.warn(`fm ${cli.version} differs from this toolkit's measurements (${intake.version}, ` +
+    `build ${intake.build}, checked ${intake.checked}); renamed option keys will render from ` +
+    `the baseline and the gap register may be stale.`);
+}
+```
+
+Node needs `with { type: 'json' }` on that import. Code already pulling in the register can take
+the same record as `readIntake` and the `Intake` type from `fm-adt-toolkit/gaps` instead.
+
+Version numbers elsewhere in the docs are history, not a claim about this tree: where
+[docs/fm-step-flags-reference.md](docs/fm-step-flags-reference.md) and
+[fm_scripts/README.md](fm_scripts/README.md) say what 0.6.0 spelt and what 0.7.0 spells, they are
+explaining why a key looks the way it does.
 
 ## The coverage register
 
@@ -62,7 +94,8 @@ The runbook for picking up a new fm build:
    Newly reported, Unexplained keys (and nested).
 5. Fix the register: fmKey renames, new selectors, dropped `expectedError`s, new "(fm only)" rows
    for anything the CLI now reports that nothing in the register named yet. Re-run `check` until it
-   exits 0 with only the known expected errors.
+   exits 0 with only the known expected errors. The last `check` to exit 0 is what leaves
+   [`gaps/intake.json`](gaps/intake.json) naming the new build — nothing to edit by hand.
 6. `npx fm-gaps report --out=gaps/reports/<date>-fm-<version>.md`
 7. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts, then
    `npm run derive:step-display`.
