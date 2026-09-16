@@ -95,8 +95,8 @@ const SOURCES = [
  *  stands on evidence of its own: examples that reported the key and rendered
  *  nothing for it. That evidence is independent of the withdrawal, because the
  *  withdrawn example placed something and so never contributed to `ignoredCounts`.
- *  Measured: `cURL options specified` is reported and not displayed in 7 of its 8
- *  examples, while `function` and both `object name` keys have NO such example
+ *  Measured: `curlOptionsSpecified` is reported and not displayed in 7 of its 8
+ *  examples, while `function` and both `objectName` keys have NO such example
  *  (0 of 1) and go to `unresolved`.
  *
  *  **But a withdrawal is still the but-for cause of the `ignored` membership**, since
@@ -125,7 +125,7 @@ const SOURCES = [
  *  from an external measurement of FileMaker supplies a fact the corpus is missing. On
  *  this corpus exactly one fact qualifies, and the two that do not are instructive:
  *
- *   - `Perform Semantic Find`'s `return count` correlates PERFECTLY with the option in
+ *   - `Perform Semantic Find`'s `returnCount` correlates PERFECTLY with the option in
  *     all 10 examples (5 true and shown, 5 false and not), and the withdrawal moves only
  *     the TEXT to `count`. The switch really does decide whether FileMaker shows the
  *     option, so `never shown` is a claim about this key that the data argues against.
@@ -143,10 +143,10 @@ const WITHDRAWN_FACTS = [
     step: 'Perform SQL Query by Natural Language',
     facts: [
       { key: 'function', label: 'Web Viewer' },
-      { key: 'object name', label: 'Function Name' },
+      { key: 'objectName', label: 'Function Name' },
     ],
     reason:
-      'transposition: `object name` is what renders as `Web Viewer`, and `function` renders as ' +
+      'transposition: `objectName` is what renders as `Web Viewer`, and `function` renders as ' +
       '`Function Name` (proved by `Perform JavaScript in Web Viewer` at script 55 step 1103, text ' +
       'line 1104, which renders `Object Name: … ; Function Name: …`). Both keys report byte-identical ' +
       'calculations at script 55 step 943, so the matcher paired them backwards and BOTH halves are ' +
@@ -157,13 +157,13 @@ const WITHDRAWN_FACTS = [
     step: 'Generate Response from Model',
     facts: [
       { key: 'function', label: 'Web Viewer' },
-      { key: 'object name', label: 'Function Name' },
+      { key: 'objectName', label: 'Function Name' },
     ],
     reason:
       'the same transposition, on a second step type, and now with the same two keys: script 55 step ' +
       '880 renders `… ; Web Viewer: <calc> ; Function Name: <calc> …` and several keys carry that ' +
       'identical calculation. Until the suffix rule was generalised, the `Web Viewer` half was taken ' +
-      'by `sliding window variable repetition` — a repetition key labelled `Web Viewer`, absurd on its ' +
+      'by `slidingWindowVariableRepetition` — a repetition key labelled `Web Viewer`, absurd on its ' +
       'face — because that key had no route to a `suffix` segment; it now takes its suffix and the ' +
       'transposition shows its true shape. The recurrence proves the failure is structural wherever ' +
       'two keys hold the same value, not one located incident.',
@@ -182,13 +182,13 @@ const WITHDRAWN_FACTS = [
   {
     step: 'Perform Script on Server with Callback',
     facts: [
-      { key: 'callback state', label: 'Callback script specified' },
+      { key: 'callbackState', label: 'Callback script specified' },
       { key: 'script', label: 'Callback script specified' },
     ],
     reason:
-      'two keys took `Callback script specified:` by sharing a word with it — `callback state` shares ' +
+      'two keys took `Callback script specified:` by sharing a word with it — `callbackState` shares ' +
       '"callback", `script` shares "script" — and neither owns it. Disproved from inside the data: ' +
-      "`callback state`'s real rendering is `State:` (`halt -> Halt`, `exit -> Exit`, `resume -> " +
+      "`callbackState`'s real rendering is `State:` (`halt -> Halt`, `exit -> Exit`, `resume -> " +
       'Resume`, `pause -> Pause` at script 55 steps 98-101), and `script`\'s is the bare script name ' +
       '(`“…”` at steps 97-101). `Callback script specified` is the callback half of the ' +
       '`Specified:` option, which no reported key holds a value for at all. Both halves are withdrawn ' +
@@ -210,17 +210,17 @@ const WITHDRAWN_FACTS = [
   },
   {
     step: 'Perform Semantic Find',
-    facts: [{ key: 'return count', label: 'Return count' }],
+    facts: [{ key: 'returnCount', label: 'Return count' }],
     reason:
       'the label is this key\'s and the TEXT is another key\'s value. FileMaker writes ' +
-      '`Return count: <calc>` and `return count` is a boolean, which cannot produce a calculation — the ' +
+      '`Return count: <calc>` and `returnCount` is a boolean, which cannot produce a calculation — the ' +
       'mapping was rejected for exactly that reason and the segment then rendered nothing at all. The ' +
       'option is `count`\'s: `count` is reported in the five examples that show it (script 55 steps ' +
       '930-934) and absent in the five that do not (925-929), and its value IS the text. The earlier ' +
       'reading is already recorded as false in this plan\'s own ledger — the veto that put `count` in ' +
       '`unresolved` fired on a coincidence, and the note on it says "FileMaker really does display ' +
       '`count`, as `Return count:`". Withdrawing the label frees the option for the value-equality route, ' +
-      'which places it on `count` and leaves `return count` as a key reported and not shown.',
+      'which places it on `count` and leaves `returnCount` as a key reported and not shown.',
   },
   {
     step: 'Go to Layout',
@@ -246,7 +246,7 @@ const WITHDRAWN_FACTS = [
   },
   {
     step: 'Insert from URL',
-    facts: [{ key: 'cURL options specified', label: 'Do not automatically encode URL' }],
+    facts: [{ key: 'curlOptionsSpecified', label: 'Do not automatically encode URL' }],
     reason:
       'single-example `sole` attribution that contradicts the `ignored` entry for this key, which 7 of ' +
       'its 8 examples support. Counting was the only evidence, so this is the weakness of `sole`, not ' +
@@ -256,7 +256,7 @@ const WITHDRAWN_FACTS = [
     // WHY THIS ONE WITHDRAWAL CARRIES A SOURCE. It is the key that has already caused a real
     // defect in this project, on the one step type the app itself generates: reading it as the
     // `Specify cURL options` checkbox silently dropped the method and headers from working
-    // scripts. An option reading `cURL options specified` on a rendered line invites exactly
+    // scripts. An option reading `curlOptionsSpecified` on a rendered line invites exactly
     // that conclusion again, so a `low` claim a renderer prints anyway is not good enough here.
     attestation:
       'CLAUDE.md, which records this key as reported but not displayed and not a gate: a ' +
@@ -277,7 +277,7 @@ const WITHDRAWN_FACTS = [
 const EXTERNAL_ORDER = [
   {
     step: 'Insert from URL',
-    keys: ['verify SSL certificates', 'cURL options'],
+    keys: ['verifySslCertificates', 'curlOptions'],
     source:
       'CLAUDE.md, where a FileMaker-authored Insert from URL step is recorded as rendering ' +
       '(... ; Verify SSL Certificates ; cURL options: <calc>). No example in either script carries a ' +
@@ -303,27 +303,27 @@ const EXTERNAL_ORDER = [
  *  Ruling 3, in his words: "item 3 is clearly completely wrong and I don't
  *  understand your reasoning for it." Measured: `Perform Script` reports
  *  `script: "<name>"` in all 4 examples, and in the one that also reports
- *  `script name` FileMaker prints no script name at all — it prints
+ *  `scriptName` FileMaker prints no script name at all — it prints
  *  `Specified: By name` and the calculation. */
 const HIDDEN_WHEN = [
   {
     step: 'Perform Script',
     key: 'script',
-    keyPresent: 'script name',
+    keyPresent: 'scriptName',
     evidence:
-      'script 55 steps 87-89 report `script` without `script name` and FileMaker prints it; step 90 ' +
+      'script 55 steps 87-89 report `script` without `scriptName` and FileMaker prints it; step 90 ' +
       'reports both and FileMaker prints neither the name nor a slot for it.',
   },
   {
     step: 'Perform Script on Server',
     key: 'script',
-    keyPresent: 'script name',
+    keyPresent: 'scriptName',
     evidence: 'the same shape on the server variant: script 55 step 94 reports both and shows no script name.',
   },
   {
     step: 'Perform Script on Server with Callback',
     key: 'script',
-    keyPresent: 'script name',
+    keyPresent: 'scriptName',
     evidence: 'the same shape again: script 55 step 102 reports both and shows no script name.',
   },
 ];
@@ -452,7 +452,7 @@ function deriveHiddenWhen(collected) {
 
 /** The callback half of ruling 3 is NOT here, and the assertion is why. I wrote it
  *  by symmetry with the script half and `assertHiddenWhen` rejected it: on
- *  `Perform Script on Server with Callback`, `callback` and `callback by name`
+ *  `Perform Script on Server with Callback`, `callback` and `callbackByName`
  *  never appear together at all — the CLI simply stops reporting `callback` in the
  *  by-name state, so there is nothing for a suppression rule to describe. The
  *  symmetry was mine, not FileMaker's. */
@@ -513,7 +513,7 @@ const DISPLAY_PHRASE = /^[\p{L}<][\p{L}0-9 ,'’&./()<>_-]{0,47}$/u;
  *  text like its display name.
  *
  *  This is not tidying. Every mapping the filter rejects was measured to be the
- *  symptom of a FALSE attribution — `Save Records as PDF`'s `open password` (a
+ *  symptom of a FALSE attribution — `Save Records as PDF`'s `openPassword` (a
  *  variable) "rendering" as `Automatically open`, `Truncate Table`'s
  *  `table selection: 1` as a quoted table name that is really another key's value,
  *  and `Perform Semantic Find`'s `return count: true` as a whole calculation.
@@ -629,10 +629,10 @@ function refutedBy(match, step, key) {
   // The line carries the value in content NO key claimed. Then something was
   // rendered here and we failed to attribute it, which is a different state from
   // nothing being rendered. Measured: 7 observations, and all 7 are keys FileMaker
-  // plainly displays — `Show Custom Dialog`'s `input 2`/`input 3` and their
+  // plainly displays — `Show Custom Dialog`'s `input2`/`input3` and their
   // repetitions (`… ; $var[11] ; Table::Field[12] ]`), `Perform JavaScript in Web
-  // Viewer`'s `arg 1`/`arg 2`, and `Configure Region Monitor Script`'s
-  // `script reference` (`Script: “…” from file: “…”`). Six of the seven were found
+  // Viewer`'s `arg1`/`arg2`, and `Configure Region Monitor Script`'s
+  // `scriptReference` (`Script: “…” from file: “…”`). Six of the seven were found
   // by review as false `ignored` claims; the seventh this rule found on its own.
   const stretch = match.unmatched.find((text) => containsAtTokenBoundary(text, value));
   if (stretch !== undefined) {
@@ -698,7 +698,7 @@ function identifiesAKey(value) {
  *
  *  Measured: it fires 5 times, on `Perform Semantic Find | count` — the one
  *  `ignored` entry already known to be false (FileMaker renders `Return count:` for
- *  the pair `return count` + `count`). It found that independently. */
+ *  the pair `returnCount` + `count`). It found that independently. */
 function shownInsideAnotherOption(segments, step, key) {
   const value = valueIdentity(step[key]);
   if (value === null || value === '') return null;
@@ -1387,7 +1387,7 @@ function measurePresentation(collected) {
       // An absent-key slot has a POSITION, and that is order evidence the derivation
       // would otherwise throw away. It is the only evidence there is for a pair of
       // keys that never appear together with values: `Perform Script` reports
-      // `parameter` in one example and `script name` in another, never both, so
+      // `parameter` in one example and `scriptName` in another, never both, so
       // without the empty `Parameter:` slot's position the two are ordered
       // alphabetically — and FileMaker puts them the other way round.
       for (const item of occurrences) spliceIntoOrder(item.observation.orderEntry, key, item.start);
@@ -1709,7 +1709,7 @@ function valueEnumFact(step, entry, label, occurrences, examples, notes) {
  *  The strongest evidence class in this file — the line carries the key's own value — and
  *  the last one tried, because it only arises where the label points somewhere else.
  *  Measured on `Perform Semantic Find`: FileMaker writes `Return count: <calc>`, the label
- *  spells the boolean switch `return count`, and the TEXT is the value of a second key,
+ *  spells the boolean switch `returnCount`, and the TEXT is the value of a second key,
  *  `count`. The matcher anchors on the label, takes the option for the switch, and the
  *  calculation it holds is then no display form of `true` — so the mapping is rejected, the
  *  segment renders nothing, and `count` reads as a key FileMaker never shows.
@@ -2019,7 +2019,7 @@ function keyPresenceFact(step, label, occurrences, examples, notes) {
  *  label collision, display-form mapping — applies to it unchanged.
  *
  *  It is held under an ID rather than under its key, because the key usually has
- *  an option of its own as well (`script name` prints `Specified: By name` AND the
+ *  an option of its own as well (`scriptName` prints `Specified: By name` AND the
  *  calculation), and `entry.keyOf` maps the ID back for the emitted segment. It is
  *  spliced into each example's observed order BY POSITION, which is the whole
  *  reason this pass runs before the order is derived: the order that renders both
@@ -2086,9 +2086,9 @@ function meanFraction(examples, key) {
  *  example with the most segments" settles a contradiction between two examples,
  *  but it says nothing about a key that example never showed — and appending those
  *  at the end is measurably wrong. No `AVPlayer Play` line shows both `url` and
- *  `object name` (they are alternative sources), so the richest example's order
+ *  `objectName` (they are alternative sources), so the richest example's order
  *  put `url` LAST although eight lines render it FIRST. Same for `Insert
- *  Calculated Result`'s `select` and `Perform Script on Server`'s `script name`.
+ *  Calculated Result`'s `select` and `Perform Script on Server`'s `scriptName`.
  *
  *  So: every example contributes its pairwise precedence; a genuine contradiction
  *  is resolved by weight of examples and then by the most fully specified one (the
@@ -2353,7 +2353,7 @@ function deriveSegment(id, placements, allPlacements, entry) {
   // Values this key held while FileMaker showed nothing for it, minus every value
   // it was ever shown WITH. That subtraction is what makes the field safe: a key
   // suppressed by another option's state (`Perform Script | script`, hidden while
-  // `script name` is reported) holds the same value in both cases, so it can never
+  // `scriptName` is reported) holds the same value in both cases, so it can never
   // be mistaken for a value that never prints.
   const shown = new Set(placements.map((placement) => placement.value));
   const omitted = [...(entry.omittedValues.get(lookupKey)?.keys() ?? [])].filter((value) => !shown.has(value));
@@ -3042,7 +3042,7 @@ const REFUTATIONS = ['insideAnotherOption', 'inUnattributedContent', 'displayedU
  *  system across a `.mjs` boundary, and this catalog's whole standard is that a
  *  claimed check exists. */
 function assertUnionsMatch() {
-  const source = fs.readFileSync(path.join(ROOT, 'src', 'shared', 'adt', 'step-display-types.ts'), 'utf8');
+  const source = fs.readFileSync(path.join(ROOT, 'src', 'step-display', 'step-display-types.ts'), 'utf8');
   const union = (name) => {
     const declaration = new RegExp(`export type ${name} =([^;]*);`).exec(source);
     if (!declaration) throw new Error(`step-display-types.ts declares no ${name}`);

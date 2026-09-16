@@ -10,6 +10,13 @@ step. Nothing is a guess about FileMaker, and where the evidence is one example 
 Every figure below is printed by one script, so nothing here is asserted only in prose —
 [how to reproduce every figure](#how-to-reproduce-every-figure) is at the end.
 
+The key names are fm 0.7.0's (build 29823677), which respelled every multi-word option key
+in camelCase — `with dialog` became `withDialog`. Only the spellings moved: on the same 1203
+pairs re-read with 0.7.0 every count below is what 0.6.0 gave, but for one group. 0.6.0 spelt
+`verify SSL certificates` and `verify SSL Certificates` as two different keys and 0.7.0 spells
+both `verifySslCertificates`, so their two redundancy groups are now one and the group total
+is 225 rather than 226.
+
 ---
 
 ## Read this before anything else: there is no global bit table
@@ -283,7 +290,7 @@ key.
 
 ## Bits that duplicate a key the CLI already sends
 
-**177 distinct `(step type, bit)` pairs**, 360 claims in 230 groups. Every one of them is a
+**177 distinct `(step type, bit)` pairs**, 360 claims in 225 groups. Every one of them is a
 bit that lines up perfectly with an option FileMaker prints — and so does a named key, which
 is why none of them is a fact. A consumer should read the key.
 
@@ -291,17 +298,17 @@ The largest groups, by number of claims:
 
 | Bit | Option | Claims | Step types | The key that already says it |
 |---|---|---|---|---|
-| `0x80` | `With dialog` | 44 | 23 | `with dialog` |
+| `0x80` | `With dialog` | 44 | 23 | `withDialog` |
 | `0x1000` | `Select` | 14 | 13 | `select` |
 | `0x2000000` | `Restore` | 7 | 7 | `restore` |
 | `0x1000000` | `Pause` | 6 | 3 | `pause` |
-| `0x4000` | `With dialog` | 6 | 3 | `with dialog` |
-| `0x1` | `With dialog` | 4 | 2 | `with dialog` |
-| `0x200` | `Create folders` | 4 | 2 | `create folders` |
+| `0x4000` | `With dialog` | 6 | 3 | `withDialog` |
+| `0x1` | `With dialog` | 4 | 2 | `withDialog` |
+| `0x200` | `Create folders` | 4 | 2 | `createFolders` |
 | `0x20000` | `On` | 3 | 3 | `on` |
 | `0x20000` | `Off` | 3 | 3 | `on` |
-| `0x800` | `Specified` | 3 | 3 | the presence of `script name` |
-| `0x2000000` | `Specified` | 3 | 3 | the presence of `script name` |
+| `0x800` | `Specified` | 3 | 3 | the presence of `scriptName` |
+| `0x2000000` | `Specified` | 3 | 3 | the presence of `scriptName` |
 | `0x8` | `Using layout` | 3 | 3 | `target` |
 
 `0x2000000` is the instructive one, because it looks like a win and mostly is not. Per step

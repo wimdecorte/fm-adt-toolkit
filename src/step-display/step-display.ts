@@ -82,8 +82,8 @@ export interface StepDisplay {
  *  Two sources, strongest first:
  *
  *   1. **The catalog.** Its labels were read off the lines FileMaker itself wrote, so
- *      they carry spellings no rule could produce: `verify SSL certificates` is
- *      displayed `Verify SSL Certificates`, and `data source` on one step type is
+ *      they carry spellings no rule could produce: `verifySslCertificates` is
+ *      displayed `Verify SSL Certificates`, and `dataSource` on one step type is
  *      displayed `from file`. Where a step type is named its own label wins; without
  *      one, a key every step type spells the same way is safe to use globally, and a
  *      key whose label DIFFERS between step types (`target` is variously `Target`,

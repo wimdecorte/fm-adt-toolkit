@@ -17,9 +17,9 @@ and the CLI does not. No value of a hidden option is ever printed — not on scr
 report, not in this document.
 
 It got WIDER this round rather than looser. Printing values the catalog cannot place (section 0.1)
-means printing keys nobody measured, so a key whose NAME contains a masked one — `edit password`,
-`open password`, `smtp password`, nine of them in your two scripts — is now masked as well, wherever
-it appears. Word by word and not by substring, so `threshold` and `create folders` are untouched, and
+means printing keys nobody measured, so a key whose NAME contains a masked one — `editPassword`,
+`openPassword`, `smtpPassword`, nine of them in your two scripts — is now masked as well, wherever
+it appears. Word by word and not by substring, so `threshold` and `createFolders` are untouched, and
 never on a measured option: `Add Account [ … ; Expire password ]` prints FileMaker's own wording for
 a switch that carries no value at all.
 
@@ -55,7 +55,7 @@ Neither command touches your file. Nothing in this repo runs the `fm` CLI.
 **The exact count FELL this round, by 30, and that is the point of the round rather than a
 regression.** Section 0 is why. In short: we were printing nothing at all for 105 values the CLI
 sends, because the catalog could not say confidently how FileMaker phrases them. 104 now print; the
-105th is `cURL options specified`, whose claim gained the evidence it was missing instead — 0.2.
+105th is `curlOptionsSpecified`, whose claim gained the evidence it was missing instead — 0.2.
 On 30 of those lines FileMaker prints no such option, so those 30 steps move out of "exactly right"
 and into your column, on your own ruling — *"any weAddAnOption is not a problem, FM does not always
 show all configured options so if we do then that is fine."*
@@ -171,7 +171,7 @@ another is set:
 | Why nothing was printed | Values | Example | Now |
 |---|---|---|---|
 | `ignored` at `low` confidence, with a printable value | 71 | `Trigger Claris Connect Flow`'s authentication | prints |
-| `unresolved` — refuted, withdrawn, or its label owned elsewhere | 16 | `Perform JavaScript in Web Viewer`'s `arg 1`/`arg 2`, whose values FileMaker's own line SHOWS | prints |
+| `unresolved` — refuted, withdrawn, or its label owned elsewhere | 16 | `Perform JavaScript in Web Viewer`'s `arg1`/`arg2`, whose values FileMaker's own line SHOWS | prints |
 | a segment's display form was missing | 16 | `Truncate Table [ With dialog: Off ]`, where the CLI sent a table id | prints the id |
 | the catalog marks the text unreproducible | 1 | `Set Error Logging`, your example | prints the calculation |
 | `ignored` at `low` confidence, value `false` | 11 | an off switch, which FileMaker does not print either | still nothing, correctly |
@@ -210,7 +210,7 @@ fifth is described there.
 
 # 0.2 The one thing the baseline printed that it should not have — closed
 
-The baseline briefly printed `Insert from URL`'s `cURL options specified` on the one step where it is
+The baseline briefly printed `Insert from URL`'s `curlOptionsSpecified` on the one step where it is
 true. **That is the key that has already caused a real defect in this project**, on the one step type
 the app itself generates: reading it as the *Specify cURL options* checkbox silently dropped the
 method and headers from working scripts, because a FileMaker-authored step reads it back `false`
@@ -230,7 +230,7 @@ into the catalog beside it so nothing reads as corpus-measured that is not.
 compromise.** Two other claims are withdrawal-dependent and both keep their doubt, because their
 withdrawals argue from this corpus rather than from outside it:
 
-- `Perform Semantic Find`'s `return count` predicts the option perfectly in all 10 examples — 5 true
+- `Perform Semantic Find`'s `returnCount` predicts the option perfectly in all 10 examples — 5 true
   and shown, 5 false and not — and its withdrawal moves only the option's TEXT to the key that
   supplies it. The switch really does decide whether FileMaker shows the option, so *never shown* is
   a claim the data argues against.
@@ -552,7 +552,7 @@ confirmation that it means nothing for our purposes.
 
 - The repetition FileMaker appends to an option is **not in the CLI's output in any form** — see section 5.
 - The privilege set name is **not in the CLI's output in any form** — see section 5.
-- `cURL options specified` is not a gate on `cURL options`; see `CLAUDE.md`. **And it is not an
+- `curlOptionsSpecified` is not a gate on `curlOptions`; see `CLAUDE.md`. **And it is not an
   option either**, on the same source: the catalog's never-shown claim for it now carries that
   attestation and reads `measured`, so nothing prints it whichever way it reads. Closed in 0.2.
 
@@ -635,7 +635,7 @@ And three did not, each for a reason worth having in writing rather than redisco
   half is settled on two OTHER step types where the same key does the same thing, but the callback
   half has no precedent anywhere in the corpus.
 - **The remaining value lookups (2 + 1 steps, shape 8).** `Truncate Table` reports
-  `table selection: 1` and an internal id; FileMaker prints a table NAME. `Install Menu Set` reports
+  `tableSelection: 1` and an internal id; FileMaker prints a table NAME. `Install Menu Set` reports
   an internal id; FileMaker prints a menu set name. The previous note in this document said the name
   "sits in the bag of unnamed values" — **that was wrong, and it is corrected here**: the bag holds
   the id, not the name. Two of the three names FileMaker prints are its own built-in ones and could

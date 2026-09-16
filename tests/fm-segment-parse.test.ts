@@ -36,15 +36,42 @@ describe('bracketContent', () => {
 
 describe('labelCandidates', () => {
   it('includes the key verbatim', () => {
-    expect(labelCandidates('cURL options')).toContain('cURL options');
+    expect(labelCandidates('curlOptions')).toContain('curlOptions');
   });
 
   it('includes a leading-capital form', () => {
-    expect(labelCandidates('with dialog')).toContain('With dialog');
+    expect(labelCandidates('withDialog')).toContain('With dialog');
   });
 
   it('includes a start-case form for a multi-word key', () => {
-    expect(labelCandidates('verify SSL certificates')).toContain('Verify SSL Certificates');
+    expect(labelCandidates('verifySslCertificates')).toContain('Verify Ssl Certificates');
+  });
+
+  it('splits a camelCase key at its humps and its digits', () => {
+    // fm 0.7.0 spells a multi-word key in camelCase, so the word boundary that used to
+    // be a space is now a capital — and a numbered key (`input 1` -> `input1`) needs the
+    // digit read as a boundary too, or `Input 1:` is never found.
+    expect(labelCandidates('withDialog')).toContain('with Dialog');
+    expect(labelCandidates('input1Label')).toContain('Input 1 label');
+  });
+
+  it('finds a label whose capitals the 0.7.0 key can no longer spell', () => {
+    // `verifySslCertificates` cannot produce `SSL`, so pass 1 matches the label with
+    // case folded away and records the capitals FileMaker actually printed.
+    const step = { stepID: 160, step: 'Insert from URL', verifySslCertificates: true };
+    const { segments } = matchSegments(
+      step,
+      'Insert from URL [ Verify SSL Certificates: On ]',
+      'Insert from URL',
+    );
+    expect(segments).toEqual([
+      {
+        key: 'verifySslCertificates',
+        render: 'labelledState',
+        label: 'Verify SSL Certificates',
+        value: 'On',
+      },
+    ]);
   });
 });
 
@@ -55,11 +82,11 @@ describe('matchSegments — the Insert from URL ground truth', () => {
     step: 'Insert from URL',
     target: '$result',
     url: '$url',
-    'cURL options': '$cURL_options',
-    'verify SSL certificates': true,
+    'curlOptions': '$cURL_options',
+    'verifySslCertificates': true,
     select: true,
-    'with dialog': false,
-    'cURL options specified': false,
+    'withDialog': false,
+    'curlOptionsSpecified': false,
   };
   const line =
     'Insert from URL [ Select ; With dialog: Off ; Target: $result ; $url ; Verify SSL Certificates ; cURL options: $cURL_options ]';
@@ -68,11 +95,11 @@ describe('matchSegments — the Insert from URL ground truth', () => {
     const { segments } = matchSegments(step, line, 'Insert from URL');
     expect(segments.map((s: Segment) => s.key)).toEqual([
       'select',
-      'with dialog',
+      'withDialog',
       'target',
       'url',
-      'verify SSL certificates',
-      'cURL options',
+      'verifySslCertificates',
+      'curlOptions',
     ]);
   });
 
@@ -80,17 +107,17 @@ describe('matchSegments — the Insert from URL ground truth', () => {
     const { segments } = matchSegments(step, line, 'Insert from URL');
     const byKey = Object.fromEntries(segments.map((s: Segment) => [s.key, s.render]));
     expect(byKey.select).toBe('bareWhenTrue');
-    expect(byKey['with dialog']).toBe('labelledState');
+    expect(byKey['withDialog']).toBe('labelledState');
     expect(byKey.target).toBe('labelled');
     expect(byKey.url).toBe('bare');
-    expect(byKey['verify SSL certificates']).toBe('bareWhenTrue');
-    expect(byKey['cURL options']).toBe('labelled');
+    expect(byKey['verifySslCertificates']).toBe('bareWhenTrue');
+    expect(byKey['curlOptions']).toBe('labelled');
   });
 
   it('reports the key FileMaker never shows as ignored, not unmatched', () => {
     const { unmatched, ignoredKeys } = matchSegments(step, line, 'Insert from URL');
     expect(unmatched).toEqual([]);
-    expect(ignoredKeys).toContain('cURL options specified');
+    expect(ignoredKeys).toContain('curlOptionsSpecified');
   });
 });
 
@@ -128,7 +155,7 @@ describe('matchSegments — a masked password', () => {
     step: 'Add Account',
     account: '$account_var',
     password: '$password_var',
-    'expire password': true,
+    'expirePassword': true,
   };
   const line =
     'Add Account [ Authenticate via: FileMaker ; Account Name: $account_var ; Password: •••••••• ; Privilege Set: [Data Entry Only] ; Expire password ]';
@@ -168,7 +195,7 @@ describe('matchSegments — a masked password', () => {
 
   it('still places the boolean rendered as its own label', () => {
     const { segments } = matchSegments(step, line, 'Add Account');
-    expect(segments.find((s: Segment) => s.key === 'expire password').render).toBe('bareWhenTrue');
+    expect(segments.find((s: Segment) => s.key === 'expirePassword').render).toBe('bareWhenTrue');
   });
 });
 
@@ -239,21 +266,21 @@ describe('matchSegments — an option must never swallow the next one', () => {
   it('stops a decoration at the option boundary', () => {
     // Measured (Generate Response from Model): `messages` shows with a
     // repetition the CLI reports for a different field. If the decoration is
-    // allowed to run past the `;`, `sliding window variable` looks as if
+    // allowed to run past the `;`, `slidingWindowVariable` looks as if
     // FileMaker never showed it — while the line shows it under its own label.
     const step = {
       stepID: 199,
       step: 'Generate Response from Model',
       repetition: 0,
       messages: '$target',
-      'sliding window variable': '$history',
-      'sliding window count': '3',
+      'slidingWindowVariable': '$history',
+      'slidingWindowCount': '3',
     };
     const line =
       'Generate Response from Model [ Messages: $target[10] ; Save Message History To: $history[7] ; Message History Count: 3 ]';
     const { segments, ignoredKeys } = matchSegments(step, line, 'Generate Response from Model');
     expect(segments.find((s: Segment) => s.key === 'messages').value).toBe('$target[10]');
-    expect(ignoredKeys).not.toContain('sliding window variable');
+    expect(ignoredKeys).not.toContain('slidingWindowVariable');
   });
 
   it('cuts a span back to its first option when nothing classifies', () => {
@@ -341,7 +368,7 @@ describe('matchSegments — an option must never swallow the next one', () => {
 
   it('credits a SECOND repetition key from the decoration on its own host', () => {
     // Measured on `Generate Response from Model`: `repetition` belongs to `target`
-    // and `sliding window variable repetition` to `sliding window variable`. Keying
+    // and `slidingWindowVariableRepetition` to `slidingWindowVariable`. Keying
     // the suffix rule off the literal string `repetition` credited the first and
     // left the second reported as never displayed — while FileMaker was displaying
     // it, and the matcher was recording the proof in `decorated`.
@@ -350,8 +377,8 @@ describe('matchSegments — an option must never swallow the next one', () => {
       step: 'Generate Response from Model',
       target: '$out',
       repetition: '7',
-      'sliding window variable': '$hist',
-      'sliding window variable repetition': '9',
+      'slidingWindowVariable': '$hist',
+      'slidingWindowVariableRepetition': '9',
     };
     const line = 'Generate Response from Model [ Response: $out[7] ; Save Message History To: $hist[9] ]';
     const { segments, unmatched, ignoredKeys } = matchSegments(step, line, 'Generate Response from Model');
@@ -361,8 +388,8 @@ describe('matchSegments — an option must never swallow the next one', () => {
       // The host is matched with a DECORATION, not with a repetition variant:
       // `renderVariants` only offers the plain `repetition` key's suffix, which is
       // why the second repetition needed the decoration route in the first place.
-      { key: 'sliding window variable', render: 'labelled', label: 'Save Message History To', value: '$hist[9]', decorated: '[9]', attributed: 'valueWords' },
-      { key: 'sliding window variable repetition', render: 'suffix', label: null, value: '[9]', suffixOf: 'sliding window variable' },
+      { key: 'slidingWindowVariable', render: 'labelled', label: 'Save Message History To', value: '$hist[9]', decorated: '[9]', attributed: 'valueWords' },
+      { key: 'slidingWindowVariableRepetition', render: 'suffix', label: null, value: '[9]', suffixOf: 'slidingWindowVariable' },
     ]);
     expect(unmatched).toEqual([]);
     expect(ignoredKeys).toEqual([]);
@@ -370,28 +397,28 @@ describe('matchSegments — an option must never swallow the next one', () => {
 
   it('lets a repetition take a Repetition label but not another option label', () => {
     // Two halves of one rule. FileMaker DOES label some repetitions, for a key it
-    // does not spell (`AVPlayer Play`'s `object repetition` renders
+    // does not spell (`AVPlayer Play`'s `objectRepetition` renders
     // `Repetition: 2`), so that label must be claimable. Any other label belongs to
     // another option, even when the values are identical — which is how a
     // repetition key came to claim `Web Viewer:`.
     const labelled = matchSegments(
-      { stepID: 177, step: 'AVPlayer Play', 'object name': '"AV"', 'object repetition': '2' },
+      { stepID: 177, step: 'AVPlayer Play', 'objectName': '"AV"', 'objectRepetition': '2' },
       'AVPlayer Play [ Object Name : "AV" ; Repetition: 2 ]',
       'AVPlayer Play',
     );
     expect(labelled.segments).toEqual([
-      { key: 'object name', render: 'labelled', label: 'Object Name', value: '"AV"' },
-      { key: 'object repetition', render: 'labelled', label: 'Repetition', value: '2' },
+      { key: 'objectName', render: 'labelled', label: 'Object Name', value: '"AV"' },
+      { key: 'objectRepetition', render: 'labelled', label: 'Repetition', value: '2' },
     ]);
 
     const calc = '// some calc here';
     const stolen = matchSegments(
-      { stepID: 218, step: 'Generate Response from Model', 'sliding window variable repetition': calc },
+      { stepID: 218, step: 'Generate Response from Model', 'slidingWindowVariableRepetition': calc },
       `Generate Response from Model [ Web Viewer: ${calc} ]`,
       'Generate Response from Model',
     );
     expect(stolen.segments).toEqual([]);
-    expect(stolen.ignoredKeys).toEqual(['sliding window variable repetition']);
+    expect(stolen.ignoredKeys).toEqual(['slidingWindowVariableRepetition']);
   });
 
   it('refuses a bare state word when two boolean keys could own it', () => {
@@ -514,7 +541,7 @@ describe('slots — the values the CLI does not name', () => {
     const step = {
       stepID: 91,
       step: 'Replace Field Contents',
-      'with dialog': true,
+      'withDialog': true,
       field: 'T::f',
       replace: 2,
       slots: { text: { '3': '1' }, numeric: { '2': 1 } },

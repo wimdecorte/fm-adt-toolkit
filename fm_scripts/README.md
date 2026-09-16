@@ -13,6 +13,26 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Read back with fm 0.7.0 (build 29823677) on 2026-09-16.** That build renamed every
+multi-word option key to camelCase — `with dialog` -> `withDialog`, `verify SSL
+certificates` -> `verifySslCertificates`, `append to existing file` ->
+`appendToExistingPdf` — and the catalog is keyed on those names, so both `.adt.json`
+files were re-read with nothing but `read:script` and rewritten in place. 181 distinct
+old key spellings moved; three VALUES moved with them (`openAI` -> `openAi`,
+`goToURL` -> `goToUrl`, and two members of `barcodeTypes`). Neither script itself was
+touched, both still report 48 and 1155 steps, and the `.txt` halves are unchanged —
+the Script Workspace draws the same lines it always did. The 0.6.0-era JSON is in git
+history if a spelling needs checking against it.
+
+One thing the re-read cost, recorded here because it is a fact about the DATA rather than
+about any one derivation: six segments moved from `anchored` attribution to `labelWords`
+(`verifySslCertificates` on three step types, `selectPerform`, `skipAutoEnterOptions`,
+`overrideEssLockingConflicts`, `formatForFineTuning`). `anchored` means the key's own
+spelling reproduced FileMaker's label exactly, and a 0.6.0 key could do that because it
+carried FileMaker's acronyms, slashes and hyphens — `verify SSL certificates`,
+`select/perform`, `skip auto-enter options`. camelCase spells none of the three, so those
+labels are now attributed by shared words instead. Nothing's confidence moved.
+
 **Read-only data, committed on purpose.** They come from a FileMaker file only the repo owner
 has, read with `read:script` and nothing else. Committing them is what makes the deliverable
 auditable by anyone: without them `scripts/derive-step-display.mjs` cannot rebuild the
