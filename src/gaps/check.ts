@@ -81,11 +81,18 @@ function valuesAt(instance: unknown, key: string): unknown[] {
 /** Whether fm reports this attribute on this instance: the fmKey is present, and -- when
  *  the row carries an `expect` -- the value says what the row claims. Several rows share
  *  one key (28 layout option rows all read `flags.set`), so presence alone would report
- *  every one of them the moment any single flag is set. */
+ *  every one of them the moment any single flag is set.
+ *
+ *  The value may satisfy `contains` two ways: BE the expected scalar, or be an array holding
+ *  it. The array form is what `flags.set` needs. The scalar form is what a row keyed on an
+ *  element field needs -- `references[].kind` yields one string per element, so an array-only
+ *  test could never match it, and a row written that way would read as a permanent gap even
+ *  after fm began reporting it. A gap that cannot close is worse than no row. */
 function isReported(instance: unknown, a: Attribute): boolean {
   if (!a.fmKey || !hasKey(instance, a.fmKey)) return false;
   if (!a.expect) return true;
-  return valuesAt(instance, a.fmKey).some((v) => Array.isArray(v) && v.some((x) => x === a.expect!.contains));
+  return valuesAt(instance, a.fmKey)
+    .some((v) => v === a.expect!.contains || (Array.isArray(v) && v.some((x) => x === a.expect!.contains)));
 }
 
 /** The dotted prefixes of a key, array markers stripped: 'bounds.top' -> ['bounds', 'bounds.top']. A
@@ -409,4 +416,9 @@ export function helpSurfaceSince(root: string, version: string, build: string, w
   const current = helpSnapshotPath(root, version, build);
   if (!fs.existsSync(current)) return null;
   return helpDiffSince(root, version, build, fs.readFileSync(current, 'utf8'), warn);
+}
+
+/** Test seam: exposes isReported for direct testing without running a full check. */
+export function isReportedForTest(instance: unknown, a: Attribute): boolean {
+  return isReported(instance, a);
 }

@@ -1,6 +1,6 @@
 import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path';
 import { describe, it, expect } from 'vitest';
-import { runChecks } from '../src/gaps/check.ts';
+import { runChecks, isReportedForTest } from '../src/gaps/check.ts';
 import { writeEvidence } from '../src/gaps/evidence.ts';
 import type { SubjectEntry } from '../src/gaps/register.ts';
 import type { AdtOp, AdtRunResult } from '../src/types.ts';
@@ -226,5 +226,15 @@ describe('runChecks', () => {
     const out2 = await runChecks([a], fatalRun, meta(root));
     expect(out2.fatal?.code).toBe('open_failed');
     fs.rmSync(root, { recursive: true, force: true });
+  });
+  it('an expect row matches a scalar at an element key, and a member of an array', () => {
+    const instance = { references: [{ kind: 'field', name: 'T::F' }], flags: { set: ['a', 'b'] } };
+    const row = (fmKey: string, contains: string) => ({ name: 'x', path: 'x', knownFrom: 'x', fmKey, expect: { contains }, reported: false });
+    // the array form, unchanged
+    expect(isReportedForTest(instance, row('flags.set', 'a'))).toBe(true);
+    expect(isReportedForTest(instance, row('flags.set', 'zzz'))).toBe(false);
+    // the scalar-at-an-element form: this is the ratchet that must be able to close
+    expect(isReportedForTest(instance, row('references[].kind', 'field'))).toBe(true);
+    expect(isReportedForTest(instance, row('references[].kind', 'variable'))).toBe(false);
   });
 });

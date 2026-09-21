@@ -85399,11 +85399,21 @@
     },
     "attributes": [
       {
-        "name": "tokenised references of a formula (fields, occurrences, variables, functions, scripts)",
+        "name": "tokenised field and custom-function references of a formula",
         "path": "DDR_INFO/Chunk[type=FieldReference|VariableReference|FunctionRef|CustomFunctionRef|ScriptRef]",
         "knownFrom": "fm `references` — the tokens the formula refers to, one object per reference, emitted only when the op is sent `references: true` and only on the valid branch. New in fm 0.8.0-beta.0 (29827611); 0.7.0 named no token of the formula it had just parsed. PARTIAL against the SaXML chunk list this row is drawn from: fm reports FieldReference as {kind:\"field\", name, occurrence, id} — so the occurrence rides along with the field rather than being its own token — and CustomFunctionRef as {kind:\"customFunction\", name, id}. It reports NO token for a variable, a built-in function, a plug-in function or a script. Probed live on 2026-09-20: `Contacts::Name & $local & $$GLOBAL` returns the Name field alone; `GFN ( Contacts::Name )` returns the custom function and the field; `Length ( Contacts::Name )` returns the field only; `BE_Version` returns []. The plug-in half is tracked as its own gap on `plugin-call-sites`",
         "fmKey": "references",
         "reported": true
+      },
+      {
+        "name": "tokenised variable references of a formula",
+        "path": "DDR_INFO/Chunk[type=VariableReference]",
+        "knownFrom": "NOT REPORTED. fm 0.8.0-beta.0's `references` tokenises a formula's fields and its custom-function calls and nothing else: probed live on 2026-09-20, `Contacts::Name & $local & $$GLOBAL` returns the Name field alone, naming neither variable. So FileMaker's own VariableReference chunk has no counterpart here, and \"which formulas read this $$ global\" is answerable only by scanning calculation text. Keyed on the element field rather than on `references` itself so that the row CLOSES the day fm emits a variable token, rather than having to be noticed by a human first. The `variable` spelling is inferred from the two kinds fm does emit (`field`, `customFunction`); if fm chooses another word the row stays open, which understates coverage rather than overstating it",
+        "fmKey": "references[].kind",
+        "expect": {
+          "contains": "variable"
+        },
+        "reported": false
       },
       {
         "name": "what the formula was validated as (fm only)",
