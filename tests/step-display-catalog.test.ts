@@ -262,10 +262,16 @@ describe('the catalog renderer against FileMaker’s own text', () => {
       }
     }
     expect(tally.outside).toEqual([]);
-    // Measured: 61 rendered + 256 never shown + 2 unresolved. The sum is the invariant;
-    // the split may move as the derivation improves.
-    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(319);
-    expect(tally.rendered).toBeGreaterThanOrEqual(61);
+    // Measured on fm 0.8.0-beta.0 (29827611): 56 rendered + 232 never shown + 2 unresolved.
+    // The partition above is the invariant; both the sum and the split are facts about the
+    // corpus, and this build moved them. 0.8.0 reports Replace Field Contents' and Install
+    // Menu Set's options as named keys instead of anonymous `slots` places, so 29 places left
+    // the bag entirely: the sum falls 319 -> 290 and `rendered` falls 61 -> 56 because those
+    // values are now rendered from named keys, counted by the test below (whose `rendered`
+    // rose 2813 -> 3016 in the same move). A fall here is only safe to accept alongside that
+    // rise; on its own it would mean the catalog had stopped rendering something.
+    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(290);
+    expect(tally.rendered).toBeGreaterThanOrEqual(56);
   });
 
   it('has no key the catalog accounts for in no way at all', () => {
@@ -332,12 +338,23 @@ describe('the catalog renderer against FileMaker’s own text', () => {
         withheld += places.filter((id) => !printed.has(id)).length;
       }
     }
-    // Measured: 2813 options printed, 104 of them by the baseline, 937 values withheld —
-    // 660 of the 937 being the `ignored`-at-`measured` claims. `rendered` exceeds the number
-    // of values the CLI sends because a `whenAbsent` option prints for a key it does NOT send.
-    expect(rendered).toBeGreaterThanOrEqual(2813);
-    expect(baseline).toBeGreaterThanOrEqual(104);
-    expect(withheld).toBeLessThanOrEqual(937);
+    // Measured on fm 0.8.0-beta.0 (29827611): 3016 options printed, 108 of them by the
+    // baseline, 1139 values withheld. `rendered` exceeds the number of values the CLI sends
+    // because a `whenAbsent` option prints for a key it does NOT send.
+    //
+    // `withheld` ROSE, 937 -> 1139, and the ratchet above ("it may only fall") is suspended
+    // for this build rather than quietly rebased: the population it counts changed underneath
+    // it. The `continue` above skips any step carrying `opaque`, and 0.8.0 stopped sending
+    // `opaque` on Import Records (38 examples), Export Records (15), Print (10) and Page Setup
+    // (4) — so 67 steps that were excluded from this tally are now measured by it for the
+    // first time. What they bring with them is fm's new structured options: `importOptions`
+    // (30 keys), `exportOptions` (22), `printOptions` (11, nested `pageSetup` 8), `pageSetup`
+    // (8). The catalog does not render those yet, so they land in `withheld`, and this number
+    // is the size of that outstanding work, not a regression in what the catalog prints.
+    // Re-tighten it to the measured value once those objects are rendered.
+    expect(rendered).toBeGreaterThanOrEqual(3016);
+    expect(baseline).toBeGreaterThanOrEqual(108);
+    expect(withheld).toBeLessThanOrEqual(1139);
   });
 
   it('agrees with the aligner about collapsing a return', () => {
@@ -387,7 +404,13 @@ describe('the boundary between the data this repo publishes and the code it ship
       }
     }
     expect([...new Set(offenders)]).toEqual([]);
-  });
+    // Substring-searches every committed source file once per owned token, and the token set
+    // is read out of the corpus — so the work grows with the data. fm 0.8.0's structured
+    // `importOptions`/`exportOptions`/`sortOrder` objects name their fields as
+    // `Occurrence::Field` text, which widened the set enough to push this past vitest's 5s
+    // default. The timeout is raised rather than the scan narrowed: reading the names out of
+    // the data is what keeps the guard from going stale, which is the whole design.
+  }, 30_000);
 });
 
 describe('the shared renderer’s two halves', () => {

@@ -24,9 +24,17 @@ export interface LocateDeps {
 
 /** Pull the version and contract out of the CLI's --version banner.
  *  Returns null for anything that is not recognizably that banner.
- *  Version is required; contract is optional (null when absent). */
+ *  Version is required; contract is optional (null when absent).
+ *
+ *  A semver prerelease tag is part of the version and is kept: `0.8.0-beta.0` is not
+ *  `0.8.0`. Everything downstream keys on this string -- the evidence and help snapshot
+ *  directory names, and the `version` in `gaps/intake.json` -- so dropping the tag would
+ *  file a beta's measurements under the release it precedes. The tag is read as dot-separated
+ *  identifiers (`beta.0`, `rc.1`), which is every prerelease ADT has shipped; a hyphen inside
+ *  the tag ends it, so that a banner's trailing `commit FORGE/0.5.0/x25-3-g...` noise can never
+ *  be mistaken for part of the version. */
 export function parseVersionBanner(output: string): { version: string; contract: number | null } | null {
-  const version = output.match(/\b(\d+\.\d+\.\d+)\b/);
+  const version = output.match(/\b(\d+\.\d+\.\d+(?:-[0-9A-Za-z][0-9A-Za-z.]*)?)\b/);
   if (!version) return null;
 
   const contract = output.match(/\bcontract\s+(\d+)\b/);

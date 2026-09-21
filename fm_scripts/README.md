@@ -13,6 +13,26 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.8.0-beta.0 (build 29827611) on 2026-09-21.** This build replaced the
+options blob on eleven step types with structured objects, so both `.adt.json` files were
+re-read with nothing but `read:script` and rewritten in place. 96 of the 1155 steps changed
+key set; `20260625_missing.adt.json` came back byte-identical, so none of its 48 steps was
+affected. What moved, by step type: `opaque`/`editable`/`reason` gone and named options in
+their place on Import Records (38 examples), Export Records (15), Print (10) and Page Setup
+(4); `spec` replaced by `findRequests` on the four Find steps (8) and by `sortOrder` on Sort
+Records (7); `slots` replaced by named keys on Replace Field Contents (10) and by `menuSet`
+on Install Menu Set (1); and ExternalStep gained `arguments`, `pluginDescription` and
+`pluginStep`. Both scripts still report 48 and 1155 steps and the `.txt` halves are
+unchanged — the Script Workspace draws the same lines it always did.
+
+The derivation gained from it: 17 more segments (560 -> 577) and two more verified step types
+(Page Setup and Set Variable, 136 -> 138). No step type lost its verification. Export Records
+and Page Setup went from rendering nothing at all — `residual: {opaque: N}` — to rendering
+their options. What the corpus does NOT yet reach is the inside of the new objects:
+`importOptions`, `exportOptions`, `printOptions` and `pageSetup` are read but rendered by
+nothing, which is the 937 -> 1139 rise in the `withheld` count that
+`tests/step-display-catalog.test.ts` pins and explains.
+
 **Read back with fm 0.7.0 (build 29823677) on 2026-09-16.** That build renamed every
 multi-word option key to camelCase — `with dialog` -> `withDialog`, `verify SSL
 certificates` -> `verifySslCertificates`, `append to existing file` ->

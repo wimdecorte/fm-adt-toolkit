@@ -18,6 +18,17 @@ describe('parseVersionBanner', () => {
     // Verbatim `fm --version` output from ADT 0.6.0
     expect(parseVersionBanner('0.6.0 (29816214)')).toEqual({ version: '0.6.0', contract: null });
   });
+
+  it('keeps a prerelease tag, so a beta is never recorded as the release it precedes', () => {
+    // Verbatim `fm --version` output from ADT 0.8.0-beta.0. Dropping the tag would file
+    // this build's measurements under plain `0.8.0`, which a consumer comparing its own
+    // CLI's version against `gaps/intake.json` would then read as a match for 0.8.0 GA.
+    expect(parseVersionBanner('0.8.0-beta.0 (29826143)')).toEqual({ version: '0.8.0-beta.0', contract: null });
+  });
+
+  it('does not mistake a hyphenated word after the version for a prerelease tag', () => {
+    expect(parseVersionBanner('0.8.0 (29826143) (engine 26.0.1)')).toEqual({ version: '0.8.0', contract: null });
+  });
 });
 
 describe('locateFmCli', () => {

@@ -1478,7 +1478,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "spec",
+    "key": "findRequests",
     "examples": 3,
     "confidence": "measured"
    }
@@ -2018,7 +2018,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "spec",
+    "key": "findRequests",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -2237,28 +2237,76 @@ export default {
   "verified": false
  },
  "Export Records": {
-  "segments": [],
+  "segments": [
+   {
+    "key": "withDialog",
+    "render": "labelledState",
+    "label": "With dialog",
+    "values": {
+     "true": "On",
+     "false": "Off"
+    },
+    "examples": 15,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "createFolders",
+    "render": "labelledState",
+    "label": "Create folders",
+    "values": {
+     "false": "Off"
+    },
+    "examples": 15,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "path",
+    "render": "bare",
+    "quoted": true,
+    "pathForm": "fileName",
+    "examples": 14,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "openAutomatically",
+    "render": "bareWhenTrue",
+    "label": "Automatically open",
+    "examples": 13,
+    "attribution": "labelWords",
+    "confidence": "measured"
+   },
+   {
+    "key": "createEmail",
+    "render": "bareWhenTrue",
+    "label": "Create email",
+    "examples": 13,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "restore",
+    "render": "bareWhenTrue",
+    "label": "Macintosh",
+    "examples": 11,
+    "attribution": "sole",
+    "confidence": "low",
+    "doubts": [
+     "labelDisagreement",
+     "valueNotFunctional"
+    ]
+   }
+  ],
   "ignored": [
    {
-    "key": "editable",
-    "examples": 15,
-    "confidence": "measured"
-   },
-   {
-    "key": "opaque",
-    "examples": 15,
-    "confidence": "measured"
-   },
-   {
-    "key": "reason",
-    "examples": 15,
+    "key": "exportOptions",
+    "examples": 11,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 15,
-  "residual": {
-   "opaque": 15
-  },
   "verified": false
  },
  "Extend Found Set": {
@@ -2278,7 +2326,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "spec",
+    "key": "findRequests",
     "examples": 2,
     "confidence": "measured"
    }
@@ -2427,6 +2475,14 @@ export default {
     ]
    },
    {
+    "key": "arguments",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
     "key": "externalID",
     "examples": 1,
     "confidence": "low",
@@ -2444,6 +2500,22 @@ export default {
    },
    {
     "key": "plugin",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "pluginDescription",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "pluginStep",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -3619,27 +3691,95 @@ export default {
   "verified": false
  },
  "Import Records": {
-  "segments": [],
+  "segments": [
+   {
+    "key": "withDialog",
+    "render": "labelledState",
+    "label": "With dialog",
+    "values": {
+     "false": "Off",
+     "true": "On"
+    },
+    "examples": 38,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "dataSource",
+    "render": "bare",
+    "examples": 26,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "renderDisagreement"
+    ]
+   },
+   {
+    "key": "verifySslCertificates",
+    "render": "bareWhenTrue",
+    "label": "Verify SSL Certificates",
+    "examples": 1,
+    "attribution": "labelWords",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "0"
+    },
+    "render": "bare",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "1"
+    },
+    "render": "bare",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "path",
+    "render": "bare",
+    "pathForm": "fileName",
+    "examples": 13,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "renderDisagreement"
+    ]
+   }
+  ],
   "ignored": [
    {
-    "key": "editable",
-    "examples": 38,
+    "key": "importOptions",
+    "examples": 22,
     "confidence": "measured"
    },
    {
-    "key": "opaque",
+    "key": "restore",
     "examples": 38,
-    "confidence": "measured"
-   },
-   {
-    "key": "reason",
-    "examples": 35,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 38,
   "residual": {
-   "opaque": 38
+   "unattributed": 24
   },
   "verified": false
  },
@@ -4712,11 +4852,23 @@ export default {
     "omittedValues": [
      "0"
     ],
-    "examples": 2,
+    "examples": 1,
     "attribution": "sole",
     "confidence": "low",
     "doubts": [
+     "singleExample",
      "rejectedMapping"
+    ]
+   },
+   {
+    "key": "menuSet",
+    "render": "bare",
+    "quoted": true,
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
     ]
    },
    {
@@ -5337,29 +5489,37 @@ export default {
  },
  "Page Setup": {
   "displayName": "Print Setup",
-  "segments": [],
+  "segments": [
+   {
+    "key": "specifyPageSetup",
+    "render": "bareWhenTrue",
+    "label": "Restore",
+    "examples": 3,
+    "attribution": "sole",
+    "confidence": "measured"
+   },
+   {
+    "key": "withDialog",
+    "render": "labelledState",
+    "label": "With dialog",
+    "values": {
+     "true": "On",
+     "false": "Off"
+    },
+    "examples": 4,
+    "attribution": "anchored",
+    "confidence": "measured"
+   }
+  ],
   "ignored": [
    {
-    "key": "editable",
-    "examples": 4,
-    "confidence": "measured"
-   },
-   {
-    "key": "opaque",
-    "examples": 4,
-    "confidence": "measured"
-   },
-   {
-    "key": "reason",
+    "key": "pageSetup",
     "examples": 4,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 4,
-  "residual": {
-   "opaque": 4
-  },
-  "verified": false
+  "verified": true
  },
  "Paste": {
   "segments": [
@@ -5497,7 +5657,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "spec",
+    "key": "findRequests",
     "examples": 2,
     "confidence": "measured"
    }
@@ -6567,27 +6727,40 @@ export default {
   "verified": false
  },
  "Print": {
-  "segments": [],
+  "segments": [
+   {
+    "key": "withDialog",
+    "render": "labelledState",
+    "label": "With dialog",
+    "values": {
+     "true": "On",
+     "false": "Off"
+    },
+    "examples": 10,
+    "attribution": "anchored",
+    "confidence": "measured"
+   }
+  ],
   "ignored": [
    {
-    "key": "editable",
+    "key": "printOptions",
     "examples": 10,
     "confidence": "measured"
    },
    {
-    "key": "opaque",
+    "key": "recordsToPrint",
     "examples": 10,
     "confidence": "measured"
    },
    {
-    "key": "reason",
+    "key": "specifyPrintOptions",
     "examples": 10,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 10,
   "residual": {
-   "opaque": 10
+   "unattributed": 8
   },
   "verified": false
  },
@@ -6906,27 +7079,39 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
+    "key": "replace",
+    "render": "enum",
+    "values": {
+     "currentContents": "Current contents",
+     "serialNumbers": "Serial numbers"
     },
+    "omittedValues": [
+     "calculatedResult",
+     "none"
+    ],
+    "examples": 7,
+    "attribution": "valueWords",
+    "confidence": "measured"
+   },
+   {
+    "key": "value",
     "render": "bare",
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "replace",
+    "key": "performAutoEnter",
     "render": "enum",
     "values": {
-     "1": "Current contents",
-     "2": "Serial numbers",
-     "3": "Skip auto-enter options"
+     "false": "Skip auto-enter options"
     },
-    "examples": 5,
-    "attribution": "sole",
-    "confidence": "measured"
+    "examples": 4,
+    "attribution": "labelWords",
+    "confidence": "low",
+    "doubts": [
+     "singleValueOnly"
+    ]
    },
    {
     "key": "repetition",
@@ -6942,55 +7127,32 @@ export default {
   ],
   "ignored": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "2"
-    },
+    "key": "incrementBy",
     "examples": 8,
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "4"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "5"
-    },
-    "examples": 4,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "6"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "text",
-     "number": "3"
-    },
+    "key": "initialValue",
     "examples": 8,
+    "confidence": "measured"
+   },
+   {
+    "key": "replaceOptionsSpecified",
+    "examples": 12,
+    "confidence": "measured"
+   },
+   {
+    "key": "updateSerialNumberInEntryOptions",
+    "examples": 12,
+    "confidence": "measured"
+   },
+   {
+    "key": "useEntryOptions",
+    "examples": 12,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 12,
-  "residual": {
-   "unattributed": 3
-  },
   "verified": false
  },
  "Reset Account Password": {
@@ -7444,10 +7606,10 @@ export default {
     "values": {
      "browsedRecords": "Records being browsed",
      "currentRecord": "Current record",
-     "blankAsFormatted": "Blank record, as formatted",
-     "blankBoxed": "Blank record, with boxes",
-     "blankUnderscore": "Blank record, with underlines",
-     "blankWithPlaceholder": "Blank record, with placeholder text"
+     "blankRecordAsFormatted": "Blank record, as formatted",
+     "blankRecordWithBoxes": "Blank record, with boxes",
+     "blankRecordWithUnderlines": "Blank record, with underlines",
+     "blankRecordWithPlaceholderText": "Blank record, with placeholder text"
     },
     "examples": 11,
     "attribution": "valueWords",
@@ -8527,18 +8689,12 @@ export default {
     "label": "Value",
     "examples": 11,
     "attribution": "anchored",
-    "confidence": "low",
-    "doubts": [
-     "renderDisagreement"
-    ]
+    "confidence": "measured"
    }
   ],
   "ignored": [],
   "derivedFrom": 13,
-  "residual": {
-   "unreported": 1
-  },
-  "verified": false
+  "verified": true
  },
  "Set Web Viewer": {
   "segments": [
@@ -9069,7 +9225,7 @@ export default {
   ],
   "ignored": [
    {
-    "key": "spec",
+    "key": "sortOrder",
     "examples": 7,
     "confidence": "measured"
    }

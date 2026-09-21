@@ -17,6 +17,10 @@ Node 22.18 or later.
 register, so the record cannot disagree with the run that produced it and no one has to restate
 the build in prose. A fatal batch writes neither.
 
+`version` is the CLI's own, prerelease tag and all: a build announcing `0.8.0-beta.0` is recorded
+as `0.8.0-beta.0`, never as the `0.8.0` it precedes, so the comparison below cannot read a beta's
+measurements as current for the release.
+
 Consumers can read it and compare against the CLI they actually located, which is worth doing:
 the step renderer folds a respelled option key but sends a *renamed* one to the baseline
 silently, so a newer fm than this one degrades quietly rather than loudly.
@@ -79,9 +83,13 @@ Three entry-level fields shape what `check` does with an entry:
 ## Intake per fm build
 
 `check` also snapshots the CLI's own `fm help --json --all` under `gaps/help/<version>-<build>.json`
-and prints how it differs from the previous build's — catalogs, ops and keys gained or lost. That
-is the authoritative surface: a probe only notices a rename or a new catalog once something breaks,
-while `fm help` says so directly. `report` repeats the same diff as a `## CLI surface since <prev>`
+and prints how it differs from the previous build's — catalogs, ops and script steps gained or lost,
+and per op and per step, keys gained or lost. That is the authoritative surface: a probe only
+notices a rename or a new catalog once something breaks, while `fm help` says so directly.
+Script steps are counted because they are where the changes have been: they hang off the
+`script › steps` roster rather than off an op, and 0.8.0 documented 163 new step keys (the innards
+of `findRequests`, `importOptions`, `exportOptions`, `sortOrder`, `printOptions`, `pageSetup`)
+without touching a single catalog or op. `report` repeats the same diff as a `## CLI surface since <prev>`
 section, and `fm-gaps help-diff --from=<version-build> [--to=<version-build>]` prints it on demand
 for any two stored snapshots (`--to` defaults to the greatest one stored).
 
@@ -97,6 +105,12 @@ The runbook for picking up a new fm build:
    exits 0 with only the known expected errors. The last `check` to exit 0 is what leaves
    [`gaps/intake.json`](gaps/intake.json) naming the new build — nothing to edit by hand.
 6. `npx fm-gaps report --out=gaps/reports/<date>-fm-<version>.md`
-7. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts, then
-   `npm run derive:step-display`.
+7. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts
+   (`fm_scripts/*.adt.json`, `read:script` and nothing else, written back as
+   `json.dumps(body, ensure_ascii=False)` with no trailing newline), then BOTH commands, in
+   order — `npm run derive:step-display` and then `npm run roundtrip:step-display`. The derive
+   writes `verified: false` on all 209 entries and asserts it; only the round-trip can know
+   that field, so stopping after the derive leaves every entry claiming it was never verified.
+   Expect the corpus-wide pins in `tests/step-display-catalog.test.ts` to need re-measuring,
+   and read their comments before changing a number — one of them is a ratchet.
 8. Bump this package's version and tag it; consumers (fm-ai, the inspector) bump their pin.
