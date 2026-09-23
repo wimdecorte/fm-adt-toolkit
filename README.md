@@ -113,4 +113,23 @@ The runbook for picking up a new fm build:
    that field, so stopping after the derive leaves every entry claiming it was never verified.
    Expect the corpus-wide pins in `tests/step-display-catalog.test.ts` to need re-measuring,
    and read their comments before changing a number — one of them is a ratchet.
-8. Bump this package's version and tag it; consumers (fm-ai, the inspector) bump their pin.
+8. Bump this package's version, tag it, **and push both the branch and the tag**. Then consumers
+   (fm-ai, the inspector) bump their pin.
+
+   The push is part of the step, not a follow-up. Consumers pin by git tag
+   (`github:wimdecorte/fm-adt-toolkit#v0.8.1`), and npm resolves that committish against the
+   REMOTE via `git ls-remote` — it never sees a local clone. So an unpushed tag is not a release,
+   it is a local bookmark, and every consumer stays on its old pin with no signal that anything
+   happened. Push the branch too: pushing only the tag leaves the work reachable on the remote but
+   absent from `main`.
+
+   Tag it ANNOTATED, naming the fm build the measurements come from:
+
+       git tag -a v0.8.1 -m "fm-adt-toolkit 0.8.1: measured against fm 0.8.0 (29834929)"
+       git push origin main && git push origin refs/tags/v0.8.1
+
+   The build belongs in the message because the two version numbers are independent and look
+   misleadingly close: toolkit 0.8.1 holds fm 0.8.0 measurements, toolkit 0.7.0 held fm
+   0.8.0-beta.0's. Nothing in a pin string says which fm build it speaks for, so the tag should.
+   (`v0.7.0` and `v0.8.0` are lightweight and say nothing; they are already published, which is
+   why they were left alone.)
