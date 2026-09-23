@@ -13,6 +13,24 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.8.0 (build 29834929) on 2026-09-23.** GA. Both `.adt.json` files re-read with
+nothing but `read:script` and rewritten in place; still 48 and 1155 steps, `.txt` halves unchanged.
+12 of the 48 and 312 of the 1155 steps changed key set, and the bulk of that is one uniform change:
+**`flags` is now reported even when the word is zero**, so ~300 steps that omitted it gained it
+(210 of them comments). Beyond that: `Set Error Logging` gained `on` (3 examples), one `Set Variable`
+traded `value` for `valueApproximate`, and `Set Zoom Level` swapped `slots` + `stepValue` for
+`customZoomLevel`.
+
+Derived and round-tripped: verified 138 → 138 with none lost, segments 577 → 578.
+
+One thing the re-read settled, recorded here because it is a fact about the DATA: the catalog had
+been rendering a trailing `; Step value: 11` on the one Set Zoom Level example with a calculated
+zoom level, because the beta sent `stepValue` alongside the calc. FileMaker's own line for that step
+draws no such segment. GA stopped sending the key, so the spurious segment is gone — which is why
+the `rendered` floor in `tests/step-display-catalog.test.ts` FELL by one and why that fall is an
+improvement rather than a regression. `Set Zoom Level` is `verified: false` before and after, for an
+unrelated reason: the `%` suffix still does not render.
+
 **Re-read with fm 0.8.0-beta.0 (build 29827611) on 2026-09-21.** This build replaced the
 options blob on eleven step types with structured objects, so both `.adt.json` files were
 re-read with nothing but `read:script` and rewritten in place. 96 of the 1155 steps changed

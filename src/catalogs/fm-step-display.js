@@ -8443,8 +8443,17 @@ export default {
     ]
    }
   ],
-  "ignored": [],
+  "ignored": [
+   {
+    "key": "on",
+    "examples": 3,
+    "confidence": "measured"
+   }
+  ],
   "derivedFrom": 3,
+  "residual": {
+   "unattributed": 1
+  },
   "verified": false
  },
  "Set Field": {
@@ -8687,9 +8696,24 @@ export default {
     "key": "value",
     "render": "labelled",
     "label": "Value",
-    "examples": 11,
+    "examples": 10,
     "attribution": "anchored",
-    "confidence": "measured"
+    "confidence": "low",
+    "doubts": [
+     "labelCollision"
+    ]
+   },
+   {
+    "key": "valueApproximate",
+    "render": "labelled",
+    "label": "Value",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample",
+     "labelCollision"
+    ]
    }
   ],
   "ignored": [],
@@ -8816,11 +8840,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
-    },
+    "key": "customZoomLevel",
     "render": "enum",
     "examples": 1,
     "attribution": "valueWords",
@@ -8831,16 +8851,7 @@ export default {
     ]
    }
   ],
-  "ignored": [
-   {
-    "key": "stepValue",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 11,
   "verified": false
  },

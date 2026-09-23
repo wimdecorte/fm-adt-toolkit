@@ -262,16 +262,20 @@ describe('the catalog renderer against FileMaker’s own text', () => {
       }
     }
     expect(tally.outside).toEqual([]);
-    // Measured on fm 0.8.0-beta.0 (29827611): 56 rendered + 232 never shown + 2 unresolved.
+    // Measured on fm 0.8.0 (29834929): 55 rendered + 232 never shown + 2 unresolved.
     // The partition above is the invariant; both the sum and the split are facts about the
-    // corpus, and this build moved them. 0.8.0 reports Replace Field Contents' and Install
-    // Menu Set's options as named keys instead of anonymous `slots` places, so 29 places left
-    // the bag entirely: the sum falls 319 -> 290 and `rendered` falls 61 -> 56 because those
-    // values are now rendered from named keys, counted by the test below (whose `rendered`
-    // rose 2813 -> 3016 in the same move). A fall here is only safe to accept alongside that
-    // rise; on its own it would mean the catalog had stopped rendering something.
-    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(290);
-    expect(tally.rendered).toBeGreaterThanOrEqual(56);
+    // corpus, and two builds running have moved them.
+    //
+    // 0.8.0-beta.0 reported Replace Field Contents' and Install Menu Set's options as named
+    // keys instead of anonymous `slots` places, taking 29 places out of the bag: the sum fell
+    // 319 -> 290 and `rendered` 61 -> 56, while the test below rose 2813 -> 3016 in the same
+    // move. 0.8.0 GA then took Set Zoom Level's last `slots` place the same way, replacing
+    // `slots` + `stepValue` with `customZoomLevel`: 290 -> 289 and 56 -> 55.
+    //
+    // A fall here needs a reason every time. For the GA one see the test below: it is a
+    // spurious segment going away, not a value that stopped rendering.
+    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(289);
+    expect(tally.rendered).toBeGreaterThanOrEqual(55);
   });
 
   it('has no key the catalog accounts for in no way at all', () => {
@@ -338,11 +342,27 @@ describe('the catalog renderer against FileMaker’s own text', () => {
         withheld += places.filter((id) => !printed.has(id)).length;
       }
     }
-    // Measured on fm 0.8.0-beta.0 (29827611): 3016 options printed, 108 of them by the
-    // baseline, 1139 values withheld. `rendered` exceeds the number of values the CLI sends
-    // because a `whenAbsent` option prints for a key it does NOT send.
+    // Measured on fm 0.8.0 (29834929): 3015 options printed, 107 of them by the baseline,
+    // 1142 values withheld. `rendered` exceeds the number of values the CLI sends because a
+    // `whenAbsent` option prints for a key it does NOT send.
     //
-    // `withheld` ROSE, 937 -> 1139, and the ratchet above ("it may only fall") is suspended
+    // `rendered` FELL by one against its own ratchet, 3016 -> 3015, and `baseline` with it,
+    // 108 -> 107. Both are the same single value, and it is a WRONG segment going away.
+    // Isolated to one step type by rendering every example under both catalogs: Set Zoom
+    // Level, 23 -> 22. Its eleventh example has a calculated zoom level, and through
+    // 0.8.0-beta.0 fm sent `stepValue: 11` alongside the calc, which this catalog rendered as
+    // a trailing `; Step value: 11`. FileMaker's own line for that step — line 679 of
+    // `All script steps and all options 20260318.txt`, `Set Zoom Level [ Lock: On ; <the
+    // calc's own comment text>% ]` — has no Step value segment at all. GA sends only
+    // `customZoomLevel`, so the false segment is gone and the floor was inflated by it. The
+    // entry is `verified: false` before and after, for an unrelated reason: the `%` suffix
+    // still does not render.
+    //
+    // `withheld` rose again, 1139 -> 1142, and the three are accounted for: GA sends `on` on
+    // Set Error Logging's three examples, and the catalog `ignored`s it rather than rendering
+    // it.
+    //
+    // `withheld` first ROSE at 0.8.0-beta.0, 937 -> 1139, and the ratchet ("it may only fall") is suspended
     // for this build rather than quietly rebased: the population it counts changed underneath
     // it. The `continue` above skips any step carrying `opaque`, and 0.8.0 stopped sending
     // `opaque` on Import Records (38 examples), Export Records (15), Print (10) and Page Setup
@@ -352,9 +372,9 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // (8). The catalog does not render those yet, so they land in `withheld`, and this number
     // is the size of that outstanding work, not a regression in what the catalog prints.
     // Re-tighten it to the measured value once those objects are rendered.
-    expect(rendered).toBeGreaterThanOrEqual(3016);
-    expect(baseline).toBeGreaterThanOrEqual(108);
-    expect(withheld).toBeLessThanOrEqual(1139);
+    expect(rendered).toBeGreaterThanOrEqual(3015);
+    expect(baseline).toBeGreaterThanOrEqual(107);
+    expect(withheld).toBeLessThanOrEqual(1142);
   });
 
   it('agrees with the aligner about collapsing a return', () => {
