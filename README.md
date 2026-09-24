@@ -93,6 +93,20 @@ without touching a single catalog or op. `report` repeats the same diff as a `##
 section, and `fm-gaps help-diff --from=<version-build> [--to=<version-build>]` prints it on demand
 for any two stored snapshots (`--to` defaults to the greatest one stored).
 
+`fm-gaps behaviour` records a second kind of snapshot, under
+`gaps/behaviour/<version>-<build>.json`, and diffs it the same way. Where the register measures what
+fm REPORTS about a file, this measures how fm BEHAVES toward the account asking: which privilege a
+session needs to run at all, what a read returns when a grant is withheld, whether two sessions may
+read at once. None of that appears in the register or in `fm help`, so nothing else here would notice
+it change — and one of the answers, the exclusive schema lock on reads, is already expected to move.
+
+It is the only command in this repo that WRITES outside the register, which is why it is separate:
+`check` puts every batch through `assertReadOnly`, and a probe that tests a refusal has to send the op
+that gets refused. It builds five privilege sets and an account each, probes as every one of them,
+then deletes them — refusing to start if an object of its own naming already exists, and never
+touching one it did not create. What the answers mean is written up in
+[docs/fm-adt-privileges.md](docs/fm-adt-privileges.md).
+
 The runbook for picking up a new fm build:
 
 1. Install the build.
@@ -105,7 +119,20 @@ The runbook for picking up a new fm build:
    exits 0 with only the known expected errors. The last `check` to exit 0 is what leaves
    [`gaps/intake.json`](gaps/intake.json) naming the new build — nothing to edit by hand.
 6. `npx fm-gaps report --out=gaps/reports/<date>-fm-<version>.md`
-7. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts
+7. `npx fm-gaps behaviour --file=fmnet://localhost/ooe --username=admin` — the one command here
+   that WRITES. It builds five privilege sets and an account each, probes fm as every one of them,
+   deletes them again, and records the answers under `gaps/behaviour/<version>-<build>.json`, printing
+   how they differ from the previous build. It refuses to start if an object of its own naming already
+   exists, and it never touches one it did not create. Run it when the register work is settled, not
+   alongside step 3 — fm holds an exclusive schema lock, so two runs against one file collide.
+
+   What it pins is how fm behaves toward the ACCOUNT asking, which is in neither the register nor
+   `fm help`: which privilege a session needs to run at all, what a read does when a grant is
+   withheld, whether two sessions may read at once. See
+   [docs/fm-adt-privileges.md](docs/fm-adt-privileges.md) for what each answer means, and treat a
+   `~` line as something to read and decide about — behaviour changes never affect the exit code.
+   `lock:concurrent-reads` is the one already expected to move.
+8. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts
    (`fm_scripts/*.adt.json`, `read:script` and nothing else, written back as
    `json.dumps(body, ensure_ascii=False)` with no trailing newline), then BOTH commands, in
    order — `npm run derive:step-display` and then `npm run roundtrip:step-display`. The derive
@@ -113,7 +140,7 @@ The runbook for picking up a new fm build:
    that field, so stopping after the derive leaves every entry claiming it was never verified.
    Expect the corpus-wide pins in `tests/step-display-catalog.test.ts` to need re-measuring,
    and read their comments before changing a number — one of them is a ratchet.
-8. Bump this package's version, tag it, **and push both the branch and the tag**. Then consumers
+9. Bump this package's version, tag it, **and push both the branch and the tag**. Then consumers
    (fm-ai, the inspector) bump their pin.
 
    The push is part of the step, not a follow-up. Consumers pin by git tag

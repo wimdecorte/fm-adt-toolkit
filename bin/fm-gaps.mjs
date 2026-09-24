@@ -26,7 +26,9 @@
  *  never into this package's own gaps/ tree. */
 import path from 'node:path';
 import fs from 'node:fs';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync, spawn } from 'node:child_process';
+import os from 'node:os';
+import { randomBytes } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { locateFmCli, runOps } from '../dist/runner/index.js';
 import { assertReadOnly } from '../dist/read-only.js';
@@ -34,6 +36,8 @@ import {
   loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName,
   KINDS, draftEntry, selectInstance, evidenceDir, fmTypeMismatch,
   captureHelpSince, helpSurfaceSince, summariseHelp, diffHelp, renderHelpDiff, writeIntake,
+  BEHAVIOUR_SETS, diffBehaviour, renderBehaviourDiff,
+  writeBehaviourSnapshot, previousBehaviourSnapshot, behaviourSnapshotPath,
 } from '../dist/gaps/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -54,6 +58,7 @@ const USAGE = [
   '       fm-gaps check --file=<target> --username=<account> [--register=<path>] [--verbose]',
   '       fm-gaps report [--register=<path>] [--out=<path>]',
   '       fm-gaps help-diff --from=<version-build> [--to=<version-build>] [--register=<path>]',
+  '       fm-gaps behaviour --file=<target> --username=<account> [--register=<path>] [--keep]',
 ].join('\n');
 const usage = () => { console.error(USAGE); process.exit(2); };
 
@@ -91,7 +96,7 @@ if (cmd === 'help-diff') {
   console.log(renderHelpDiff(diffHelp(prev, next), str('from'), toLabel));
   process.exit(0);
 }
-if ((cmd !== 'check' && cmd !== 'draft') || !str('file') || !str('username')) usage();
+if ((cmd !== 'check' && cmd !== 'draft' && cmd !== 'behaviour') || !str('file') || !str('username')) usage();
 
 const cli = await locateFmCli();
 if (!cli) { console.error('fm CLI not found'); process.exit(2); }
@@ -99,6 +104,217 @@ const build = execFileSync(cli.path, ['--version']).toString().match(/\((\d+)\)/
 const target = { file: str('file'), username: str('username') };
 const run = async (ops) => { assertReadOnly(ops); return runOps(cli, target, ops, { dryRun: false, opsFile: true, outFile: true, abortOnError: false, noPrompt: true, killAfterMs: 10 * 60 * 1000 }); };
 const date = new Date().toISOString().slice(0, 10);
+
+if (cmd === 'behaviour') {
+  /** THIS COMMAND WRITES, and it is the only one here that does so outside the register.
+   *
+   *  It creates privilege sets and accounts, probes fm as each of them, and deletes them again.
+   *  That is why it cannot live inside `check`: every batch `check` sends goes through
+   *  assertReadOnly, and a probe that tests a REFUSAL has to send the op that gets refused.
+   *
+   *  What it measures is how fm behaves toward the account asking -- which privilege a session
+   *  needs, what a read does when a grant is withheld, whether two sessions may read at once.
+   *  None of that is in the register or in `fm help`, so nothing else would notice it change.
+   *  Findings written up in docs/fm-adt-privileges.md. */
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-behaviour-'));
+  /** Probe accounts are authenticated with --password, which IS visible in the process list --
+   *  the one place this repo accepts that, because --store-credentials needs a human at a prompt
+   *  and these accounts exist for seconds. Passwords are random per run and never stored. */
+  const fmRun = (username, password, ops, extraArgs = []) => {
+    const opsPath = path.join(tmp, `ops-${randomBytes(4).toString('hex')}.ndjson`);
+    fs.writeFileSync(opsPath, ops.map((o) => JSON.stringify(o)).join('\n') + '\n');
+    const argv = [`--file=${target.file}`, `--username=${username}`,
+      password ? `--password=${password}` : '--keychain',
+      '--no-prompt', '--abort-on-error=false', ...extraArgs, opsPath];
+    const r = spawnSync(cli.path, argv, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    return ((r.stdout ?? '') + (r.stderr ?? '')).split('\n').filter(Boolean)
+      .map((l) => { try { return JSON.parse(l); } catch { return null; } })
+      .filter((d) => d && d.type !== 'plugins');
+  };
+  const asOwner = (ops, extra) => fmRun(target.username, null, ops, extra);
+  const errToken = (e) => `${e?.code ?? 'unknown'}${e?.dbError ? '/' + e.dbError : ''}`;
+  const token = (line) => {
+    if (!line) return 'no-result';
+    if (line.type === 'fatal') return `FATAL ${errToken(line.error)}`;
+    if (line.status === 'dry-run') return 'allowed';
+    if (line.status === 'ok') return 'ok';
+    return errToken(line.error);
+  };
+  const countReal = (items) => (items ?? []).reduce((n, i) =>
+    n + (i.type === 'folder' || i.type === 'separator' ? 0 : 1) + countReal(i.items), 0);
+  /** A read's token carries total AND the count of real items, because the finding is that those
+   *  two move together while `status` stays "ok" -- the filtering is invisible otherwise. */
+  const readToken = (line) => {
+    if (!line || line.type === 'fatal' || line.status !== 'ok') return token(line);
+    return `ok total=${line.result?.total} items=${countReal(line.result?.items)}`;
+  };
+  const first = (lines, op) => lines.find((l) => l.op === op) ?? lines.find((l) => l.type === 'fatal');
+
+  const results = {};
+  const created = { accounts: [], sets: [] };
+  /** Probe passwords live here for the life of this run only -- never on the exported set data,
+   *  which is shared and must not carry a secret. */
+  const passwords = new Map();
+  let fmappBefore = null;
+  try {
+    // ---- discover what this file offers, as the caller's own account
+    const disco = asOwner([{ op: 'read:layout' }, { op: 'read:table' },
+      { op: 'read:extendedPrivilege' }, { op: 'read:extendedPrivilege', name: 'fmapp' },
+      { op: 'validate:calculation', calculation: 'BE_Version', references: true },
+      { op: 'validate:calculation', calculation: 'External ( "BE_Version" ; "" )', references: true }]);
+    const fatal = disco.find((l) => l.type === 'fatal');
+    if (fatal) { console.error(`fatal: ${errToken(fatal.error)}: ${fatal.error?.message ?? ''}`); process.exit(1); }
+    const layoutsLine = disco.find((l) => l.op === 'read:layout');
+    const flatten = (items) => (items ?? []).flatMap((i) => i.type === 'folder' || i.type === 'separator' ? flatten(i.items) : [i.name]);
+    const firstLayout = flatten(layoutsLine?.result?.items)[0];
+    const firstTable = flatten(disco.find((l) => l.op === 'read:table')?.result?.items)[0];
+    if (!firstLayout || !firstTable) { console.error('the calling account can see no layout or no table; nothing to probe against'); process.exit(2); }
+    const xpLine = disco.filter((l) => l.op === 'read:extendedPrivilege');
+    results['extendedPrivilege:keywords'] = (xpLine[0]?.result?.items ?? []).map((i) => i.name).sort().join(',');
+    fmappBefore = xpLine[1]?.result ?? null;
+    const vLines = disco.filter((l) => l.op === 'validate:calculation');
+    results['plugin:validate-plugin-function'] = vLines[0]?.result ? `valid=${vLines[0].result.valid}` : token(vLines[0]);
+    results['plugin:validate-External'] = vLines[1]?.result?.valid === undefined ? token(vLines[1]) : `valid=${vLines[1].result.valid}`;
+
+    // ---- the lock: two read-only batches at once, from the caller's own account
+    const readBatch = [{ op: 'read:layout', name: firstLayout, detail: true }];
+    const spawnRead = () => new Promise((resolve) => {
+      const opsPath = path.join(tmp, `lock-${randomBytes(4).toString('hex')}.ndjson`);
+      fs.writeFileSync(opsPath, readBatch.map((o) => JSON.stringify(o)).join('\n') + '\n');
+      const c = spawn(cli.path, [`--file=${target.file}`, `--username=${target.username}`, '--keychain',
+        '--no-prompt', '--abort-on-error=false', opsPath], { encoding: 'utf8' });
+      let buf = '';
+      c.stdout.on('data', (d) => { buf += d; }); c.stderr.on('data', (d) => { buf += d; });
+      c.on('close', () => resolve(buf));
+    });
+    const [l1, l2] = await Promise.all([spawnRead(), spawnRead()]);
+    const lockHit = [l1, l2].some((o) => /"dbError":\s*303|"code":\s*"locked"/.test(o));
+    results['lock:concurrent-reads'] = lockHit ? 'locked/303' : 'both-succeeded';
+
+    // ---- refuse to touch anything already named like a probe object
+    const setsNow = asOwner([{ op: 'read:privilegeSet' }, { op: 'read:account' }]);
+    const haveSets = new Set((setsNow.find((l) => l.op === 'read:privilegeSet')?.result?.items ?? []).map((i) => i.name));
+    const haveAccts = new Set((setsNow.find((l) => l.op === 'read:account')?.result?.items ?? []).map((i) => i.name));
+    const clash = BEHAVIOUR_SETS.filter((b) => haveSets.has(b.setName) || haveAccts.has(b.accountName));
+    if (clash.length) {
+      console.error(`refusing to run: ${clash.map((c) => c.setName).join(', ')} already exist in this file.`);
+      console.error('delete them first -- this command will not reuse or modify objects it did not create.');
+      process.exit(2);
+    }
+
+    // ---- provision: one set + one account each, random password per run
+    for (const b of BEHAVIOUR_SETS) {
+      const secret = `adtprobe${randomBytes(8).toString('hex')}`;
+      const mk = asOwner([
+        { op: 'create:privilegeSet', name: b.setName, description: `TEMPORARY (fm-gaps behaviour): ${b.description}`, ...b.body(firstLayout) },
+        { op: 'create:account', name: b.accountName, privilegeSet: b.setName, password: secret, enabled: true, description: 'TEMPORARY (fm-gaps behaviour)' },
+      ]);
+      const setOk = mk.find((l) => l.op === 'create:privilegeSet')?.status === 'ok';
+      const acctOk = mk.find((l) => l.op === 'create:account')?.status === 'ok';
+      if (setOk) created.sets.push(b.setName);
+      if (acctOk) created.accounts.push(b.accountName);
+      if (!setOk || !acctOk) {
+        console.error(`could not provision ${b.setName}: ${JSON.stringify(mk.map((l) => l.error).filter(Boolean))}`);
+        continue;
+      }
+      passwords.set(b.key, secret);
+    }
+    // fmapp gates connection, and its grant list REPLACES rather than appends -- so send the
+    // holders it already had plus the probe sets, or the existing ones lose access.
+    const keep = fmappBefore?.privilegeSets ?? [];
+    asOwner([{ op: 'update:extendedPrivilege', name: 'fmapp', sharing: 'specified', privilegeSets: [...keep, ...created.sets] }]);
+
+    // ---- probe, per set
+    const probes = {
+      'developer-only': (T, L) => [
+        ['read:table', { op: 'read:table' }], ['read:layout', { op: 'read:layout' }],
+        ['read:script', { op: 'read:script' }], ['read:valueList', { op: 'read:valueList' }],
+        ['read:account', { op: 'read:account' }], ['read:privilegeSet', { op: 'read:privilegeSet' }],
+        ['create:table', { op: 'create:table', name: 'ADT_Probe_T' }],
+        ['create:layout', { op: 'create:layout', name: 'ADT_Probe_L', tableOccurrence: T }],
+        ['create:script', { op: 'create:script', name: 'ADT_Probe_S', body: [] }],
+        ['create:valueList', { op: 'create:valueList', name: 'ADT_Probe_V', type: 'custom', values: ['a'] }],
+        ['create:theme', { op: 'create:theme', displayName: 'ADT_Probe_Th' }],
+        ['create:customMenu', { op: 'create:customMenu', name: 'ADT_Probe_CM' }],
+        ['create:extendedPrivilege', { op: 'create:extendedPrivilege', name: 'ADTProbeXP' }],
+      ],
+      'all-privileges': (T) => [
+        ['read:layout', { op: 'read:layout' }], ['read:account', { op: 'read:account' }],
+        ['read:privilegeSet', { op: 'read:privilegeSet' }],
+        ['create:layout', { op: 'create:layout', name: 'ADT_Probe_L', tableOccurrence: T }],
+        ['create:script', { op: 'create:script', name: 'ADT_Probe_S', body: [] }],
+        ['create:valueList', { op: 'create:valueList', name: 'ADT_Probe_V', type: 'custom', values: ['a'] }],
+        ['create:theme', { op: 'create:theme', displayName: 'ADT_Probe_Th' }],
+      ],
+      'layouts-only': () => [
+        ['create:theme', { op: 'create:theme', displayName: 'ADT_Probe_Th' }],
+        ['create:script', { op: 'create:script', name: 'ADT_Probe_S', body: [] }],
+      ],
+      'one-layout': () => [['read:layout', { op: 'read:layout' }]],
+    };
+    for (const b of BEHAVIOUR_SETS) {
+      const pw = passwords.get(b.key);
+      if (!pw) continue;
+      if (b.key === 'no-developer-privilege') {
+        const lines = fmRun(b.accountName, pw, [{ op: 'read:table' }]);
+        results['no-developer-privilege:open'] = token(lines.find((l) => l.type === 'fatal') ?? first(lines, 'read:table'));
+        continue;
+      }
+      const plan = probes[b.key]?.(firstTable, firstLayout) ?? [];
+      // Writes are dry-run: the refusal is the measurement, and a committed probe object would
+      // have to be cleaned out of the file afterwards.
+      const reads = plan.filter(([id]) => id.startsWith('read:'));
+      const writes = plan.filter(([id]) => !id.startsWith('read:'));
+      if (reads.length) {
+        const lines = fmRun(b.accountName, pw, reads.map(([, op]) => op));
+        const fat = lines.find((l) => l.type === 'fatal');
+        reads.forEach(([id, op], i) => {
+          const line = fat ?? lines.filter((l) => l.op === op.op)[0];
+          results[`${b.key}:${id}`] = id === 'read:table' ? token(line) : readToken(line);
+        });
+      }
+      if (writes.length) {
+        const lines = fmRun(b.accountName, pw, writes.map(([, op]) => op), ['--dry-run']);
+        const fat = lines.find((l) => l.type === 'fatal');
+        writes.forEach(([id, op]) => {
+          results[`${b.key}:${id}`] = token(fat ?? lines.filter((l) => l.op === op.op)[0]);
+        });
+      }
+    }
+  } finally {
+    // ---- teardown, always. fmapp must give the probe sets up BEFORE they can be deleted, or
+    // the delete answers dbError 8406.
+    if (fmappBefore) {
+      asOwner([{ op: 'update:extendedPrivilege', name: 'fmapp', sharing: fmappBefore.sharing ?? 'specified', privilegeSets: fmappBefore.privilegeSets ?? [] }]);
+    }
+    // THREE batches, and the order is not cosmetic. An account must be GONE before its privilege
+    // set can be deleted, and "gone" means committed: deleting both in one batch answers
+    // dbError 8406 on the set, because the account is still there when that op is applied.
+    const left = [];
+    if (created.accounts.length) {
+      left.push(...asOwner(created.accounts.map((name) => ({ op: 'delete:account', name }))).filter((l) => l.status === 'error'));
+    }
+    if (created.sets.length) {
+      left.push(...asOwner(created.sets.map((name) => ({ op: 'delete:privilegeSet', name }))).filter((l) => l.status === 'error'));
+    }
+    if (left.length) {
+      console.error('\nCLEANUP INCOMPLETE -- these objects are still in the file and must be removed by hand:');
+      for (const l of left) console.error(`  ${l.op} ${errToken(l.error)}`);
+      console.error('  revoke fmapp from the set first, then delete the account, then the set.');
+    }
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+
+  const snapshot = { version: cli.version, build, date, results };
+  const prev = previousBehaviourSnapshot(evidenceRoot, cli.version, build);
+  writeBehaviourSnapshot(evidenceRoot, snapshot);
+  const prevLabel = prev ? evidenceDir(prev.version, prev.build) : '(no earlier snapshot)';
+  console.log(`\nBehaviour since ${prevLabel}`);
+  console.log(renderBehaviourDiff(diffBehaviour(prev, snapshot), prevLabel, evidenceDir(cli.version, build)));
+  console.log(`\nsnapshot written: ${path.relative(process.cwd(), behaviourSnapshotPath(evidenceRoot, cli.version, build))}`);
+  console.log('behaviour changes never affect the exit code; read them and decide.');
+  process.exit(0);
+}
 
 if (cmd === 'draft') {
   if (!str('kind')) usage();
