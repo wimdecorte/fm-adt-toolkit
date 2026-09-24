@@ -128,9 +128,28 @@ The runbook for picking up a new fm build:
 
    What it pins is how fm behaves toward the ACCOUNT asking, which is in neither the register nor
    `fm help`: which privilege a session needs to run at all, what a read does when a grant is
-   withheld, whether two sessions may read at once. See
-   [docs/fm-adt-privileges.md](docs/fm-adt-privileges.md) for what each answer means, and treat a
-   `~` line as something to read and decide about — behaviour changes never affect the exit code.
+   withheld, whether two sessions may read at once. Behaviour changes never affect the exit code.
+
+   **Then update the write-ups, because the snapshot is evidence and they are the claims.** Two
+   edits, one of them unconditional:
+
+   - Always: the provenance line at the top of
+     [docs/fm-adt-privileges.md](docs/fm-adt-privileges.md) names the fm build and date it was
+     measured against. Restate it, or the document asserts a build it no longer describes.
+   - Per `~` line: a changed answer falsifies a specific sentence. Which one is not a judgement
+     call — each probe backs a named claim:
+
+     | probe | what it backs |
+     |---|---|
+     | `lock:concurrent-reads` | "fm holds an exclusive schema lock, even for reads". `by=fm-cli` is fm serialising itself; `by=other-client` means something else held the schema and the row proves nothing about fm |
+     | `no-developer-privilege:open` | gate 1 — that fm runs at all only with the developer privilege |
+     | `developer-only:read:layout` / `:read:script` / `:read:valueList` | "What filtering looks like", and trap 1. `all`/`subset`/`none` is the filtering; `total=file` would mean `total` stopped being session-scoped, which retires trap 2 |
+     | `*:read:account`, `*:read:privilegeSet` | that those two catalogs are `[Full Access]`-only whatever else is granted |
+     | `developer-only:create:*` | the per-catalog table's write column, and the `create_failed` / dbError 9 trap |
+     | `layouts-only:create:theme` | the "borrowed grant" bullet — that theme writes ride on Layouts access |
+     | `extendedPrivilege:keywords` | the closing section. A keyword ADDED here is the news that section asks for |
+     | `plugin:validate-plugin-function`, `plugin:validate-External` | [docs/fm-plugin-findings.md](docs/fm-plugin-findings.md), not the privileges document |
+
    `lock:concurrent-reads` is the one already expected to move.
 8. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts
    (`fm_scripts/*.adt.json`, `read:script` and nothing else, written back as

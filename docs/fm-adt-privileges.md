@@ -1,9 +1,14 @@
 # What privileges the fm CLI needs, per catalog
 
-Measured 2026-09-23 against **fm 0.8.0 (29834929)** and **FileMaker Pro 26.0**, on a file hosted over
-`fmnet://`. Every capability claim below was produced by running the op as the account in question. Where
-ADT's documentation, fm's help or fm's error text contradicts what was measured, both are quoted and
-the measurement is what this document records.
+Measured against **fm 0.8.0 (29834929)**, on files hosted over `fmnet://` by FileMaker Pro's
+peer-to-peer sharing. Every capability claim below was produced by running the op as the account in
+question. Where ADT's documentation, fm's help or fm's error text contradicts what was measured, both
+are quoted and the measurement is what this document records.
+
+The answers are re-measured on every fm build by `npx fm-gaps behaviour` (runbook step 7), which
+records them under `gaps/behaviour/<version>-<build>.json`. **If the newest snapshot there names a
+later build than this line does, this document is the stale one.** Current baseline:
+`0.8.0-29834929`, taken against a copy served by FileMaker Pro 26.1.1.
 
 ## The short version
 
