@@ -167,10 +167,20 @@ catalogs either.
 ## fm holds an exclusive schema lock, even for reads
 
 Two fm sessions were pointed at the same file at the same time, both running **read-only** batches. One
-completed all 21 ops; the other was refused outright with `FATAL locked` / dbError 303.
+completed every op; the other was refused outright:
 
-So fm serialises all access per file, reads included: **two fm read batches cannot run concurrently
-against one file.** Anything orchestrating parallel fm work has to serialise it.
+    {"type":"fatal","error":{"code":"locked","dbError":303,
+                             "lockedBy":["fm CLI 0.8.0 (admin)"]}}
+
+`lockedBy` is the part that settles it: the holder is *the other fm session*. So fm serialises all
+access per file, reads included — **two fm read batches cannot run concurrently against one file**, and
+anything orchestrating parallel fm work has to serialise it.
+
+**Always read `lockedBy` before concluding anything from a 303.** A refusal on its own says only that
+something held the schema at that moment, and a FileMaker Pro window on Manage > Database or Manage >
+Security is such a something. Only a 303 whose holder is another `fm CLI` session is fm serialising
+itself. Treating a bare 303 as the second fact produced a wrong conclusion during this work, in both
+directions.
 
 ADT's guidance adds that FileMaker Pro holds the same lock while Manage > Database is open (the
 relationships graph included) and while a script is open for editing — so a developer with either

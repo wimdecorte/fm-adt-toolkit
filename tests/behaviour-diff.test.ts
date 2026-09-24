@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { diffBehaviour, renderBehaviourDiff, PROBE_IDS } from '../src/gaps/behaviour.ts';
+import { diffBehaviour, renderBehaviourDiff, readOutcome, PROBE_IDS } from '../src/gaps/behaviour.ts';
 import type { BehaviourSnapshot } from '../src/gaps/behaviour.ts';
 
 function snap(results: Record<string, string>, build = '1'): BehaviourSnapshot {
@@ -76,5 +76,31 @@ describe('PROBE_IDS', () => {
 
   it('has no duplicate ids, which would make one probe overwrite another in a snapshot', () => {
     expect(new Set(PROBE_IDS).size).toBe(PROBE_IDS.length);
+  });
+});
+
+describe('readOutcome', () => {
+  it('says the session saw everything the owner sees', () => {
+    expect(readOutcome({ total: 22, items: 22 }, { total: 22, items: 22 })).toBe('ok all total=file');
+  });
+
+  it('says the session saw a subset, without embedding either count', () => {
+    // The point of the token: a file that GAINS a layout must not read as a behaviour change.
+    expect(readOutcome({ total: 22, items: 22 }, { total: 5, items: 1 })).toBe('ok subset total=session');
+    expect(readOutcome({ total: 30, items: 30 }, { total: 6, items: 1 })).toBe('ok subset total=session');
+  });
+
+  it('says the session saw none of the real items even though the call succeeded', () => {
+    expect(readOutcome({ total: 22, items: 22 }, { total: 4, items: 0 })).toBe('ok none total=session');
+  });
+
+  it('distinguishes a total that reports the FILE count from one scoped to the session', () => {
+    // If fm ever fixes `total` to mean "how many the file has" while still filtering items, that
+    // is a behaviour change worth a line, and this is what would catch it.
+    expect(readOutcome({ total: 22, items: 22 }, { total: 22, items: 1 })).toBe('ok subset total=file');
+  });
+
+  it('reads an empty catalog as all-seen rather than as filtering', () => {
+    expect(readOutcome({ total: 0, items: 0 }, { total: 0, items: 0 })).toBe('ok all total=file');
   });
 });

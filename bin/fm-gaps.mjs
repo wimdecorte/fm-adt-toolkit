@@ -36,7 +36,7 @@ import {
   loadRegister, saveRegister, runChecks, renderReport, enumerateExport, writeReferences, referenceFileName,
   KINDS, draftEntry, selectInstance, evidenceDir, fmTypeMismatch,
   captureHelpSince, helpSurfaceSince, summariseHelp, diffHelp, renderHelpDiff, writeIntake,
-  BEHAVIOUR_SETS, diffBehaviour, renderBehaviourDiff,
+  BEHAVIOUR_SETS, diffBehaviour, renderBehaviourDiff, readOutcome,
   writeBehaviourSnapshot, previousBehaviourSnapshot, behaviourSnapshotPath,
 } from '../dist/gaps/index.js';
 
@@ -142,11 +142,13 @@ if (cmd === 'behaviour') {
   };
   const countReal = (items) => (items ?? []).reduce((n, i) =>
     n + (i.type === 'folder' || i.type === 'separator' ? 0 : 1) + countReal(i.items), 0);
-  /** A read's token carries total AND the count of real items, because the finding is that those
-   *  two move together while `status` stays "ok" -- the filtering is invisible otherwise. */
-  const readToken = (line) => {
+  /** A read's token is its relationship to what THIS RUN saw as the calling [Full Access] account,
+   *  never a count: see readOutcome. `owner` is absent for a catalog no grant filters, and the
+   *  plain token is then enough. */
+  const readToken = (line, owner) => {
     if (!line || line.type === 'fatal' || line.status !== 'ok') return token(line);
-    return `ok total=${line.result?.total} items=${countReal(line.result?.items)}`;
+    if (!owner) return 'ok';
+    return readOutcome(owner, { total: line.result?.total ?? 0, items: countReal(line.result?.items) });
   };
   const first = (lines, op) => lines.find((l) => l.op === op) ?? lines.find((l) => l.type === 'fatal');
 
@@ -159,6 +161,7 @@ if (cmd === 'behaviour') {
   try {
     // ---- discover what this file offers, as the caller's own account
     const disco = asOwner([{ op: 'read:layout' }, { op: 'read:table' },
+      { op: 'read:script' }, { op: 'read:valueList' },
       { op: 'read:extendedPrivilege' }, { op: 'read:extendedPrivilege', name: 'fmapp' },
       { op: 'validate:calculation', calculation: 'BE_Version', references: true },
       { op: 'validate:calculation', calculation: 'External ( "BE_Version" ; "" )', references: true }]);
@@ -169,6 +172,13 @@ if (cmd === 'behaviour') {
     const firstLayout = flatten(layoutsLine?.result?.items)[0];
     const firstTable = flatten(disco.find((l) => l.op === 'read:table')?.result?.items)[0];
     if (!firstLayout || !firstTable) { console.error('the calling account can see no layout or no table; nothing to probe against'); process.exit(2); }
+    /** What [Full Access] sees, per filtered catalog, measured in the same run so the comparison
+     *  cannot drift against a stale figure. */
+    const ownerCounts = {};
+    for (const op of ['read:layout', 'read:script', 'read:valueList']) {
+      const line = disco.find((l) => l.op === op);
+      if (line?.status === 'ok') ownerCounts[op] = { total: line.result?.total ?? 0, items: countReal(line.result?.items) };
+    }
     const xpLine = disco.filter((l) => l.op === 'read:extendedPrivilege');
     results['extendedPrivilege:keywords'] = (xpLine[0]?.result?.items ?? []).map((i) => i.name).sort().join(',');
     fmappBefore = xpLine[1]?.result ?? null;
@@ -177,7 +187,9 @@ if (cmd === 'behaviour') {
     results['plugin:validate-External'] = vLines[1]?.result?.valid === undefined ? token(vLines[1]) : `valid=${vLines[1].result.valid}`;
 
     // ---- the lock: two read-only batches at once, from the caller's own account
-    const readBatch = [{ op: 'read:layout', name: firstLayout, detail: true }];
+    // Long enough that two runs genuinely overlap: a single fast op can finish before the
+    // other starts, which looks like permitted concurrency whether or not it is.
+    const readBatch = Array.from({ length: 6 }, () => ({ op: 'read:layout', detail: true }));
     const spawnRead = () => new Promise((resolve) => {
       const opsPath = path.join(tmp, `lock-${randomBytes(4).toString('hex')}.ndjson`);
       fs.writeFileSync(opsPath, readBatch.map((o) => JSON.stringify(o)).join('\n') + '\n');
@@ -187,9 +199,27 @@ if (cmd === 'behaviour') {
       c.stdout.on('data', (d) => { buf += d; }); c.stderr.on('data', (d) => { buf += d; });
       c.on('close', () => resolve(buf));
     });
-    const [l1, l2] = await Promise.all([spawnRead(), spawnRead()]);
-    const lockHit = [l1, l2].some((o) => /"dbError":\s*303|"code":\s*"locked"/.test(o));
-    results['lock:concurrent-reads'] = lockHit ? 'locked/303' : 'both-succeeded';
+    // fm names the holder in `lockedBy`, which is what makes this probe trustworthy: a 303 whose
+    // holder is another `fm CLI` session is fm serialising itself, and a 303 held by a FileMaker Pro
+    // user is someone with Manage > Database open. Those are different facts and only the first is
+    // about fm. Reading a bare 303 as "fm serialises reads" cost a wrong conclusion once.
+    //
+    // Up to three attempts, and one clean pair settles it: both succeeding proves concurrency is
+    // permitted, while a refusal only describes that moment.
+    let lockToken = null;
+    for (let attempt = 0; attempt < 3 && lockToken !== 'both-succeeded'; attempt += 1) {
+      const pair = await Promise.all([spawnRead(), spawnRead()]);
+      const held = pair.map((o) => o.match(/"lockedBy":\s*\[([^\]]*)\]/)).find(Boolean);
+      const blocked = pair.some((o) => /"dbError":\s*303|"code":\s*"locked"/.test(o));
+      if (!blocked) { lockToken = 'both-succeeded'; break; }
+      lockToken = /fm CLI/.test(held?.[1] ?? '') ? 'locked/303 by=fm-cli' : 'locked/303 by=other-client';
+    }
+    if (lockToken === 'locked/303 by=other-client') {
+      console.error('note: concurrent reads were refused, and the holder is NOT another fm session --');
+      console.error('      something else holds the schema (a FileMaker Pro window on Manage > Database');
+      console.error('      or Manage > Security will). Close it and re-run before trusting this row.');
+    }
+    results['lock:concurrent-reads'] = lockToken;
 
     // ---- refuse to touch anything already named like a probe object
     const setsNow = asOwner([{ op: 'read:privilegeSet' }, { op: 'read:account' }]);
@@ -268,9 +298,9 @@ if (cmd === 'behaviour') {
       if (reads.length) {
         const lines = fmRun(b.accountName, pw, reads.map(([, op]) => op));
         const fat = lines.find((l) => l.type === 'fatal');
-        reads.forEach(([id, op], i) => {
+        reads.forEach(([id, op]) => {
           const line = fat ?? lines.filter((l) => l.op === op.op)[0];
-          results[`${b.key}:${id}`] = id === 'read:table' ? token(line) : readToken(line);
+          results[`${b.key}:${id}`] = readToken(line, ownerCounts[op.op]);
         });
       }
       if (writes.length) {

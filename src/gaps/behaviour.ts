@@ -162,6 +162,33 @@ export const PROBE_IDS: readonly string[] = [
   'one-layout:read:layout',
 ];
 
+/** One read probe's answer, as a token that says what happened WITHOUT embedding a count.
+ *
+ *  Counts cannot go in a snapshot. They are facts about the file, not about fm: add one layout to
+ *  the corpus and a count-bearing token reports `total=22 -> total=23`, a behaviour change where
+ *  nothing about fm moved. A drift check that cries wolf on ordinary editing is worse than none.
+ *
+ *  So each read is expressed as its RELATIONSHIP to what the same run saw as `[Full Access]`:
+ *
+ *  - `all` — the session saw every real item the owner can see.
+ *  - `subset` — it saw some but not all. This is the filtering.
+ *  - `none` — it saw no real items, though the call still succeeded.
+ *
+ *  Plus what `total` counted, which is its own finding: `total=session` means `total` shrank with
+ *  the filtering, `total=file` means it reported the file's own count. If fm ever fixes `total` to
+ *  mean "how many the file has" while still filtering the array, that shows up here as a change.
+ *
+ *  Real items only: folders and separators are excluded by the caller, because a fully filtered
+ *  `read:layout` still returns the folder structure and would otherwise look like partial access. */
+export function readOutcome(
+  owner: { total: number; items: number },
+  session: { total: number; items: number },
+): string {
+  const scope = session.total === owner.total ? 'total=file' : 'total=session';
+  const seen = session.items === owner.items ? 'all' : session.items === 0 ? 'none' : 'subset';
+  return `ok ${seen} ${scope}`;
+}
+
 /** What changed between two builds' answers. A first run has no previous snapshot, and every
  *  answer is then an addition rather than a change: there is no earlier claim to contradict. */
 export function diffBehaviour(prev: BehaviourSnapshot | null, next: BehaviourSnapshot): BehaviourDiff {

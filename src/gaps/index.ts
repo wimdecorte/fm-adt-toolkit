@@ -9,7 +9,7 @@ export { probeId, writeEvidence, readEvidence, evidencePath, evidenceDir, previo
 export { captureHelp, helpSnapshotPath, writeHelpSnapshot, previousHelpSnapshot } from './help-snapshot.ts';
 export { summariseHelp, diffHelp, renderHelpDiff } from './help-diff.ts';
 export type { HelpKey, HelpNode, HelpJson, HelpSummary, HelpDiff } from './help-diff.ts';
-export { BEHAVIOUR_SETS, PROBE_IDS, diffBehaviour, renderBehaviourDiff } from './behaviour.ts';
+export { BEHAVIOUR_SETS, PROBE_IDS, diffBehaviour, renderBehaviourDiff, readOutcome } from './behaviour.ts';
 export type { BehaviourSnapshot, BehaviourDiff, BehaviourSet } from './behaviour.ts';
 export { behaviourSnapshotPath, writeBehaviourSnapshot, previousBehaviourSnapshot } from './behaviour-store.ts';
 export { intakePath, writeIntake, readIntake } from './intake.ts';
