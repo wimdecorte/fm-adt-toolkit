@@ -60,6 +60,10 @@ Anything that resolves the CLI by name must therefore try both, which `locateFmC
 instead of hardcoding a name, and prefer `cli.path` over the word `fm` anywhere a command line is
 recorded or printed.
 
+These documents keep writing the help surface as `fm help`, because that is what the CLI calls
+itself and what its own help prints as a title. On 0.8.0 and later you type `filemaker help` to
+reach it. Nothing here is meant to be pasted with `fm` as the first word.
+
 Nothing in a `check` run can notice a rename like this: the register, the help snapshot, the
 evidence and the exit code are all identical across one, because the locator falls through to the
 Application Support binary, which is not renamed. That is what makes this toolkit survive a
