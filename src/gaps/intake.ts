@@ -12,6 +12,16 @@ export interface Intake {
   build: string;
   /** The date of the `check` run that wrote this, `YYYY-MM-DD`. */
   checked: string;
+  /** The binary `locateFmCli` resolved for that run, absolute.
+   *
+   *  Here because the launcher's NAME is a fact about a build that nothing else in this repo
+   *  can see: 0.8.0 renamed `fm` to `filemaker`, and this repo's measurements were unaffected
+   *  because the locator falls back to the unrenamed real binary under Application Support.
+   *  A rename is invisible in the register, in the help snapshot and in the exit code, so it
+   *  is recorded here, where the next intake's `git diff` shows it on one line.
+   *
+   *  Absent on a record written before this was added. Read it as "unknown", not as `fm`. */
+  cliPath?: string;
 }
 
 /** One file for the whole repo, not one per build: this says which build the register,
@@ -29,10 +39,10 @@ export function intakePath(root: string): string {
  *
  *  Pretty-printed and newline-terminated because its whole audience is a human reading a
  *  diff and asking "which build is this tree on?". */
-export function writeIntake(root: string, version: string, build: string, checked: string): void {
+export function writeIntake(root: string, version: string, build: string, checked: string, cliPath: string): void {
   const abs = intakePath(root);
   fs.mkdirSync(path.dirname(abs), { recursive: true });
-  fs.writeFileSync(abs, JSON.stringify({ version, build, checked }, null, 2) + '\n');
+  fs.writeFileSync(abs, JSON.stringify({ version, build, checked, cliPath }, null, 2) + '\n');
 }
 
 /** The recorded intake, or null when there is none to read. Null covers both a root no

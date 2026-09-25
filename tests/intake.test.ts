@@ -12,6 +12,8 @@ function tmp(): string {
 }
 afterEach(() => { for (const d of dirs.splice(0)) fs.rmSync(d, { recursive: true, force: true }); });
 
+const FM = '/usr/local/bin/fm';
+
 describe('intakePath', () => {
   it('names one file under gaps/, not one per build', () => {
     const root = tmp();
@@ -22,29 +24,48 @@ describe('intakePath', () => {
 describe('writeIntake', () => {
   it('records the version, build and date the check ran with', () => {
     const root = tmp();
-    writeIntake(root, '0.7.0', '29823677', '2026-09-16');
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
     expect(JSON.parse(fs.readFileSync(intakePath(root), 'utf8'))).toEqual({
-      version: '0.7.0', build: '29823677', checked: '2026-09-16',
+      version: '0.7.0', build: '29823677', checked: '2026-09-16', cliPath: FM,
     });
+  });
+
+  // The launcher's name is a fact about the build that nothing else here records: the register,
+  // the help snapshot and the exit code are all identical across a rename, because the locator
+  // falls back to the real binary under Application Support, which is not renamed. 0.8.0
+  // renamed `fm` to `filemaker` and this repo noticed nothing. Recording the resolved path puts
+  // the next such rename in the intake's own diff.
+  it('records which binary answered, so a launcher rename lands in the diff', () => {
+    const root = tmp();
+    const renamed = '/usr/local/bin/filemaker';
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
+    const before = fs.readFileSync(intakePath(root), 'utf8');
+    writeIntake(root, '0.8.0', '29834929', '2026-09-23', renamed);
+    const after = fs.readFileSync(intakePath(root), 'utf8');
+    expect(before).toContain(FM);
+    expect(after).toContain(renamed);
+    expect(after).not.toContain(`"${FM}"`);
   });
 
   it('creates gaps/ when the evidence root is a bare directory', () => {
     const root = tmp();
-    writeIntake(root, '0.7.0', '29823677', '2026-09-16');
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
     expect(fs.existsSync(intakePath(root))).toBe(true);
   });
 
   it('replaces the previous build rather than accumulating one file per build', () => {
     const root = tmp();
-    writeIntake(root, '0.7.0', '29823677', '2026-09-16');
-    writeIntake(root, '0.8.0', '29900001', '2026-10-01');
-    expect(readIntake(root)).toEqual({ version: '0.8.0', build: '29900001', checked: '2026-10-01' });
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
+    writeIntake(root, '0.8.0', '29900001', '2026-10-01', FM);
+    expect(readIntake(root)).toEqual({
+      version: '0.8.0', build: '29900001', checked: '2026-10-01', cliPath: FM,
+    });
     expect(fs.readdirSync(path.join(root, 'gaps'))).toEqual(['intake.json']);
   });
 
   it('writes text a human can read in a diff, newline-terminated', () => {
     const root = tmp();
-    writeIntake(root, '0.7.0', '29823677', '2026-09-16');
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
     const text = fs.readFileSync(intakePath(root), 'utf8');
     expect(text).toMatch(/\n$/);
     expect(text.split('\n').length).toBeGreaterThan(3);
@@ -54,8 +75,20 @@ describe('writeIntake', () => {
 describe('readIntake', () => {
   it('reads back what writeIntake wrote', () => {
     const root = tmp();
-    writeIntake(root, '0.7.0', '29823677', '2026-09-16');
-    expect(readIntake(root)).toEqual({ version: '0.7.0', build: '29823677', checked: '2026-09-16' });
+    writeIntake(root, '0.7.0', '29823677', '2026-09-16', FM);
+    expect(readIntake(root)).toEqual({
+      version: '0.7.0', build: '29823677', checked: '2026-09-16', cliPath: FM,
+    });
+  });
+
+  // The committed record predates cliPath, and this file is written by `check` and never by
+  // hand, so it stays without one until the next intake run rewrites it.
+  it('reads a record written before cliPath existed, without inventing one', () => {
+    const root = tmp();
+    fs.mkdirSync(path.join(root, 'gaps'), { recursive: true });
+    fs.writeFileSync(intakePath(root), '{"version":"0.8.0","build":"29834929","checked":"2026-09-23"}');
+    expect(readIntake(root)).toEqual({ version: '0.8.0', build: '29834929', checked: '2026-09-23' });
+    expect(readIntake(root)?.cliPath).toBeUndefined();
   });
 
   it('is null when no check has ever run against this root', () => {

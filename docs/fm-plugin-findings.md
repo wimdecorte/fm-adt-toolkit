@@ -205,7 +205,9 @@ faithful, and the register cannot say why. Worth considering:
 ## Reproducing this
 
 ```sh
-FM="$HOME/Library/Application Support/ADT/MCP/fm-cli/fm-cli"   # 0.8.0 installs here, not /usr/local/bin
+# The real binary, named the same in every build so far. 0.8.0 renamed what it puts on PATH:
+# /usr/local/bin/filemaker, a wrapper that execs this, and no /usr/local/bin/fm at all.
+FM="$HOME/Library/Application Support/ADT/MCP/fm-cli/fm-cli"
 "$FM" --harvest-plugins=/tmp/harvest.json && python3 -m json.tool /tmp/harvest.json | head -40
 ```
 

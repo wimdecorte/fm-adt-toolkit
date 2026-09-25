@@ -2,11 +2,11 @@
 
 Shared code for tools built on the Claris Agentic Development Toolkit `fm` CLI.
 
-- `fm-adt-toolkit/runner`: locate the CLI, run a batch of NDJSON ops, parse the result lines.
+- `fm-adt-toolkit/runner`: locate the CLI, run a batch of NDJSON ops, parse the result lines. `locateFmCli` resolves the launcher under either name ADT has shipped — 0.8.0 renamed `fm` to `filemaker` — and falls back to the real binary under Application Support, which no build has renamed. Resolve through it rather than hardcoding a name; see [The launcher's name](#the-launchers-name).
 - `fm-adt-toolkit/step-display`: render a script step the way FileMaker's Script Workspace writes it, from the catalog in `src/catalogs/`. The catalog spells each option key exactly as the fm build it was measured against does; the renderer looks a key up exactly first and then by its case-and-separator fold (`foldKey`), so a step written by a build that only respelled a key (`with dialog` to `withDialog`) still renders. A key renamed by word reaches the baseline, as any unmeasured key does.
 - `fm-adt-toolkit/read-only`: `isReadOnlyOp` and `assertReadOnly`, the one guard every read-only entry point shares. Read-only means `read:*` plus `evaluate:calculation` and `validate:calculation`, which fm's help guarantees never change a file. Browser safe.
 - `fm-adt-toolkit/gaps`: the register of what the CLI cannot read yet, with `fm-gaps check` to re-run every probe against a new build and `fm-gaps report` to write the Markdown for Claris. `fm-adt-toolkit/gaps/checks` is the browser-safe subset — just `evaluateCheck` and the `GapCheck` type, with none of `gaps`'s `node:fs` dependency, for code that needs to evaluate a check result without pulling in the register.
-- `fm-adt-toolkit/intake`: which fm build everything above was measured against, as `{ version, build, checked }`. See [Which build this is](#which-build-this-is).
+- `fm-adt-toolkit/intake`: which fm build everything above was measured against, as `{ version, build, checked, cliPath }`. See [Which build this is](#which-build-this-is).
 
 Node 22.18 or later.
 
@@ -44,6 +44,29 @@ Version numbers elsewhere in the docs are history, not a claim about this tree: 
 [docs/fm-step-flags-reference.md](docs/fm-step-flags-reference.md) and
 [fm_scripts/README.md](fm_scripts/README.md) say what 0.6.0 spelt and what 0.7.0 spells, they are
 explaining why a key looks the way it does.
+
+`cliPath` is the binary `locateFmCli` resolved for that run. It is recorded because the launcher's
+name is a fact about a build that nothing else here can see — see below.
+
+## The launcher's name
+
+**0.8.0 renamed it.** That build installs `/usr/local/bin/filemaker`, a wrapper script that execs
+the real binary under `~/Library/Application Support/ADT/MCP/fm-cli/fm-cli`, and it installs no
+`fm` at all: on a machine with 0.8.0, `command -v fm` answers nothing. Builds through 0.7.0
+installed `fm`. Both launchers report the same `--version` banner, and the real binary keeps its
+own name, `fm-cli`, in every build so far — as does `fm help`'s own title.
+
+Anything that resolves the CLI by name must therefore try both, which `locateFmCli` does. Call it
+instead of hardcoding a name, and prefer `cli.path` over the word `fm` anywhere a command line is
+recorded or printed.
+
+Nothing in a `check` run can notice a rename like this: the register, the help snapshot, the
+evidence and the exit code are all identical across one, because the locator falls through to the
+Application Support binary, which is not renamed. That is what makes this toolkit survive a
+rename, and it is also what hid this one — 0.8.0's intake here passed clean while consumers that
+resolved `fm` by name were broken by it. Hence `cliPath` in
+[`gaps/intake.json`](gaps/intake.json): the next rename shows up as a one-line diff in the intake
+instead of as somebody else's bug report.
 
 ## The coverage register
 
@@ -109,7 +132,12 @@ touching one it did not create. What the answers mean is written up in
 
 The runbook for picking up a new fm build:
 
-1. Install the build.
+1. Install the build, then say out loud what it put on PATH: `ls -l /usr/local/bin/filemaker
+   /usr/local/bin/fm; command -v filemaker fm`. Nothing downstream in this runbook can notice
+   that answer changing — 0.8.0 renamed `fm` to `filemaker` and every step below still passed —
+   and consumers that resolve the launcher by name break on it. If the name moved again, teach
+   `LAUNCHER_NAMES` in [src/runner/locate.ts](src/runner/locate.ts) the new one and say so in
+   [The launcher's name](#the-launchers-name).
 2. Commit or stash whatever is in progress, so the diff below is only the new build's doing.
 3. `npx fm-gaps check --file=fmnet://localhost/ooe --username=admin`
 4. Read the output in this order: Help since, Errored, Regressed, Expected failure resolved,
@@ -117,7 +145,8 @@ The runbook for picking up a new fm build:
 5. Fix the register: fmKey renames, new selectors, dropped `expectedError`s, new "(fm only)" rows
    for anything the CLI now reports that nothing in the register named yet. Re-run `check` until it
    exits 0 with only the known expected errors. The last `check` to exit 0 is what leaves
-   [`gaps/intake.json`](gaps/intake.json) naming the new build — nothing to edit by hand.
+   [`gaps/intake.json`](gaps/intake.json) naming the new build, and the binary that answered for
+   it — nothing to edit by hand.
 6. `npx fm-gaps report --out=gaps/reports/<date>-fm-<version>.md`
 7. `npx fm-gaps behaviour --file=fmnet://localhost/ooe --username=admin` — the one command here
    that WRITES. It builds five privilege sets and an account each, probes fm as every one of them,
