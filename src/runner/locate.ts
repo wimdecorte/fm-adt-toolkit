@@ -37,8 +37,13 @@ export interface LocateDeps {
  *  banner, so an unrelated binary that happens to share a name is rejected, not used. */
 const LAUNCHER_NAMES = ['filemaker', 'fm'] as const;
 
-/** Where ADT puts the launcher, in the order a hit should win. */
-const LAUNCHER_DIRS = ['/usr/local/bin', '/opt/homebrew/bin'] as const;
+/** Where ADT puts the launcher, in the order a hit should win.
+ *
+ *  0.9.0 MOVED it: its installer runs as the user and writes `~/.local/bin/filemaker`, and calls
+ *  a `filemaker` in a shared system folder a leftover to remove. So the per-user directory comes
+ *  first -- an upgraded machine still has 0.8.0's root-owned `/usr/local/bin/filemaker`, and
+ *  preferring it would record the leftover as the binary that answered. */
+const launcherDirs = (home: string) => [join(home, '.local', 'bin'), '/usr/local/bin', '/opt/homebrew/bin'];
 
 /** Pull the version and contract out of the CLI's --version banner.
  *  Returns null for anything that is not recognizably that banner.
@@ -132,7 +137,7 @@ export async function locateFmCli(deps: LocateDeps = {}): Promise<FmCli | null> 
     env.FM_CLI_PATH,
     // Directory-major: which install location wins is unchanged, and within one location the
     // current launcher name beats a leftover from an in-place upgrade.
-    ...LAUNCHER_DIRS.flatMap((dir) => LAUNCHER_NAMES.map((name) => `${dir}/${name}`)),
+    ...launcherDirs(home).flatMap((dir) => LAUNCHER_NAMES.map((name) => `${dir}/${name}`)),
     join(home, 'Library', 'Application Support', 'ADT', 'MCP', 'fm-cli', 'fm-cli'),
   ].filter((path): path is string => Boolean(path));
 

@@ -88,6 +88,21 @@ describe('locateFmCli', () => {
     expect(found?.path).toBe('/usr/local/bin/filemaker');
   });
 
+  // 0.9.0 MOVED it. Its installer runs as the user, without a password, and puts the launcher in
+  // `~/.local/bin` -- and not on PATH by default. Measured on 0.9.0 (29846589).
+  it('finds the 0.9.0 launcher, which installs per user under ~/.local/bin', async () => {
+    const found = await locateFmCli(deps([`${HOME}/.local/bin/filemaker`]));
+    expect(found?.path).toBe(`${HOME}/.local/bin/filemaker`);
+  });
+
+  // An upgrade from 0.8.0 leaves its root-owned `/usr/local/bin/filemaker` behind, and 0.9.0's
+  // installer names that one as the leftover to remove. Measured: on the machine 0.9.0 was taken
+  // in on, the locator returned the leftover, and `gaps/intake.json` recorded it as `cliPath`.
+  it('prefers the per-user launcher over a leftover one in /usr/local/bin', async () => {
+    const found = await locateFmCli(deps(['/usr/local/bin/filemaker', `${HOME}/.local/bin/filemaker`]));
+    expect(found?.path).toBe(`${HOME}/.local/bin/filemaker`);
+  });
+
   it('falls back to the ADT Application Support path', async () => {
     const adtPath = `${HOME}/Library/Application Support/ADT/MCP/fm-cli/fm-cli`;
     const found = await locateFmCli(deps([adtPath]));

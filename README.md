@@ -56,6 +56,13 @@ the real binary under `~/Library/Application Support/ADT/MCP/fm-cli/fm-cli`, and
 installed `fm`. Both launchers report the same `--version` banner, and the real binary keeps its
 own name, `fm-cli`, in every build so far — as does `fm help`'s own title.
 
+**0.9.0 moved it.** Its installer runs as you, without a password, and writes the same wrapper to
+`~/.local/bin/filemaker` — which is not on PATH by default, so a fresh install answers
+`command -v filemaker` with nothing until you add that folder. A machine upgraded from 0.8.0 keeps
+the old root-owned `/usr/local/bin/filemaker` too; it still works, because it execs the same real
+binary, but 0.9.0's installer names it as a leftover to remove. `locateFmCli` looks in
+`~/.local/bin` first for that reason.
+
 Anything that resolves the CLI by name must therefore try both, which `locateFmCli` does. Call it
 instead of hardcoding a name, and prefer `cli.path` over the word `fm` anywhere a command line is
 recorded or printed.
@@ -136,12 +143,13 @@ touching one it did not create. What the answers mean is written up in
 
 The runbook for picking up a new fm build:
 
-1. Install the build, then say out loud what it put on PATH: `ls -l /usr/local/bin/filemaker
-   /usr/local/bin/fm; command -v filemaker fm`. Nothing downstream in this runbook can notice
-   that answer changing — 0.8.0 renamed `fm` to `filemaker` and every step below still passed —
-   and consumers that resolve the launcher by name break on it. If the name moved again, teach
-   `LAUNCHER_NAMES` in [src/runner/locate.ts](src/runner/locate.ts) the new one and say so in
-   [The launcher's name](#the-launchers-name).
+1. Install the build, then say out loud what it put on PATH: `ls -l ~/.local/bin/filemaker
+   /usr/local/bin/filemaker /usr/local/bin/fm; command -v filemaker fm`. Nothing downstream in
+   this runbook can notice that answer changing — 0.8.0 renamed `fm` to `filemaker`, 0.9.0 moved
+   it to `~/.local/bin`, and every step below still passed both times — and consumers that resolve
+   the launcher by name or by path break on it. If the name or the folder moved again, teach
+   `LAUNCHER_NAMES` or `launcherDirs` in [src/runner/locate.ts](src/runner/locate.ts) and say so
+   in [The launcher's name](#the-launchers-name).
 2. Commit or stash whatever is in progress, so the diff below is only the new build's doing.
 3. `npx fm-gaps check --file=fmnet://localhost/ooe --username=admin`
 4. Read the output in this order: Help since, Errored, Regressed, Expected failure resolved,
