@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { describe, it, expect } from 'vitest';
-import { probeId, writeEvidence, readEvidence, evidencePath } from '../src/gaps/evidence.ts';
+import { probeId, writeEvidence, readEvidence, evidencePath, previousEvidenceDir } from '../src/gaps/evidence.ts';
 
 describe('evidence store', () => {
   it('derives a stable id from the op regardless of key order', () => {
@@ -26,6 +26,16 @@ describe('evidence store', () => {
     expect(lines[2]).toEqual({ type: 'stderr', line: { type: 'summary', total: 3 } });
     const back = readEvidence(root, rel);
     expect(back.stdout).toHaveLength(1); expect(back.stderr).toHaveLength(1);
+    fs.rmSync(root, { recursive: true, force: true });
+  });
+
+  it('picks the previous build by build number, not by directory name', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'fm-gaps-ev-'));
+    const op = { op: 'read:table' };
+    writeEvidence(root, '0.8.0', 'beta.0-29827611', op, { command: '', batch: { size: 1, position: 1 }, stdout: [], stderr: [], exitCode: 0 });
+    writeEvidence(root, '0.8.0', '29834929', op, { command: '', batch: { size: 1, position: 1 }, stdout: [], stderr: [], exitCode: 0 });
+    // '0.8.0-29834929' sorts before '0.8.0-beta.0-29827611' as a string, but the GA's build is later.
+    expect(previousEvidenceDir(root, '0.9.0', '29846589')).toBe('0.8.0-29834929');
     fs.rmSync(root, { recursive: true, force: true });
   });
 });

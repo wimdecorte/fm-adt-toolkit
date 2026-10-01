@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { evidenceDir } from './evidence.ts';
+import { newestOther } from './build-order.ts';
 import type { BehaviourSnapshot } from './behaviour.ts';
 
 /** Where one build's behaviour snapshot lives: the same `<version>-<build>` naming as
@@ -17,14 +18,13 @@ export function writeBehaviourSnapshot(root: string, snapshot: BehaviourSnapshot
 }
 
 /** The newest OTHER stored snapshot -- what this build's answers should be compared against -- or
- *  null when this is the first run. Mirrors `previousHelpSnapshot`, including its wart: filenames
- *  are compared as strings, so a GA build sorts before its own prereleases (`0.8.0-29834929` <
- *  `0.8.0-beta.0-29827611`). Worth knowing when reading a diff that skipped a build. */
+ *  null when this is the first run. Mirrors `previousHelpSnapshot`, ordering by build number
+ *  rather than by filename. */
 export function previousBehaviourSnapshot(root: string, version: string, build: string): BehaviourSnapshot | null {
   const dir = path.join(root, 'gaps', 'behaviour');
   if (!fs.existsSync(dir)) return null;
   const current = path.basename(behaviourSnapshotPath(root, version, build));
-  const others = fs.readdirSync(dir).filter((f) => f.endsWith('.json') && f !== current).sort();
-  if (!others.length) return null;
-  return JSON.parse(fs.readFileSync(path.join(dir, others[others.length - 1]), 'utf8')) as BehaviourSnapshot;
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+  const prev = newestOther(files, current);
+  return prev ? JSON.parse(fs.readFileSync(path.join(dir, prev), 'utf8')) as BehaviourSnapshot : null;
 }

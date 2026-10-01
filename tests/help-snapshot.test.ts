@@ -96,4 +96,13 @@ describe('previousHelpSnapshot', () => {
     expect(prev).toBe(helpSnapshotPath(root, '0.7.0', '29823677'));
     expect(fs.readFileSync(prev!, 'utf8')).toBe('{"v":"0.7.0-a"}');
   });
+
+  it('picks a GA over the prerelease it followed, even though the GA sorts first as a string', () => {
+    const root = tmp();
+    writeHelpSnapshot(root, '0.8.0', 'beta.0-29827611', '{"v":"beta"}');
+    writeHelpSnapshot(root, '0.8.0', '29834929', '{"v":"ga"}');
+    const prev = previousHelpSnapshot(root, '0.9.0', '29846589');
+    expect(prev).toBe(helpSnapshotPath(root, '0.8.0', '29834929'));
+    expect(fs.readFileSync(prev!, 'utf8')).toBe('{"v":"ga"}');
+  });
 });

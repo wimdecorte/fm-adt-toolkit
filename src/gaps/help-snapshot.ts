@@ -3,6 +3,7 @@ import { promisify } from 'node:util';
 import fs from 'node:fs';
 import path from 'node:path';
 import { evidenceDir } from './evidence.ts';
+import { newestOther } from './build-order.ts';
 
 const execFileAsync = promisify(execFile);
 
@@ -32,15 +33,13 @@ export function writeHelpSnapshot(root: string, version: string, build: string, 
 }
 
 /** The newest OTHER stored snapshot -- what the current build's help should be diffed
- *  against -- or null when this is the first build recorded. Mirrors `previousEvidenceDir`:
- *  filenames sort in build order, so the greatest name below the current one is "the
- *  previous build". */
+ *  against -- or null when this is the first build recorded. Mirrors `previousEvidenceDir`,
+ *  ordering by build number rather than by filename. */
 export function previousHelpSnapshot(root: string, version: string, build: string): string | null {
   const dir = path.join(root, 'gaps', 'help');
   if (!fs.existsSync(dir)) return null;
   const current = path.basename(helpSnapshotPath(root, version, build));
-  const others = fs.readdirSync(dir)
-    .filter((f) => f.endsWith('.json') && f !== current)
-    .sort();
-  return others.length ? path.join(dir, others[others.length - 1]) : null;
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+  const prev = newestOther(files, current);
+  return prev ? path.join(dir, prev) : null;
 }
