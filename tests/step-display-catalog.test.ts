@@ -6,11 +6,13 @@ import { describe, it, expect } from 'vitest';
 import catalogData from '../src/catalogs/fm-step-display.json' with { type: 'json' };
 import {
   ARTEFACT_KEYS,
+  expandStep,
   oneLine,
   renderStepFromCatalog,
   segmentID,
   stepConventions,
   STEP_MASK,
+  topKey,
 } from '../src/step-display/step-display-render.ts';
 import type { StepDisplayCatalog, StepSlotRef } from '../src/step-display/step-display-types.ts';
 import type { ScriptDetailStep } from '../src/types.ts';
@@ -262,9 +264,9 @@ describe('the catalog renderer against FileMaker’s own text', () => {
       }
     }
     expect(tally.outside).toEqual([]);
-    // Measured on fm 0.8.0 (29834929): 55 rendered + 232 never shown + 2 unresolved.
+    // Measured on fm 0.9.0 (29846589): 43 rendered + 194 never shown + 7 unresolved.
     // The partition above is the invariant; both the sum and the split are facts about the
-    // corpus, and two builds running have moved them.
+    // corpus, and three builds running have moved them.
     //
     // 0.8.0-beta.0 reported Replace Field Contents' and Install Menu Set's options as named
     // keys instead of anonymous `slots` places, taking 29 places out of the bag: the sum fell
@@ -274,8 +276,25 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     //
     // A fall here needs a reason every time. For the GA one see the test below: it is a
     // spurious segment going away, not a value that stopped rendering.
-    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(289);
-    expect(tally.rendered).toBeGreaterThanOrEqual(55);
+    //
+    // 0.9.0 took 45 more places out of the bag, 289 -> 244, every one by step type. 28 are
+    // `slots.fileReference: "Current File"`, which fm stopped sending on AVPlayer Set Options
+    // (18) and Perform Semantic Find (10) — never shown, so nothing printed changed. The other
+    // 17 became named keys: a data source given by id (Configure Region Monitor Script, Install
+    // OnTimer Script, Open File), `sourceOptions` on Convert File (3), `sql` on Execute SQL,
+    // `parameters`/`llmParameters` on the two AI steps (5) and the Perform Script family (5).
+    // `rendered` fell 55 -> 48 with them, and seven is the same set seen from the other side:
+    // the three data sources render from their named key now; Convert File's two and Execute
+    // SQL's one went into `sourceOptions` and `sql`, which render member by member (see the
+    // members paragraph under `withheld` below); and Perform Script on Server's was the spurious
+    // `List: 1` — see `baseline`.
+    //
+    // Then 48 -> 43 rendered and 2 -> 7 unresolved, with no place leaving the bag: the plug-in
+    // step's five argument slots. fm 0.9.0 sends those values twice, under `arguments.*` and as
+    // `slots.calc.0`-`4`, and once `expandStep` let the matcher see `arguments.Function` it
+    // placed the named copy, so the slot copies are settled as shown under another key.
+    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(244);
+    expect(tally.rendered).toBeGreaterThanOrEqual(43);
   });
 
   it('has no key the catalog accounts for in no way at all', () => {
@@ -299,8 +318,10 @@ describe('the catalog renderer against FileMaker’s own text', () => {
           ...(entry.unresolved ?? []).filter((item) => !item.slot).map((item) => item.key),
           ...(entry.commentStyle ? ['text'] : []),
         ]);
-        for (const key of Object.keys(step)) {
-          if (ARTEFACT_KEYS.has(key) || accounted.has(key)) continue;
+        // The keys as the catalog addresses them: a structured option by its members, any of
+        // which is accounted for by a mention of its own or of the option as a whole.
+        for (const key of Object.keys(expandStep(step))) {
+          if (ARTEFACT_KEYS.has(key) || accounted.has(key) || accounted.has(topKey(key))) continue;
           unmentioned.push(`${step.step} | ${key}`);
         }
       }
@@ -329,8 +350,9 @@ describe('the catalog renderer against FileMaker’s own text', () => {
         rendered += printed.size;
         baseline += new Set(line.baseline).size;
         const slots = step.slots;
+        // Counted as the renderer addresses them: a structured option by its members.
         const places = [
-          ...Object.keys(step).filter((key) => key !== 'slots' && !ARTEFACT_KEYS.has(key)),
+          ...Object.keys(expandStep(step)).filter((key) => key !== 'slots' && !ARTEFACT_KEYS.has(key)),
           ...(slots !== null && typeof slots === 'object'
             ? Object.entries(slots as Record<string, unknown>).flatMap(([member, held]) =>
                 held !== null && typeof held === 'object' && !Array.isArray(held)
@@ -372,9 +394,43 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // (8). The catalog does not render those yet, so they land in `withheld`, and this number
     // is the size of that outstanding work, not a regression in what the catalog prints.
     // Re-tighten it to the measured value once those objects are rendered.
-    expect(rendered).toBeGreaterThanOrEqual(3015);
-    expect(baseline).toBeGreaterThanOrEqual(107);
-    expect(withheld).toBeLessThanOrEqual(1142);
+    //
+    // fm 0.9.0 (29846589): 3058 printed, 93 of them by the baseline, 1224 withheld, and FileMaker's
+    // own text is matched byte for byte on 910 lines where it was 894 — measured by rendering every
+    // pair under the GA catalog and corpus and under these.
+    //
+    // `rendered` rose, 3015 -> 3058, nearly all of it Insert File: the 14 steps 0.8.0 sent opaque
+    // are decoded, and all 31 examples now match FileMaker exactly (17 before).
+    //
+    // `baseline` FELL against its floor, 107 -> 93, and each of the 14 is a print FileMaker never
+    // made going away: `List: 1` / `List 1: 1 ; List 6: 1` on the Perform Script family (4) and
+    // `Calc 30`, `Calc 31`, `Numeric` on the two AI steps (5), slot values 0.9.0 now names; `; true`
+    // on Replace Field Contents (2), which the enum-only omitted-boolean rule removed; `"dev" ;
+    // Calc: "dev"` on one Convert File (2); and Perform JavaScript in Web Viewer's two `Arg`
+    // slots, now one `parameters` list (1), which FileMaker prints joined with `, ` — the
+    // catalog measures that as `listForm: 'joined'` and prints it the same way.
+    //
+    // `withheld` ROSE, 1142 -> 1224, and the ratchet is suspended for this build as it was for
+    // 0.8.0-beta.0, because most of the rise is population rather than regression. Insert File
+    // +93: its 14 formerly opaque steps are counted for the first time, with every key FileMaker
+    // draws nothing for. Then the objects fm 0.9.0 introduced and this catalog does not render
+    // inside: Convert File's `sourceOptions` +6 and Execute SQL's `sql` +3 — the second costs a
+    // line that matched before, `Calculated SQL Text:`. Then the AI steps +10: Perform SQL Query
+    // by Natural Language's `tableOccurrences` (8, withheld on the owner's ruling) and each step's
+    // withdrawn `parameters` list (2). Then Replace Field Contents' `performAutoEnter: true` (2),
+    // correctly unprinted now. Against those: `slots.fileReference` no longer sent (-28), Set
+    // Error Logging's `on` rendered at last (-3), and Insert from URL's `encodeUrl` (-1).
+    //
+    // THEN THE MEMBERS, in the same intake. A structured option is now addressed member by member
+    // (`expandStep`), so `sql.query` renders and Execute SQL matches FileMaker on all three lines;
+    // Print's printer, Import Records' table, action and character set, and Convert File's source
+    // render too. `rendered` 3058 -> 3137 and `baseline` 93 -> 95. `withheld` is now counted per
+    // member, which is what the renderer addresses, and that is a different population: 1770.
+    // Counted the old way, one object at a time, the same catalog withholds 1210 — FELL by 14 from
+    // 1224 — so the rise is the count's unit, not the catalog. The ratchet is re-armed on members.
+    expect(rendered).toBeGreaterThanOrEqual(3137);
+    expect(baseline).toBeGreaterThanOrEqual(95);
+    expect(withheld).toBeLessThanOrEqual(1770);
   });
 
   it('agrees with the aligner about collapsing a return', () => {

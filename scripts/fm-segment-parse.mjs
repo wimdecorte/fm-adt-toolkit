@@ -122,11 +122,58 @@ export function expandSlots(step) {
   return view;
 }
 
+/** The step as the matcher sees it: `expandSlots`, and then every structured option
+ *  replaced, IN PLACE in the key order, by one dotted key per member — `sql` holding
+ *  `{query}` becomes `sql.query`, and a member that is itself an object expands the
+ *  same way (`importOptions.profile.fileType`).
+ *
+ *  THE GAP THIS CLOSES. A key was compared to the line as one value, and an object
+ *  never equals text, so every structured option read as one FileMaker never shows —
+ *  `ignored` at `measured`. Measured against FileMaker's own lines in the 0.9.0
+ *  intake, that was false wherever a member is printed verbatim: `SQL Text:` on
+ *  Execute SQL, the XML source on Convert File, `Table:` on Import Records, the
+ *  printer on Print, a plug-in step's `Function:` and `P1:` arguments.
+ *
+ *  A LIST stays one value: it has its own forms (`listVariants`). So does a set-word
+ *  (`isSetValue`), which `setMember` reads whole, and a key that is never an option
+ *  (`NON_DISPLAY_KEYS` — `block`). The renderer expands a step the same way, in its own
+ *  `expandStep`, because the derivation does not import the app's source. Nothing asserts
+ *  the two agree; the round-trip is what would show it, since a key named here that the
+ *  renderer cannot find renders nothing and the measured counts fall. */
+export function expandStep(step) {
+  const flat = expandSlots(step);
+  if (!flat || typeof flat !== 'object') return flat ?? {};
+  if (!Object.entries(flat).some(([key, value]) => isExpandable(key, value))) return flat;
+  const view = {};
+  const into = (prefix, value) => {
+    for (const [member, held] of Object.entries(value)) {
+      const key = `${prefix}.${member}`;
+      if (isExpandable(key, held)) into(key, held);
+      else view[key] = held;
+    }
+  };
+  for (const [key, value] of Object.entries(flat)) {
+    if (isExpandable(key, value)) into(key, value);
+    else view[key] = value;
+  }
+  return view;
+}
+
+function isExpandable(key, value) {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    !Array.isArray(value) &&
+    !isSetValue(value) &&
+    !NON_DISPLAY_KEYS.has(key)
+  );
+}
+
 /** Keys that carry a displayed option, in the order the CLI reports them, with
- *  `slots` expanded into one key per slot. */
+ *  `slots` and structured options expanded (`expandStep`). */
 export function displayKeys(step) {
   if (!step || typeof step !== 'object') return [];
-  return Object.keys(expandSlots(step)).filter((key) => !NON_DISPLAY_KEYS.has(key));
+  return Object.keys(expandStep(step)).filter((key) => !NON_DISPLAY_KEYS.has(key));
 }
 
 function upperFirst(text) {
@@ -308,15 +355,28 @@ function listVariants(list) {
   if (first === undefined) return [];
   const base = normaliseCalc(first);
   if (!base) return [];
+  // EVERY entry, joined the way FileMaker joins a parameter list (`$p1, $p2`). A file-path
+  // list prints its first entry only, which is what the forms below measure; a list of
+  // parameters prints them all, measured on `Perform JavaScript in Web Viewer` once fm
+  // 0.9.0 reported its arguments as one `parameters` list. Offered only where there is more
+  // than one entry, since a single entry reads the same either way.
+  const scalars = list.filter((entry) => entry !== null && entry !== undefined && typeof entry !== 'object');
+  const joined =
+    scalars.length > 1
+      ? [{ text: scalars.map((entry) => normaliseCalc(entry)).join(', '), listJoined: true }]
+      : [];
   const forms = [{ text: base }];
   const noScheme = base.replace(/^[A-Za-z][A-Za-z0-9+.-]*:/, '');
   if (noScheme && noScheme !== base) forms.push({ text: noScheme, derivedFrom: 'schemeStripped' });
   const tail = noScheme.split('/').pop();
   if (tail && tail !== noScheme) forms.push({ text: tail, derivedFrom: 'fileName' });
-  return forms.flatMap((form) => [
-    { ...form, quoted: false, listFirst: true },
-    { ...form, text: `“${form.text}”`, quoted: true, listFirst: true },
-  ]);
+  return [
+    ...joined.map((form) => ({ ...form, quoted: false })),
+    ...forms.flatMap((form) => [
+      { ...form, quoted: false, listFirst: true },
+      { ...form, text: `“${form.text}”`, quoted: true, listFirst: true },
+    ]),
+  ];
 }
 
 /** The optional presentation fields of a segment, present only when true. */
@@ -325,6 +385,7 @@ function presentationOf(meta) {
     ...(meta.quoted ? { quoted: true } : {}),
     ...(meta.truncated ? { truncated: true } : {}),
     ...(meta.listFirst ? { listFirst: true } : {}),
+    ...(meta.listJoined ? { listJoined: true } : {}),
     ...(meta.derivedFrom ? { derivedFrom: meta.derivedFrom } : {}),
     ...(meta.withRepetition ? { withRepetition: true } : {}),
     ...(meta.decorated ? { decorated: meta.decorated } : {}),
@@ -501,7 +562,7 @@ function resolveLabelledValue(content, valueStart, limit, value, step) {
  *   - segments:    `{ key, render, label, value }` in RENDERED order. `label` is
  *                  the label as observed, since FileMaker does not always derive
  *                  it from the key. Present only when they apply:
- *                  `quoted`, `truncated`, `listFirst`, `derivedFrom`,
+ *                  `quoted`, `truncated`, `listFirst`, `listJoined`, `derivedFrom`,
  *                  `withRepetition`, `decorated` (presentation the renderer must
  *                  reproduce), `suffixOf` (which option a suffix belongs to) and
  *                  `attributed` (how a segment with no anchor was placed —
@@ -521,7 +582,7 @@ export function matchSegments(step, line, displayName) {
   // Every pass below reads `view[key]`, and a slot pseudo-key only exists here —
   // so the expansion happens once, at the boundary, and no pass has to know that
   // some of its keys were synthesised.
-  const view = expandSlots(step);
+  const view = expandStep(step);
   const keys = displayKeys(step);
   const empty = { segments: [], positions: [], unmatched: [], unmatchedAt: [], ignoredKeys: keys };
   let content = null;
@@ -1011,9 +1072,18 @@ function attributeLeftover(gaps, leftoverKeys, step) {
   // it, so an attribution that had been right stopped being reachable. A slot can
   // still be claimed by counting — one step's only leftover option is a placeholder
   // for a slot — but only where no named key is competing for the same option.
-  const counting = soleKeys.some((key) => parseSlotID(key) === null)
-    ? soleKeys.filter((key) => parseSlotID(key) === null)
-    : soleKeys;
+  //
+  // A MEMBER of a structured option counts after a top-level key, for the same reason:
+  // `expandStep` turned Page Setup's one `pageSetup` object into nine members, and its
+  // `Restore`, which only `specifyPageSetup` explains, stopped being reachable. No CLI key
+  // has a dot in it, so a dotted key is always a member. Top-level keys, then members,
+  // then slots; the first tier with anything in it is the one counted.
+  const tiers = [
+    (key) => parseSlotID(key) === null && !key.includes('.'),
+    (key) => parseSlotID(key) === null,
+    () => true,
+  ];
+  const counting = tiers.map((tier) => soleKeys.filter(tier)).find((keys) => keys.length > 0) ?? [];
   if (
     openGaps.length === 1 &&
     counting.length === 1 &&

@@ -13,6 +13,34 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.9.0 (build 29846589) on 2026-10-01.** Both `.adt.json` files re-read with
+nothing but `read:script`; still 48 and 1155 steps, `.txt` halves unchanged. 2 of the 48 and 66 of
+the 1155 steps changed key set. By step type: Insert File's 14 opaque steps are decoded
+(`fileTypeFilters`, `storage`, `display`, `dialogTitle` and more), so no step in either file is
+opaque any more; `curlOptionsSpecified` became `encodeUrl` on Insert from URL (8), inverted;
+`enabled` left Set Error Logging (3), whose `on` now reads the option instead of `false`;
+`stepValue` became `spellingLanguage` on Set Dictionary (2); data sources moved from `slots` to
+named keys (`dataSource`, `sourceOptions` on Convert File, `sql` on Execute SQL); the AI steps'
+`parameters` calculation became `llmParameters`, and `parameters` is now the list that `slots`
+calc 30 and 31 held; Perform JavaScript in Web Viewer's `arg1`/`arg2` became one `parameters` list;
+and `slots.fileReference: "Current File"` is no longer sent on 28 steps.
+
+**Read with BaseElements loaded, and that is a condition of this data.** The first re-read ran
+while the machine's plug-ins were not yet updated for FileMaker Pro 26.1.1, and fm then returned
+script 55 step 6 — a Set Variable calling `BE_CurlTrace` — as `valueApproximate` with `<Function
+Missing>` in place of the call, which cost Set Variable its verification. Re-read with the plug-in
+loaded, that step is back to `value` and nothing else differs. Check
+`fm-cli --harvest-plugins=<path>` before refreshing these files.
+
+Derived and round-tripped: verified 138 → 145 with none lost, byte-identical lines 894 → 921 of
+1203. Two derivation changes came with it. A structured option is now seen member by member
+(`expandStep`), so `sql.query`, `printOptions.printer` or `importOptions.targetTable` can be placed
+where FileMaker prints them, while an option whose other members FileMaker never shows keeps one
+claim for the whole object. And a list FileMaker prints whole is measured as `listForm: 'joined'`.
+Gained: Insert File, Insert from URL, Perform Script, Execute SQL, Print, Perform JavaScript in Web
+Viewer and Insert Embedding. Export Records' two lines that matched by luck no longer match: its
+`Macintosh` was the export character set, which the CLI reports on one step of eleven.
+
 **Re-read with fm 0.8.0 (build 29834929) on 2026-09-23.** GA. Both `.adt.json` files re-read with
 nothing but `read:script` and rewritten in place; still 48 and 1155 steps, `.txt` halves unchanged.
 12 of the 48 and 312 of the 1155 steps changed key set, and the bulk of that is one uniform change:

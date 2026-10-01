@@ -18,7 +18,8 @@ import type { ScriptDetailStep } from '../src/types.ts';
  *  Loop/Exit Loop If/End Loop, two Insert from URLs and four unrelated steps, written to
  *  a scratch `--create` file and read straight back. So the keys, their spellings and
  *  the values that come back unasked — `collapsed: false`, `flush: "always"`,
- *  `targetType: 1`, `curlOptionsSpecified: false` — are measured too.
+ *  `targetType: 1`, `encodeUrl: true` — are measured too. (`encodeUrl` is fm 0.9.0's name for
+ *  what 0.8.0 reported as `curlOptionsSpecified: false`, the same bit read the other way up.)
  *
  *  The SPELLINGS are fm 0.7.0's: that build renamed every multi-word option key to
  *  camelCase (`with dialog` -> `withDialog`, `verify SSL certificates` ->
@@ -50,7 +51,7 @@ const INSERT_FROM_URL: ScriptDetailStep = {
   'verifySslCertificates': true,
   select: true,
   'withDialog': false,
-  'curlOptionsSpecified': false,
+  'encodeUrl': true,
 };
 
 const GROUND_TRUTH =
@@ -93,26 +94,56 @@ describe('Insert from URL, against the measured FileMaker line', () => {
         select: true,
         'withDialog': false,
         'targetType': 1,
-        'curlOptionsSpecified': false,
+        'encodeUrl': true,
         flags: 20615,
       }),
     ).toBe('Insert from URL [ Select ; With dialog: Off ; Target: $r2 ; "https://x" ]');
   });
 
-  it('prints no option for cURL options specified, whichever way it reads', () => {
+  it('prints Do not automatically encode URL only when encoding is off', () => {
     // **THE KEY THAT HAS ALREADY CAUSED A DEFECT IN THIS PROJECT**, on the one step type this app
-    // generates. `CLAUDE.md`: reading it as the `Specify cURL options` checkbox silently dropped
-    // the method and headers from working scripts, because a FileMaker-authored step reads it back
-    // `false` while its options render, and FileMaker's popover has no such checkbox at all.
-    //
-    // The baseline printed it briefly, on the one corpus step where it is `true`: its `ignored`
-    // claim read `low` because the claim needed a hand withdrawal to exist, and a `low` claim is
-    // one a renderer prints. Closed in the DERIVATION — the withdrawal now names its external
-    // source, which answers that dependence and takes the claim to `measured` — and deliberately
-    // not in the renderer, where it would be the "renderer decides what may print" coupling all
-    // over again. So the line is the same either way, and that is what this pins.
-    expect(stepDisplayText({ ...INSERT_FROM_URL, 'curlOptionsSpecified': true })).toBe(GROUND_TRUTH);
-    expect(stepDisplayText({ ...INSERT_FROM_URL, 'curlOptionsSpecified': false })).toBe(GROUND_TRUTH);
+    // generates — twice. Through 0.8.0 fm called Options bit 0x100 `curlOptionsSpecified`, and
+    // reading it as the `Specify cURL options` checkbox silently dropped the method and headers
+    // from working scripts: the bit is clear on steps whose cURL options render. That half was
+    // right. The catalog then went further and withdrew the one placement the corpus offered —
+    // FileMaker printing `Do not automatically encode URL` on the one step with the bit set — as
+    // a single-example coincidence, so nothing printed it either way. That half was wrong. fm
+    // 0.9.0 names the bit `encodeUrl`, inverted (FMPD-67750), and it equals NOT bit 0x100 on all
+    // 24 Insert from URL steps in Ooe, as the export's `URL@autoEncode` does on all 25. With the
+    // withdrawal gone the derivation places the phrase on `encodeUrl: false` by itself.
+    expect(stepDisplayText({ ...INSERT_FROM_URL, 'encodeUrl': true })).toBe(GROUND_TRUTH);
+    // The shape of FileMaker's own line for that step, script 55 step 389, with placeholders.
+    expect(
+      stepDisplayText({
+        stepID: 160,
+        step: 'Insert from URL',
+        target: '$r',
+        url: '$u',
+        'verifySslCertificates': true,
+        select: false,
+        'withDialog': false,
+        'encodeUrl': false,
+      }),
+    ).toBe('Insert from URL [ With dialog: Off ; Target: $r ; $u ; Verify SSL Certificates ; Do not automatically encode URL ]');
+  });
+
+  it('prints nothing for the polarity of a one-sided enum that FileMaker never shows', () => {
+    // The same shape on a second step type, already in the catalog before 0.9.0: the derived map
+    // names only `false`, and the renderer used to print the raw `true` on every step with it on.
+    // FileMaker draws nothing for `true` (script 55 steps 422 and 425). Only that half is pinned:
+    // the `false -> Skip auto-enter options` half is contradicted by steps 418-421 and stays a
+    // doubted segment.
+    expect(
+      stepDisplayText({
+        stepID: 91,
+        step: 'Replace Field Contents',
+        'withDialog': false,
+        'useEntryOptions': false,
+        'updateSerialNumberInEntryOptions': false,
+        'performAutoEnter': true,
+        'replaceOptionsSpecified': false,
+      }),
+    ).toBe('Replace Field Contents [ With dialog: Off ]');
   });
 
   it('says With dialog: On when the switch is on', () => {
@@ -564,10 +595,14 @@ describe('steps whose old rendering was known to be wrong', () => {
     // FileMaker shows the installed plugin's registered name, which no step's JSON can
     // supply — so the round-trip refuses to count this row at all. A read sheet still
     // draws it: a name we can defend beside options we measured beats a blank row.
+    //
+    // fm 0.9.0's shape: the arguments under their names, and the same values again as `slots`.
+    // The catalog labels the named copy, and the unnamed copy is not printed a second time.
     expect(
       stepDisplayText({
         stepID: 200,
         step: 'ExternalStep',
+        arguments: { Function: 'Plugin_Function', P1: '"x"' },
         slots: { calc: { '0': 'Plugin_Function', '1': '"x"' } },
       }),
     ).toBe('ExternalStep [ Function: Plugin_Function ; P1: "x" ]');
@@ -751,6 +786,7 @@ describe('a value the catalog cannot place is still printed', () => {
       stepDisplayText({
         stepID: 200,
         step: 'ExternalStep',
+        arguments: { Function: 'Fn', P1: '"a"' },
         slots: { calc: { '0': 'Fn', '1': '"a"', '5': '$P5', '6': '$P6' }, text: { '32': '$out' } },
       }),
     ).toBe('ExternalStep [ Function: Fn ; P1: "a" ; Calc 5: $P5 ; Calc 6: $P6 ; Text: $out ]');
@@ -764,7 +800,9 @@ describe('a value the catalog cannot place is still printed', () => {
       stepDisplayText({
         stepID: 200,
         step: 'Set Error Logging',
-        enabled: true,
+        // fm 0.9.0's spelling. Through 0.8.0 the switch was `enabled`, and `on` read false on
+        // every step whatever the option said; 0.9.0 dropped `enabled` and made `on` true.
+        on: true,
         'customDebugInfo': 'Get ( CurrentHostTimeStamp )',
       }),
       // FileMaker's own line for this step, script 55 step 109, reads
@@ -1096,5 +1134,63 @@ describe('a step an older fm reported', () => {
     expect(text).toContain('https://exact');
     const { baseline } = renderStepFromCatalog(step, entry, stepConventions(CATALOG));
     expect(baseline).toEqual([other]);
+  });
+});
+
+describe('a structured option, addressed by its members', () => {
+  const SECRET = 'S3cret!Literal';
+  // fm 0.9.0 moved several steps' options into objects (`sql`, `sourceOptions`), and every
+  // object already read as one value no line could equal, so the catalog recorded each as
+  // never shown. The derivation now sees `sql.query` as a key of its own, and so does this.
+  it('prints the SQL text Execute SQL holds inside `sql`', () => {
+    // FileMaker's own line for script 55 step 1074.
+    expect(
+      stepDisplayText({ stepID: 117, step: 'Execute SQL', withDialog: false, sql: { query: 'SELECT * FROM orders' } }),
+    ).toBe('Execute SQL [ With dialog: Off ; SQL Text: SELECT * FROM orders ]');
+  });
+
+  it('masks a secret inside a structured option', () => {
+    // 0.9.0 documents `sql.password`; no corpus step carries one, so this is the guarantee
+    // rather than a measurement. Before, the whole `sql` object was withheld; now its members
+    // reach the line one by one, and the password must reach it masked.
+    const line = stepDisplayText({
+      stepID: 117,
+      step: 'Execute SQL',
+      withDialog: false,
+      sql: { query: 'SELECT 1', password: SECRET },
+    });
+    expect(line).not.toContain(SECRET);
+    expect(line).toContain(STEP_MASK);
+  });
+
+  it('keeps quiet about the members FileMaker never shows', () => {
+    // `exportOptions` is claimed whole: in eleven examples FileMaker showed nothing of it
+    // beyond its character set. A member seen in one of them only is not printed on its own.
+    expect(
+      stepDisplayText({
+        stepID: 36,
+        step: 'Export Records',
+        withDialog: false,
+        createFolders: false,
+        exportOptions: { applyLayoutFormatting: true, useFieldNameAlias: true },
+      }),
+    ).toBe('Export Records [ With dialog: Off ; Create folders: Off ]');
+  });
+});
+
+describe('a list FileMaker prints whole', () => {
+  it('joins Perform JavaScript in Web Viewer’s parameters as FileMaker does', () => {
+    // fm 0.9.0 reports the arguments as one `parameters` list where 0.8.0 had `arg1`, `arg2`.
+    // A file-path list prints its first entry; FileMaker's line for this step, script 55 step
+    // 1103, prints them all: `Parameters: $p1 &  List( 1;2;3;4), $p2`.
+    expect(
+      stepDisplayText({
+        stepID: 175,
+        step: 'Perform JavaScript in Web Viewer',
+        objectName: '"wv"',
+        function: '"fn"',
+        parameters: ['$a', '$b', '$c'],
+      }),
+    ).toBe('Perform JavaScript in Web Viewer [ Object Name: "wv" ; Function Name: "fn" ; Parameters: $a, $b, $c ]');
   });
 });

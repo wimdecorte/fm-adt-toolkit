@@ -74,7 +74,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { alignSteps, DISPLAY_NAME_OVERRIDES, oneLine } from './fm-script-align.mjs';
-import { matchSegments, displayKeys, expandSlots, isRepetitionKey } from './fm-segment-parse.mjs';
+import { matchSegments, displayKeys, expandStep, isRepetitionKey } from './fm-segment-parse.mjs';
 // THE APP'S OWN RENDERER, not a copy of it. See `renderFor` below for why this import
 // is the point of the file rather than a convenience.
 import {
@@ -365,7 +365,7 @@ function couldRender(view, key) {
 function residualCause(step, line, displayName) {
   const match = matchSegments(step, line, displayName);
   if (match.unmatched.length === 0) return null;
-  const view = expandSlots(step);
+  const view = expandStep(step);
   const plausible = match.ignoredKeys.filter((key) => couldRender(view, key));
   return plausible.length === 0 ? 'unreported' : 'unattributed';
 }

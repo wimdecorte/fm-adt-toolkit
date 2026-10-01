@@ -212,7 +212,9 @@ const CLI_KEY = /^[a-z][A-Za-z0-9]*$/;
  *  `External id`, not `External ID`, because the words are lower-cased before the first
  *  is capitalised and nothing here knows which runs were acronyms. Used only for a key
  *  the catalog never labels. */
-function inferredLabel(key: string): string {
+function inferredLabel(dotted: string): string {
+  // A member of a structured option is labelled by its own name: `sql.query` is `Query`.
+  const key = dotted.slice(dotted.lastIndexOf('.') + 1);
   if (CLI_KEY.test(key)) {
     const words = keyWords(key);
     if (words.length > 1) {
@@ -398,6 +400,43 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+/** The top-level key a member of a structured option belongs to (`sql.query` -> `sql`). */
+export function topKey(key: string): string {
+  return key.includes('.') ? key.slice(0, key.indexOf('.')) : key;
+}
+
+/** A set-word (`{raw, set}`), which `setMember` reads whole rather than member by member. */
+function isSetValue(value: unknown): boolean {
+  return isRecord(value) && Array.isArray(value.set) && value.set.every((member) => typeof member === 'string');
+}
+
+/** The step as the catalog addresses it: every structured option replaced, in place, by one
+ *  dotted key per member — `sql: {query}` becomes `sql.query`, recursively — because that is
+ *  how the derivation saw it (`expandStep` in `scripts/fm-segment-parse.mjs`, kept separate
+ *  because the derivation does not import this source) and so how the catalog names it. A list stays one value, as do a set-word and the keys that are never an
+ *  option (`ARTEFACT_KEYS`); `slots` is left for `segmentValue`, which addresses it already.
+ *
+ *  Before this, an object was one value no line could equal, so the catalog recorded every
+ *  one as never shown, and FileMaker's `SQL Text:` on Execute SQL went unprinted. */
+export function expandStep(step: ScriptDetailStep): ScriptDetailStep {
+  const expandable = (key: string, value: unknown) =>
+    isRecord(value) && !isSetValue(value) && !ARTEFACT_KEYS.has(key);
+  if (!Object.entries(step).some(([key, value]) => expandable(key, value))) return step;
+  const view: Record<string, unknown> = {};
+  const into = (prefix: string, value: Record<string, unknown>) => {
+    for (const [member, held] of Object.entries(value)) {
+      const key = `${prefix}.${member}`;
+      if (expandable(key, held)) into(key, held as Record<string, unknown>);
+      else view[key] = held;
+    }
+  };
+  for (const [key, value] of Object.entries(step)) {
+    if (expandable(key, value)) into(key, value as Record<string, unknown>);
+    else view[key] = value;
+  }
+  return view as ScriptDetailStep;
+}
+
 /** How much of a file path the catalog says FileMaker prints. */
 function pathText(text: string, pathForm: StepSegment['pathForm']): string {
   if (!pathForm) return text;
@@ -408,7 +447,8 @@ function pathText(text: string, pathForm: StepSegment['pathForm']): string {
 
 /** The text of a JSON value as the catalog implies it is printed.
  *
- *  A LIST is the interesting case. FileMaker prints only its first entry, and for a
+ *  A LIST is the interesting case. FileMaker prints only its first entry — unless the
+ *  catalog measured it printing them all (`listForm: 'joined'`, a parameter list) — and for a
  *  file option only the file name inside it — which the catalog carries as `pathForm`,
  *  on the owner's ruling: "FM does not print the prefix." Everything else about a list
  *  is still unexpressed, so a 2-entry attachment list FileMaker renders as
@@ -423,6 +463,10 @@ function valueText(
       (entry) => entry !== null && entry !== undefined && typeof entry !== 'object',
     );
     if (first === undefined) return { gap: 'structuredValue' };
+    if (segment.listForm === 'joined') {
+      const entries = value.filter((entry) => entry !== null && entry !== undefined && typeof entry !== 'object');
+      return { text: entries.map((entry) => oneLine(entry)).join(', '), list: value.length };
+    }
     return { text: pathText(oneLine(first), segment.pathForm), list: value.length };
   }
   if (typeof value === 'boolean') return { text: value ? 'true' : 'false' };
@@ -643,7 +687,9 @@ function renderSegment(
   const wrap = (text: string): string => (segment.quoted ? `“${text}”` : text);
   // A value FileMaker prints nothing for. Checked before the kind, since it holds
   // whatever the kind would otherwise have done with it.
-  if (segment.omittedValues?.includes(oneLine(value))) return { kind: 'text', text: '' };
+  // Trimmed, as the derivation's value identity is: Import Records' `fileType` is `"XML "`,
+  // recorded as `XML`, and an untrimmed comparison printed the four-character code it omits.
+  if (segment.omittedValues?.includes(oneLine(value).trim())) return { kind: 'text', text: '' };
 
   switch (segment.render) {
     case 'bareWhenTrue':
@@ -982,7 +1028,30 @@ function baselineOptions(
     const held = keyOn(step, id);
     if (held !== undefined) strong.add(held);
   }
-  const places = reportedValues(step).filter((place) => !strong.has(place.id));
+  // A member of a structured option is accounted for by a measured claim on the option as a
+  // whole — FileMaker shows nothing of it beyond the members the catalog places. Named keys
+  // only: a slot's id is dotted too (`slots.calc.0`), and is not a member of anything.
+  // Only a measured `ignored` claim on the option covers its members: a segment keyed on the
+  // top-level name (`Loop`'s `flush`) says nothing about a member it was never derived from.
+  const wholeOptions = new Set(
+    entry.ignored.filter((item) => !item.slot && item.confidence === 'measured').map((item) => item.key),
+  );
+  // A value the CLI does not NAME that it ALSO reports under a name is the same option twice —
+  // ruling 7's shape, by value rather than by label — and the name's disposition governs it,
+  // printed or withheld. Measured on a plug-in step: fm 0.9.0 sends `arguments.Function` …
+  // `arguments.P9` and the same ten values again as `slots.calc.0` … `9`, and the line
+  // printed `Function: $Command` and `Calc 0: $Command`.
+  const namedValues = new Set(
+    reportedValues(step)
+      .filter((place) => !place.unnamed)
+      .map((place) => place.value)
+      .filter((value): value is string => typeof value === 'string' && value !== ''),
+  );
+  const places = reportedValues(step).filter(
+    (place) =>
+      !strong.has(place.id) &&
+      (place.unnamed ? !(typeof place.value === 'string' && namedValues.has(place.value)) : !wholeOptions.has(topKey(place.id))),
+  );
   const repeated = repeatedMembers(places);
   const options: Array<{ key: string; text: string }> = [];
   for (const place of places) {
@@ -1040,10 +1109,13 @@ interface PendingOption {
  *  silent or unsure, printing beats dropping. See `baselineOptions` for the three
  *  populations that reach it and `stronglyAccounted` for the line it draws. */
 export function renderStepFromCatalog(
-  step: ScriptDetailStep,
+  given: ScriptDetailStep,
   entry: StepDisplayEntry,
   conventions: StepDisplayConventions,
 ): StepRendered {
+  // Everything below reads the expanded step, so a structured option is addressed by its
+  // members on every path — the catalog's segments, presence, the baseline, the masks.
+  const step = expandStep(given);
   const name = entry.displayName ?? step.step;
   const gaps: StepRenderGap[] = [];
   const contributed: string[] = [];

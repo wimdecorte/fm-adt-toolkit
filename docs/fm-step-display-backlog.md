@@ -246,6 +246,17 @@ FileMaker prints `Do not automatically encode URL` and the CLI sends no key for 
 (section 5) — so it simply reads as the missing option it is instead of as a text disagreement. One
 value stops printing and nothing else does: 104 by the baseline, from 105.
 
+**Reversed in the fm 0.9.0 intake (2026-10-01): the perfect correlation was the truth, and the
+external source was wrong.** fm 0.9.0 renames the key `encodeUrl` and inverts it (FMPD-67750), and
+`curlOptionsSpecified` turns out to have been Options bit 0x100 all along — FileMaker's *Do not
+automatically encode URL*. Measured three ways: `encodeUrl` = NOT bit 0x100 on all 24 Insert from
+URL steps fm reads in Ooe; the export's `URL@autoEncode` = NOT bit 0x100 on all 25; and the phrase
+on exactly the one corpus step with the bit set. So the CLI did send the option, under a misleading
+name, and this was never a confirmed gap. `CLAUDE.md` was right that the key is not a cURL gate and
+wrong that it is not displayed. The withdrawal is gone; the derivation places the phrase on
+`encodeUrl: false` by itself, and with the enum-only omitted-boolean rule (owner's ruling, same
+intake) `Insert from URL` is verified for the first time, 8 of 8.
+
 ---
 
 # 1. The bitmask flags word — your hypothesis, measured
@@ -552,9 +563,10 @@ confirmation that it means nothing for our purposes.
 
 - The repetition FileMaker appends to an option is **not in the CLI's output in any form** — see section 5.
 - The privilege set name is **not in the CLI's output in any form** — see section 5.
-- `curlOptionsSpecified` is not a gate on `curlOptions`; see `CLAUDE.md`. **And it is not an
-  option either**, on the same source: the catalog's never-shown claim for it now carries that
-  attestation and reads `measured`, so nothing prints it whichever way it reads. Closed in 0.2.
+- `curlOptionsSpecified` is not a gate on `curlOptions`; see `CLAUDE.md`. ~~**And it is not an
+  option either**, on the same source~~ — **reopened and reversed in the fm 0.9.0 intake**: it IS
+  an option, *Do not automatically encode URL*, which 0.9.0 names `encodeUrl` (see 0.2). Only the
+  first half of this item stands.
 
 ## 2.4 Two items that look like `flags` and are not
 
@@ -591,7 +603,7 @@ there and it is a CLI defect.* Every shape below has been put through exactly th
 | # | Steps | The difference | Step types | What would settle it | Whose |
 |---|---|---|---|---|---|
 | 1 | 15 | both print the option, and FileMaker adds a bracket we do not | Generate Response from Model, Insert Image Captions in Found Set, Perform Semantic Find | The bracket holds a repetition number that is **in no key and in no unnamed value**. Confirmed CLI gap — see section 5 | **closed** |
-| 2 | 14 | FileMaker prints an option with no label and we print nothing for it | Convert File, Go to Layout, Insert from URL, Move/Resize Window, Perform SQL Query by Natural Language, Save Records as Excel, Send Event, Send Mail | Seven unrelated causes sharing one shape. Each needs the same fork applied one step type at a time: is the value in the JSON under a name we did not recognise, or absent? Two fewer than last round, and `Insert from URL` stays: what FileMaker adds there is `Do not automatically encode URL`, which the CLI sends under no name at all (0.2) | mixed, mostly **ours** |
+| 2 | 14 | FileMaker prints an option with no label and we print nothing for it | Convert File, Go to Layout, Insert from URL, Move/Resize Window, Perform SQL Query by Natural Language, Save Records as Excel, Send Event, Send Mail | Seven unrelated causes sharing one shape. Each needs the same fork applied one step type at a time: is the value in the JSON under a name we did not recognise, or absent? Two fewer than last round, and `Insert from URL` stays: what FileMaker adds there is `Do not automatically encode URL`, which the CLI sends under no name at all (0.2). **Since fm 0.9.0: it sent it all along, as `curlOptionsSpecified` — see the reversal note in 0.2; `Insert from URL` is out of this row** | mixed, mostly **ours** |
 | 3 | 10 | a different set of options altogether | Convert File, Go to Related Record, Install Menu Set, Perform SQL Query by Natural Language, Perform Script on Server with Callback, Save Records as Excel, Save Records as PDF, Send Mail | Nine shapes each under three steps. `Save Records as PDF` is the pattern: FileMaker prints `Save to: File` and we print the record-set option instead, so FileMaker is choosing a different set of options depending on one of them | mixed |
 | 4 | 8 | a different set of options altogether | Add Account | FileMaker prints a privilege set name; the CLI sends it nowhere. Confirmed CLI gap — see section 5. The rest of this step type is now right | **closed** |
 | 5 | 8 | both print the option, with different text in it | Install Menu Set, Perform AppleScript, Perform Script on Server, Set Zoom Level, Show Custom Dialog, Truncate Table | Five shapes each under three steps. **`Truncate Table` and `Install Menu Set` are a lookup we cannot do**: both report a numeric internal id where FileMaker prints a name, so the name comes from the file's schema and not from the step. We now print the id, which is why they read as a text difference rather than a missing option. See section 5 | mixed, and mostly closed |

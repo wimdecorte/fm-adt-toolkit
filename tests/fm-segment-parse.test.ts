@@ -86,7 +86,7 @@ describe('matchSegments — the Insert from URL ground truth', () => {
     'verifySslCertificates': true,
     select: true,
     'withDialog': false,
-    'curlOptionsSpecified': false,
+    'encodeUrl': true,
   };
   const line =
     'Insert from URL [ Select ; With dialog: Off ; Target: $result ; $url ; Verify SSL Certificates ; cURL options: $cURL_options ]';
@@ -117,7 +117,7 @@ describe('matchSegments — the Insert from URL ground truth', () => {
   it('reports the key FileMaker never shows as ignored, not unmatched', () => {
     const { unmatched, ignoredKeys } = matchSegments(step, line, 'Insert from URL');
     expect(unmatched).toEqual([]);
-    expect(ignoredKeys).toContain('curlOptionsSpecified');
+    expect(ignoredKeys).toContain('encodeUrl');
   });
 });
 

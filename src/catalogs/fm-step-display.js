@@ -441,14 +441,6 @@ export default {
    {
     "key": "slots",
     "slot": {
-     "member": "fileReference"
-    },
-    "examples": 18,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
      "member": "memberKey"
     },
     "examples": 22,
@@ -1256,10 +1248,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "fileReference"
-    },
+    "key": "dataSource",
     "render": "labelled",
     "label": "from file",
     "inlineOf": "scriptReference",
@@ -1517,6 +1506,24 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "sourceOptions.dsn",
+    "render": "labelled",
+    "label": "DSN",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.xmlHttp",
+    "render": "bare",
+    "examples": 2,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
     "key": "slots",
     "slot": {
      "member": "path",
@@ -1533,21 +1540,14 @@ export default {
     ]
    },
    {
-    "key": "source",
-    "render": "labelledEnum",
-    "label": "http",
-    "values": {
-     "xmlSource": "xml"
-    },
-    "omittedValues": [
-     "file"
-    ],
+    "key": "sourceOptions.query",
+    "render": "labelled",
+    "label": "SQL Text",
     "examples": 1,
-    "attribution": "valueWords",
+    "attribution": "anchored",
     "confidence": "low",
     "doubts": [
-     "singleExample",
-     "thinMapping"
+     "singleExample"
     ]
    },
    {
@@ -1559,12 +1559,19 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "1"
-    },
+    "key": "sourceOptions.xslCalculation",
     "render": "bare",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.xslPaths",
+    "render": "bare",
+    "pathForm": "fileName",
     "examples": 1,
     "attribution": "anchored",
     "confidence": "low",
@@ -1575,11 +1582,52 @@ export default {
   ],
   "ignored": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "2"
-    },
+    "key": "source",
+    "examples": 5,
+    "confidence": "measured"
+   },
+   {
+    "key": "sourceOptions.definedByScripting",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.hasAuthCalculation",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.password",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.savePassword",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.sqlImportOnly",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "sourceOptions.userName",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -1588,9 +1636,6 @@ export default {
    }
   ],
   "derivedFrom": 5,
-  "residual": {
-   "unattributed": 2
-  },
   "verified": false
  },
  "Copy": {
@@ -2110,11 +2155,15 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
-    },
+    "key": "sql.query",
+    "render": "labelled",
+    "label": "SQL Text",
+    "examples": 2,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "sql.queryCalculation",
     "render": "labelled",
     "label": "Calculated SQL Text",
     "examples": 1,
@@ -2133,10 +2182,7 @@ export default {
    }
   ],
   "derivedFrom": 3,
-  "residual": {
-   "unattributed": 2
-  },
-  "verified": false
+  "verified": true
  },
  "Exit Application": {
   "segments": [],
@@ -2287,15 +2333,17 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "restore",
-    "render": "bareWhenTrue",
-    "label": "Macintosh",
-    "examples": 11,
-    "attribution": "sole",
+    "key": "exportOptions.characterSet",
+    "render": "enum",
+    "values": {
+     "macintosh": "Macintosh"
+    },
+    "examples": 1,
+    "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
-     "labelDisagreement",
-     "valueNotFunctional"
+     "singleExample",
+     "thinMapping"
     ]
    }
   ],
@@ -2304,9 +2352,18 @@ export default {
     "key": "exportOptions",
     "examples": 11,
     "confidence": "measured"
+   },
+   {
+    "key": "restore",
+    "examples": 5,
+    "confidence": "measured",
+    "attestation": "the repo owner's ruling in the fm 0.9.0 intake: FileMaker's Export Records line never shows `restore`; the text it was paired with is the character set, which the CLI mostly does not report"
    }
   ],
   "derivedFrom": 15,
+  "residual": {
+   "unattributed": 10
+  },
   "verified": false
  },
  "Extend Found Set": {
@@ -2338,11 +2395,7 @@ export default {
   "displayNameUnverifiable": true,
   "segments": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
-    },
+    "key": "arguments.Function",
     "render": "labelled",
     "label": "Function",
     "examples": 1,
@@ -2353,11 +2406,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "1"
-    },
+    "key": "arguments.P1",
     "render": "labelled",
     "label": "P1",
     "examples": 1,
@@ -2368,11 +2417,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "2"
-    },
+    "key": "arguments.P2",
     "render": "labelled",
     "label": "P2",
     "examples": 1,
@@ -2383,11 +2428,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "3"
-    },
+    "key": "arguments.P3",
     "render": "labelled",
     "label": "P3",
     "examples": 1,
@@ -2398,11 +2439,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "4"
-    },
+    "key": "arguments.P4",
     "render": "labelled",
     "label": "P4",
     "examples": 1,
@@ -2414,6 +2451,86 @@ export default {
    }
   ],
   "ignored": [
+   {
+    "key": "arguments.P5",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "arguments.P6",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "arguments.P7",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "arguments.P8",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "arguments.P9",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "externalID",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "parmTypes",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "plugin",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "pluginDescription",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "pluginStep",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
    {
     "key": "slots",
     "slot": {
@@ -2473,53 +2590,67 @@ export default {
     "doubts": [
      "singleExample"
     ]
-   },
+   }
+  ],
+  "unresolved": [
    {
-    "key": "arguments",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "0"
+    },
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "displayedUnderAnotherKey"
     ]
    },
    {
-    "key": "externalID",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "1"
+    },
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "displayedUnderAnotherKey"
     ]
    },
    {
-    "key": "parmTypes",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "2"
+    },
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "displayedUnderAnotherKey"
     ]
    },
    {
-    "key": "plugin",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "3"
+    },
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "displayedUnderAnotherKey"
     ]
    },
    {
-    "key": "pluginDescription",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "pluginStep",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "4"
+    },
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "displayedUnderAnotherKey"
     ]
    }
   ],
@@ -2801,12 +2932,15 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "parameters",
+    "key": "llmParameters",
     "render": "labelled",
     "label": "Parameters",
     "examples": 2,
     "attribution": "anchored",
-    "confidence": "measured"
+    "confidence": "low",
+    "doubts": [
+     "labelDisagreement"
+    ]
    },
    {
     "key": "agenticMode",
@@ -2820,44 +2954,7 @@ export default {
     ]
    }
   ],
-  "ignored": [
-   {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "30"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "31"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "19"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   }
-  ],
+  "ignored": [],
   "unresolved": [
    {
     "key": "slots",
@@ -2873,10 +2970,18 @@ export default {
    },
    {
     "key": "function",
-    "cause": "withdrawn"
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "insideAnotherOption"
+    ]
    },
    {
     "key": "objectName",
+    "cause": "withdrawn"
+   },
+   {
+    "key": "parameters",
     "cause": "withdrawn"
    }
   ],
@@ -3301,6 +3406,16 @@ export default {
   ],
   "ignored": [
    {
+    "key": "height",
+    "examples": 4,
+    "confidence": "measured"
+   },
+   {
+    "key": "left",
+    "examples": 4,
+    "confidence": "measured"
+   },
+   {
     "key": "slots",
     "slot": {
      "member": "memberKey"
@@ -3310,16 +3425,6 @@ export default {
     "doubts": [
      "withdrawalDependent"
     ]
-   },
-   {
-    "key": "height",
-    "examples": 4,
-    "confidence": "measured"
-   },
-   {
-    "key": "left",
-    "examples": 4,
-    "confidence": "measured"
    },
    {
     "key": "style",
@@ -3705,24 +3810,28 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "importOptions.targetTable",
+    "render": "labelled",
+    "label": "Table",
+    "whenAbsent": {
+     "text": "",
+     "examples": 17
+    },
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
     "key": "dataSource",
     "render": "bare",
-    "examples": 26,
+    "examples": 24,
     "attribution": "anchored",
     "confidence": "low",
     "doubts": [
      "renderDisagreement"
-    ]
-   },
-   {
-    "key": "verifySslCertificates",
-    "render": "bareWhenTrue",
-    "label": "Verify SSL Certificates",
-    "examples": 1,
-    "attribution": "labelWords",
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
     ]
    },
    {
@@ -3734,6 +3843,40 @@ export default {
     "render": "bare",
     "examples": 1,
     "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "path",
+    "render": "bare",
+    "pathForm": "fileName",
+    "examples": 13,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "renderDisagreement"
+    ]
+   },
+   {
+    "key": "importOptions.importAction",
+    "render": "enum",
+    "values": {
+     "add": "Add",
+     "replace": "Replace",
+     "update": "Update"
+    },
+    "examples": 18,
+    "attribution": "valueWords",
+    "confidence": "measured"
+   },
+   {
+    "key": "verifySslCertificates",
+    "render": "bareWhenTrue",
+    "label": "Verify SSL Certificates",
+    "examples": 1,
+    "attribution": "labelWords",
     "confidence": "low",
     "doubts": [
      "singleExample"
@@ -3754,14 +3897,27 @@ export default {
     ]
    },
    {
-    "key": "path",
-    "render": "bare",
-    "pathForm": "fileName",
-    "examples": 13,
-    "attribution": "anchored",
+    "key": "importOptions.characterSet",
+    "render": "enum",
+    "values": {
+     "windowsAnsi": "Windows ANSI",
+     "asciiDos": "DOS OEM",
+     "unicodeUtf16": "Unicode",
+     "unicodeUtf16Macintosh": "Unicode (big endian)",
+     "japaneseShiftJis": "Shift JIS",
+     "simplifiedChineseGb": "Simplified Chinese (GB)",
+     "traditionalChineseBig5": "Traditional Chinese (Big-5)",
+     "koreanEucKr": "Korean (EUC-KR)",
+     "unicodeUtf8": "UTF-8"
+    },
+    "omittedValues": [
+     "macintosh"
+    ],
+    "examples": 9,
+    "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
-     "renderDisagreement"
+     "thinMapping"
     ]
    }
   ],
@@ -4067,7 +4223,7 @@ export default {
    }
   ],
   "derivedFrom": 4,
-  "verified": false
+  "verified": true
  },
  "Insert Embedding in Found Set": {
   "segments": [
@@ -4146,6 +4302,17 @@ export default {
  "Insert File": {
   "segments": [
    {
+    "key": "fileTypeFilters",
+    "render": "keyPresence",
+    "values": {
+     "absent": "",
+     "present": "Filters"
+    },
+    "examples": 31,
+    "attribution": "presence",
+    "confidence": "measured"
+   },
+   {
     "key": "storage",
     "render": "enum",
     "values": {
@@ -4155,7 +4322,7 @@ export default {
     "omittedValues": [
      "userChoice"
     ],
-    "examples": 4,
+    "examples": 6,
     "attribution": "valueWords",
     "confidence": "measured"
    },
@@ -4168,7 +4335,7 @@ export default {
     "omittedValues": [
      "iconWithFilename"
     ],
-    "examples": 5,
+    "examples": 10,
     "attribution": "labelWords",
     "confidence": "low",
     "doubts": [
@@ -4185,7 +4352,7 @@ export default {
     "omittedValues": [
      "userChoice"
     ],
-    "examples": 12,
+    "examples": 22,
     "attribution": "valueWords",
     "confidence": "measured"
    },
@@ -4193,7 +4360,12 @@ export default {
     "key": "target",
     "render": "labelled",
     "label": "Target",
-    "examples": 14,
+    "whenAbsent": {
+     "text": "<Table Missing>",
+     "examples": 2,
+     "flagBit": 1
+    },
+    "examples": 25,
     "attribution": "anchored",
     "confidence": "measured"
    },
@@ -4202,49 +4374,38 @@ export default {
     "render": "bare",
     "quoted": true,
     "pathForm": "fileName",
-    "examples": 17,
+    "examples": 29,
     "attribution": "anchored",
     "confidence": "measured"
    }
   ],
   "ignored": [
    {
+    "key": "customFileTypeFiltersSpecified",
+    "examples": 31,
+    "confidence": "measured"
+   },
+   {
     "key": "dialogOptions",
-    "examples": 17,
+    "examples": 31,
     "confidence": "measured"
    },
    {
     "key": "dialogTitle",
-    "examples": 11,
-    "confidence": "measured"
-   },
-   {
-    "key": "editable",
-    "examples": 14,
-    "confidence": "measured"
-   },
-   {
-    "key": "opaque",
-    "examples": 14,
-    "confidence": "measured"
-   },
-   {
-    "key": "reason",
-    "examples": 14,
+    "examples": 25,
     "confidence": "measured"
    },
    {
     "key": "storeAsReference",
-    "examples": 17,
+    "examples": 31,
     "confidence": "measured"
    }
   ],
   "derivedFrom": 31,
   "residual": {
-   "opaque": 14,
-   "unattributed": 6
+   "unattributed": 20
   },
-  "verified": false
+  "verified": true
  },
  "Insert from Device": {
   "segments": [
@@ -4395,11 +4556,12 @@ export default {
   ],
   "ignored": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "3"
-    },
+    "key": "barcodeTypes",
+    "examples": 2,
+    "confidence": "measured"
+   },
+   {
+    "key": "light",
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -4407,12 +4569,11 @@ export default {
     ]
    },
    {
-    "key": "barcodeTypes",
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "light",
+    "key": "slots",
+    "slot": {
+     "member": "numeric",
+     "number": "3"
+    },
     "examples": 1,
     "confidence": "low",
     "doubts": [
@@ -4584,16 +4745,26 @@ export default {
     "examples": 2,
     "attribution": "anchored",
     "confidence": "measured"
-   }
-  ],
-  "ignored": [
+   },
    {
-    "key": "curlOptionsSpecified",
-    "examples": 7,
-    "confidence": "measured",
-    "attestation": "CLAUDE.md, which records this key as reported but not displayed and not a gate: a FileMaker-authored working step reads it back false while its options render, and the options popover offers checkboxes for select entire contents, target and verify SSL certificates only, with no checkbox for the options themselves"
+    "key": "encodeUrl",
+    "render": "enum",
+    "values": {
+     "false": "Do not automatically encode URL"
+    },
+    "omittedValues": [
+     "true"
+    ],
+    "examples": 1,
+    "attribution": "labelWords",
+    "confidence": "low",
+    "doubts": [
+     "singleExample",
+     "thinMapping"
+    ]
    }
   ],
+  "ignored": [],
   "attestedOrder": [
    {
     "keys": [
@@ -4604,10 +4775,7 @@ export default {
    }
   ],
   "derivedFrom": 8,
-  "residual": {
-   "unattributed": 1
-  },
-  "verified": false
+  "verified": true
  },
  "Insert Image Caption": {
   "segments": [
@@ -4903,10 +5071,7 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "fileReference"
-    },
+    "key": "dataSource",
     "render": "labelled",
     "label": "from file",
     "inlineOf": "script",
@@ -5296,25 +5461,14 @@ export default {
     "key": "dataSource",
     "render": "bare",
     "quoted": true,
-    "examples": 2,
-    "attribution": "anchored",
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "fileReferenceKey"
-    },
-    "render": "enum",
     "values": {
      "3": "<unknown>"
     },
-    "examples": 1,
-    "attribution": "sole",
+    "examples": 3,
+    "attribution": "anchored",
     "confidence": "low",
     "doubts": [
-     "singleExample",
-     "thinMapping"
+     "renderDisagreement"
     ]
    }
   ],
@@ -5844,33 +5998,26 @@ export default {
     "doubts": [
      "singleExample"
     ]
+   },
+   {
+    "key": "parameters",
+    "render": "labelled",
+    "label": "Parameters",
+    "listForm": "joined",
+    "examples": 1,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
    }
   ],
   "ignored": [],
-  "unresolved": [
-   {
-    "key": "arg1",
-    "cause": "refuted",
-    "observations": 1,
-    "refutedBy": [
-     "inUnattributedContent"
-    ]
-   },
-   {
-    "key": "arg2",
-    "cause": "refuted",
-    "observations": 1,
-    "refutedBy": [
-     "inUnattributedContent"
-    ]
-   }
-  ],
   "derivedFrom": 2,
   "residual": {
-   "unreported": 1,
-   "unattributed": 1
+   "unreported": 1
   },
-  "verified": false
+  "verified": true
  },
  "Perform Quick Find": {
   "emptyBrackets": true,
@@ -6126,26 +6273,13 @@ export default {
     ]
    }
   ],
-  "ignored": [
-   {
-    "key": "slots",
-    "slot": {
-     "member": "list",
-     "number": "1"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 4,
   "residual": {
    "unreported": 3,
    "unattributed": 1
   },
-  "verified": false
+  "verified": true
  },
  "Perform Script on Server": {
   "segments": [
@@ -6196,11 +6330,7 @@ export default {
     ]
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
-    },
+    "key": "parameter",
     "render": "labelled",
     "label": "Parameter",
     "whenAbsent": {
@@ -6227,20 +6357,7 @@ export default {
     "confidence": "measured"
    }
   ],
-  "ignored": [
-   {
-    "key": "slots",
-    "slot": {
-     "member": "list",
-     "number": "1"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 4,
   "residual": {
    "unreported": 3,
@@ -6331,30 +6448,6 @@ export default {
     },
     "examples": 5,
     "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "list",
-     "number": "1"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "list",
-     "number": "6"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
    },
    {
     "key": "stepValue",
@@ -6515,22 +6608,6 @@ export default {
   ],
   "ignored": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "fileReference"
-    },
-    "examples": 10,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "memberKey"
-    },
-    "examples": 10,
-    "confidence": "measured"
-   },
-   {
     "key": "repetition",
     "examples": 6,
     "confidence": "measured"
@@ -6542,6 +6619,14 @@ export default {
     "doubts": [
      "withdrawalDependent"
     ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "memberKey"
+    },
+    "examples": 10,
+    "confidence": "measured"
    }
   ],
   "unresolved": [
@@ -6656,12 +6741,15 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "parameters",
+    "key": "llmParameters",
     "render": "labelled",
     "label": "Parameters",
     "examples": 4,
     "attribution": "anchored",
-    "confidence": "measured"
+    "confidence": "low",
+    "doubts": [
+     "labelDisagreement"
+    ]
    },
    {
     "key": "target",
@@ -6685,49 +6773,46 @@ export default {
   ],
   "ignored": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "30"
-    },
+    "key": "tableOccurrences",
     "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "31"
-    },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
+    "confidence": "measured",
+    "attestation": "the repo owner's ruling in the fm 0.9.0 intake: FileMaker never prints the table names, only the fixed `Tables...` while Data Tables is From list, so the list itself prints nothing"
    }
   ],
   "unresolved": [
    {
     "key": "function",
-    "cause": "withdrawn"
+    "cause": "refuted",
+    "observations": 1,
+    "refutedBy": [
+     "insideAnotherOption"
+    ]
    },
    {
     "key": "objectName",
+    "cause": "withdrawn"
+   },
+   {
+    "key": "parameters",
     "cause": "withdrawn"
    }
   ],
   "derivedFrom": 8,
   "residual": {
-   "unreported": 5,
-   "unattributed": 2
+   "unattributed": 7
   },
   "verified": false
  },
  "Print": {
   "segments": [
+   {
+    "key": "printOptions.printer",
+    "render": "labelled",
+    "label": "Restore",
+    "examples": 8,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
    {
     "key": "withDialog",
     "render": "labelledState",
@@ -6759,10 +6844,7 @@ export default {
    }
   ],
   "derivedFrom": 10,
-  "residual": {
-   "unattributed": 8
-  },
-  "verified": false
+  "verified": true
  },
  "Re-Login": {
   "segments": [
@@ -7106,6 +7188,9 @@ export default {
     "values": {
      "false": "Skip auto-enter options"
     },
+    "omittedValues": [
+     "true"
+    ],
     "examples": 4,
     "attribution": "labelWords",
     "confidence": "low",
@@ -7621,6 +7706,91 @@ export default {
   ],
   "ignored": [
    {
+    "key": "allowCopying",
+    "examples": 8,
+    "confidence": "measured"
+   },
+   {
+    "key": "allowScreenReader",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "author",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "editLevel",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "editPassword",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "includeAllPages",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "keywords",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "magnification",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "pageLayout",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "pagesFrom",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "printLevel",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
+    "key": "requireEditPassword",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "requireOpenPassword",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "show",
+    "examples": 9,
+    "confidence": "measured"
+   },
+   {
     "key": "slots",
     "slot": {
      "member": "calc",
@@ -7717,91 +7887,6 @@ export default {
      "number": "9"
     },
     "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "allowCopying",
-    "examples": 8,
-    "confidence": "measured"
-   },
-   {
-    "key": "allowScreenReader",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "author",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "editLevel",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "editPassword",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "includeAllPages",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "keywords",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "magnification",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "pageLayout",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "pagesFrom",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "printLevel",
-    "examples": 9,
-    "confidence": "measured"
-   },
-   {
-    "key": "requireEditPassword",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "requireOpenPassword",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "show",
-    "examples": 9,
     "confidence": "measured"
    },
    {
@@ -8380,19 +8465,16 @@ export default {
  "Set Dictionary": {
   "segments": [
    {
-    "key": "stepValue",
+    "key": "spellingLanguage",
     "render": "labelledEnum",
     "label": "Spelling Language",
     "values": {
-     "1": "Português (Brasil)",
-     "11": "US English"
+     "usEnglish": "US English",
+     "brazilianPortuguese": "Português (Brasil)"
     },
     "examples": 2,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "thinMapping"
-    ]
+    "attribution": "anchored",
+    "confidence": "measured"
    }
   ],
   "ignored": [],
@@ -8420,14 +8502,14 @@ export default {
  "Set Error Logging": {
   "segments": [
    {
-    "key": "enabled",
+    "key": "on",
     "render": "bareState",
     "values": {
      "true": "On",
      "false": "Off"
     },
     "examples": 3,
-    "attribution": "valueWords",
+    "attribution": "anchored",
     "confidence": "measured"
    },
    {
@@ -8443,17 +8525,8 @@ export default {
     ]
    }
   ],
-  "ignored": [
-   {
-    "key": "on",
-    "examples": 3,
-    "confidence": "measured"
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 3,
-  "residual": {
-   "unattributed": 1
-  },
   "verified": false
  },
  "Set Field": {

@@ -350,6 +350,10 @@ export interface StepSegment {
    *  FileMaker prints. `fileName` drops the scheme AND every path component; the
    *  owner ruled on it directly ("FM does not print the prefix"). */
   pathForm?: 'schemeStripped' | 'fileName';
+  /** For a list FileMaker prints WHOLE rather than by its first entry: every entry, joined
+   *  with `, `. Measured on a parameter list (`Perform JavaScript in Web Viewer`); absent, a
+   *  list prints its first entry, which is what a file-path list does. */
+  listForm?: 'joined';
   /** This option is not printed at all while the CLI reports the named key.
    *
    *  Two provenances, both machine-verified against every example by

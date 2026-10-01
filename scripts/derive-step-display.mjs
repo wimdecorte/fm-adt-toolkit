@@ -49,7 +49,7 @@ import {
   matchSegments,
   bracketContent,
   displayKeys,
-  expandSlots,
+  expandStep,
   parseSlotID,
   isRepetitionKey,
   isSetValue,
@@ -95,9 +95,11 @@ const SOURCES = [
  *  stands on evidence of its own: examples that reported the key and rendered
  *  nothing for it. That evidence is independent of the withdrawal, because the
  *  withdrawn example placed something and so never contributed to `ignoredCounts`.
- *  Measured: `curlOptionsSpecified` is reported and not displayed in 7 of its 8
- *  examples, while `function` and both `objectName` keys have NO such example
- *  (0 of 1) and go to `unresolved`.
+ *  Measured: both `objectName` keys have NO such example (0 of 1) and go to
+ *  `unresolved`. Until fm 0.9.0 the counter-example was `curlOptionsSpecified`,
+ *  reported and not displayed in 7 of its 8 examples — and that `ignored` claim was
+ *  itself wrong: the eighth was FileMaker printing the option, which 0.9.0 names
+ *  `encodeUrl`, so the withdrawal that made it possible is gone.
  *
  *  **But a withdrawal is still the but-for cause of the `ignored` membership**, since
  *  `ignored` filters on the post-withdrawal placements: delete a withdrawal and its
@@ -112,7 +114,8 @@ const SOURCES = [
  *  **UNLESS THE WITHDRAWAL BRINGS EVIDENCE THE CORPUS DOES NOT CONTAIN**, which is
  *  what an `attestation` on a fact declares. Then the `ignored` claim rests on its own
  *  clean observations PLUS a named source about FileMaker, rather than on a judgment,
- *  and the `withdrawalDependent` doubt is answered instead of carried. The attestation
+ *  and the `withdrawalDependent` doubt is answered instead of carried — as is
+ *  `singleExample`, since the source is evidence that does not depend on the count. The attestation
  *  travels into the catalog on the `ignored` entry, so nothing reads as corpus-measured
  *  that is not — the same third provenance class `EXTERNAL_ORDER` occupies, and for the
  *  same reason.
@@ -142,8 +145,8 @@ const WITHDRAWN_FACTS = [
   {
     step: 'Perform SQL Query by Natural Language',
     facts: [
-      { key: 'function', label: 'Web Viewer' },
       { key: 'objectName', label: 'Function Name' },
+      { key: 'parameters', label: 'Parameters' },
     ],
     reason:
       'transposition: `objectName` is what renders as `Web Viewer`, and `function` renders as ' +
@@ -151,13 +154,20 @@ const WITHDRAWN_FACTS = [
       'line 1104, which renders `Object Name: … ; Function Name: …`). Both keys report byte-identical ' +
       'calculations at script 55 step 943, so the matcher paired them backwards and BOTH halves are ' +
       'false. Neither recurrence nor injectivity can catch it — each occurs once and label->key ' +
-      'stays injective.',
+      'stays injective. Since fm 0.9.0 the `function -> Web Viewer` half is refuted by the matcher ' +
+      'itself (`insideAnotherOption`), so only the `objectName` half is still withdrawn here. ' +
+      'SECOND FACT, from 0.9.0: `parameters` takes `Parameters:` by its spelling alone. 0.9.0 renamed ' +
+      'the calculation FileMaker draws there to `llmParameters` (FMPD-67438) and reused `parameters` ' +
+      'for the list that slots 30 and 31 held through 0.8.0 — `["\"value_1\"", "\"value_2\""]` at ' +
+      'step 943, two literals FileMaker draws nowhere, and which this catalog ignored as slots. The ' +
+      'matcher flags the pairing itself (`mismatch`): the text after `Parameters:` is the calculation, ' +
+      'which is `llmParameters`\' value.',
   },
   {
     step: 'Generate Response from Model',
     facts: [
-      { key: 'function', label: 'Web Viewer' },
       { key: 'objectName', label: 'Function Name' },
+      { key: 'parameters', label: 'Parameters' },
     ],
     reason:
       'the same transposition, on a second step type, and now with the same two keys: script 55 step ' +
@@ -166,7 +176,64 @@ const WITHDRAWN_FACTS = [
       'by `slidingWindowVariableRepetition` — a repetition key labelled `Web Viewer`, absurd on its ' +
       'face — because that key had no route to a `suffix` segment; it now takes its suffix and the ' +
       'transposition shows its true shape. The recurrence proves the failure is structural wherever ' +
-      'two keys hold the same value, not one located incident.',
+      'two keys hold the same value, not one located incident. Since fm 0.9.0 the `function -> Web ' +
+      'Viewer` half is refuted by the matcher itself (`insideAnotherOption`), as on Perform SQL Query ' +
+      'by Natural Language. SECOND FACT, from 0.9.0: `parameters -> Parameters`, the same false ' +
+      'spelling match as on that step — here the list is `["\"param_value_1\"", "\"value_2\""]` at ' +
+      'step 880, the former slots 30 and 31, and the drawn calculation is `llmParameters`\'.',
+  },
+  {
+    step: 'Perform SQL Query by Natural Language',
+    facts: [{ key: 'tableOccurrences', label: null, text: 'Tables...' }],
+    reason:
+      'a value route that cannot hold its value. fm 0.9.0 added `tableOccurrences`, a LIST of ' +
+      'occurrence names (`["blank", "Contacts"]` at script 55 step 943), and the matcher placed ' +
+      'FileMaker\'s `Tables...` on it by shared words as a bare `enum` — with no map, because a list ' +
+      'is not a code, and at `measured` because there was no map to doubt. The renderer then printed ' +
+      'the first name, `blank`, where FileMaker prints `Tables...` in all seven examples. That text ' +
+      'does not depend on which tables are listed. No route can place it: the key is present in all ' +
+      'eight examples and the text in seven, because it follows `tablesSelection: fromList`, which ' +
+      'already owns `Data Tables: From list`. So the list renders nothing, and the line is ' +
+      'FileMaker\'s minus the fixed `Tables...`.',
+    // The withdrawal alone leaves `ignored` at `low`, which the renderer prints — as
+    // `Table occurrences: ["blank","Contacts"]`. The owner's ruling is what makes it a measurement.
+    attestation:
+      'the repo owner\'s ruling in the fm 0.9.0 intake: FileMaker never prints the table names, only ' +
+      'the fixed `Tables...` while Data Tables is From list, so the list itself prints nothing',
+  },
+  {
+    step: 'Export Records',
+    facts: [
+      { key: 'restore', label: 'Unicode (UTF-8)' },
+      { key: 'restore', label: 'Unicode (UTF-16)' },
+      { key: 'restore', label: 'Windows (ANSI)' },
+      { key: 'restore', label: 'ASCII (DOS)' },
+      { key: 'restore', label: 'Macintosh' },
+      { key: 'restore', label: 'Japanese (Shift-JIS)' },
+      { key: 'restore', label: 'Simplified Chinese (GB)' },
+      { key: 'restore', label: 'Traditional Chinese (Big-5)' },
+      { key: 'restore', label: 'Korean (EUC-KR)' },
+    ],
+    reason:
+      'one boolean taking whatever text is left. FileMaker prints the export CHARACTER SET on every ' +
+      'step that restores its options (script 55 steps 478-488): `Unicode (UTF-8)`, `Windows (ANSI)`, ' +
+      '`Macintosh` and six more. fm reports it, as `exportOptions.characterSet`, on one of those eleven ' +
+      'steps only, and `restore` is true on all of them, so `sole` gave `restore` each step\'s character ' +
+      'set in turn. The catalog then printed `Macintosh` for every one — right on three steps by luck, ' +
+      'wrong on eight — and once `expandStep` let the matcher see `characterSet`, step 488 printed it twice.',
+    attestation:
+      'the repo owner\'s ruling in the fm 0.9.0 intake: FileMaker\'s Export Records line never shows ' +
+      '`restore`; the text it was paired with is the character set, which the CLI mostly does not report',
+  },
+  {
+    step: 'Import Records',
+    facts: [{ key: 'importOptions.profile.fileType', label: null, text: 'Picture and movie files' }],
+    reason:
+      'one value, two texts. `fileType` is `"BTCH"` on all fifteen folder imports in script 55, and ' +
+      'FileMaker prints `Picture and movie files` for it on step 503 and `Text files` on steps 508-520, ' +
+      'so the file type FileMaker names is not this member\'s to decide. The single placement on 503 ' +
+      'made it an enum that printed `Picture and movie files` on thirteen steps whose FileMaker line ' +
+      'says `Text files`.',
   },
   {
     step: 'Move/Resize Window',
@@ -243,26 +310,6 @@ const WITHDRAWN_FACTS = [
       '`Animation` gave this key the display forms `layoutNameByCalc -> None` and ' +
       '`layoutNumberByCalc -> None`, which are `animation`\'s absent-key form. The segment survives on ' +
       'its `Using layout` placements, which are true, so only the `Animation` half is withdrawn.',
-  },
-  {
-    step: 'Insert from URL',
-    facts: [{ key: 'curlOptionsSpecified', label: 'Do not automatically encode URL' }],
-    reason:
-      'single-example `sole` attribution that contradicts the `ignored` entry for this key, which 7 of ' +
-      'its 8 examples support. Counting was the only evidence, so this is the weakness of `sole`, not ' +
-      'a win for it — and no test inside this corpus can break the placement, because the value is ' +
-      '`true` in exactly the one example that shows the phrase. The refutation is external, which is ' +
-      'what `attestation` records.',
-    // WHY THIS ONE WITHDRAWAL CARRIES A SOURCE. It is the key that has already caused a real
-    // defect in this project, on the one step type the app itself generates: reading it as the
-    // `Specify cURL options` checkbox silently dropped the method and headers from working
-    // scripts. An option reading `curlOptionsSpecified` on a rendered line invites exactly
-    // that conclusion again, so a `low` claim a renderer prints anyway is not good enough here.
-    attestation:
-      'CLAUDE.md, which records this key as reported but not displayed and not a gate: a ' +
-      'FileMaker-authored working step reads it back false while its options render, and the ' +
-      'options popover offers checkboxes for select entire contents, target and verify SSL ' +
-      'certificates only, with no checkbox for the options themselves',
   },
 ];
 
@@ -534,6 +581,13 @@ function isDisplayMapping(value, text) {
  *  every structured value into `"[object Object]"` — that made all 8 of
  *  `New Window | style`'s distinct values look like ONE value and hid the whole
  *  class of object-valued keys from injectivity test 1. */
+/** The top-level key a member belongs to: `importOptions.profile.fileType` -> `importOptions`.
+ *  A key with no dot is its own top. */
+function topOf(key) {
+  const text = String(key);
+  return text.includes('.') ? text.slice(0, text.indexOf('.')) : text;
+}
+
 function valueIdentity(value) {
   if (value === null || value === undefined) return null;
   if (Array.isArray(value)) return null;
@@ -773,7 +827,11 @@ function collect(sources) {
         keys: new Map(),
         keyOf: new Map(),
         ignoredCounts: new Map(),
+        // A structured option as a whole: see `ignoredParents` below.
+        parentIgnoredCounts: new Map(),
+        parentContradicted: new Set(),
         omittedValues: new Map(),
+        omittedBooleans: new Map(),
         reportedCounts: new Map(),
         emptyBracketExamples: 0,
         whenAbsent: new Map(),
@@ -805,7 +863,7 @@ function collect(sources) {
       // The step as the matcher saw it, with `slots` expanded into one key per
       // slot. EVERY key lookup below has to use this and not `pair.step`, or a slot
       // the matcher placed reads as a key with no value.
-      const view = expandSlots(pair.step);
+      const view = expandStep(pair.step);
 
       entry.examples += 1;
       entry.displayNames.set(displayName, (entry.displayNames.get(displayName) ?? 0) + 1);
@@ -878,6 +936,7 @@ function collect(sources) {
               ? (segment.derivedFrom ?? 'verbatim')
               : null,
           listFirst: Boolean(segment.listFirst),
+          listJoined: Boolean(segment.listJoined),
           // Does the owner's ruling — print the file name and nothing else — hold on
           // THIS placement? Recorded per placement so the general rule is verified
           // against every file option rather than assumed from the two keys whose
@@ -918,9 +977,11 @@ function collect(sources) {
       // false measurement — `Import Records | opaque` read 76 examples of a
       // 38-example step. One accumulation path, and an assertion that no count can
       // exceed its entry's `derivedFrom`, is the fix for the class.
+      const refutedHere = new Set();
       for (const key of match.ignoredKeys) {
         const refutation = refutedBy(match, view, key);
         if (refutation) {
+          refutedHere.add(key);
           contradictedIgnores.push({
             step: stepName,
             key,
@@ -935,6 +996,19 @@ function collect(sources) {
         }
         entry.ignoredCounts.set(key, (entry.ignoredCounts.get(key) ?? 0) + 1);
         rememberOmittedValue(entry, key, view[key], match);
+      }
+      // THE STRUCTURED OPTION AS A WHOLE. `expandStep` lets a member FileMaker prints be
+      // placed (`sql.query`), and it also splits the evidence for the members it does not:
+      // `exportOptions.applyLayoutFormatting` is reported in one example, so a claim about
+      // it alone reads `singleExample` and prints, where the claim about `exportOptions`
+      // stood on all eleven. So the object keeps a claim of its own — FileMaker shows
+      // nothing of it beyond the members placed — counted wherever every unplaced member
+      // went unshown, and void the moment one of them is refuted by the line.
+      for (const parent of new Set(Object.keys(view).filter((key) => key.includes('.')).map(topOf))) {
+        const unplaced = match.ignoredKeys.filter((key) => topOf(key) === parent);
+        if (unplaced.length === 0) continue;
+        if (unplaced.some((key) => refutedHere.has(key))) entry.parentContradicted.add(parent);
+        else entry.parentIgnoredCounts.set(parent, (entry.parentIgnoredCounts.get(parent) ?? 0) + 1);
       }
       // A withdrawn placement leaves its key displayed nowhere in THIS example, so
       // the value it carried is an omission observation too — and it is the only
@@ -1033,7 +1107,16 @@ function unquote(text) {
  *  with how we do it", so suppressing it would be overriding him with a derivation.
  *  `bareWhenTrue`, `bareState` and `labelledState` already say what each polarity
  *  does, and a boolean that renders nothing against its kind still surfaces as a
- *  `renderDisagreement`. */
+ *  `renderDisagreement`.
+ *
+ *  So booleans are kept APART, in `omittedBooleans`, and only an `enum` segment may
+ *  read them (see `omittedValues` where segments are built). An `enum` on a boolean is
+ *  one whose derived map names a single polarity — `encodeUrl: false -> Do not
+ *  automatically encode URL`, `performAutoEnter: false -> Skip auto-enter options` —
+ *  and without its omitted polarity the renderer printed the raw `true` on every
+ *  default step. The owner ruled this rule in for the 0.9.0 intake, on the measurement
+ *  that it changes exactly those two segments and none of ruling 10's: `With dialog`
+ *  is `labelledState`, and the state kinds never read the bucket. */
 function rememberOmittedValue(entry, key, value, match) {
   // THE GUARD THAT MAKES THIS CLAIM HONEST. "FileMaker printed nothing for this
   // key" is only readable off an example whose line is FULLY accounted for. Where
@@ -1044,9 +1127,10 @@ function rememberOmittedValue(entry, key, value, match) {
   // renderer went from showing the wrong text to showing nothing.
   if (match.unmatched.length > 0) return;
   const text = valueIdentity(value);
-  if (text === null || text === '' || typeof value === 'object' || typeof value === 'boolean') return;
-  if (!entry.omittedValues.has(key)) entry.omittedValues.set(key, new Map());
-  const seen = entry.omittedValues.get(key);
+  if (text === null || text === '' || typeof value === 'object') return;
+  const bucket = typeof value === 'boolean' ? entry.omittedBooleans : entry.omittedValues;
+  if (!bucket.has(key)) bucket.set(key, new Map());
+  const seen = bucket.get(key);
   seen.set(text, (seen.get(text) ?? 0) + 1);
 }
 
@@ -2357,6 +2441,11 @@ function deriveSegment(id, placements, allPlacements, entry) {
   // be mistaken for a value that never prints.
   const shown = new Set(placements.map((placement) => placement.value));
   const omitted = [...(entry.omittedValues.get(lookupKey)?.keys() ?? [])].filter((value) => !shown.has(value));
+  // A boolean polarity FileMaker printed nothing for, on the one kind that cannot say so
+  // itself. See `rememberOmittedValue` for why no other kind reads these.
+  if (render === 'enum') {
+    omitted.push(...[...(entry.omittedBooleans.get(lookupKey)?.keys() ?? [])].filter((value) => !shown.has(value)));
+  }
   // Only a CODE can be a value FileMaker declines to print. A calculation that
   // rendered nowhere is a suppressed OPTION, which is a different fact and belongs
   // to `hiddenWhen` — and this filter is also what keeps the owner's own
@@ -2384,6 +2473,10 @@ function deriveSegment(id, placements, allPlacements, entry) {
         : pathForms.has('schemeStripped')
           ? 'schemeStripped'
           : null;
+  // A list FileMaker printed whole, joined, rather than by its first entry. One joined
+  // placement settles it: the first-entry form cannot produce a second entry, and a
+  // one-entry list reads the same under both.
+  const listForm = ofKind.some((placement) => placement.listJoined) ? 'joined' : null;
   const hidden = HIDDEN_RULES.find((item) => item.step === entry.name && item.key === lookupKey);
   const whenAbsent = entry.whenAbsent.get(lookupKey) ?? null;
 
@@ -2397,6 +2490,7 @@ function deriveSegment(id, placements, allPlacements, entry) {
     ...(inlineOf ? { inlineOf } : {}),
     ...(quoted ? { quoted: true } : {}),
     ...(pathForm ? { pathForm } : {}),
+    ...(listForm ? { listForm } : {}),
     ...(Object.keys(values).length > 0 ? { values } : {}),
     ...(whenAbsent ? { whenAbsent } : {}),
     ...(omittedValues.length > 0 ? { omittedValues } : {}),
@@ -2723,11 +2817,13 @@ function deriveEntry(entry) {
   // The RAW ids, so a slot can be told from another slot: every `ignored` entry emits
   // the key `slots`, and comparing emitted names put one slot in both lists at once.
   const ignoredIDs = new Set(ignoredKeys);
-  const ignored = ignoredKeys.map((key) => {
+  const memberClaims = ignoredKeys.map((key) => {
     const examples = entry.ignoredCounts.get(key);
     const attestation = attestedWithdrawals.get(key);
     const doubts = [];
-    if (examples === 1) doubts.push('singleExample');
+    // A named source is evidence the count is not, so it answers a single example too. The 0.9.0
+    // intake's `tableOccurrences` is the case: one clean example, and the owner's ruling.
+    if (examples === 1 && attestation === undefined) doubts.push('singleExample');
     // A dropped segment is a withdrawal by another route, so it carries the same
     // doubt: this claim exists BECAUSE a rendering for the key was set aside — UNLESS the
     // withdrawal named a source outside this corpus, which supplies the evidence the
@@ -2743,6 +2839,18 @@ function deriveEntry(entry) {
       ...(attestation === undefined ? {} : { attestation }),
     };
   });
+  // A structured option whose unplaced members FileMaker never showed, in more than one
+  // example and against no refutation, is claimed WHOLE, and its members' own claims —
+  // each resting on however few examples happened to carry that member — give way to it.
+  // A single example is no stronger as a whole than as members, so it stays with them.
+  const ignoredParents = [...entry.parentIgnoredCounts]
+    .filter(([parent, examples]) => examples > 1 && !entry.parentContradicted.has(parent) && !placed.has(parent))
+    .map(([parent, examples]) => ({ key: parent, examples, confidence: 'measured' }));
+  const coveredBy = new Set(ignoredParents.map((item) => item.key));
+  const ignored = [
+    ...memberClaims.filter((item) => item.slot !== undefined || !coveredBy.has(topOf(item.key))),
+    ...ignoredParents,
+  ].sort((a, b) => (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
 
   // A key the derivation took out of `ignored` must not simply vanish: `unresolved`
   // is where "we could not settle this" lives, and that is exactly its state.
@@ -3004,6 +3112,7 @@ const SEGMENT_FIELDS = new Set([
   'inlineOf',
   'quoted',
   'pathForm',
+  'listForm',
   'values',
   'whenAbsent',
   'omittedValues',
@@ -3073,6 +3182,8 @@ function assertUnionsMatch() {
  *  matcher no longer produces); without this it would have sat in the table looking
  *  like a live finding. */
 function assertWithdrawalsUsed(withdrawn) {
+  // Every stale one at once: a corpus re-read can retire several, and one per run is slow to clear.
+  const stale = [];
   for (const group of WITHDRAWN_FACTS) {
     for (const fact of group.facts) {
       const used = withdrawn.some(
@@ -3083,13 +3194,15 @@ function assertWithdrawalsUsed(withdrawn) {
           (fact.text === undefined || fact.text === item.text),
       );
       if (!used) {
-        throw new Error(
+        stale.push(
           `WITHDRAWN_FACTS: ${group.step} | ${fact.key} -> ${JSON.stringify(fact.label)}` +
-            `${fact.text === undefined ? '' : ` = ${JSON.stringify(fact.text)}`} matched nothing; ` +
-            'the matcher no longer produces it, so the withdrawal is stale',
+            `${fact.text === undefined ? '' : ` = ${JSON.stringify(fact.text)}`} matched nothing`,
         );
       }
     }
+  }
+  if (stale.length) {
+    throw new Error(`${stale.join('\n')}\nthe matcher no longer produces these, so the withdrawals are stale`);
   }
 }
 
@@ -3205,6 +3318,7 @@ function assertShape(catalog) {
       // Ruling: a masked value must not reach this file by ANY route.
       if (segment.render === 'masked' && segment.values) bad(where, 'a masked key must never carry values');
       if (segment.pathForm && !PATH_FORMS.includes(segment.pathForm)) bad(where, `unknown pathForm ${segment.pathForm}`);
+      if (segment.listForm !== undefined && segment.listForm !== 'joined') bad(where, `unknown listForm ${segment.listForm}`);
       if (segment.whenAbsent) {
         if (typeof segment.whenAbsent.text !== 'string') bad(where, 'whenAbsent without a text');
         if (!(segment.whenAbsent.examples > 0)) bad(where, 'whenAbsent without evidence');
