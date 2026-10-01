@@ -191,6 +191,15 @@ ran `fm-gaps check`**. With BaseElements installed the probe formula validates; 
 probe on the same file and the same build would answer `calc_unknown_function` — which is what fm's
 own help describes, and is probably why the help says what it says.
 
+**It happened on the 0.9.0 intake (2026-10-01), and not because of 0.9.0.** The machine had moved to
+FileMaker Pro 26.1.1 and only MBS had been updated for it. fm 0.9.0's per-batch `plugins` line
+listed BaseElements and both 2empower plug-ins under `declined`, so `BE_Version` parsed as a field
+reference (`table_missing`, engine code 106) and `plugin:validate-plugin-function` read
+`valid=false`. A plug-in that declines to load is reported only as `declined`, with no reason, so
+the stderr line is the one place this shows. The `plugin-call-sites` probe was switched to
+`MBS ( "Version" )`, the same case and the plug-in that loaded: valid, `references: []`, as on GA.
+None of the findings above changed.
+
 The register has no field recording this. `gaps/intake.json` names the fm version, build and date;
 nothing names the plug-in set. Two runs of `check` can disagree about this entry and both be
 faithful, and the register cannot say why. Worth considering:

@@ -1,18 +1,48 @@
 # What privileges the fm CLI needs, per catalog
 
-Measured against **fm 0.8.0 (29834929)**, on files hosted over `fmnet://` by FileMaker Pro's
-peer-to-peer sharing. Every capability claim below was produced by running the op as the account in
-question. Where ADT's documentation, fm's help or fm's error text contradicts what was measured, both
-are quoted and the measurement is what this document records.
+Measured against **fm 0.9.0 (29846589)** on 2026-10-01, on files hosted over `fmnet://` by FileMaker
+Pro's peer-to-peer sharing. Every capability claim below was produced by running the op as the
+account in question. Where ADT's documentation, fm's help or fm's error text contradicts what was
+measured, both are quoted and the measurement is what this document records.
 
 The answers are re-measured on every fm build by `npx fm-gaps behaviour` (runbook step 7), which
 records them under `gaps/behaviour/<version>-<build>.json`. **If the newest snapshot there names a
 later build than this line does, this document is the stale one.** Current baseline:
-`0.8.0-29834929`, taken against a copy served by FileMaker Pro 26.1.1.
+`0.9.0-29846589`, taken against a copy served by FileMaker Pro 26.1.1.
 
 ## The short version
 
-An account does not need `[Full Access]` to drive fm. Two privilege sets tell the whole story.
+**From 0.9.0, fm opens a file only as an account on the `[Full Access]` privilege set** — for reads
+and dry runs as well as writes (FMPD-67622). Every other set is refused before a single op runs:
+`permission_denied` / dbError **714**, which fm's own help gives as "an account whose set is not
+[Full Access] -> 714". Measured with five sets, from developer privilege alone up to every privilege
+ticked: all 24 probes refused at open, identically.
+
+So the choice the rest of this document was written to inform no longer exists. Sets A and B below
+both worked on 0.8.0, and B was the recommended agent account. On 0.9.0 neither opens a file. An
+agent that drives fm needs a `[Full Access]` account, which can also rewrite the file's security —
+see [The security cost](#the-security-cost).
+
+What did not change: `account` and `privilegeSet` were already `[Full Access]`-only, and still are.
+What 0.9.0 adds on the same theme, DOCUMENTED in its help rather than measured here:
+`create:account` and `update:account` refuse to bind an account to `[Full Access]`, and fm refuses to
+delete, disable, rebind or force-expire the last `[Full Access]` account it can sign in as. So fm
+cannot create the only kind of account that can drive it. Make that account in FileMaker Pro.
+
+| claim | through 0.8.0 | from 0.9.0 |
+|---|---|---|
+| what opens a file | the "Manage database as a developer" privilege, in any set | the `[Full Access]` set, and nothing else |
+| refusal at open | dbError 207 | dbError 714 |
+| reads filtered by Layouts / Scripts / Value Lists access | yes, silently | cannot happen: only `[Full Access]` gets in |
+| two fm sessions reading one file at once | refused, `locked` / 303 | both succeed (FMPD-65812) |
+
+## Through 0.8.0
+
+**Everything from here to [The security cost](#the-security-cost) was measured on fm 0.8.0
+(29834929) and describes no 0.9.0 behaviour.** It stays because builds through 0.8.0 are still in
+use, and because it is the evidence for why the ambiguity in the last section mattered.
+
+On 0.8.0 an account did not need `[Full Access]` to drive fm. Two privilege sets told the whole story.
 
 ### Set A — a custom privilege set with "Manage database as a developer" and nothing else
 
@@ -169,7 +199,12 @@ branches on `code` files a privilege problem as a generic failure. Branch on `db
 `create:extendedPrivilege` refused with **207** rather than 9, so the dbError is not consistent across
 catalogs either.
 
-## fm holds an exclusive schema lock, even for reads
+## fm held an exclusive schema lock, even for reads (through 0.8.0)
+
+**0.9.0 removed this** (FMPD-65812): reading a hosted file no longer takes the schema lock, and the
+same two concurrent read-only sessions now both succeed. Measured by `lock:concurrent-reads`. A
+WRITE that meets something another user holds open still fails as `locked` and names the holder,
+and can be retried. What follows is the 0.8.0 measurement.
 
 Two fm sessions were pointed at the same file at the same time, both running **read-only** batches. One
 completed every op; the other was refused outright:
@@ -203,17 +238,30 @@ catalog for writing".
 - **dbError 303** — another session currently holds the schema. The request is fine; wait and run it
   again. `lockedBy` names who is holding it.
 
-fm's own 207 message goes on to claim the op needs a `[Full Access]` account, which is measurably
-false — see ["Full Access" means two different things](#full-access-means-two-different-things-and-the-docs-do-not-separate-them).
+fm's own 207 message goes on to claim the op needs a `[Full Access]` account, which was measurably
+false through 0.8.0 — see ["Full Access" means two different things](#full-access-means-two-different-things-and-the-docs-do-not-separate-them).
+
+**From 0.9.0 the refusal at open is dbError 714, and it is the same "not this account" answer:**
+the account is not on `[Full Access]`, and no password will change that. The same advice holds —
+do not retry credentials; use a `[Full Access]` account.
 
 ## The security cost
 
-Ticking the developer privilege forces Records to *create, edit, delete in all tables* and locks it —
-visible greyed out in both screenshots. A schema-capable agent account therefore has **full read/write
-access to every record in the file**. A "may change the schema, may not touch the data" agent is not
-expressible in FileMaker's privilege model.
+**From 0.9.0 this is the whole cost of an agent account.** The account must be `[Full Access]`, so
+an agent that can drive fm can also create accounts, change privilege sets, use Developer Utilities
+and grant itself anything. Through 0.8.0, set B gave full design capability without any of that;
+there is no 0.9.0 equivalent. What fm itself still refuses — binding an account to `[Full Access]`,
+and removing the last one — narrows what an agent can do *through fm*, not what its account may do.
 
-## Recipe
+Through 0.8.0: ticking the developer privilege forces Records to *create, edit, delete in all tables*
+and locks it — visible greyed out in both screenshots. A schema-capable agent account therefore had
+**full read/write access to every record in the file**. A "may change the schema, may not touch the
+data" agent is not expressible in FileMaker's privilege model, and from 0.9.0 neither is a "may
+change the design, may not change who gets in" one.
+
+## Recipe (through 0.8.0)
+
+**On 0.9.0 the account this builds cannot open the file.** Kept for builds through 0.8.0.
 
 Run as an existing `[Full Access]` account. This builds B; omit the last three grants for A.
 
@@ -266,7 +314,15 @@ explanation:
 
 ## "Full Access" means two different things, and the docs do not separate them
 
-Everything in this document follows from one phrase carrying two meanings across ADT's
+**0.9.0 settled this, in the strict direction.** fm now requires the `[Full Access]` privilege set
+itself, so the phrase means the set everywhere, and the sources quoted below as overstating the
+requirement are now accurate. Claris's release notes list the two wording tickets as superseded by
+the requirement rather than fixed: FMPD-67598 ("Wording about the privileges the filemaker CLI
+needs") and FMPD-67599 ("Refusals for writes a privilege set does not allow"). The rest of this
+section is the 0.8.0 analysis. It is kept because the security consequence it describes did not go
+away when the ambiguity did; it became mandatory — see [The security cost](#the-security-cost).
+
+Through 0.8.0, everything in this document followed from one phrase carrying two meanings across ADT's
 documentation, fm's help, and fm's error text:
 
 - **The `[Full Access]` privilege set** — the specific predefined set, which fm identifies by a

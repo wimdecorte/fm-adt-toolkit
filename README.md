@@ -132,7 +132,8 @@ for any two stored snapshots (`--to` defaults to the greatest one stored).
 fm REPORTS about a file, this measures how fm BEHAVES toward the account asking: which privilege a
 session needs to run at all, what a read returns when a grant is withheld, whether two sessions may
 read at once. None of that appears in the register or in `fm help`, so nothing else here would notice
-it change — and one of the answers, the exclusive schema lock on reads, is already expected to move.
+it change — and two of the answers did in 0.9.0: reads no longer take the schema lock, and only a
+`[Full Access]` account opens a file at all.
 
 It is the only command in this repo that WRITES outside the register, which is why it is separate:
 `check` puts every batch through `assertReadOnly`, and a probe that tests a refusal has to send the op
@@ -165,7 +166,8 @@ The runbook for picking up a new fm build:
    deletes them again, and records the answers under `gaps/behaviour/<version>-<build>.json`, printing
    how they differ from the previous build. It refuses to start if an object of its own naming already
    exists, and it never touches one it did not create. Run it when the register work is settled, not
-   alongside step 3 — fm holds an exclusive schema lock, so two runs against one file collide.
+   alongside step 3 — through 0.8.0 the two collided on fm's exclusive schema lock, and 0.9.0 lifted
+   that lock for reads only, so behaviour's writes can still meet it.
 
    What it pins is how fm behaves toward the ACCOUNT asking, which is in neither the register nor
    `fm help`: which privilege a session needs to run at all, what a read does when a grant is
@@ -183,7 +185,7 @@ The runbook for picking up a new fm build:
      | probe | what it backs |
      |---|---|
      | `lock:concurrent-reads` | "fm holds an exclusive schema lock, even for reads". `by=fm-cli` is fm serialising itself; `by=other-client` means something else held the schema and the row proves nothing about fm |
-     | `no-developer-privilege:open` | gate 1 — that fm runs at all only with the developer privilege |
+     | `no-developer-privilege:open` | gate 1 — what opens a file at all: the developer privilege through 0.8.0, the `[Full Access]` set from 0.9.0 (dbError 714) |
      | `developer-only:read:layout` / `:read:script` / `:read:valueList` | "What filtering looks like", and trap 1. `all`/`subset`/`none` is the filtering; `total=file` would mean `total` stopped being session-scoped, which retires trap 2 |
      | `*:read:account`, `*:read:privilegeSet` | that those two catalogs are `[Full Access]`-only whatever else is granted |
      | `developer-only:create:*` | the per-catalog table's write column, and the `create_failed` / dbError 9 trap |
@@ -191,7 +193,7 @@ The runbook for picking up a new fm build:
      | `extendedPrivilege:keywords` | the closing section. A keyword ADDED here is the news that section asks for |
      | `plugin:validate-plugin-function`, `plugin:validate-External` | [docs/fm-plugin-findings.md](docs/fm-plugin-findings.md), not the privileges document |
 
-   `lock:concurrent-reads` is the one already expected to move.
+   `lock:concurrent-reads` moved in 0.9.0, as expected: `both-succeeded`.
 8. If any step keys changed, re-derive the step-display catalog: re-read the corpus scripts
    (`fm_scripts/*.adt.json`, `read:script` and nothing else, written back as
    `json.dumps(body, ensure_ascii=False)` with no trailing newline), then BOTH commands, in
