@@ -200,6 +200,25 @@ the stderr line is the one place this shows. The `plugin-call-sites` probe was s
 `MBS ( "Version" )`, the same case and the plug-in that loaded: valid, `references: []`, as on GA.
 None of the findings above changed.
 
+**fm 0.10.0 (29853940) showed that explanation is only half right.** Its batches load BaseElements
+again, and `plugin:validate-plugin-function` reads `valid=true` — on a BaseElements that has not
+changed: version 4.2.6, its binary dated 2022, nothing in the bundle newer than 2026-09-01. The
+`plugins` line in each build's evidence, all on this machine and this FileMaker Pro:
+
+| plug-in | 0.8.0, 2026-09-25 | 0.9.0, 2026-09-30 | 0.9.0, 2026-10-01 | 0.10.0, 2026-10-09 |
+|---|---|---|---|---|
+| BaseElements 4.2.6 | loaded | declined | declined | **loaded** |
+| MBS | loaded | declined | loaded (updated to 16.5 that morning) | loaded |
+| 2empowerFM, 2empowerFM_Developer_Assistant | loaded | declined | declined | declined |
+
+MBS fits the machine reading: 0.9.0 declined it until MBS itself was updated. BaseElements does not
+— the same binary was declined by 0.9.0 and only 0.9.0 — so for it the decline went with the fm
+build, and the "only MBS had been updated" reading above is wrong about it. The two 2empower
+plug-ins, unchanged since 2026-08-03, have been declined since 0.9.0. Nothing reports why a plug-in
+declines, so which property of a build decides it is not measurable from here; that it is the build
+and not the plug-in is. The `plugin-call-sites` probe stays on `MBS ( "Version" )`, which every
+build since 0.9.0 has loaded.
+
 The register has no field recording this. `gaps/intake.json` names the fm version, build and date;
 nothing names the plug-in set. Two runs of `check` can disagree about this entry and both be
 faithful, and the register cannot say why. Worth considering:

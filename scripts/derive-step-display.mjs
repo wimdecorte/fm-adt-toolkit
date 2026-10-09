@@ -250,16 +250,34 @@ const WITHDRAWN_FACTS = [
     step: 'Perform Script on Server with Callback',
     facts: [
       { key: 'callbackState', label: 'Callback script specified' },
-      { key: 'script', label: 'Callback script specified' },
     ],
     reason:
-      'two keys took `Callback script specified:` by sharing a word with it — `callbackState` shares ' +
-      '"callback", `script` shares "script" — and neither owns it. Disproved from inside the data: ' +
-      "`callbackState`'s real rendering is `State:` (`halt -> Halt`, `exit -> Exit`, `resume -> " +
-      'Resume`, `pause -> Pause` at script 55 steps 98-101), and `script`\'s is the bare script name ' +
-      '(`“…”` at steps 97-101). `Callback script specified` is the callback half of the ' +
-      '`Specified:` option, which no reported key holds a value for at all. Both halves are withdrawn ' +
-      'together because they are one misattribution appearing in the two states of one step.',
+      'a key took `Callback script specified:` by sharing a word with it — `callbackState` shares ' +
+      '"callback" — and does not own it. Disproved from inside the data: `callbackState`\'s real ' +
+      'rendering is `State:` (`halt -> Halt`, `exit -> Exit`, `resume -> Resume`, `pause -> Pause` ' +
+      'at script 55 steps 98-101). `Callback script specified` is the callback half of the ' +
+      '`Specified:` option, which no reported key holds a value for at all. Through fm 0.9.0 `script` ' +
+      'took it the same way, by sharing "script", and was withdrawn here beside it; fm 0.10.0 ' +
+      'stopped sending `script` on the by-name step that prints this label, so nothing proposes it ' +
+      'any more.',
+  },
+  {
+    step: 'AVPlayer Play',
+    facts: [{ key: 'source', label: 'Object Name' }],
+    reason:
+      'a key that took another key\'s label. fm 0.10.0 names the media source, and `source: ' +
+      'layoutObject` sits on every step that plays a layout object, so the matcher gave it the one ' +
+      '`Object Name: <Active Object>` FileMaker prints — and the renderer then printed that beside the ' +
+      'real name on the four steps that name one (script 55 steps 1003-1006: `Object Name: ' +
+      '<object> ; Object Name: <Active Object>`). The label is `objectName`\'s; `<Active Object>` is ' +
+      'what FileMaker writes in its place when a layout-object step names no object, which is ' +
+      'presence of one key decided by another, and the corpus holds a single example of it.',
+    // Withdrawn, the key is `ignored` on 13 clean examples but at `low`, which the renderer prints
+    // as `Source: layoutObject` on every line. FileMaker's own examples are what make it a measurement.
+    attestation:
+      'FileMaker Pro Help, AVPlayer Play: Source is chosen in the step\'s options, and the four example ' +
+      'lines print it only through what it selects — `Field:` twice, `Object Name:` twice — never as ' +
+      'an option of its own',
   },
   {
     step: 'Go to Related Record',
@@ -273,7 +291,15 @@ const WITHDRAWN_FACTS = [
       'PRESENCE of the window configuration, not the value of any part of it. Kept as a withdrawal ' +
       'rather than a demotion because a renderer acts on a low fact, and this one would print the option ' +
       'only for a window the owner happened to name that way. Withdrawing it frees all eight ' +
-      'occurrences for the presence route, which places them on the same slot.',
+      'occurrences for the presence route, which placed them on the same slot through fm 0.9.0 and ' +
+      'places them on `style` since fm 0.10.0, which names the window style.',
+    // Once the option moved to `style`, nothing placed the name, and the withdrawal alone left it
+    // `ignored` at `low` — which the renderer prints, as `Calc: "new window"` on all eight lines.
+    attestation:
+      'FileMaker Pro Help, Go to Related Record, example 2: the step that shows the related records ' +
+      'in a new window renders with `New Window` as its last option and nothing after it — the ' +
+      'window\'s name prints nowhere, as its height, width, top and left (calc 1-4, measured never ' +
+      'shown) do not',
   },
   {
     step: 'Perform Semantic Find',
@@ -348,32 +374,20 @@ const EXTERNAL_ORDER = [
  *  run if an entry stops matching or is contradicted by any example.
  *
  *  Ruling 3, in his words: "item 3 is clearly completely wrong and I don't
- *  understand your reasoning for it." Measured: `Perform Script` reports
- *  `script: "<name>"` in all 4 examples, and in the one that also reports
+ *  understand your reasoning for it." Measured through fm 0.9.0: `Perform Script`
+ *  reported `script: "<name>"` in all 4 examples, and in the one that also reported
  *  `scriptName` FileMaker prints no script name at all — it prints
- *  `Specified: By name` and the calculation. */
-const HIDDEN_WHEN = [
-  {
-    step: 'Perform Script',
-    key: 'script',
-    keyPresent: 'scriptName',
-    evidence:
-      'script 55 steps 87-89 report `script` without `scriptName` and FileMaker prints it; step 90 ' +
-      'reports both and FileMaker prints neither the name nor a slot for it.',
-  },
-  {
-    step: 'Perform Script on Server',
-    key: 'script',
-    keyPresent: 'scriptName',
-    evidence: 'the same shape on the server variant: script 55 step 94 reports both and shows no script name.',
-  },
-  {
-    step: 'Perform Script on Server with Callback',
-    key: 'script',
-    keyPresent: 'scriptName',
-    evidence: 'the same shape again: script 55 step 102 reports both and shows no script name.',
-  },
-];
+ *  `Specified: By name` and the calculation. Three entries said so, one per Perform
+ *  Script variant (script 55 steps 90, 94 and 102).
+ *
+ *  **Empty since fm 0.10.0 (29853940), because fm now does it itself.** That build
+ *  stops sending `script` beside `scriptName` on all three variants — the same
+ *  "leave out what FileMaker stores but does not apply" change it makes elsewhere —
+ *  so `script` and `scriptName` never appear together and `assertHiddenWhen` rejects
+ *  each rule as describing nothing. Output from fm 0.9.0 or earlier still carries
+ *  both, and rendered with this catalog it prints the stale script name on a
+ *  by-name step. The table and its assertion stay for the next rule of this shape. */
+const HIDDEN_WHEN = [];
 
 /** The hand-stated rules plus the derived ones, filled in by the main flow before
  *  anything reads it. One table, so `deriveSegment` and `assertHiddenWhen` cannot
@@ -2093,9 +2107,74 @@ function keyPresenceFact(step, label, occurrences, examples, notes) {
   }
   if (passing.length === 0) return decline('no reported key predicts its text');
   if (passing.length > 1) {
+    const chosen = presenceKeyFor(step, label, passing, examples);
+    if (chosen) return { label, occurrences, ...chosen };
     return decline(`${passing.length} keys predict its text equally well (${passing.map((item) => item.key).join(', ')})`);
   }
   return { label, occurrences, ...passing[0] };
+}
+
+/** Which key a presence option reads when this corpus cannot say, stated by hand
+ *  from a measurement this corpus no longer contains.
+ *
+ *  `keyPresenceFact` declines when two keys predict an option's text equally well,
+ *  because on this evidence they are indistinguishable. A pair whose presence is
+ *  exactly COMPLEMENTARY on every example is indistinguishable here and nowhere
+ *  else: one build's change can make two keys complementary, and the build before
+ *  it, which sent them independently, already showed which one the text follows.
+ *  An entry applies only to such a pair — `presenceKeyFor` checks the
+ *  complementarity on every example, and `assertPresenceKeysUsed` fails the run
+ *  once an entry stops being needed.
+ *
+ *  Both entries are one change in fm 0.10.0 (29853940): it stopped sending `script`
+ *  beside `scriptName` on a by-name step, so `script` is now absent exactly where
+ *  `scriptName` is present. Through fm 0.9.0 (29846589) — the corpus committed at
+ *  toolkit v0.9.0 — `script` was present on every example, the by-name one
+ *  included, so `scriptName` alone predicted `Specified`, and the catalog keyed it
+ *  there. Keyed on `script` it would also print `From list` on 0.9.0's by-name
+ *  steps, which still carry both. */
+const PRESENCE_KEY = [
+  {
+    step: 'Perform Script',
+    label: 'Specified',
+    key: 'scriptName',
+    source: 'fm 0.9.0 corpus, script 55 steps 87-90: `script` on all four, `scriptName` only on step 90 (By name)',
+  },
+  {
+    step: 'Perform Script on Server',
+    label: 'Specified',
+    key: 'scriptName',
+    source: 'fm 0.9.0 corpus, script 55 step 94: `script` and `scriptName` both reported, FileMaker prints By name',
+  },
+];
+
+const presenceKeysUsed = new Set();
+
+function presenceKeyFor(step, label, passing, examples) {
+  const rule = PRESENCE_KEY.find((item) => item.step === step && item.label === label);
+  if (!rule) return null;
+  const chosen = passing.find((item) => item.key === rule.key);
+  if (!chosen) return null;
+  const complementary = passing.every(
+    (item) =>
+      item === chosen ||
+      examples.every(
+        (observation) => Object.hasOwn(observation.step, item.key) !== Object.hasOwn(observation.step, chosen.key),
+      ),
+  );
+  if (!complementary) return null;
+  presenceKeysUsed.add(rule);
+  return chosen;
+}
+
+function assertPresenceKeysUsed() {
+  const stale = PRESENCE_KEY.filter((rule) => !presenceKeysUsed.has(rule));
+  if (stale.length) {
+    throw new Error(
+      stale.map((rule) => `PRESENCE_KEY: ${rule.step} | ${rule.label} -> ${rule.key} settled no tie`).join('\n') +
+        '\nthe corpus no longer needs these, or no longer shows the pair as complementary',
+    );
+  }
 }
 
 /** Add a `keyPresence` option to the step type as synthetic placements, so every
@@ -3683,6 +3762,7 @@ assertShape(catalog);
 assertNoOwnerContent(catalog);
 assertWithdrawalsUsed(collected.withdrawn);
 assertHiddenWhen(collected);
+assertPresenceKeysUsed();
 fs.writeFileSync(CATALOG_PATH, `${JSON.stringify(catalog, null, 2)}\n`, 'utf8');
 report(collected, catalog, disagreements, rejected, dispositions);
 console.log();

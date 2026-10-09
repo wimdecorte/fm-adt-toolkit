@@ -264,7 +264,7 @@ describe('the catalog renderer against FileMaker’s own text', () => {
       }
     }
     expect(tally.outside).toEqual([]);
-    // Measured on fm 0.9.0 (29846589): 43 rendered + 194 never shown + 7 unresolved.
+    // Measured on fm 0.10.0 (29853940): 68 rendered + 159 never shown + 7 unresolved.
     // The partition above is the invariant; both the sum and the split are facts about the
     // corpus, and three builds running have moved them.
     //
@@ -293,8 +293,19 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // step's five argument slots. fm 0.9.0 sends those values twice, under `arguments.*` and as
     // `slots.calc.0`-`4`, and once `expandStep` let the matcher see `arguments.Function` it
     // placed the named copy, so the slot copies are settled as shown under another key.
-    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(244);
-    expect(tally.rendered).toBeGreaterThanOrEqual(43);
+    //
+    // 0.10.0 took 51 places out of the bag and put 41 in, 244 -> 234. Out: the stored settings
+    // FileMaker does not apply — a layout id of 0 beside a layout given by calculation or
+    // `<Current Layout>` on Go to Layout (12), Go to List of Records (12) and New Window (3), and
+    // Save Records as PDF's calc and numeric slots where Restore is off (22) — all never shown,
+    // so nothing printed changed; and Install Menu Set's `memberKey` (2), which 0.10.0 names
+    // `menuSet`. In: `fieldRepetition`, a field reference's repetition, on seven step types (40),
+    // and one `memberKey` on a Go to Related Record into another file. `rendered` ROSE 43 -> 68:
+    // 35 of the 40 repetitions are what FileMaker prints after the field, in brackets,
+    // against Install Menu Set's two and Go to Related Record's window name (8), which no longer
+    // carries `New window` — 0.10.0 names the window style, and that option follows `style`.
+    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(234);
+    expect(tally.rendered).toBeGreaterThanOrEqual(68);
   });
 
   it('has no key the catalog accounts for in no way at all', () => {
@@ -428,9 +439,39 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // member, which is what the renderer addresses, and that is a different population: 1770.
     // Counted the old way, one object at a time, the same catalog withholds 1210 — FELL by 14 from
     // 1224 — so the rise is the count's unit, not the catalog. The ratchet is re-armed on members.
-    expect(rendered).toBeGreaterThanOrEqual(3137);
-    expect(baseline).toBeGreaterThanOrEqual(95);
-    expect(withheld).toBeLessThanOrEqual(1770);
+    //
+    // fm 0.10.0 (29853940): 3176 printed, 81 of them by the baseline, 1749 withheld; FileMaker's
+    // own text matched byte for byte on 962 lines.
+    //
+    // `rendered` rose, 3137 -> 3176: Add Account's privilege set, which 0.10.0 is the first build to
+    // report (+11); Configure Regression Model's `action` and field repetitions (+18); Generate
+    // Response from Model's (+19) and Insert Image Captions in Found Set's (+4) repetitions; one each
+    // on AVPlayer Play, Go to Layout and Install Menu Set. Against them, 16 prints FileMaker never
+    // made: Go to List of Records (-12) and Configure AI Account (-1), both under `baseline` below,
+    // and Save Records as Excel (-3) — its inverted `useFieldNames`, and `records` on the two steps
+    // whose Restore is off.
+    //
+    // `baseline` FELL against its floor, 95 -> 81. Sixteen left, every one a print FileMaker never
+    // made: Go to List of Records' `Member key: 0` (12), the stale layout id 0.10.0 stopped sending;
+    // Install Menu Set's id, Set Window Title's and Configure AI Account's `stepValue`, now named
+    // (`menuSet`, `target`, `provider`); and Save Records as Excel's `useFieldNames`, which 0.9.0
+    // reported inverted. Two arrived. AVPlayer Play prints a field repetition that one example
+    // carries (`slots.fieldRepetition.0`), as any value on one example prints. Go to Layout prints
+    // `Member key: 0` for its one broken layout reference, which FileMaker writes `<unknown>`: the
+    // twelve stale ids that used to hide it as never shown are gone, and R2 rules that a broken
+    // reference is not skipped.
+    //
+    // `withheld` FELL, 1770 -> 1749, so the ratchet tightens. Out (-48): the stored-but-unapplied
+    // settings above (Save Records as PDF -22, Go to Layout -13, New Window -3, Configure AI
+    // Account's SSL switch -4), the Perform Script family -5 (the stale `script` on its three by-name
+    // steps, and two Perform Script on Server with Callback `stepValue`s now `callbackState`), and
+    // Install Menu Set -1. In (+27): Go to Related Record's window name and style (+10), now never
+    // shown; Sort Records' `maintain` and `blanksLast` (+6), which 0.10.0 sends on every step in
+    // place of the raw `sortOrder.flags`; AVPlayer Play (+4 net, `source`); Save Records as Excel
+    // (+3); Perform RAG Action's and Perform Semantic Find's repetitions (+4).
+    expect(rendered).toBeGreaterThanOrEqual(3176);
+    expect(baseline).toBeGreaterThanOrEqual(81);
+    expect(withheld).toBeLessThanOrEqual(1749);
   });
 
   it('agrees with the aligner about collapsing a return', () => {

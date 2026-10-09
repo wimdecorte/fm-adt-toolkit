@@ -63,6 +63,14 @@ the old root-owned `/usr/local/bin/filemaker` too; it still works, because it ex
 binary, but 0.9.0's installer names it as a leftover to remove. `locateFmCli` looks in
 `~/.local/bin` first for that reason.
 
+**0.10.0 kept the name and the folder and rewrote the wrapper.** `~/.local/bin/filemaker` is now
+three lines that `exec` the real binary at an absolute path written in at install time
+(`/Users/<you>/Library/Application Support/ADT/MCP/fm-cli/fm-cli`), where the older wrapper — still
+the one at `/usr/local/bin/filemaker` on an upgraded machine — built that path from `$HOME` and said
+"ADT is not installed for this user" when the binary was missing. So a 0.10.0 wrapper copied to
+another account or machine runs the first user's binary or fails with bash's own `exec` error, and
+nothing that parses the wrapper for its target will find `$HOME` in it.
+
 Anything that resolves the CLI by name must therefore try both, which `locateFmCli` does. Call it
 instead of hardcoding a name, and prefer `cli.path` over the word `fm` anywhere a command line is
 recorded or printed.

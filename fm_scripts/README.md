@@ -13,6 +13,39 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.10.0 (build 29853940) on 2026-10-09.** Both `.adt.json` files re-read with
+nothing but `read:script`, BaseElements and MBS loaded; still 48 and 1155 steps, `.txt` halves
+unchanged. 3 of the 48 and 108 of the 1155 steps changed key set, and 13 more of the 1155 changed values
+under the same keys. Three shapes account for nearly all of it:
+
+- **A value that was a bare number is named.** `stepValue` became `mode`, `state`,
+  `callbackState`, `source`, `arrangement`, `to`, `target` and `action` on eleven step types — the
+  pause, AVPlayer, callback, window, toolbar, ruler, menubar and undo steps — and `slots.memberKey`
+  became `menuSet` on Install Menu Set. Add Account gained `privilegeSet` (11), which no build reported
+  before; Configure AI Account gained `provider: chatGpt`; Configure Regression Model `action` (7);
+  Go to Related Record `style`, its new window's style (8).
+- **A stored setting FileMaker does not apply is no longer sent.** A layout id of 0 beside a layout
+  given by calculation or `<Current Layout>` (Go to Layout 12, Go to List of Records 12, New
+  Window 3); the stale `script` beside `scriptName` on the three Perform Script variants; Save
+  Records as PDF's slots and Save Records as Excel's `records` where Restore is off;
+  `verifySslCertificates` unless the AI provider is Other.
+- **A field reference's repetition is reported**, as `slots.fieldRepetition`, on seven step types
+  (40 places) — the number FileMaker appends in brackets.
+
+Two value changes ride along: Save Records as Excel's `useFieldNames` is now a boolean on every step
+that restores its options, where 0.9.0 sent `1` on the one step whose option is OFF; and Sort
+Records' `sortOrder` carries `maintain` and `blanksLast` on every step instead of a raw `flags`.
+
+Derived and round-tripped: verified 145 → 148 with none lost, byte-identical lines 921 → 962 of
+1203. Gained: Configure AI Account, Configure Regression Model, Insert Image Captions in Found Set.
+Three derivation changes came with it, each because a 0.10.0 change left a rule describing nothing
+or left a tie. `HIDDEN_WHEN` is empty: fm itself no longer sends `script` beside `scriptName`, which
+is what the rule was for. A new `PRESENCE_KEY` keeps `Specified: From list / By name` on
+`scriptName`, which the two keys now predict equally well — 0.9.0's corpus is what tells them
+apart. And two withdrawals gained a FileMaker Pro Help attestation, so Go to Related Record's window
+name and AVPlayer Play's `source` are measured never shown rather than printed: Go to Related Record
+had begun appending `Calc: "<window name>"` and AVPlayer Play a second `Object Name:`.
+
 **Re-read with fm 0.9.0 (build 29846589) on 2026-10-01.** Both `.adt.json` files re-read with
 nothing but `read:script`; still 48 and 1155 steps, `.txt` halves unchanged. 2 of the 48 and 66 of
 the 1155 steps changed key set. By step type: Insert File's 14 opaque steps are decoded

@@ -732,16 +732,30 @@ it cannot be derived from the script at all. Recorded, not fixable.
 Each of these has been checked against the CLI's own output for the step, in every form — a key of
 its own, a nested value, the bag of unnamed values. Not there.
 
+**fm 0.10.0 (29853940) closed two and a half of the five**, measured on the re-read corpus: item 1
+(28 of the 29 lines where FileMaker appends a repetition now carry it, 7 before), item 2, and the
+menu-set half of item 5. Each item says so below; the counts elsewhere in this document are the
+round that measured them, not this build.
+
 1. **A repetition FileMaker appends to an option.** FileMaker writes an option and then a repetition
    number in brackets after it. The step reports one repetition, its value is 0, and 0 means *not
    specified*, which FileMaker draws as empty brackets — that part now comes out right. The number
    appended to the *other* option is in no key and in no unnamed value. 14 steps, plus 7 more that
    also disagree about something else. Your ruling that skipping it is not acceptable stands; there
    is nothing to stop skipping with.
+
+   **Closed by fm 0.10.0**, which reports a field reference's repetition as `slots.fieldRepetition`
+   on seven step types. Of the 29 lines in the corpus where FileMaker appends a repetition, 28 now
+   carry the right number (7 before) and 25 match FileMaker exactly (5 before): every Configure
+   Regression Model and Insert Image Captions in Found Set line, and 10 of 11 Generate Response from
+   Model. Show Custom Dialog's one line is the exception.
 2. **A privilege set name on `Add Account`.** Everything else about that step type is now worked out
    from the values the CLI sends — the authentication method, the switch between the two names for
    the account option, the password option disappearing for an external account. The privilege set is
    in no key and in no unnamed value. 10 steps.
+
+   **Closed by fm 0.10.0**, which names it as `privilegeSet` wherever the reference resolves, and
+   keeps `slots.memberKey: 0` for one that does not. The register's `step:134` row records it.
 3. **A flash or flashlight setting on `Insert from Device`.** FileMaker prints it on eight steps and
    the CLI sends no key for it on any of them. Two step configurations that *do* report a light key
    are ones where FileMaker prints nothing, so it is not a matter of the wrong name.
@@ -758,6 +772,10 @@ its own, a nested value, the bag of unnamed values. Not there.
    name. Two of the three menu set names in these scripts are FileMaker's own built-ins and could be
    mapped from the id; every other name is a lookup against your file. 4 steps. An earlier version of
    this document said the name was in the bag of unnamed values — it is not, and that is corrected.
+
+   **Half closed by fm 0.10.0**: `Install Menu Set` reports the menu set by name as `menuSet`,
+   built-ins included, and keeps the id only for a reference to a deleted set. `Truncate Table` still
+   reports a number (`slots.memberKey`) and no name.
 
 ---
 

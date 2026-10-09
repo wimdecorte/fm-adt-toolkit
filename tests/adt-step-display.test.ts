@@ -495,7 +495,9 @@ describe('an option whose label points at one key and whose value comes from ano
 /** An option FileMaker prints because the CLI reports something, not because of any value
  *  it holds — and, on the same step, another option FileMaker DROPS for the same reason.
  *  Measured on `Go to Related Record`, whose new-window settings are five values the CLI
- *  reports without naming: script 55 steps 230-234. */
+ *  reports without naming: script 55 steps 230-234. Since fm 0.10.0 it also reports the
+ *  window's style as `style`, and both options follow that key's presence; the fixtures
+ *  carry step 230's. */
 describe('an option that follows from a value the CLI does not name', () => {
   const RELATED = {
     stepID: 74,
@@ -505,11 +507,16 @@ describe('an option that follows from a value the CLI does not name', () => {
     'showOnlyRelatedRecords': true,
     animation: 19,
   } as ScriptDetailStep;
+  const STYLE = {
+    raw: '0x40270602',
+    set: ['documentMode', 'resize', 'menuBar', 'close', 'minimize', 'maximize', 'toolbars', 'have16OptionsBeenSpecified'],
+  };
 
   it('writes New window and drops the animation while a window is configured', () => {
     expect(
       stepDisplayText({
         ...RELATED,
+        style: STYLE,
         slots: { calc: { 0: '"a window"', 1: '100', 2: '100', 3: '100', 4: '100' } },
       }),
     ).toBe(
@@ -530,7 +537,7 @@ describe('an option that follows from a value the CLI does not name', () => {
     // be the same words FileMaker prints for this option, so the matcher paired the value
     // with the option. Any other name must give the same option.
     expect(
-      stepDisplayText({ ...RELATED, slots: { calc: { 0: '$w', 1: '1', 2: '1', 3: '1', 4: '1' } } }),
+      stepDisplayText({ ...RELATED, style: STYLE, slots: { calc: { 0: '$w', 1: '1', 2: '1', 3: '1', 4: '1' } } }),
     ).toContain('New window');
   });
 });

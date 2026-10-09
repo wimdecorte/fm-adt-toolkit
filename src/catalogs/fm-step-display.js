@@ -72,6 +72,14 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "privilegeSet",
+    "render": "labelled",
+    "label": "Privilege Set",
+    "examples": 11,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
     "key": "expirePassword",
     "render": "bareWhenTrue",
     "label": "Expire password",
@@ -144,24 +152,12 @@ export default {
     "values": {
      "tileHorizontally": "Tile Horizontally",
      "tileVertically": "Tile Vertically",
-     "cascade": "Cascade Window"
+     "cascade": "Cascade Window",
+     "bringAllToFront": "Bring All To Front"
     },
-    "examples": 6,
+    "examples": 8,
     "attribution": "valueWords",
     "confidence": "measured"
-   },
-   {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "4": "Bring All To Front"
-    },
-    "examples": 2,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleValueOnly"
-    ]
    }
   ],
   "ignored": [],
@@ -286,6 +282,18 @@ export default {
    {
     "key": "slots",
     "slot": {
+     "member": "fieldRepetition",
+     "number": "0"
+    },
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "slots",
+    "slot": {
      "member": "memberKey"
     },
     "examples": 7,
@@ -300,14 +308,15 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "stepValue",
-    "examples": 10,
-    "confidence": "measured"
+    "key": "source",
+    "examples": 13,
+    "confidence": "measured",
+    "attestation": "FileMaker Pro Help, AVPlayer Play: Source is chosen in the step's options, and the four example lines print it only through what it selects — `Field:` twice, `Object Name:` twice — never as an option of its own"
    }
   ],
   "derivedFrom": 14,
   "residual": {
-   "unreported": 1
+   "unattributed": 1
   },
   "verified": false
  },
@@ -461,27 +470,14 @@ export default {
  "AVPlayer Set Playback State": {
   "segments": [
    {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "0": "Stopped"
-    },
-    "examples": 1,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleExample",
-     "thinMapping"
-    ]
-   },
-   {
     "key": "state",
     "render": "enum",
     "values": {
+     "stopped": "Stopped",
      "paused": "Paused",
      "playing": "Playing"
     },
-    "examples": 2,
+    "examples": 3,
     "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
@@ -767,16 +763,13 @@ export default {
     "render": "labelledEnum",
     "label": "Model Provider",
     "values": {
+     "chatGpt": "OpenAI",
      "anthropic": "Anthropic",
      "cohere": "Cohere",
      "google": "Google",
      "other": "Custom"
     },
-    "whenAbsent": {
-     "text": "OpenAI",
-     "examples": 1
-    },
-    "examples": 4,
+    "examples": 5,
     "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
@@ -806,18 +799,15 @@ export default {
   "ignored": [
    {
     "key": "verifySslCertificates",
-    "examples": 5,
-    "confidence": "measured"
-   }
-  ],
-  "unresolved": [
-   {
-    "key": "stepValue",
-    "cause": "labelOwnedElsewhere"
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
    }
   ],
   "derivedFrom": 5,
-  "verified": false
+  "verified": true
  },
  "Configure Local Notification": {
   "segments": [
@@ -1355,6 +1345,17 @@ export default {
  "Configure Regression Model": {
   "segments": [
    {
+    "key": "action",
+    "render": "labelledEnum",
+    "label": "Action",
+    "values": {
+     "trainModel": "Train Model"
+    },
+    "examples": 7,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
     "key": "modelName",
     "render": "labelled",
     "label": "Model Name",
@@ -1385,6 +1386,21 @@ export default {
     ]
    },
    {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "2"
+    },
+    "render": "suffix",
+    "suffixOf": "vectorsField",
+    "examples": 6,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "rejectedMapping"
+    ]
+   },
+   {
     "key": "labelsField",
     "render": "labelled",
     "label": "Training Target Field",
@@ -1393,6 +1409,21 @@ export default {
     "confidence": "low",
     "doubts": [
      "singleValueOnly"
+    ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "8"
+    },
+    "render": "suffix",
+    "suffixOf": "labelsField",
+    "examples": 5,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "rejectedMapping"
     ]
    },
    {
@@ -1433,11 +1464,7 @@ export default {
   ],
   "ignored": [],
   "derivedFrom": 7,
-  "residual": {
-   "unreported": 4,
-   "unattributed": 3
-  },
-  "verified": false
+  "verified": true
  },
  "Constrain Found Set": {
   "emptyBrackets": true,
@@ -2849,6 +2876,21 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "14"
+    },
+    "render": "suffix",
+    "suffixOf": "toolCalls",
+    "examples": 11,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "rejectedMapping"
+    ]
+   },
+   {
     "key": "instruction",
     "render": "labelled",
     "label": "Instructions",
@@ -2863,6 +2905,21 @@ export default {
     "examples": 8,
     "attribution": "anchored",
     "confidence": "measured"
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "6"
+    },
+    "render": "suffix",
+    "suffixOf": "messages",
+    "examples": 8,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "rejectedMapping"
+    ]
    },
    {
     "key": "slidingWindowVariable",
@@ -3213,13 +3270,26 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "0"
+    },
+    "render": "enum",
+    "values": {
+     "2": "<Table Missing>"
+    },
+    "examples": 1,
+    "attribution": "sole",
+    "confidence": "low",
+    "doubts": [
+     "singleExample",
+     "thinMapping"
+    ]
+   },
+   {
     "key": "field",
     "render": "bare",
-    "whenAbsent": {
-     "text": "<Table Missing>",
-     "examples": 1,
-     "flagBit": 1
-    },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
@@ -3239,9 +3309,6 @@ export default {
   ],
   "ignored": [],
   "derivedFrom": 5,
-  "residual": {
-   "unattributed": 1
-  },
   "verified": true
  },
  "Go to Layout": {
@@ -3303,8 +3370,11 @@ export default {
     "slot": {
      "member": "memberKey"
     },
-    "examples": 13,
-    "confidence": "measured"
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
    }
   ],
   "derivedFrom": 16,
@@ -3416,17 +3486,6 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "memberKey"
-    },
-    "examples": 11,
-    "confidence": "low",
-    "doubts": [
-     "withdrawalDependent"
-    ]
-   },
-   {
     "key": "style",
     "examples": 4,
     "confidence": "measured"
@@ -3444,7 +3503,7 @@ export default {
   ],
   "derivedFrom": 19,
   "residual": {
-   "unreported": 1,
+   "unreported": 2,
    "unattributed": 2
   },
   "verified": false
@@ -3681,22 +3740,14 @@ export default {
      "19": "Cross Dissolve"
     },
     "hiddenWhen": {
-     "keyPresent": "slots",
-     "slot": {
-      "member": "calc",
-      "number": "0"
-     }
+     "keyPresent": "style"
     },
     "examples": 12,
     "attribution": "anchored",
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "0"
-    },
+    "key": "style",
     "render": "keyPresence",
     "values": {
      "absent": "",
@@ -3704,13 +3755,28 @@ export default {
     },
     "examples": 23,
     "attribution": "presence",
-    "confidence": "low",
-    "doubts": [
-     "presenceGroupTie"
-    ]
+    "confidence": "measured"
    }
   ],
   "ignored": [
+   {
+    "key": "dataSource",
+    "examples": 1,
+    "confidence": "low",
+    "doubts": [
+     "singleExample"
+    ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "calc",
+     "number": "0"
+    },
+    "examples": 3,
+    "confidence": "measured",
+    "attestation": "FileMaker Pro Help, Go to Related Record, example 2: the step that shows the related records in a new window renders with `New Window` as its last option and nothing after it — the window's name prints nowhere, as its height, width, top and left (calc 1-4, measured never shown) do not"
+   },
    {
     "key": "slots",
     "slot": {
@@ -3752,11 +3818,8 @@ export default {
     "slot": {
      "member": "memberKey"
     },
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
+    "examples": 2,
+    "confidence": "measured"
    }
   ],
   "derivedFrom": 23,
@@ -4857,6 +4920,21 @@ export default {
     ]
    },
    {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "3"
+    },
+    "render": "suffix",
+    "suffixOf": "field",
+    "examples": 4,
+    "attribution": "anchored",
+    "confidence": "low",
+    "doubts": [
+     "rejectedMapping"
+    ]
+   },
+   {
     "key": "target",
     "render": "labelled",
     "label": "Target Field",
@@ -4905,7 +4983,7 @@ export default {
   ],
   "ignored": [],
   "derivedFrom": 6,
-  "verified": false
+  "verified": true
  },
  "Insert PDF": {
   "emptyBrackets": true,
@@ -5012,32 +5090,12 @@ export default {
  "Install Menu Set": {
   "segments": [
    {
-    "key": "slots",
-    "slot": {
-     "member": "memberKey"
-    },
-    "render": "enum",
-    "omittedValues": [
-     "0"
-    ],
-    "examples": 1,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleExample",
-     "rejectedMapping"
-    ]
-   },
-   {
     "key": "menuSet",
     "render": "bare",
     "quoted": true,
-    "examples": 1,
+    "examples": 3,
     "attribution": "anchored",
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
+    "confidence": "measured"
    },
    {
     "key": "useAsFileDefault",
@@ -5047,12 +5105,9 @@ export default {
      "false": "Off",
      "true": "On"
     },
-    "examples": 3,
+    "examples": 2,
     "attribution": "anchored",
-    "confidence": "low",
-    "doubts": [
-     "renderDisagreement"
-    ]
+    "confidence": "measured"
    }
   ],
   "ignored": [],
@@ -5351,16 +5406,7 @@ export default {
     "confidence": "measured"
    }
   ],
-  "ignored": [
-   {
-    "key": "slots",
-    "slot": {
-     "member": "memberKey"
-    },
-    "examples": 3,
-    "confidence": "measured"
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 8,
   "verified": false
  },
@@ -5728,13 +5774,16 @@ export default {
  "Pause/Resume Script": {
   "segments": [
    {
-    "key": "stepValue",
+    "key": "mode",
     "render": "enum",
     "values": {
-     "0": "Indefinitely"
+     "indefinitely": "Indefinitely"
     },
+    "omittedValues": [
+     "forDuration"
+    ],
     "examples": 1,
-    "attribution": "sole",
+    "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
      "singleExample",
@@ -5750,13 +5799,7 @@ export default {
     "confidence": "measured"
    }
   ],
-  "ignored": [
-   {
-    "key": "mode",
-    "examples": 2,
-    "confidence": "measured"
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 3,
   "verified": true
  },
@@ -6204,6 +6247,15 @@ export default {
     "key": "detectVerticalText",
     "examples": 10,
     "confidence": "measured"
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "12"
+    },
+    "examples": 2,
+    "confidence": "measured"
    }
   ],
   "derivedFrom": 10,
@@ -6215,9 +6267,6 @@ export default {
     "key": "script",
     "render": "bare",
     "quoted": true,
-    "hiddenWhen": {
-     "keyPresent": "scriptName"
-    },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
@@ -6276,8 +6325,7 @@ export default {
   "ignored": [],
   "derivedFrom": 4,
   "residual": {
-   "unreported": 3,
-   "unattributed": 1
+   "unreported": 4
   },
   "verified": true
  },
@@ -6287,9 +6335,6 @@ export default {
     "key": "script",
     "render": "bare",
     "quoted": true,
-    "hiddenWhen": {
-     "keyPresent": "scriptName"
-    },
     "examples": 3,
     "attribution": "anchored",
     "confidence": "measured"
@@ -6360,24 +6405,12 @@ export default {
   "ignored": [],
   "derivedFrom": 4,
   "residual": {
-   "unreported": 3,
-   "unattributed": 1
+   "unreported": 4
   },
   "verified": false
  },
  "Perform Script on Server with Callback": {
   "segments": [
-   {
-    "key": "script",
-    "render": "bare",
-    "quoted": true,
-    "hiddenWhen": {
-     "keyPresent": "scriptName"
-    },
-    "examples": 5,
-    "attribution": "anchored",
-    "confidence": "measured"
-   },
    {
     "key": "scriptName",
     "render": "bare",
@@ -6387,6 +6420,14 @@ export default {
     "doubts": [
      "singleExample"
     ]
+   },
+   {
+    "key": "script",
+    "render": "bare",
+    "quoted": true,
+    "examples": 5,
+    "attribution": "anchored",
+    "confidence": "measured"
    },
    {
     "key": "parameter",
@@ -6408,27 +6449,6 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "callbackState",
-    "render": "labelledEnum",
-    "label": "State",
-    "values": {
-     "halt": "Halt",
-     "exit": "Exit",
-     "resume": "Resume",
-     "pause": "Pause"
-    },
-    "whenAbsent": {
-     "text": "Continue",
-     "examples": 2
-    },
-    "examples": 4,
-    "attribution": "valueFunction",
-    "confidence": "low",
-    "doubts": [
-     "thinMapping"
-    ]
-   },
-   {
     "key": "callbackByName",
     "render": "bare",
     "examples": 1,
@@ -6437,6 +6457,21 @@ export default {
     "doubts": [
      "singleExample"
     ]
+   },
+   {
+    "key": "callbackState",
+    "render": "labelledEnum",
+    "label": "State",
+    "values": {
+     "continue": "Continue",
+     "halt": "Halt",
+     "exit": "Exit",
+     "resume": "Resume",
+     "pause": "Pause"
+    },
+    "examples": 6,
+    "attribution": "valueFunction",
+    "confidence": "measured"
    }
   ],
   "ignored": [
@@ -6448,16 +6483,12 @@ export default {
     },
     "examples": 5,
     "confidence": "measured"
-   },
-   {
-    "key": "stepValue",
-    "examples": 2,
-    "confidence": "measured"
    }
   ],
   "derivedFrom": 6,
   "residual": {
-   "unattributed": 6
+   "unreported": 1,
+   "unattributed": 5
   },
   "verified": false
  },
@@ -6619,6 +6650,15 @@ export default {
     "doubts": [
      "withdrawalDependent"
     ]
+   },
+   {
+    "key": "slots",
+    "slot": {
+     "member": "fieldRepetition",
+     "number": "10"
+    },
+    "examples": 2,
+    "confidence": "measured"
    },
    {
     "key": "slots",
@@ -7516,11 +7556,8 @@ export default {
    },
    {
     "key": "useFieldNames",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
+    "examples": 3,
+    "confidence": "measured"
    },
    {
     "key": "worksheet",
@@ -7791,105 +7828,6 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "4"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "5"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "calc",
-     "number": "6"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "1"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "10"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "4"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "5"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "6"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "7"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "8"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
-    "key": "slots",
-    "slot": {
-     "member": "numeric",
-     "number": "9"
-    },
-    "examples": 2,
-    "confidence": "measured"
-   },
-   {
     "key": "specificPagesEnd",
     "examples": 8,
     "confidence": "measured"
@@ -7969,24 +7907,12 @@ export default {
      "home": "Home",
      "end": "End",
      "pageUp": "Page Up",
-     "pageDown": "Page Down"
+     "pageDown": "Page Down",
+     "toSelection": "To Selection"
     },
-    "examples": 8,
+    "examples": 10,
     "attribution": "valueWords",
     "confidence": "measured"
-   },
-   {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "5": "To Selection"
-    },
-    "examples": 2,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleValueOnly"
-    ]
    }
   ],
   "ignored": [],
@@ -8847,15 +8773,31 @@ export default {
     "confidence": "measured"
    },
    {
+    "key": "target",
+    "render": "enum",
+    "values": {
+     "current": "Current Window"
+    },
+    "omittedValues": [
+     "byName"
+    ],
+    "examples": 1,
+    "attribution": "valueWords",
+    "confidence": "low",
+    "doubts": [
+     "singleExample",
+     "thinMapping"
+    ]
+   },
+   {
     "key": "currentFileOnly",
     "render": "bareWhenTrue",
-    "label": "Current Window",
-    "examples": 2,
+    "label": "Current file",
+    "examples": 1,
     "attribution": "labelWords",
     "confidence": "low",
     "doubts": [
-     "labelDisagreement",
-     "valueNotFunctional"
+     "singleExample"
     ]
    },
    {
@@ -8867,21 +8809,7 @@ export default {
     "confidence": "measured"
    }
   ],
-  "ignored": [
-   {
-    "key": "stepValue",
-    "examples": 1,
-    "confidence": "low",
-    "doubts": [
-     "singleExample"
-    ]
-   },
-   {
-    "key": "target",
-    "examples": 2,
-    "confidence": "measured"
-   }
-  ],
+  "ignored": [],
   "derivedFrom": 3,
   "verified": false
  },
@@ -9171,27 +9099,14 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "3": "Toggle"
-    },
-    "examples": 1,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleExample",
-     "thinMapping"
-    ]
-   },
-   {
     "key": "state",
     "render": "enum",
     "values": {
+     "toggle": "Toggle",
      "hide": "Hide",
      "show": "Show"
     },
-    "examples": 2,
+    "examples": 3,
     "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
@@ -9210,24 +9125,12 @@ export default {
     "render": "enum",
     "values": {
      "show": "Show",
-     "hide": "Hide"
+     "hide": "Hide",
+     "toggle": "Toggle"
     },
-    "examples": 4,
+    "examples": 6,
     "attribution": "valueWords",
     "confidence": "measured"
-   },
-   {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "3": "Toggle"
-    },
-    "examples": 2,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleValueOnly"
-    ]
    }
   ],
   "ignored": [],
@@ -9253,31 +9156,16 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "3": "Toggle"
-    },
-    "examples": 2,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleValueOnly"
-    ]
-   },
-   {
     "key": "state",
     "render": "enum",
     "values": {
+     "toggle": "Toggle",
      "show": "Show",
      "hide": "Hide"
     },
-    "examples": 2,
+    "examples": 4,
     "attribution": "valueWords",
-    "confidence": "low",
-    "doubts": [
-     "thinMapping"
-    ]
+    "confidence": "measured"
    }
   ],
   "ignored": [],
@@ -9532,27 +9420,14 @@ export default {
  "Undo/Redo": {
   "segments": [
    {
-    "key": "stepValue",
-    "render": "enum",
-    "values": {
-     "3": "Toggle"
-    },
-    "examples": 1,
-    "attribution": "sole",
-    "confidence": "low",
-    "doubts": [
-     "singleExample",
-     "thinMapping"
-    ]
-   },
-   {
     "key": "action",
     "render": "enum",
     "values": {
+     "toggle": "Toggle",
      "undo": "Undo",
      "redo": "Redo"
     },
-    "examples": 2,
+    "examples": 3,
     "attribution": "valueWords",
     "confidence": "low",
     "doubts": [
