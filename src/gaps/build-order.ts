@@ -23,7 +23,13 @@ function compare(a: string, b: string): number {
  *  before `0.8.0-beta.0-29827611`. Falls back to a plain string compare for the rare name with
  *  no build number. */
 export function newestOther(names: string[], current: string): string | null {
-  const others = names.filter((n) => n !== current);
-  if (!others.length) return null;
-  return others.reduce((best, n) => (compare(n, best) > 0 ? n : best));
+  return newest(names.filter((n) => n !== current));
+}
+
+/** Picks the newest stored name by the same order as `newestOther`, for a caller with no
+ *  current build to exclude -- `help-diff`'s default `--to`. A string sort gets this wrong as
+ *  soon as a version component reaches two digits: '0.9.0-...' sorts after '0.11.0-...'. */
+export function newest(names: string[]): string | null {
+  if (!names.length) return null;
+  return names.reduce((best, n) => (compare(n, best) > 0 ? n : best));
 }

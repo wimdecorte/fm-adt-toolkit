@@ -13,6 +13,7 @@ export { BEHAVIOUR_SETS, PROBE_IDS, diffBehaviour, renderBehaviourDiff, readOutc
 export type { BehaviourSnapshot, BehaviourDiff, BehaviourSet } from './behaviour.ts';
 export { behaviourSnapshotPath, writeBehaviourSnapshot, previousBehaviourSnapshot } from './behaviour-store.ts';
 export { intakePath, writeIntake, readIntake } from './intake.ts';
+export { newest } from './build-order.ts';
 export type { Intake } from './intake.ts';
 export { selectInstance, selectorContainer, selectorFailure } from './select.ts';
 export { flattenKeys, normaliseName, autoMatch } from './match.ts';

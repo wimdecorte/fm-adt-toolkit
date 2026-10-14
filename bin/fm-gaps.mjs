@@ -37,7 +37,7 @@ import {
   KINDS, draftEntry, selectInstance, evidenceDir, fmTypeMismatch,
   captureHelpSince, helpSurfaceSince, summariseHelp, diffHelp, renderHelpDiff, writeIntake,
   BEHAVIOUR_SETS, diffBehaviour, renderBehaviourDiff, readOutcome,
-  writeBehaviourSnapshot, previousBehaviourSnapshot, behaviourSnapshotPath,
+  writeBehaviourSnapshot, previousBehaviourSnapshot, behaviourSnapshotPath, newest,
 } from '../dist/gaps/index.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -84,8 +84,9 @@ if (cmd === 'report') {
 if (cmd === 'help-diff') {
   if (!str('from')) usage();
   const helpDir = path.join(evidenceRoot, 'gaps', 'help');
-  const files = fs.existsSync(helpDir) ? fs.readdirSync(helpDir).filter((f) => f.endsWith('.json')).sort() : [];
-  const toLabel = str('to') ?? (files.length ? path.basename(files[files.length - 1], '.json') : null);
+  const files = fs.existsSync(helpDir) ? fs.readdirSync(helpDir).filter((f) => f.endsWith('.json')) : [];
+  const latest = newest(files);
+  const toLabel = str('to') ?? (latest ? path.basename(latest, '.json') : null);
   if (!toLabel) { console.error(`no stored help snapshots under ${path.relative(process.cwd(), helpDir)}`); process.exit(2); }
   const fromPath = path.join(helpDir, `${str('from')}.json`);
   const toPath = path.join(helpDir, `${toLabel}.json`);

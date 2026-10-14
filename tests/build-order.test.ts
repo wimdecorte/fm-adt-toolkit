@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { newestOther } from '../src/gaps/build-order.ts';
+import { newest, newestOther } from '../src/gaps/build-order.ts';
 
 describe('newestOther', () => {
   it('returns null with no other names', () => {
@@ -23,5 +23,18 @@ describe('newestOther', () => {
     expect(newestOther(['0.6.0', '0.7.0'], '0.8.0')).toBe('0.7.0');
     // A build-numbered name always outranks a build-less one.
     expect(newestOther(['0.6.0', '0.7.0-1'], '0.8.0')).toBe('0.7.0-1');
+  });
+});
+
+describe('newest', () => {
+  it('returns null with no names', () => {
+    expect(newest([])).toBeNull();
+  });
+
+  it('orders by build number, so a two-digit minor version is not taken for an older one', () => {
+    // As strings, '0.9.0-29846589.json' > '0.11.0-29863806.json' ('9' > '1'), which is what made
+    // `help-diff` default --to to 0.9.0 on the 0.11.0 intake.
+    const names = ['0.10.0-29853940.json', '0.11.0-29863806.json', '0.9.0-29846589.json'];
+    expect(newest(names)).toBe('0.11.0-29863806.json');
   });
 });
