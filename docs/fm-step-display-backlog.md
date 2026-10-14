@@ -737,6 +737,12 @@ its own, a nested value, the bag of unnamed values. Not there.
 menu-set half of item 5. Each item says so below; the counts elsewhere in this document are the
 round that measured them, not this build.
 
+**fm 0.11.0 (29863806) opened more than it closed.** It stopped sending `flags` and `slots` on every
+step it can describe — its help: "Every other step describes its options with named keys" — and most
+of what those carried came back under a name. What did not is items 6 to 9 below, and item 5 lost the
+half that was left: `Truncate Table` now sends neither the table's name nor its id. Measured on the
+re-read corpus; the register rows that track each are named with it.
+
 1. **A repetition FileMaker appends to an option.** FileMaker writes an option and then a repetition
    number in brackets after it. The step reports one repetition, its value is 0, and 0 means *not
    specified*, which FileMaker draws as empty brackets — that part now comes out right. The number
@@ -776,6 +782,34 @@ round that measured them, not this build.
    **Half closed by fm 0.10.0**: `Install Menu Set` reports the menu set by name as `menuSet`,
    built-ins included, and keeps the id only for a reference to a deleted set. `Truncate Table` still
    reports a number (`slots.memberKey`) and no name.
+
+   **The table half went backwards in fm 0.11.0**: `Truncate Table` reports `tableSelection: 1` and
+   nothing else, though FileMaker prints `Table: "<table>"` and fm's help documents a `table` key for
+   the step. The id is gone with `slots` (2 steps).
+6. **FileMaker's `<Table Missing>`, opened by fm 0.11.0.** On a step whose field reference is broken,
+   FileMaker prints `<Table Missing>` where the field goes, and the CLI reports no field key — exactly
+   as for a step with no field at all. Through 0.10.0 bit 1 of `flags` told the two apart, and the
+   catalog printed the placeholder on eleven step types on that bit (`whenAbsent.flagBit`). 0.11.0
+   sends no `flags`, so nothing does: 18 steps of seventeen types, the plug-in step among them. The
+   catalog now prints nothing there, the safe direction — a placeholder on a step with no field would
+   be worse — and eleven step types lost their verification with it. Register: `step:132`, bit 0x1.
+   This matters beyond the step text: a consumer looking for broken references in a script can no
+   longer find a broken field reference from a read.
+7. **The parameter of `Configure Region Monitor Script`, opened by fm 0.11.0.** FileMaker prints
+   `Parameter: 1` on all five steps; 0.10.0 sent the value as `slots.calc.0` and the catalog printed it
+   at `measured` confidence. 0.11.0 sends it under no key, and its help documents none. Register:
+   `step:185`.
+8. **`Import Records`' XML source and XSL paths, opened by fm 0.11.0.** FileMaker prints
+   `http://…xsl.xml; $PathXSL` and `$PathXML; http://…xsl.xsl`; 0.10.0 sent the variable paths as
+   `slots.calc.0` and `.1`, and 0.11.0 sends them nowhere. 2 steps.
+9. **Two things FileMaker does not print, opened by fm 0.11.0.** Neither costs a line, and both are
+   content a read used to return. Whether a block is collapsed (`collapsed: true` on one If and one
+   Else If): fm's help says it is kept on a write that claims the step by `uuid`, and a read cannot
+   tell. And `Configure Prompt Template`'s prompt texts, on all five steps: sent as unnamed slots
+   through 0.10.0, now in no key, though fm's help documents `sqlPrompt`, `naturalLanguagePrompt`,
+   `findRequestPrompt` and `ragPrompt` for the step. Whether the corpus's texts are FileMaker's own
+   defaults, which a build might reasonably omit, is not measured. Register: the `collapsed` rows on
+   steps 45, 68, 69, 71, 125 and 205; `step:226`.
 
 ---
 
@@ -913,6 +947,10 @@ nested value, the bag of unnamed values (section 5):
 4. **The base table FileMaker prints after a layout it names.** 9 steps, on `Go to List of Records` and
    `New Window`.
 5. **A menu set's or a table's name behind an internal id.** 4 steps.
+
+fm 0.11.0 adds four more, items 6 to 9 of section 5: `<Table Missing>` (18 steps), Configure Region
+Monitor Script's parameter (5), Import Records' XML and XSL paths (2), and two values FileMaker does
+not print. The counts in this section are the round that measured them, not this build.
 
 And one that is not a CLI gap but is equally unreachable: **the step FileMaker names from an installed
 plugin** (4.3). The displayed name is a lookup against what is installed on the machine, so it cannot

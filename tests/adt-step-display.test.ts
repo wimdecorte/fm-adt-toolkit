@@ -498,7 +498,9 @@ describe('an option whose label points at one key and whose value comes from ano
  *  reports without naming: script 55 steps 230-234. Since fm 0.10.0 it also reports the
  *  window's style as `style`, and both options follow that key's presence; the fixtures
  *  carry step 230's. */
-describe('an option that follows from a value the CLI does not name', () => {
+// Through fm 0.10.0 the window was five values the CLI did not name, and `New window` followed
+// their presence. fm 0.11.0 names them and the switch itself, `showInNewWindow`.
+describe('an option that follows from the new window a step configures', () => {
   const RELATED = {
     stepID: 74,
     step: 'Go to Related Record',
@@ -517,7 +519,12 @@ describe('an option that follows from a value the CLI does not name', () => {
       stepDisplayText({
         ...RELATED,
         style: STYLE,
-        slots: { calc: { 0: '"a window"', 1: '100', 2: '100', 3: '100', 4: '100' } },
+        showInNewWindow: true,
+        name: '"a window"',
+        width: '100',
+        height: '100',
+        left: '100',
+        top: '100',
       }),
     ).toBe(
       'Go to Related Record [ Show only related records ; From table: “Contacts” ; ' +
@@ -526,7 +533,7 @@ describe('an option that follows from a value the CLI does not name', () => {
   });
 
   it('writes the animation and no New window when there is none', () => {
-    expect(stepDisplayText(RELATED)).toBe(
+    expect(stepDisplayText({ ...RELATED, showInNewWindow: false })).toBe(
       'Go to Related Record [ Show only related records ; From table: “Contacts” ; ' +
         'Using layout: <Current Layout> ; Animation: Cross Dissolve ]',
     );
@@ -537,7 +544,16 @@ describe('an option that follows from a value the CLI does not name', () => {
     // be the same words FileMaker prints for this option, so the matcher paired the value
     // with the option. Any other name must give the same option.
     expect(
-      stepDisplayText({ ...RELATED, style: STYLE, slots: { calc: { 0: '$w', 1: '1', 2: '1', 3: '1', 4: '1' } } }),
+      stepDisplayText({
+        ...RELATED,
+        style: STYLE,
+        showInNewWindow: true,
+        name: '$w',
+        width: '1',
+        height: '1',
+        left: '1',
+        top: '1',
+      }),
     ).toContain('New window');
   });
 });

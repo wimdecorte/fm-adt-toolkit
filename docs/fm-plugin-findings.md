@@ -205,11 +205,11 @@ again, and `plugin:validate-plugin-function` reads `valid=true` — on a BaseEle
 changed: version 4.2.6, its binary dated 2022, nothing in the bundle newer than 2026-09-01. The
 `plugins` line in each build's evidence, all on this machine and this FileMaker Pro:
 
-| plug-in | 0.8.0, 2026-09-25 | 0.9.0, 2026-09-30 | 0.9.0, 2026-10-01 | 0.10.0, 2026-10-09 |
-|---|---|---|---|---|
-| BaseElements 4.2.6 | loaded | declined | declined | **loaded** |
-| MBS | loaded | declined | loaded (updated to 16.5 that morning) | loaded |
-| 2empowerFM, 2empowerFM_Developer_Assistant | loaded | declined | declined | declined |
+| plug-in | 0.8.0, 2026-09-25 | 0.9.0, 2026-09-30 | 0.9.0, 2026-10-01 | 0.10.0, 2026-10-09 | 0.11.0, 2026-10-14 |
+|---|---|---|---|---|---|
+| BaseElements 4.2.6 | loaded | declined | declined | **loaded** | loaded |
+| MBS | loaded | declined | loaded (updated to 16.5 that morning) | loaded | loaded |
+| 2empowerFM, 2empowerFM_Developer_Assistant | loaded | declined | declined | declined | declined |
 
 MBS fits the machine reading: 0.9.0 declined it until MBS itself was updated. BaseElements does not
 — the same binary was declined by 0.9.0 and only 0.9.0 — so for it the decline went with the fm

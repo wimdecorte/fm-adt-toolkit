@@ -17,6 +17,16 @@ pairs re-read with 0.7.0 every count below is what 0.6.0 gave, but for one group
 both `verifySslCertificates`, so their two redundancy groups are now one and the group total
 is 225 rather than 226.
 
+**fm 0.11.0 (29863806) stopped sending the word** on every step it can describe; its help says
+only an opaque step carries `flags`. So this document reads a word that builds 0.6.0 to 0.10.0
+sent, and it stays useful for exactly two things: reading a step written by one of them, and
+knowing what the word used to carry that a named key does not carry now. Most bits came back as
+named keys — `on`, `openAutomatically`, `createEmail`, `currentFileOnly`, among others — and the
+`specifyPageSetup`, `specifyPrintOptions`, `destination`, `result`, `dataSource` and `objectName`
+keys follow bits measured here on every corpus example. One that did not come back is bit `0x1`,
+`<Table Missing>`: on 0.11.0 a broken field reference reads exactly like no field. The register's
+step rows record each bit's fate.
+
 ---
 
 ## Read this before anything else: there is no global bit table

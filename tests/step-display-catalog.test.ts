@@ -304,8 +304,27 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // 35 of the 40 repetitions are what FileMaker prints after the field, in brackets,
     // against Install Menu Set's two and Go to Related Record's window name (8), which no longer
     // carries `New window` — 0.10.0 names the window style, and that option follows `style`.
-    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(234);
-    expect(tally.rendered).toBeGreaterThanOrEqual(68);
+    //
+    // 0.11.0 (29863806) EMPTIED THE BAG, 234 -> 0: it sends `slots` on no step, nor `flags`.
+    // Its help says why — "Every other step describes its options with named keys", and only
+    // an opaque step, which neither corpus file has, carries the raw word. So the partition
+    // holds with nothing in it, and the zero is pinned so that a build sending `slots` again
+    // shows up here. `rendered` has no floor left to hold and is not asserted.
+    //
+    // Where the 234 went, matched by value step by step. 114 came back under a named key with
+    // the same value: Go to Related Record's window (40, now `name`, `width`, `height`, `left`,
+    // `top`), the field repetitions (37, as `fieldRepetition`, `repetition` or
+    // `<key>Repetition`), Insert from Device's prompt, title, message and duration (13),
+    // ExternalStep's ten arguments, which were already sent as `arguments.*` too, and 14 more.
+    // Five came back re-encoded: Insert from Device's two numeric switches as
+    // `startImmediately` and `scanFrom`, and Convert File's path as `path`. The other 115 are
+    // sent nowhere. Nearly all of them are values FileMaker stores and does not print, the class
+    // 0.10.0 started leaving out (AVPlayer's 59 script and member ids, Perform Semantic Find's
+    // 10, the six Insert and Get steps' unused target variable). But 7 of the 68 rendered places
+    // were printed by FileMaker too: Configure Region Monitor Script's `Parameter:` (5),
+    // which no key carries, and Import Records' XML and XSL paths (2). The step-display backlog
+    // records them as a CLI regression.
+    expect(tally.rendered + tally.neverShown + tally.unsettled).toBe(0);
   });
 
   it('has no key the catalog accounts for in no way at all', () => {
@@ -469,9 +488,47 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // shown; Sort Records' `maintain` and `blanksLast` (+6), which 0.10.0 sends on every step in
     // place of the raw `sortOrder.flags`; AVPlayer Play (+4 net, `source`); Save Records as Excel
     // (+3); Perform RAG Action's and Perform Semantic Find's repetitions (+4).
-    expect(rendered).toBeGreaterThanOrEqual(3176);
-    expect(baseline).toBeGreaterThanOrEqual(81);
-    expect(withheld).toBeLessThanOrEqual(1749);
+    //
+    // fm 0.11.0 (29863806): 3169 printed, 71 of them by the baseline, 1698 withheld; FileMaker's
+    // own text matched byte for byte on 970 lines. Measured by rendering every pair under the
+    // 0.10.0 catalog and corpus and under these, step type by step type.
+    //
+    // `rendered` FELL against its floor, 3176 -> 3169, and the floor moves down with a reason for
+    // every value. Out (-32), three kinds. FileMaker's `<Table Missing>` on a broken field
+    // reference (-12, eleven step types): the catalog printed it while bit 1 of `flags` was set,
+    // and 0.11.0 sends no `flags`, so a broken reference and no reference now read the same.
+    // Stale stored values the baseline printed and FileMaker never did (-11): the six Insert and
+    // Get steps' target variable, AVPlayer Play's field repetition, Speak's voice name and three
+    // `memberKey`/list ids, all of them `slots` places 0.11.0 no longer sends. And values
+    // FileMaker DOES print that 0.11.0 sends under no key (-9): Configure Region Monitor
+    // Script's `Parameter:` (5), Import Records' XML and XSL paths (2), and a calculation Perform
+    // RAG Action printed beside `Tokens per Text Chunk` (2). In (+25): keys 0.11.0 sends for the
+    // first time — Save Records as Excel's, JSONL's and Snapshot Link's `openAutomatically` and
+    // `createEmail` (13), `on` on Allow Formatting Bar, Set Layout Object Animation and Set
+    // Revert Transaction on Error (5), Move/Resize Window's `currentFileOnly` (2), Insert from
+    // Device's `scanFrom` (1) — and Go to Related Record's `New window` on two more lines than the
+    // `style` presence route reached (2), and Perform Semantic Find's repetitions (2).
+    //
+    // `baseline` FELL against its floor, 81 -> 71. Out (-15): the eleven stale `slots` prints
+    // above, Go to List of Records' window `name` (4), which the catalog now measures never
+    // shown. In (+5), every one a key the catalog holds no measured segment for: Perform Semantic
+    // Find's `saveResultRepetition` (2), Insert from Device's `scanFrom`/`scanFromField` in place
+    // of `slots.numeric.3` (net +1), Go to Field's `repetition` on its broken reference (1), and
+    // Go to Related Record's broken layout reference, `layout: 0` (1). Go to Layout's equivalent
+    // moved from `slots.memberKey` to `layout` and nets zero.
+    //
+    // `withheld` FELL, 1749 -> 1698, so the ratchet tightens. Out (-115), nearly all of it the
+    // never-shown `slots` places 0.11.0 stopped sending (see the partition above) — AVPlayer Set
+    // Options -48, Perform Semantic Find -18, Configure Prompt Template's prompts -17, AVPlayer
+    // Play -11, ExternalStep's slot copies of its arguments -10, Perform Script on Server with
+    // Callback -5, and six more on four step types. In (+64): keys 0.11.0 sends on every example whatever their
+    // value, mostly off — Go to Related Record's `showInNewWindow` and window values (+21), Go to
+    // List of Records' `newWindow` (+19), Insert from Device's `startImmediately` and duration
+    // (+13), Save Records as Excel, JSONL and Snapshot Link (+8), Trigger Claris Connect Flow's
+    // `encodeUrl` (+3).
+    expect(rendered).toBeGreaterThanOrEqual(3169);
+    expect(baseline).toBeGreaterThanOrEqual(71);
+    expect(withheld).toBeLessThanOrEqual(1698);
   });
 
   it('agrees with the aligner about collapsing a return', () => {

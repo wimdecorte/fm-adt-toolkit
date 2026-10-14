@@ -102,10 +102,12 @@ export function maskedKeysOf(catalog: StepDisplayCatalog): ReadonlySet<string> {
  *  Each one is an artefact rather than an option a user set:
  *   - `stepID`/`step` are the step's identity, drawn as the name.
  *   - `uuid` is ADT's durable handle for an edit path.
- *   - `flags` and `slots` are the two structural keys `read:script` documents. `slots`
- *     holds the values the CLI does not NAME, addressed one at a time by a segment's
- *     `slot`; printing the object itself would dump JSON into a row and could put a
- *     value the catalog masks on screen through a key nobody tested.
+ *   - `flags` and `slots` are the two structural keys `read:script` documented through
+ *     fm 0.10.0. `slots` holds the values the CLI does not NAME, addressed one at a time
+ *     by a segment's `slot`; printing the object itself would dump JSON into a row and
+ *     could put a value the catalog masks on screen through a key nobody tested. fm
+ *     0.11.0 sends neither on a step it can describe, but a step from an older build
+ *     still carries both, so they stay artefacts.
  *   - `block` is the extent the CLI derives on every read, never stored.
  *   - `collapsed` is whether the Script Workspace folded the block up.
  *   - `disabled` is FileMaker's Disable; a step list draws it as a marker on the row
@@ -673,7 +675,8 @@ function renderSegment(
     // A placeholder guarded by a bit of `flags`: FileMaker prints it for a reference
     // whose table is gone, and reports nothing else to tell that state from having no
     // reference at all. Without the guard we would print `<Table Missing>` on every
-    // step that simply has no field.
+    // step that simply has no field. fm 0.11.0 sends no `flags`, so a catalog derived
+    // from it carries no `flagBit` and the placeholder is not printed at all.
     const bit = segment.whenAbsent.flagBit;
     if (bit !== undefined && (Number(step.flags ?? 0) & bit) === 0) return { kind: 'skip' };
     const text = labelled(segment.whenAbsent.text);

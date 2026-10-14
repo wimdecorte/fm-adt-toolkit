@@ -13,6 +13,41 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.11.0 (build 29863806) on 2026-10-14.** Both `.adt.json` files re-read with
+nothing but `read:script`, BaseElements and MBS loaded; still 48 and 1155 steps, `.txt` halves
+unchanged. **Every step lost `flags`**, and nothing carries `slots` any more: fm's help now says only
+an opaque step carries the raw word and every other step "describes its options with named keys".
+Beyond `flags`, 5 of the 48 and 192 of the 1155 steps changed key set, and none changed a value under
+the same keys. Three shapes:
+
+- **An unnamed value is named.** Go to Related Record's window (`name`, `width`, `height`, `left`,
+  `top`, and the switch itself, `showInNewWindow`, on all 23); Insert from Device's `maximumDuration`,
+  `title`, `message`, `prompt`, `scanFrom`, `scanFromField` and `startImmediately` (16); field
+  repetitions as `fieldRepetition`, `repetition` or `<key>Repetition` on seven step types. Options that
+  lived only in the word got keys too: `on` (Allow Formatting Bar, Set Layout Object Animation, Set
+  Revert Transaction on Error), `openAutomatically` and `createEmail` (the three Save Records as … steps),
+  `currentFileOnly` (Move/Resize Window), `newWindow` (Go to List of Records, 19), `encodeUrl` (Trigger
+  Claris Connect Flow).
+- **A value FileMaker stores and does not print is no longer sent** — 115 `slots` places: AVPlayer's
+  script and member ids (59), Perform Semantic Find's (10), the unused target variable of six Insert and
+  Get steps, `createFolders` on Append PDF and Open PDF, which FileMaker Pro Help does not list for
+  either, and `collapsed: false` everywhere.
+- **Some values FileMaker DOES print are now sent nowhere.** Configure Region Monitor Script's
+  `Parameter:` (5 steps), Import Records' XML and XSL paths, Configure Prompt Template's prompt texts
+  (5 steps, not printed, and none of the four prompt keys fm's help documents is sent), `collapsed:
+  true` on If and Else If, and — with the raw word — FileMaker's `<Table Missing>`: on 18 steps of
+  seventeen types a broken field reference now reads exactly like no field. See section 5 of
+  [docs/fm-step-display-backlog.md](../docs/fm-step-display-backlog.md).
+
+Derived and round-tripped: verified 148 → 150, byte-identical lines 962 → 970 of 1203. Lost: the
+eleven step types whose `<Table Missing>` followed bit 1 of `flags`. Gained: thirteen, mostly where a
+stale value had printed (the six Insert and Get steps, Configure Prompt Template, Configure Local
+Notification) or a new key renders (the three Save Records as … steps, the three `on` steps). One
+derivation change came with it: a withdrawal may now re-match its example without the withdrawn key
+(`rematch`), which Go to Related Record needed once 0.11.0 named the window. The owner's window
+"new window" made the matcher pair `name` with `New window` on five steps; withdrawn without
+re-matching, the option kept only three steps, and the hidden-option search blamed `target`.
+
 **Re-read with fm 0.10.0 (build 29853940) on 2026-10-09.** Both `.adt.json` files re-read with
 nothing but `read:script`, BaseElements and MBS loaded; still 48 and 1155 steps, `.txt` halves
 unchanged. 3 of the 48 and 108 of the 1155 steps changed key set, and 13 more of the 1155 changed values

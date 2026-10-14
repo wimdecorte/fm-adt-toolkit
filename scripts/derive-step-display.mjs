@@ -90,6 +90,8 @@ const SOURCES = [
  *  inside an otherwise sound segment: `Move/Resize Window`'s `target` really does
  *  render `current` as `Current Window`, and really does not render `byName` as
  *  `Current file`. Withdrawing the segment would take the true mapping with it.
+ *  (That withdrawal ended with fm 0.11.0, which reports `Current file` as a key of its
+ *  own, `currentFileOnly`, so nothing pairs it with `target` any more.)
  *
  *  **Where a withdrawn key ends up.** `unresolved` — UNLESS the `ignored` claim
  *  stands on evidence of its own: examples that reported the key and rendered
@@ -236,17 +238,6 @@ const WITHDRAWN_FACTS = [
       'says `Text files`.',
   },
   {
-    step: 'Move/Resize Window',
-    facts: [{ key: 'target', label: null, text: 'Current file' }],
-    reason:
-      'a false VALUE MAPPING inside a sound segment, withdrawn by its rendered text so the true ' +
-      'mapping survives. `target: byName` does not render as `Current file` — script 55 step 642 ' +
-      'renders `Name: <var> ; Current file ; Height: … ` and `byName` is already expressed by the ' +
-      '`Name:` option, so `Current file` is a separate option the CLI does not report. The other ' +
-      'example (step 641, `target: current` -> `Current Window`) is true and is kept. Demotion is ' +
-      'for a fact we cannot corroborate; this one is disproved, so it is withdrawn.',
-  },
-  {
     step: 'Perform Script on Server with Callback',
     facts: [
       { key: 'callbackState', label: 'Callback script specified' },
@@ -281,7 +272,11 @@ const WITHDRAWN_FACTS = [
   },
   {
     step: 'Go to Related Record',
-    facts: [{ key: '@slot:calc:0', label: null, text: 'New window' }],
+    facts: [{ key: 'name', label: null, text: 'New window' }],
+    // fm 0.11.0 reports the switch itself, `showInNewWindow`, whose words are FileMaker's
+    // `New window`. Withdrawn without re-matching, the option kept only the three lines
+    // whose window name is a variable. See `rematchWithout`.
+    rematch: true,
     reason:
       'a false VALUE MAPPING that is a coincidence of the owner\'s own window name. The first of the five ' +
       'unnamed values this step reports for a new window is its NAME, and in five examples he named it ' +
@@ -292,7 +287,9 @@ const WITHDRAWN_FACTS = [
       'rather than a demotion because a renderer acts on a low fact, and this one would print the option ' +
       'only for a window the owner happened to name that way. Withdrawing it frees all eight ' +
       'occurrences for the presence route, which placed them on the same slot through fm 0.9.0 and ' +
-      'places them on `style` since fm 0.10.0, which names the window style.',
+      'placed them on `style` from fm 0.10.0, which named the window style. fm 0.11.0 names the value ' +
+      '`name` and the switch `showInNewWindow`, which takes the option; the same coincidence recurs under ' +
+      'the new name, so the withdrawal follows it there.',
     // Once the option moved to `style`, nothing placed the name, and the withdrawal alone left it
     // `ignored` at `low` — which the renderer prints, as `Calc: "new window"` on all eight lines.
     attestation:
@@ -476,13 +473,18 @@ function deriveHiddenWhen(collected) {
       // other are one condition with several names, not rival explanations, and every one
       // of them suppresses the option identically. Where they are not presence-identical
       // the evidence really does disagree and this still declines.
+      //
+      // fm 0.11.0 named those five values (`name`, `width`, `height`, `left`, `top`), so
+      // the same one condition now arrives as six NAMED keys with `style`. Being named
+      // does not make them rivals — they are still presence-identical — so the tie
+      // resolves the same way, to the first named one.
       const identical = candidates.every((other) =>
         list.every(
           (observation) =>
             Object.hasOwn(observation.step, other) === Object.hasOwn(observation.step, candidates[0]),
         ),
       );
-      const decided = named.length === 1 ? named[0] : named.length === 0 && identical ? candidates[0] : null;
+      const decided = named.length === 1 ? named[0] : identical ? (named[0] ?? candidates[0]) : null;
       if (decided === null) {
         notes.push({
           step: name,
@@ -814,7 +816,44 @@ function withdrawalFor(stepName, segment) {
       ),
   );
   if (!group) return null;
-  return { step: group.step, key: segment.key, label: segment.label ?? null, reason: group.reason };
+  return { step: group.step, key: segment.key, label: segment.label ?? null, reason: group.reason, rematch: Boolean(group.rematch) };
+}
+
+/** A withdrawal says a key does not own the text it was placed on; it says nothing
+ *  against the text being an option. So where one fires, the example is matched again
+ *  with the withdrawn key held out, and the text goes to whichever key the line
+ *  supports once the false owner is gone. The withdrawn segments are carried over
+ *  unchanged, so they are still recorded as withdrawn and still evidence omission.
+ *
+ *  fm 0.11.0 made this necessary: `Go to Related Record`'s window name became `name`,
+ *  which the matcher pairs with `New window` by its value on the five steps whose
+ *  window the owner named "new window". Dropping that pairing without re-matching left
+ *  `showInNewWindow` placed on the other three alone, and the hidden-option search
+ *  read the split as `target` suppressing it.
+ *
+ *  OPT-IN, by `rematch: true` on the withdrawal, because most withdrawals need the
+ *  freed text left unowned: `Go to Layout`'s and `Go to List of Records`' `target ->
+ *  Animation` exist so that `Animation: None` is learnt as `animation`'s absent form,
+ *  and re-matching hands it to another key instead (measured: seven exact lines lost).
+ *
+ *  Only a top-level key can be held out — a slot or a structured member is not a key
+ *  of the step to delete — and an opaque step is never matched at all. */
+function rematchWithout(stepName, pair, displayName, match) {
+  if (Object.hasOwn(pair.step, 'opaque')) return match;
+  const withdrawnAt = match.segments
+    .map((segment, at) => ({ segment, at }))
+    .filter(({ segment }) => withdrawalFor(stepName, segment));
+  if (!withdrawnAt.some(({ segment }) => withdrawalFor(stepName, segment).rematch)) return match;
+  const held = [...new Set(withdrawnAt.map(({ segment }) => segment.key))];
+  if (!held.every((key) => Object.hasOwn(pair.step, key))) return match;
+  const rest = { ...pair.step };
+  for (const key of held) delete rest[key];
+  const again = matchSegments(rest, pair.line, displayName);
+  return {
+    ...again,
+    segments: [...again.segments, ...withdrawnAt.map(({ segment }) => segment)],
+    positions: [...again.positions, ...withdrawnAt.map(({ at }) => match.positions[at])],
+  };
 }
 
 /** Walk every pair and collect, per step type, every placement of every key. */
@@ -873,7 +912,7 @@ function collect(sources) {
       const stepName = pair.step.step;
       const entry = typeOf(stepName);
       const displayName = observedDisplayName(pair.step, pair.line);
-      const match = matchSegments(pair.step, pair.line, displayName);
+      const match = rematchWithout(stepName, pair, displayName, matchSegments(pair.step, pair.line, displayName));
       // The step as the matcher saw it, with `slots` expanded into one key per
       // slot. EVERY key lookup below has to use this and not `pair.step`, or a slot
       // the matcher placed reads as a key with no value.
@@ -1570,7 +1609,8 @@ function valueDisplayForms(step, entry, examples, labelledForms, bareForms, note
     // re-created `Move/Resize Window | target: byName -> "Current file"` — a mapping
     // withdrawn precisely BECAUSE `Current file` is a separate option the CLI does not
     // report at all. Found by diffing the catalog, not by reasoning about it, which is why
-    // the check is in the code rather than in a reader's head.
+    // the check is in the code rather than in a reader's head. (Through fm 0.10.0: 0.11.0
+    // reports that option as `currentFileOnly`, and the withdrawal went with it.)
     if (withdrawalFor(step, { key, label: shape.label, value: option.text })) {
       decline(`${key}: ${JSON.stringify(option.text)} is a withdrawn fact and is not re-adopted`);
       return;
@@ -2494,8 +2534,9 @@ function deriveSegment(id, placements, allPlacements, entry) {
   if (rejected.length > 0) doubts.push('rejectedMapping');
   // Every display form this key has rests on a single observation, and the
   // placement itself was inferred rather than anchored: nothing here is
-  // corroborated. Catches `Move/Resize Window | target`, whose two mappings are
-  // one example each and one of which (`byName -> Current file`) is wrong.
+  // corroborated. Caught `Move/Resize Window | target`, whose two mappings were
+  // one example each and one of which (`byName -> Current file`) was wrong, until fm
+  // 0.11.0 gave `Current file` a key of its own.
   if (
     attribution !== 'anchored' &&
     mappingExamples.length > 0 &&

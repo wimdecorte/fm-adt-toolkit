@@ -1,6 +1,6 @@
 # What privileges the fm CLI needs, per catalog
 
-Measured against **fm 0.10.0 (29853940)** on 2026-10-09, on files hosted over `fmnet://` by FileMaker
+Measured against **fm 0.11.0 (29863806)** on 2026-10-14, on files hosted over `fmnet://` by FileMaker
 Pro's peer-to-peer sharing. Every capability claim below was produced by running the op as the
 account in question. Where ADT's documentation, fm's help or fm's error text contradicts what was
 measured, both are quoted and the measurement is what this document records.
@@ -8,9 +8,10 @@ measured, both are quoted and the measurement is what this document records.
 The answers are re-measured on every fm build by `npx fm-gaps behaviour` (runbook step 7), which
 records them under `gaps/behaviour/<version>-<build>.json`. **If the newest snapshot there names a
 later build than this line does, this document is the stale one.** Current baseline:
-`0.10.0-29853940`, taken against a copy served by FileMaker Pro 26.1.1. It differs from
+`0.11.0-29863806`, taken against a copy served by FileMaker Pro 26.1.1. It answers every probe
+exactly as `0.10.0-29853940` did, so nothing below changed with it. `0.10.0` differed from
 `0.9.0-29846589` in one answer, `plugin:validate-plugin-function`, which belongs to
-[fm-plugin-findings.md](fm-plugin-findings.md); every privilege answer below is unchanged.
+[fm-plugin-findings.md](fm-plugin-findings.md).
 
 ## The short version
 
