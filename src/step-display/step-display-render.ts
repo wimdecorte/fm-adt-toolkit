@@ -687,6 +687,11 @@ function renderSegment(
     return text === '' ? { kind: 'emptySlot' } : { kind: 'text', text };
   }
   const value = segmentValue(step, segment);
+  // A NAME reported as a number is an unresolved id — a deleted occurrence, a data source
+  // the file no longer has — and FileMaker writes `<unknown>` in its place, unquoted:
+  // Open File's `dataSource: 3` in the corpus, and Go to Related Record's deleted `from`
+  // measured on a throwaway file. A name is never a JSON number, so the test is the type.
+  if (segment.quoted && typeof value === 'number') return { kind: 'text', text: labelled('<unknown>') };
   const wrap = (text: string): string => (segment.quoted ? `“${text}”` : text);
   // A value FileMaker prints nothing for. Checked before the kind, since it holds
   // whatever the kind would otherwise have done with it.
@@ -1098,6 +1103,37 @@ interface PendingOption {
   host: string | null;
 }
 
+/** A reference whose target is gone, put the way FileMaker Pro writes it.
+ *
+ *  fm 0.11.0 reports such a reference by the ids it still stores, in place of the name:
+ *  a field as `{occurrence, fieldId}` and an occurrence as its bare number. Printed as
+ *  they come, those read `Occurrence: checks ; Field id: 1` and `From table: “1065090”`.
+ *  Measured against FileMaker Pro 26.1.1 on a throwaway file with a field and then a table
+ *  deleted under the steps, Script Workspace writes:
+ *
+ *   - a field of a live occurrence: `checks::<Field Missing>`, in the field's place;
+ *   - a field whose occurrence is gone too (the occurrence is then a number): `<Table Missing>`;
+ *   - an occurrence that is gone: `<unknown>` in the option's place — which `renderSegment`
+ *     does for any quoted name reported as a number, since the field case is the only one
+ *     that needs its shape rewritten first.
+ *
+ *  A reference stored with id 0 (`<Table Missing>` on a step FileMaker Pro wrote) reaches
+ *  this function as no key at all, exactly like a step with no field, and is left so. */
+function unresolvedReferences(step: ScriptDetailStep): ScriptDetailStep {
+  let out: Record<string, unknown> | null = null;
+  const put = (key: string, value: unknown): void => {
+    out ??= { ...step };
+    out[key] = value;
+  };
+  for (const [key, value] of Object.entries(step)) {
+    if (isRecord(value) && Object.hasOwn(value, 'fieldId') && !Object.hasOwn(value, 'name')) {
+      const occurrence = value.occurrence;
+      put(key, typeof occurrence === 'string' ? `${occurrence}::<Field Missing>` : '<Table Missing>');
+    }
+  }
+  return (out ?? step) as ScriptDetailStep;
+}
+
 /** One step, written out from its catalog entry.
  *
  *  Never throws and never refuses: a missing key, a value of the wrong shape and a
@@ -1118,7 +1154,7 @@ export function renderStepFromCatalog(
 ): StepRendered {
   // Everything below reads the expanded step, so a structured option is addressed by its
   // members on every path — the catalog's segments, presence, the baseline, the masks.
-  const step = expandStep(given);
+  const step = expandStep(unresolvedReferences(given));
   const name = entry.displayName ?? step.step;
   const gaps: StepRenderGap[] = [];
   const contributed: string[] = [];

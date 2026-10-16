@@ -337,8 +337,9 @@ export interface StepSegment {
    *  must print `text` only while `(step.flags ?? 0) & flagBit`.
    *
    *  fm 0.11.0 stopped sending `flags` on any step it can describe, so a catalog
-   *  derived from it has no `flagBit`, and a broken field reference reads exactly
-   *  like no field: the placeholder is dropped rather than printed on both. */
+   *  derived from it has no `flagBit`, and in the step a broken field reference reads
+   *  exactly like no field: the placeholder is dropped rather than printed on both. The
+   *  script's `problems` list, which this renderer is not handed, still flags the step. */
   whenAbsent?: { text: string; examples: number; flagBit?: number };
   /** Values of this key for which FileMaker prints NOTHING — the option is
    *  present in the JSON and absent from the line.

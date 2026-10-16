@@ -1481,23 +1481,37 @@ function measurePresentation(collected) {
       //
       // It is deliberately NOT extended to a placeholder phrase. `<Table Missing>` is a
       // claim that a reference is broken, and printing it on a step that simply has no
-      // field would be inventing one — so that text keeps the unanimity-or-one-bit rule.
+      // field would be inventing one — so that text keeps the one-bit rule.
+      //
+      // AND FOR A BROKEN REFERENCE UNANIMITY IS NOT ENOUGH EITHER: it needs the bit. The
+      // owner's ruling: `Set Field`, `Set Selection` and `Check Selection` can be written
+      // with no field at all, acting on the active one, so a step that omits the field is
+      // not evidence of a broken one. Each of the three has one absent-field example in the
+      // corpus and it happens to be broken, which made the placeholder unanimous and it
+      // printed for every fieldless step. So the text always goes to the bit pile, where a
+      // build that sends `flags` gives it the shared bit and fm 0.11.0, which sends none,
+      // declines it.
       const showing = new Set(occurrences.map((item) => item.observation));
       const emptySlotRuling = texts.size === 1 && [...texts.keys()][0] === '';
+      const brokenReference = texts.size === 1 && BROKEN_REFERENCE.test([...texts.keys()][0]);
       const bits =
-        texts.size === 1 && seen < absent && !emptySlotRuling
+        texts.size === 1 && (seen < absent || brokenReference) && !emptySlotRuling
           ? separatingFlagBits(
               absentExamples.filter((observation) => showing.has(observation)),
               absentExamples.filter((observation) => !showing.has(observation)),
             )
           : [];
-      if (texts.size > 1 || (seen !== absent && bits.length === 0 && !emptySlotRuling)) {
+      if (texts.size > 1 || ((seen !== absent || brokenReference) && bits.length === 0 && !emptySlotRuling)) {
         notes.push({
           step: name,
           kind: 'whenAbsentDeclined',
           detail:
             `${key}: ${seen} of ${absent} example(s) that omit the key show a slot for it` +
-            `${texts.size > 1 ? `, and they disagree (${[...texts.keys()].map((text) => JSON.stringify(text)).join(' / ')})` : ', and no bit of `flags` separates them'}`,
+            (texts.size > 1
+              ? `, and they disagree (${[...texts.keys()].map((text) => JSON.stringify(text)).join(' / ')})`
+              : brokenReference
+                ? `, a broken-reference placeholder, and no bit of \`flags\` says which omissions are broken`
+                : ', and no bit of `flags` separates them'),
         });
         continue;
       }
@@ -1697,6 +1711,12 @@ function valueDisplayForms(step, entry, examples, labelledForms, bareForms, note
  *  content — FileMaker writes it — which is what makes it safe to attribute without
  *  a label. */
 const PLACEHOLDER_PHRASE = /^<[^<>]+>$/;
+
+/** FileMaker's placeholders for a reference whose target is gone (`<Table Missing>`,
+ *  `<Field Missing>`). Unlike `<Active Object>` or `<Current Layout>`, which are what an
+ *  unset option MEANS, these say something is broken — so an absent key alone is never
+ *  evidence for one. See the whenAbsent pass. */
+const BROKEN_REFERENCE = /^<\p{L}[\p{L} ]* Missing>$/u;
 
 /** The bits of `flags` set in every one of `showing` and clear in every one of
  *  `silent`. Bits 0-30 only: `flags` is reported as a JavaScript number and the sign

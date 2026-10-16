@@ -489,14 +489,18 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // place of the raw `sortOrder.flags`; AVPlayer Play (+4 net, `source`); Save Records as Excel
     // (+3); Perform RAG Action's and Perform Semantic Find's repetitions (+4).
     //
-    // fm 0.11.0 (29863806): 3169 printed, 71 of them by the baseline, 1698 withheld; FileMaker's
-    // own text matched byte for byte on 970 lines. Measured by rendering every pair under the
+    // fm 0.11.0 (29863806): 3166 printed, 71 of them by the baseline, 1698 withheld; FileMaker's
+    // own text matched byte for byte on 967 lines. Measured by rendering every pair under the
     // 0.10.0 catalog and corpus and under these, step type by step type.
     //
-    // `rendered` FELL against its floor, 3176 -> 3169, and the floor moves down with a reason for
-    // every value. Out (-32), three kinds. FileMaker's `<Table Missing>` on a broken field
-    // reference (-12, eleven step types): the catalog printed it while bit 1 of `flags` was set,
-    // and 0.11.0 sends no `flags`, so a broken reference and no reference now read the same.
+    // `rendered` FELL against its floor, 3176 -> 3166, and the floor moves down with a reason for
+    // every value. Out (-35), three kinds. FileMaker's `<Table Missing>` on a broken field
+    // reference (-15, fourteen step types): the catalog printed it while bit 1 of `flags` was set,
+    // and 0.11.0 sends no `flags`, so a broken reference and no reference now read the same in the
+    // step (the script's `problems` list still flags 17 of the 18 broken steps). Three
+    // of the fourteen — Set Field, Set Selection, Check Selection — printed it with no bit at all,
+    // because their one fieldless corpus step is broken; they can be written with no field, acting
+    // on the active one, so a broken-reference placeholder now always needs the bit.
     // Stale stored values the baseline printed and FileMaker never did (-11): the six Insert and
     // Get steps' target variable, AVPlayer Play's field repetition, Speak's voice name and three
     // `memberKey`/list ids, all of them `slots` places 0.11.0 no longer sends. And values
@@ -526,7 +530,7 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // List of Records' `newWindow` (+19), Insert from Device's `startImmediately` and duration
     // (+13), Save Records as Excel, JSONL and Snapshot Link (+8), Trigger Claris Connect Flow's
     // `encodeUrl` (+3).
-    expect(rendered).toBeGreaterThanOrEqual(3169);
+    expect(rendered).toBeGreaterThanOrEqual(3166);
     expect(baseline).toBeGreaterThanOrEqual(71);
     expect(withheld).toBeLessThanOrEqual(1698);
   });

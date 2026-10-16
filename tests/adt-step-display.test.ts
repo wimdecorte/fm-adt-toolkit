@@ -558,6 +558,37 @@ describe('an option that follows from the new window a step configures', () => {
   });
 });
 
+// fm 0.11.0 reports a reference whose target was deleted by the ids it still stores, in place
+// of the name. Measured on a throwaway file, a field and then a table deleted under the steps;
+// the expected lines are FileMaker Pro 26.1.1's own Script Workspace text for those steps.
+describe('a reference whose target is gone', () => {
+  it('writes a deleted field as FileMaker does, under its occurrence', () => {
+    expect(
+      stepDisplayText({ stepID: 76, step: 'Set Field', field: { occurrence: 'checks', fieldId: 1 }, value: '1' } as ScriptDetailStep),
+    ).toBe('Set Field [ checks::<Field Missing> ; 1 ]');
+  });
+
+  it('writes a field whose occurrence is gone too as <Table Missing>', () => {
+    expect(
+      stepDisplayText({ stepID: 76, step: 'Set Field', field: { occurrence: 1065090, fieldId: 1 }, value: '1' } as ScriptDetailStep),
+    ).toBe('Set Field [ <Table Missing> ; 1 ]');
+  });
+
+  it('writes an occurrence reported only by its id as the option unset', () => {
+    expect(
+      stepDisplayText({
+        stepID: 74,
+        step: 'Go to Related Record',
+        target: 'currentLayout',
+        from: 1065090,
+        showOnlyRelatedRecords: false,
+        matchAllRecordsInFoundSet: false,
+        showInNewWindow: false,
+      } as ScriptDetailStep),
+    ).toBe('Go to Related Record [ From table: <unknown> ; Using layout: <Current Layout> ]');
+  });
+});
+
 describe('steps whose old rendering was known to be wrong', () => {
   it('says how a script was specified, and quotes nothing the CLI did not send', () => {
     // The design spec named this step and `Go to Layout` as two the convention got

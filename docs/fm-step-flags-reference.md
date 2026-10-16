@@ -24,7 +24,8 @@ knowing what the word used to carry that a named key does not carry now. Most bi
 named keys — `on`, `openAutomatically`, `createEmail`, `currentFileOnly`, among others — and the
 `specifyPageSetup`, `specifyPrintOptions`, `destination`, `result`, `dataSource` and `objectName`
 keys follow bits measured here on every corpus example. One that did not come back is bit `0x1`,
-`<Table Missing>`: on 0.11.0 a broken field reference reads exactly like no field. The register's
+`<Table Missing>`: on 0.11.0 a broken field reference reads exactly like no field in the step itself
+— the script's `problems` list still flags the step, without saying which reference. The register's
 step rows record each bit's fate.
 
 ---

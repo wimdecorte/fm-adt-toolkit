@@ -515,10 +515,6 @@ export default {
    {
     "key": "field",
     "render": "bare",
-    "whenAbsent": {
-     "text": "<Table Missing>",
-     "examples": 1
-    },
     "examples": 2,
     "attribution": "anchored",
     "confidence": "measured"
@@ -529,7 +525,7 @@ export default {
   "residual": {
    "unreported": 1
   },
-  "verified": true
+  "verified": false
  },
  "Clear": {
   "segments": [
@@ -7884,10 +7880,6 @@ export default {
    {
     "key": "field",
     "render": "bare",
-    "whenAbsent": {
-     "text": "<Table Missing>",
-     "examples": 1
-    },
     "examples": 4,
     "attribution": "anchored",
     "confidence": "measured"
@@ -7916,7 +7908,7 @@ export default {
   "residual": {
    "unreported": 1
   },
-  "verified": true
+  "verified": false
  },
  "Set Field by Name": {
   "displayName": "Set Field By Name",
@@ -8036,10 +8028,6 @@ export default {
    {
     "key": "field",
     "render": "bare",
-    "whenAbsent": {
-     "text": "<Table Missing>",
-     "examples": 1
-    },
     "examples": 1,
     "attribution": "anchored",
     "confidence": "low",
@@ -8069,7 +8057,7 @@ export default {
   "residual": {
    "unreported": 1
   },
-  "verified": true
+  "verified": false
  },
  "Set Session Identifier": {
   "segments": [

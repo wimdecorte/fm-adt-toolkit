@@ -31,19 +31,24 @@ the same keys. Three shapes:
 - **A value FileMaker stores and does not print is no longer sent** — 115 `slots` places: AVPlayer's
   script and member ids (59), Perform Semantic Find's (10), the unused target variable of six Insert and
   Get steps, `createFolders` on Append PDF and Open PDF, which FileMaker Pro Help does not list for
-  either, and `collapsed: false` everywhere.
+  either, `collapsed: false` everywhere, and Configure Prompt Template's prompt texts (5 steps): all
+  FileMaker's predefined prompts, none marked customised in the options word, and 0.11.0 sends a
+  prompt only where it is.
 - **Some values FileMaker DOES print are now sent nowhere.** Configure Region Monitor Script's
-  `Parameter:` (5 steps), Import Records' XML and XSL paths, Configure Prompt Template's prompt texts
-  (5 steps, not printed, and none of the four prompt keys fm's help documents is sent), `collapsed:
-  true` on If and Else If, and — with the raw word — FileMaker's `<Table Missing>`: on 18 steps of
-  seventeen types a broken field reference now reads exactly like no field. See section 5 of
+  `Parameter:` (5 steps), Import Records' calculated XML and XSL paths, `collapsed: true` on If and
+  Else If, and — with the raw word — FileMaker's `<Table Missing>`: on 18 steps of
+  seventeen types a broken field reference now reads exactly like no field in the step itself, though
+  the script's `problems` list still flags 17 of the 18. See section 5 of
   [docs/fm-step-display-backlog.md](../docs/fm-step-display-backlog.md).
 
-Derived and round-tripped: verified 148 → 150, byte-identical lines 962 → 970 of 1203. Lost: the
-eleven step types whose `<Table Missing>` followed bit 1 of `flags`. Gained: thirteen, mostly where a
+Derived and round-tripped: verified 148 → 147, byte-identical lines 962 → 967 of 1203. Lost: the
+fourteen step types that print `<Table Missing>` — eleven followed bit 1 of `flags`, and three (Set
+Field, Set Selection, Check Selection) printed it with no bit because their one fieldless corpus step
+is broken, though all three can be written with no field at all. A broken-reference placeholder now
+always needs the bit, and 0.11.0 sends none. Gained: thirteen, mostly where a
 stale value had printed (the six Insert and Get steps, Configure Prompt Template, Configure Local
-Notification) or a new key renders (the three Save Records as … steps, the three `on` steps). One
-derivation change came with it: a withdrawal may now re-match its example without the withdrawn key
+Notification) or a new key renders (the three Save Records as … steps, the three `on` steps). Two
+derivation changes came with it: that broken-reference rule, and a withdrawal may now re-match its example without the withdrawn key
 (`rematch`), which Go to Related Record needed once 0.11.0 named the window. The owner's window
 "new window" made the matcher pair `name` with `New window` on five steps; withdrawn without
 re-matching, the option kept only three steps, and the hidden-option search blamed `target`.
