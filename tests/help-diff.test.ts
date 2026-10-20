@@ -80,6 +80,57 @@ describe('summariseHelp', () => {
   });
 });
 
+describe('summariseHelp, following a key to the page it points at', () => {
+  // fm 0.12.0 documents a shape shared by several ops or steps once, on its own page, and
+  // points every user at it with `childPath`. Read by path prefix alone, `field:create` lost
+  // all 108 of its `options.*` keys and `layout:create` 371 of its `objects.*` keys, when
+  // both ops still take every one of them.
+  it('follows a key\'s childPath to a keyObject outside the unit, prefixed by that key', () => {
+    const json = help([
+      { path: ['field', 'create'], kind: 'op', keys: [{ key: 'name' }, { key: 'options', childPath: ['field', 'options'] }] },
+      { path: ['field', 'options'], kind: 'keyObject', keys: [{ key: 'global' }] },
+      { path: ['field', 'options', 'autoEnter'], kind: 'keyObject', keys: [{ key: 'serial' }] },
+    ]);
+    expect(summariseHelp(json).keysByOp['field:create']).toEqual(['name', 'options', 'options.autoEnter.serial', 'options.global']);
+  });
+
+  it('follows a step\'s payloadKeys childPath, as a nested child was read before', () => {
+    const json = help([
+      { path: ['script', 'steps', 'Perform Find'], kind: 'step', keys: [{ key: 'restore' }],
+        payloadKeys: [{ key: 'findRequests', childPath: ['script', 'steps', 'findRequests'] }] },
+      { path: ['script', 'steps', 'findRequests'], kind: 'keyObject', keys: [{ key: 'operation' }] },
+      { path: ['script', 'steps', 'findRequests', 'criteria'], kind: 'keyObject', keys: [{ key: 'field' }] },
+    ]);
+    expect(summariseHelp(json).keysByStep['script:steps:Perform Find'])
+      .toEqual(['findRequests.criteria.field', 'findRequests.operation', 'restore']);
+  });
+
+  it('never follows a pointer into the step roster, which would list every step under `body`', () => {
+    const json = help([
+      { path: ['script', 'create'], kind: 'op', keys: [{ key: 'body', childPath: ['script', 'steps'] }] },
+      { path: ['script', 'steps'], kind: 'stepRoster' },
+      { path: ['script', 'steps', 'Beep'], kind: 'step', keys: [{ key: 'sound' }] },
+    ]);
+    expect(summariseHelp(json).keysByOp['script:create']).toEqual(['body']);
+  });
+
+  it('stops at a page that points back at itself', () => {
+    const json = help([
+      { path: ['layout', 'create'], kind: 'op', keys: [{ key: 'objects', childPath: ['layout', 'layoutObject'] }] },
+      { path: ['layout', 'layoutObject'], kind: 'keyObject', keys: [{ key: 'type' }, { key: 'objects', childPath: ['layout', 'layoutObject'] }] },
+    ]);
+    expect(summariseHelp(json).keysByOp['layout:create']).toEqual(['objects', 'objects.objects', 'objects.type']);
+  });
+
+  it('reads an array member\'s `[]` marker as no segment, so 0.11.0\'s `fields[].field` is 0.12.0\'s `fields.field`', () => {
+    const json = help([
+      { path: ['script', 'steps', 'Sort Records'], kind: 'step' },
+      { path: ['script', 'steps', 'Sort Records', 'sortOrder'], kind: 'keyObject', keys: [{ key: 'fields[].field' }] },
+    ]);
+    expect(summariseHelp(json).keysByStep['script:steps:Sort Records']).toEqual(['sortOrder.fields.field']);
+  });
+});
+
 describe('diffHelp', () => {
   it('detects a catalog added, an op removed, and a nested key added', () => {
     const prev = summariseHelp(help([
@@ -185,5 +236,27 @@ describe('the real fm 0.7.0 help snapshot', () => {
     expect(s.steps).toContain('script:steps:Sort Records');
     expect(s.steps).not.toContain('script:steps:forms');
     expect(s.keysByStep['script:steps:Sort Records']).toEqual(['restore', 'withDialog']);
+  });
+});
+
+describe('the real fm 0.11.0 and 0.12.0 help snapshots', () => {
+  const read = (label: string) => summariseHelp(JSON.parse(fs.readFileSync(
+    path.join(import.meta.dirname, '..', 'gaps', 'help', `${label}.json`), 'utf8')) as HelpJson);
+
+  it('still finds the keys 0.12.0 moved onto shared pages', () => {
+    const prev = read('0.11.0-29863806');
+    const next = read('0.12.0-42');
+    for (const [unit, key] of [
+      ['field:create', 'options.autoEnter.calculation.text'],
+      ['layout:create', 'objects.anchors.top'],
+      ['layout:update', 'addObjects.bounds.height'],
+      ['privilegeSet:create', 'fileOptions.printAllowed'],
+    ] as const) {
+      expect(prev.keysByOp[unit], `${unit} ${key} in 0.11.0`).toContain(key);
+      expect(next.keysByOp[unit], `${unit} ${key} in 0.12.0`).toContain(key);
+    }
+    expect(prev.keysByStep['script:steps:Perform Find']).toContain('findRequests.criteria.field');
+    expect(next.keysByStep['script:steps:Perform Find']).toContain('findRequests.criteria.field');
+    expect(next.keysByStep['script:steps:Print']).toContain('printOptions.pageSetup.orientation');
   });
 });

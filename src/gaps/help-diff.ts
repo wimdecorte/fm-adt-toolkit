@@ -10,6 +10,9 @@ export interface HelpKey {
   condition?: string;
   summary?: string;
   enum?: unknown;
+  /** The page that documents this key's own keys, when it is not the node beneath it --
+   *  how fm 0.12.0 documents a shape several ops or steps share, once. */
+  childPath?: string[];
 }
 
 /** One entry of `fm help --json --all`'s flat `nodes` array. Only the fields the diff reads
@@ -19,6 +22,9 @@ export interface HelpNode {
   path: string[];
   kind: string;
   keys?: HelpKey[];
+  /** A step's payload keys (`findRequests`, `printOptions`, ...). Not counted as keys of
+   *  their own, as they never were; read only for the page they point at. */
+  payloadKeys?: HelpKey[];
   [extra: string]: unknown;
 }
 
@@ -56,20 +62,49 @@ function join(pathSegs: string[]): string {
   return pathSegs.join(':');
 }
 
+function isUnder(p: string[], root: string[]): boolean {
+  return p.length >= root.length && root.every((seg, i) => p[i] === seg);
+}
+
 /** Every key documented at or below `unitPath`, named relative to that unit: the unit's own
  *  node contributes its `keys[].key` bare, and a deeper node (a keyObject or variant child,
  *  at any depth) contributes its keys prefixed by the sub-path beyond the unit --
  *  `layout:create`'s `parts` child's `type` key becomes `parts.type`, not `type`, so it
- *  cannot be confused with the unit's own top-level `type` key. */
+ *  cannot be confused with the unit's own top-level `type` key.
+ *
+ *  A key whose `childPath` names a keyObject elsewhere is followed there, and that page's
+ *  keys are named under the key: fm 0.12.0 moved `field:create`'s `options` to
+ *  `field › options` and `layout:create`'s `objects` to `layout › layoutObject`, and read by
+ *  path alone both ops seemed to lose every key they still take. A pointer into the step
+ *  roster (`body`, `action`) is not followed, as it never was: it would list every step's
+ *  keys under each of them. A page already being followed is not followed again, since
+ *  `layoutObject`'s `objects` points at `layoutObject`.
+ *
+ *  `[]` in a key name is dropped. Through 0.11.0 an array member's keys were spelt into the
+ *  name (`sortOrder`'s `fields[].field`); 0.12.0 gives the member a node (`fields`, key
+ *  `field`), and both read here as `sortOrder.fields.field`. */
 function keysUnder(nodes: HelpNode[], unitPath: string[]): string[] {
+  const byPath = new Map(nodes.map((n) => [join(n.path), n]));
   const seen = new Set<string>();
-  for (const node of nodes) {
-    if (node.path.length < unitPath.length) continue;
-    if (unitPath.some((seg, i) => node.path[i] !== seg)) continue;
-    if (!node.keys) continue;
-    const sub = node.path.slice(unitPath.length).join('.');
-    for (const k of node.keys) seen.add(sub ? `${sub}.${k.key}` : k.key);
-  }
+  const walk = (root: string[], prefix: string, following: Set<string>): void => {
+    const follow = (k: HelpKey, name: string): void => {
+      if (!k.childPath || isUnder(k.childPath, root)) return;
+      const id = join(k.childPath);
+      if (following.has(id) || byPath.get(id)?.kind !== 'keyObject') return;
+      walk(k.childPath, name, new Set([...following, id]));
+    };
+    for (const node of nodes) {
+      if (!isUnder(node.path, root)) continue;
+      const sub = [prefix, ...node.path.slice(root.length)].filter(Boolean).join('.');
+      for (const k of node.keys ?? []) {
+        const name = (sub ? `${sub}.${k.key}` : k.key).replace(/\[\]/g, '');
+        seen.add(name);
+        follow(k, name);
+      }
+      for (const k of node.payloadKeys ?? []) follow(k, sub ? `${sub}.${k.key}` : k.key);
+    }
+  };
+  walk(unitPath, '', new Set());
   return [...seen].sort();
 }
 
