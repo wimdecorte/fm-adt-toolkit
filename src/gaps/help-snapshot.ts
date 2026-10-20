@@ -34,7 +34,7 @@ export function writeHelpSnapshot(root: string, version: string, build: string, 
 
 /** The newest OTHER stored snapshot -- what the current build's help should be diffed
  *  against -- or null when this is the first build recorded. Mirrors `previousEvidenceDir`,
- *  ordering by build number rather than by filename. */
+ *  ordering by version and build rather than by filename. */
 export function previousHelpSnapshot(root: string, version: string, build: string): string | null {
   const dir = path.join(root, 'gaps', 'help');
   if (!fs.existsSync(dir)) return null;

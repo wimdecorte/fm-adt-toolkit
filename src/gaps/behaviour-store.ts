@@ -18,7 +18,7 @@ export function writeBehaviourSnapshot(root: string, snapshot: BehaviourSnapshot
 }
 
 /** The newest OTHER stored snapshot -- what this build's answers should be compared against -- or
- *  null when this is the first run. Mirrors `previousHelpSnapshot`, ordering by build number
+ *  null when this is the first run. Mirrors `previousHelpSnapshot`, ordering by version and build
  *  rather than by filename. */
 export function previousBehaviourSnapshot(root: string, version: string, build: string): BehaviourSnapshot | null {
   const dir = path.join(root, 'gaps', 'behaviour');

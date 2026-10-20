@@ -47,7 +47,7 @@ export function writeEvidence(
 
 /** The newest evidence directory that is not this run's own, or null when this is the
  *  first build recorded -- "the previous build", which is what the key diff compares
- *  against. Directories are named `<version>-<build>`, ordered by build number. */
+ *  against. Directories are named `<version>-<build>`, ordered by version and then build. */
 export function previousEvidenceDir(root: string, version: string, build: string): string | null {
   const dir = path.join(root, 'gaps', 'evidence');
   if (!fs.existsSync(dir)) return null;
