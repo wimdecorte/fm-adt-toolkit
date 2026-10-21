@@ -47,8 +47,10 @@ export interface BehaviourSet {
   body: (firstLayout: string) => Record<string, unknown>;
 }
 
+/** Spelt as fm 0.12.0 (42) spells them, which refuses 0.11.0's `noIdleDisconnect` and
+ *  `canModifyExtensions` as unknown keys. `disconnectWhenIdle` is the old key inverted. */
 const ALL_PRIVILEGES = {
-  noIdleDisconnect: true, canChangePassword: true, canModifyExtensions: true,
+  disconnectWhenIdle: false, canChangePassword: true, canManageExtendedPrivileges: true,
   canModifyAccounts: true, canManageDatabase: true, canManageCustomMenu: true,
   printAllowed: true, exportAllowed: true, dataEntryOverride: true,
   menuCommands: 'all', allowOpenQuicklyLayoutsAndScripts: true,

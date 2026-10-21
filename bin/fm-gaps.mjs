@@ -155,6 +155,9 @@ if (cmd === 'behaviour') {
 
   const results = {};
   const created = { accounts: [], sets: [] };
+  /** Sets this run could not build. Their probes would read as answers fm gave -- `open_failed`,
+   *  or rows gone from the diff -- when the failure is this command's, so none is recorded. */
+  const unprovisioned = [];
   /** Probe passwords live here for the life of this run only -- never on the exported set data,
    *  which is shared and must not carry a secret. */
   const passwords = new Map();
@@ -163,7 +166,7 @@ if (cmd === 'behaviour') {
     // ---- discover what this file offers, as the caller's own account
     const disco = asOwner([{ op: 'read:layout' }, { op: 'read:table' },
       { op: 'read:script' }, { op: 'read:valueList' },
-      { op: 'read:extendedPrivilege' }, { op: 'read:extendedPrivilege', name: 'fmapp' },
+      { op: 'read:extendedPrivilege' }, { op: 'read:extendedPrivilege', keyword: 'fmapp' },
       { op: 'validate:calculation', calculation: 'BE_Version', references: true },
       { op: 'validate:calculation', calculation: 'External ( "BE_Version" ; "" )', references: true }]);
     const fatal = disco.find((l) => l.type === 'fatal');
@@ -181,8 +184,16 @@ if (cmd === 'behaviour') {
       if (line?.status === 'ok') ownerCounts[op] = { total: line.result?.total ?? 0, items: countReal(line.result?.items) };
     }
     const xpLine = disco.filter((l) => l.op === 'read:extendedPrivilege');
-    results['extendedPrivilege:keywords'] = (xpLine[0]?.result?.items ?? []).map((i) => i.name).sort().join(',');
+    // `keyword` from fm 0.12.0 (42); through 0.11.0 the item's `name`.
+    results['extendedPrivilege:keywords'] = (xpLine[0]?.result?.items ?? []).map((i) => i.keyword).sort().join(',');
     fmappBefore = xpLine[1]?.result ?? null;
+    // The grant below REPLACES fmapp's list, and teardown restores it from this read. Without it
+    // the grant would strip every existing set of network access and nothing would put it back --
+    // which is one renamed key away: 0.12.0 refused 0.11.0's `name: 'fmapp'` on the read.
+    if (!Array.isArray(fmappBefore?.privilegeSets)) {
+      console.error(`refusing to run: could not read fmapp's privilege sets (${token(xpLine[1])}), so its grant could not be restored.`);
+      process.exit(2);
+    }
     const vLines = disco.filter((l) => l.op === 'validate:calculation');
     results['plugin:validate-plugin-function'] = vLines[0]?.result ? `valid=${vLines[0].result.valid}` : token(vLines[0]);
     results['plugin:validate-External'] = vLines[1]?.result?.valid === undefined ? token(vLines[1]) : `valid=${vLines[1].result.valid}`;
@@ -246,6 +257,7 @@ if (cmd === 'behaviour') {
       if (acctOk) created.accounts.push(b.accountName);
       if (!setOk || !acctOk) {
         console.error(`could not provision ${b.setName}: ${JSON.stringify(mk.map((l) => l.error).filter(Boolean))}`);
+        unprovisioned.push(b.setName);
         continue;
       }
       passwords.set(b.key, secret);
@@ -253,7 +265,7 @@ if (cmd === 'behaviour') {
     // fmapp gates connection, and its grant list REPLACES rather than appends -- so send the
     // holders it already had plus the probe sets, or the existing ones lose access.
     const keep = fmappBefore?.privilegeSets ?? [];
-    asOwner([{ op: 'update:extendedPrivilege', name: 'fmapp', sharing: 'specified', privilegeSets: [...keep, ...created.sets] }]);
+    asOwner([{ op: 'update:extendedPrivilege', keyword: 'fmapp', sharing: 'specified', privilegeSets: [...keep, ...created.sets] }]);
 
     // ---- probe, per set
     const probes = {
@@ -267,7 +279,7 @@ if (cmd === 'behaviour') {
         ['create:valueList', { op: 'create:valueList', name: 'ADT_Probe_V', type: 'custom', values: ['a'] }],
         ['create:theme', { op: 'create:theme', displayName: 'ADT_Probe_Th' }],
         ['create:customMenu', { op: 'create:customMenu', name: 'ADT_Probe_CM' }],
-        ['create:extendedPrivilege', { op: 'create:extendedPrivilege', name: 'ADTProbeXP' }],
+        ['create:extendedPrivilege', { op: 'create:extendedPrivilege', keyword: 'ADTProbeXP' }],
       ],
       'all-privileges': (T) => [
         ['read:layout', { op: 'read:layout' }], ['read:account', { op: 'read:account' }],
@@ -316,7 +328,7 @@ if (cmd === 'behaviour') {
     // ---- teardown, always. fmapp must give the probe sets up BEFORE they can be deleted, or
     // the delete answers dbError 8406.
     if (fmappBefore) {
-      asOwner([{ op: 'update:extendedPrivilege', name: 'fmapp', sharing: fmappBefore.sharing ?? 'specified', privilegeSets: fmappBefore.privilegeSets ?? [] }]);
+      asOwner([{ op: 'update:extendedPrivilege', keyword: 'fmapp', sharing: fmappBefore.sharing ?? 'specified', privilegeSets: fmappBefore.privilegeSets ?? [] }]);
     }
     // THREE batches, and the order is not cosmetic. An account must be GONE before its privilege
     // set can be deleted, and "gone" means committed: deleting both in one batch answers
@@ -336,6 +348,11 @@ if (cmd === 'behaviour') {
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 
+  if (unprovisioned.length) {
+    console.error(`\nno snapshot written: ${unprovisioned.join(', ')} could not be provisioned, so what was probed`);
+    console.error('describes this command, not fm. Fix the request it refused (usually a key this build renamed) and re-run.');
+    process.exit(1);
+  }
   const snapshot = { version: cli.version, build, date, results };
   const prev = previousBehaviourSnapshot(evidenceRoot, cli.version, build);
   writeBehaviourSnapshot(evidenceRoot, snapshot);
