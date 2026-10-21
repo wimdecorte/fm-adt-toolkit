@@ -13,6 +13,20 @@ against each other rather than by anyone guessing.
 Same stem, two extensions: `.adt.json` is the CLI's `body` array verbatim, `.txt` is the
 rendered text. 1203 pairs in total, covering 209 distinct step types.
 
+**Re-read with fm 0.12.0 (build 42) on 2026-10-20.** Both `.adt.json` files re-read with nothing but
+`read:script`, BaseElements and MBS loaded; still 48 and 1155 steps, `.txt` halves unchanged. The 48
+came back byte for byte. Of the 1155, seven steps changed: Configure Region Monitor Script gained
+`parameter` on all five, the value FileMaker prints as `Parameter: 1` and 0.11.0 sent nowhere, and
+the two Configure RAG Account steps changed `step` from `Configure RAG Account ` to `Configure RAG
+Account`. The trailing space is FileMaker's own (its line has two spaces before the bracket) and 0.12.0
+trims it.
+
+Derived and round-tripped: verified 147 → 148 (Configure Region Monitor Script), byte-identical lines
+967 → 967, exact 997 → 1002, unrenderable 28 → 23. The trimmed name cost Configure RAG Account both of
+its byte-identical lines until the derivation learnt to read spaces beyond the one before the bracket
+as part of the name FileMaker printed; the entry now carries `displayName: "Configure RAG Account "`,
+and the renderer finds it under either spelling.
+
 **Re-read with fm 0.11.0 (build 29863806) on 2026-10-14.** Both `.adt.json` files re-read with
 nothing but `read:script`, BaseElements and MBS loaded; still 48 and 1155 steps, `.txt` halves
 unchanged. **Every step lost `flags`**, and nothing carries `slots` any more: fm's help now says only

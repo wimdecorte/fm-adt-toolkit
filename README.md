@@ -45,6 +45,11 @@ Version numbers elsewhere in the docs are history, not a claim about this tree: 
 [fm_scripts/README.md](fm_scripts/README.md) say what 0.6.0 spelt and what 0.7.0 spells, they are
 explaining why a key looks the way it does.
 
+`build` is a string to compare for equality, not a number to order by. Every build through 0.11.0
+carried a larger eight-digit number than the last (0.11.0 was `29863806`); 0.12.0 announced itself as
+`0.12.0 (42)`. Order builds by `version` first, as this repo now does for its own stored snapshots,
+and use the build only to tell two builds of one version apart.
+
 `cliPath` is the binary `locateFmCli` resolved for that run. It is recorded because the launcher's
 name is a fact about a build that nothing else here can see — see below.
 

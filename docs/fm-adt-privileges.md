@@ -1,6 +1,6 @@
 # What privileges the fm CLI needs, per catalog
 
-Measured against **fm 0.11.0 (29863806)** on 2026-10-14, on files hosted over `fmnet://` by FileMaker
+Measured against **fm 0.12.0 (42)** on 2026-10-20, on files hosted over `fmnet://` by FileMaker
 Pro's peer-to-peer sharing. Every capability claim below was produced by running the op as the
 account in question. Where ADT's documentation, fm's help or fm's error text contradicts what was
 measured, both are quoted and the measurement is what this document records.
@@ -8,8 +8,11 @@ measured, both are quoted and the measurement is what this document records.
 The answers are re-measured on every fm build by `npx fm-gaps behaviour` (runbook step 7), which
 records them under `gaps/behaviour/<version>-<build>.json`. **If the newest snapshot there names a
 later build than this line does, this document is the stale one.** Current baseline:
-`0.11.0-29863806`, taken against a copy served by FileMaker Pro 26.1.1. It answers every probe
-exactly as `0.10.0-29853940` did, so nothing below changed with it. `0.10.0` differed from
+`0.12.0-42`, taken against a copy served by FileMaker Pro 26.1.1. It answers every probe
+exactly as `0.11.0-29863806` and `0.10.0-29853940` did, so nothing below changed with either. (0.12.0
+renamed two of the keys the probes send — `fileOptions.noIdleDisconnect` and `canModifyExtensions`
+on a privilege set, and an extended privilege's `name`, now `keyword` — and refuses the old
+spellings as `unknown_key`; the probes send the new ones.) `0.10.0` differed from
 `0.9.0-29846589` in one answer, `plugin:validate-plugin-function`, which belongs to
 [fm-plugin-findings.md](fm-plugin-findings.md).
 
@@ -86,9 +89,10 @@ in. Deviate from it in only two directions, both deliberate:
   materially different trust decision from B, and it should be made on purpose rather than by
   reaching for `[Full Access]` because it was easier to configure.
 
-One detail if you compare ADT's JSON against these dialogs: ADT reports `noIdleDisconnect: true` for
-B, and B's screenshot shows "Disconnect user from server when idle" **unticked**. The key and the label
-are inverses, so "every bit true" in ADT's output is not "every box ticked" in the UI.
+One detail if you compare ADT's JSON against these dialogs: through 0.11.0 ADT reported
+`noIdleDisconnect: true` for B, and B's screenshot shows "Disconnect user from server when idle"
+**unticked**. The key and the label were inverses, so "every bit true" in ADT's output was not "every
+box ticked" in the UI. 0.12.0 names it `disconnectWhenIdle`, the label's way up: false for B.
 
 ## What must be granted
 
@@ -280,7 +284,9 @@ Run as an existing `[Full Access]` account. This builds B; omit the last three g
 `menuCommands: "all"` is not optional — Claris documents that the developer privilege needs Available
 menu commands set to All to be usable. Add `canManageCustomMenu` / `canModifyExtensions` if the agent
 must write custom menus or extended privileges. Note that a blanket `layouts.access` cannot be combined
-with a per-layout `layouts` array; fm refuses the pair with `invalid_field`.
+with a per-layout `layouts` array; fm refuses the pair with `invalid_field`. (From 0.12.0 the extended
+privileges grant is `canManageExtendedPrivileges`, and the `fmapp` update below addresses it as
+`"keyword":"fmapp"`.)
 
 Then grant `fmapp`, **sending the full list of holders** — `privilegeSets` replaces rather than appends,
 so omitting an existing holder revokes it:

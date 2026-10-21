@@ -743,6 +743,12 @@ of what those carried came back under a name. What did not is items 6 to 9 below
 half that was left: `Truncate Table` now sends neither the table's name nor its id. Measured on the
 re-read corpus; the register rows that track each are named with it.
 
+**fm 0.12.0 (42) closed item 7 and opened nothing.** Configure Region Monitor Script sends its
+parameter as `parameter` again, and all five steps now match FileMaker. Nothing else in the re-read
+corpus changed but step 227's name, which 0.12.0 trims (`Configure RAG Account `, FileMaker's own,
+became `Configure RAG Account`); the catalog keeps FileMaker's as its `displayName`. Items 6, 8 and 9
+read as they did on 0.11.0.
+
 1. **A repetition FileMaker appends to an option.** FileMaker writes an option and then a repetition
    number in brackets after it. The step reports one repetition, its value is 0, and 0 means *not
    specified*, which FileMaker draws as empty brackets — that part now comes out right. The number
@@ -809,10 +815,11 @@ re-read corpus; the register rows that track each are named with it.
    all but the plug-in step. It says a reference on the step is broken, not which one, and it is a
    property of the read, not of the step object the renderer is handed. Whether to pass it in is the
    open question; see [fm-0.11.0-open-checks.md](fm-0.11.0-open-checks.md), item 3.
-7. **The parameter of `Configure Region Monitor Script`, opened by fm 0.11.0.** FileMaker prints
-   `Parameter: 1` on all five steps; 0.10.0 sent the value as `slots.calc.0` and the catalog printed it
-   at `measured` confidence. 0.11.0 sends it under no key, and its help documents none. Register:
-   `step:185`.
+7. **The parameter of `Configure Region Monitor Script`, opened by fm 0.11.0, closed by 0.12.0.**
+   FileMaker prints `Parameter: 1` on all five steps; 0.10.0 sent the value as `slots.calc.0` and the
+   catalog printed it at `measured` confidence. 0.11.0 sent it under no key, and its help documented
+   none. 0.12.0 sends it as `parameter`, documented on this step and on Configure Local Notification
+   and Configure NFC Reading too, and the step type is verified again. Register: `step:185`.
 8. **`Import Records`' XML source and XSL paths, opened by fm 0.11.0.** FileMaker prints
    `http://…xsl.xml; $PathXSL` and `$PathXML; http://…xsl.xsl`; 0.10.0 sent the variable paths as
    `slots.calc.0` and `.1`, and 0.11.0 sends them nowhere. 2 steps. The LITERAL paths are in

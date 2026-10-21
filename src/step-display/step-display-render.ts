@@ -297,7 +297,10 @@ export function stepConventions(catalog: StepDisplayCatalog): StepDisplayConvent
   };
 }
 
-/** This step type's entry, or `undefined` — by OWN property only.
+/** This step type's entry, or `undefined` — by OWN property only, and by the name with its
+ *  surrounding spaces trimmed when the name as given has none: fm through 0.11.0 reported
+ *  step 227 as FileMaker names it, `Configure RAG Account `, and 0.12.0 trims it, which is
+ *  the name the catalog now holds.
  *
  *  A JSON module is an ordinary object, so it inherits `Object.prototype`: a plain
  *  `catalog[name]` lookup answers a truthy non-entry for `constructor`, `toString`,
@@ -310,7 +313,9 @@ export function catalogEntry(
   name: unknown,
 ): StepDisplayEntry | undefined {
   if (typeof name !== 'string') return undefined;
-  return Object.hasOwn(catalog, name) ? catalog[name] : undefined;
+  if (Object.hasOwn(catalog, name)) return catalog[name];
+  const trimmed = name.trim();
+  return Object.hasOwn(catalog, trimmed) ? catalog[trimmed] : undefined;
 }
 
 /** One option's identity in a caller's bookkeeping. The key alone is not enough:

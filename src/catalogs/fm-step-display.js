@@ -1052,7 +1052,8 @@ export default {
   },
   "verified": true
  },
- "Configure RAG Account ": {
+ "Configure RAG Account": {
+  "displayName": "Configure RAG Account ",
   "segments": [
    {
     "key": "account",
@@ -1128,9 +1129,11 @@ export default {
     "confidence": "measured"
    },
    {
-    "key": "latitude",
+    "key": "dataSource",
     "render": "labelled",
-    "label": "Latitude",
+    "label": "from file",
+    "inlineOf": "scriptReference",
+    "quoted": true,
     "examples": 1,
     "attribution": "anchored",
     "confidence": "low",
@@ -1139,11 +1142,17 @@ export default {
     ]
    },
    {
-    "key": "dataSource",
+    "key": "parameter",
     "render": "labelled",
-    "label": "from file",
-    "inlineOf": "scriptReference",
-    "quoted": true,
+    "label": "Parameter",
+    "examples": 5,
+    "attribution": "anchored",
+    "confidence": "measured"
+   },
+   {
+    "key": "latitude",
+    "render": "labelled",
+    "label": "Latitude",
     "examples": 1,
     "attribution": "anchored",
     "confidence": "low",
@@ -1206,10 +1215,7 @@ export default {
   ],
   "ignored": [],
   "derivedFrom": 9,
-  "residual": {
-   "unreported": 5
-  },
-  "verified": false
+  "verified": true
  },
  "Configure Regression Model": {
   "segments": [

@@ -638,10 +638,15 @@ function readSources() {
 
 /** The name FileMaker actually printed, read off the line rather than assumed:
  *  it differs from the CLI's by case (`Set Field By Name`) and outright
- *  (`Page Setup` -> `Print Setup`). */
+ *  (`Page Setup` -> `Print Setup`). Spaces beyond the one before the bracket are the
+ *  name's own: FileMaker's step 227 is `Configure RAG Account ` and prints two, which fm
+ *  0.12.0 no longer says, because it trims the name it reports. */
 function observedDisplayName(step, line) {
   const cli = String(step?.step ?? '');
-  if (cli && line.toLowerCase().startsWith(cli.toLowerCase())) return line.slice(0, cli.length);
+  if (cli && line.toLowerCase().startsWith(cli.toLowerCase())) {
+    const extra = /^( +) \[/.exec(line.slice(cli.length));
+    return line.slice(0, cli.length + (extra ? extra[1].length : 0));
+  }
   const open = line.indexOf('[');
   return (open === -1 ? line : line.slice(0, open)).trim();
 }

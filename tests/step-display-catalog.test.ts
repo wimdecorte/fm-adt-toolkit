@@ -530,7 +530,15 @@ describe('the catalog renderer against FileMaker’s own text', () => {
     // List of Records' `newWindow` (+19), Insert from Device's `startImmediately` and duration
     // (+13), Save Records as Excel, JSONL and Snapshot Link (+8), Trigger Claris Connect Flow's
     // `encodeUrl` (+3).
-    expect(rendered).toBeGreaterThanOrEqual(3166);
+    //
+    // fm 0.12.0 (42): 3171 printed, 71 of them by the baseline, 1698 withheld; FileMaker's own
+    // text matched byte for byte on 967 lines, as on 0.11.0. `rendered` rose by five, all of them
+    // Configure Region Monitor Script's `Parameter:`, which 0.11.0 sent under no key and 0.12.0
+    // sends as `parameter`; the floor rises with it. Nothing else in the corpus moved but step
+    // 227's name, which 0.12.0 trims (`Configure RAG Account `, FileMaker's own, became
+    // `Configure RAG Account`); the catalog keeps FileMaker's as its `displayName`, so both lines
+    // still match byte for byte.
+    expect(rendered).toBeGreaterThanOrEqual(3171);
     expect(baseline).toBeGreaterThanOrEqual(71);
     expect(withheld).toBeLessThanOrEqual(1698);
   });

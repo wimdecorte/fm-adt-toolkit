@@ -1248,3 +1248,25 @@ describe('a list FileMaker prints whole', () => {
     ).toBe('Perform JavaScript in Web Viewer [ Object Name: "wv" ; Function Name: "fn" ; Parameters: $a, $b, $c ]');
   });
 });
+
+describe('a step whose name ends in a space', () => {
+  // FileMaker's own name for step 227 is `Configure RAG Account ` -- trailing space and all,
+  // which is why its Script Workspace line has two spaces before the bracket. fm through 0.11.0
+  // reported it so; 0.12.0 trims it to `Configure RAG Account`.
+  const options = {
+    account: '"acct"',
+    endpoint: '"https://e"',
+    apiKey: '"k"',
+    verifySslCertificates: true,
+  };
+  const FILEMAKER = 'Configure RAG Account  [ RAG Account Name: "acct" ; Endpoint: "https://e" ; API key: "k" ; Verify SSL Certificates ]';
+
+  it('prints FileMaker\'s name, two spaces before the bracket, from 0.12.0\'s trimmed one', () => {
+    expect(stepDisplayText({ stepID: 227, step: 'Configure RAG Account', ...options })).toBe(FILEMAKER);
+  });
+
+  it('still finds the entry under the name 0.11.0 reported', () => {
+    expect(catalogEntry(CATALOG, 'Configure RAG Account ')).toBe(catalogEntry(CATALOG, 'Configure RAG Account'));
+    expect(stepDisplayText({ stepID: 227, step: 'Configure RAG Account ', ...options })).toBe(FILEMAKER);
+  });
+});
